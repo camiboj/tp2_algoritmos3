@@ -1,2 +1,2 @@
-public class Campo extends Carta {
+public class Campo extends Magica {
 }

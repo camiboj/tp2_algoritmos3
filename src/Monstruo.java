@@ -1,8 +1,6 @@
-public class Monstruo extends Carta {
-    private Punto puntosAtaque;
-    private Punto puntosDefensa;
-    private Nivel nivel;
-    private Efecto efecto;
-    private Estado estado;
-    private Modo modo;
+public abstract class Monstruo extends Carta {
+    protected Punto puntosAtaque;
+    protected Punto puntosDefensa;
+    protected Nivel nivel;
+    protected Modo modo;
 }

@@ -1,3 +1,3 @@
-public class Magica extends Carta {
-    private Efecto efecto;
+public abstract class Magica extends Carta {
+    protected Efecto efecto;
 }
