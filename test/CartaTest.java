@@ -4,24 +4,30 @@ import org.junit.Test;
 public class CartaTest {
 
     @Test
-    public void crearCartaMounstruoYColocarlaEnPosicionDeAtaque() {
+    public void crearCartaMonstruoYColocarlaEnPosicionDeAtaque() {
         Monstruo cartaMonstruo = Carta.crearCarta('Huevo Monstruoso');
-        cartaMonstruo.colocarEnPosicionDeAtaque();
-        Assert.assertEquals(cartaMounstruo.estado() IsInstanceOf posicionDeAtaque);
+        //Ceci:
+        // para mi acá debería ir:
+        //Punto puntosAtaque = new Punto(600);
+        //Punto puntosDefensa = new Punto(900);
+        //Nivel nivel = new Nivel(3);
+        //Monstruo cartaMonstruo = Monstruo new('Huevo Monstruoso', puntosAtaque, puntosDefensa, nivel)
+        //cartaMonstruo.colocarEnPosicionDeAtaque();
+        //Assert.assertEquals(cartaMonstruo.estado() IsInstanceOf posicionDeAtaque);
         
     }
     @Test
-    public void crearCartaMounstruoYColocarlaEnPosicionDeDefensa() {
+    public void crearCartaMonstruoYColocarlaEnPosicionDeDefensa() {
         Monstruo cartaMonstruo = Carta.crearCarta('Huevo Monstruoso');
         cartaMonstruo.colocarEnPosicionDeDefensa();
-        Assert.assertEquals(cartaMounstruo.estado() IsInstanceOf posicionDeDefensa);
+        Assert.assertEquals(cartaMonstruo.estado() IsInstanceOf posicionDeDefensa);
 
     }
     @Test
-    public void crearCartaMounstruoYColocarlaEnPosicionDeDefensa() {
+    public void crearCartaMonstruoYColocarlaEnPosicionDeDefensa() {
         Monstruo cartaMonstruo = Carta.crearCarta('Huevo Monstruoso');
         cartaMonstruo.colocarEnPosicionDeDefensa();
-        Assert.assertEquals(cartaMounstruo.estado() IsInstanceOf posicionDeDefensa);
+        Assert.assertEquals(cartaMonstruo.estado() IsInstanceOf posicionDeDefensa);
 
     }
 
@@ -51,11 +57,11 @@ public class CartaTest {
         cartaMonstruo.enviarAlCementerio();
         Assert.assertEquals(cartaMagica.ubicacion() IsInstanceOf Cementerio);
         Assert.assertEquals(cartaTrampa.ubicacion() IsInstanceOf Cementerio);
-        Assert.assertEquals(cartaMounstruo.ubicacion() IsInstanceOf Cementerio);
+        Assert.assertEquals(cartaMonstruo.ubicacion() IsInstanceOf Cementerio);
 
     }
     @Test
-    public void crear2CartasMounstruoYColocarlaEnPosicionDeAtaqueYseAtaquenElEnemigoSiendoDestruido() {
+    public void crear2CartasMonstruoYColocarlaEnPosicionDeAtaqueYseAtaquenElEnemigoSiendoDestruido() {
         Monstruo cartaMonstruo = Carta.crearCarta('Aguja Asesina');
         cartaMonstruo.colocarEnPosicionDeAtaque();
         Monstruo cartaMonstruoEnemiga = Carta.crearCarta('Huevo Monstruoso');
@@ -66,7 +72,7 @@ public class CartaTest {
     }
 
     @Test
-    public void crear2CartasMounstruoYColocarlaEnPosicionDeAtaqueYseAtaquenElAtacanteSiendoDestruido() {
+    public void crear2CartasMonstruoYColocarlaEnPosicionDeAtaqueYseAtaquenElAtacanteSiendoDestruido() {
         Monstruo cartaMonstruo = Carta.crearCarta('Huevo Monstruoso');
         cartaMonstruo.colocarEnPosicionDeAtaque();
         Monstruo cartaMonstruoEnemiga = Carta.crearCarta('Aguja Asesina');
@@ -76,7 +82,7 @@ public class CartaTest {
     }
 
     @Test
-    public void crear2CartasMounstruoYColocarlaEnPosicionDeAtaqueYseAtaquenAmbosSiendoDestruidos() {
+    public void crear2CartasMonstruoYColocarlaEnPosicionDeAtaqueYseAtaquenAmbosSiendoDestruidos() {
         Monstruo cartaMonstruo = Carta.crearCarta('Huevo Monstruoso');
         cartaMonstruo.colocarEnPosicionDeAtaque();
         Monstruo cartaMonstruoEnemiga = Carta.crearCarta('Huevo Monstruoso');
@@ -86,7 +92,7 @@ public class CartaTest {
     }
 
     @Test
-    public void crear2CartasMounstruoYColocarUnaEnPosicionDeAtaqueYOtraEnPosicionDeDefensaYseAtaquenDestruyendoAlMounstruoAtacado() {
+    public void crear2CartasMonstruoYColocarUnaEnPosicionDeAtaqueYOtraEnPosicionDeDefensaYseAtaquenDestruyendoAlMonstruoAtacado() {
         //inicializar vida del jugador
         Monstruo cartaMounstruo = Carta.crearCarta('Huevo Monstruoso');
         cartaMounstruo.colocarEnPosicionDeAtaque();
@@ -99,11 +105,11 @@ public class CartaTest {
     }
 
     @Test
-    public void crear2CartasMounstruoYColocarUnaEnPosicionDeAtaqueYOtraEnPosicionDeDefensaYseAtaquenNoDestruyendoseNingunoYReduciendoLaVidaDelAtacante() {
+    public void crear2CartasMonstruoYColocarUnaEnPosicionDeAtaqueYOtraEnPosicionDeDefensaYseAtaquenNoDestruyendoseNingunoYReduciendoLaVidaDelAtacante() {
         //inicializar vida del jugador
         Monstruo cartaMonstruo = Carta.crearCarta('Huevo Monstruoso');
         cartaMonstruo.colocarEnPosicionDeAtaque();
-        Mounstruo cartaMonstruoEnemiga = Carta.crearCarta('Huevo Monstruoso');
+        Monstruo cartaMonstruoEnemiga = Carta.crearCarta('Huevo Monstruoso');
         cartaMonstruoEnemiga.colocarEnPosicionDeDefensa();
         cartaMonstruo.atacar(cartaMonstruoEnemiga);
         Assert.assertEquals(!(cartaMonstruoEnemiga.ubicacion() IsInstanceOf Cementerio));
@@ -112,7 +118,7 @@ public class CartaTest {
     }
 
     @Test
-    public void crear2CartasMounstruoYColocarlaEnAmbosLadosYSiendoDestruidosPorLaCartaMagicaAgujeroNegro() {
+    public void crear2CartasMonstruoYColocarlaEnAmbosLadosYSiendoDestruidosPorLaCartaMagicaAgujeroNegro() {
         Monstruo cartaMonstruo = Carta.crearCarta('Aguja Asesina');
         cartaMonstruo.colocarEnPosicionDeAtaque();
         Monstruo cartaMounstruoEnemiga = Carta.crearCarta('Huevo Monstruoso');
@@ -124,7 +130,7 @@ public class CartaTest {
     }
 
     @Test
-    public void crear2CartasMounstruoUnaNecesitandoSacrificarUnMounstruoParaConvocarseSacrificandoElPrimeroParaEntrarAlCampo() {
+    public void crear2CartasMonstruoUnaNecesitandoSacrificarUnMounstruoParaConvocarseSacrificandoElPrimeroParaEntrarAlCampo() {
         Monstruo cartaMonstruo = Carta.crearCarta('Aguja Asesina');
         cartaMonstruo.colocarEnPosicionDeAtaque();
         Monstruo cartaMonstruoDe5Estrellas = Carta.crearCarta('Aitsu');
@@ -136,9 +142,9 @@ public class CartaTest {
     }
 
     @Test
-    public void crear3CartasMounstruoYColocarlaAmbasYLuegoSacrificarlosParaConvocarUnMounstruoDe7Estrellas() {
+    public void crear3CartasMonstruoYColocarlaAmbasYLuegoSacrificarlosParaConvocarUnMounstruoDe7Estrellas() {
         Monstruo cartaMonstruo = Carta.crearCarta('Aguja Asesina');
-        cartaMoustruo.colocarEnPosicionDeAtaque();
+        cartaMonstruo.colocarEnPosicionDeAtaque();
         Monstruo cartaMounstruoSecundaria = Carta.crearCarta('Aitsu');
         Monstruo cartaMounstruoDe7Estrellas = Carta.crearCarta('Dragon blanco de ojos azules');
         cartaMounstruoDe7Estrellas.convocarse(cartaMonstruo, cartaMounstruoSecundaria);
