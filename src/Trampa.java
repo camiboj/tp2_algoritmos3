@@ -1,5 +1,5 @@
 public class Trampa extends Carta {
-    public Trampa(char unNombre) {
+    public Trampa(String unNombre) {
         super(unNombre);
     }
 }

@@ -1,2 +1,3 @@
-public class Estado {
+public interface Estado {
+    void darVuelta(Carta carta);
 }
