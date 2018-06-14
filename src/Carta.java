@@ -1,12 +1,13 @@
 public abstract class Carta {
-    protected char nombre;
+    protected String nombre;
 
-    public Carta(char unNombre) {
+    public Carta(String unNombre) {
         this.nombre = unNombre;
     }
 
-    public Carta crearCarta(char unNombre) {
+
+    /*public Carta crearCarta(char unNombre) {
         Carta resultado = new Carta(unNombre);
         return resultado;
-    }
+    }*/
 }

@@ -6,6 +6,7 @@ public abstract class Monstruo extends Carta {
     protected String nombre;
 
     public Monstruo(String nombre, Punto puntosAtaque, Punto puntosDefensa, Nivel nivel) {
+        super(nombre);
         this.puntosAtaque = puntosAtaque;
         this.puntosDefensa = puntosDefensa;
         this.nivel = nivel;
