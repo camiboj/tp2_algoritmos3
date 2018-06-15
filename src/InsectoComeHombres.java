@@ -1,4 +1,4 @@
 public class InsectoComeHombres {
-    public static void atacar(AgujeroNegro agujeroNegro) {
+    public void atacar(HuevoMonstruoso agujeroNegro) {
     }
 }

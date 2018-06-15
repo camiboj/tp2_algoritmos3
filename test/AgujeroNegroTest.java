@@ -14,5 +14,14 @@ public class AgujeroNegroTest {
         assertTrue(new Cementerio().equals(huevoMonstruoso.getUbicacion()));
 
     }
+
+    @Test
+    public void AgujeroNegroAtaca() {
+        HuevoMonstruoso huevoMonstruoso = new HuevoMonstruoso();
+        AgujeroNegro agujeroNegro = new AgujeroNegro();
+        agujeroNegro.atacar(huevoMonstruoso);
+
+        assertTrue(new Cementerio().equals(huevoMonstruoso.getUbicacion()));
+    }
 }
 

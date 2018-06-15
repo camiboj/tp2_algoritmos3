@@ -4,7 +4,7 @@ import static junit.framework.TestCase.assertTrue;
 
 public class InsectoComeHombresTest {
         @Test
-        public void InsectoComeHombresAtaca() {
+        public void EfectoInsectoComeHombres() {
             HuevoMonstruoso huevoMonstruoso = new HuevoMonstruoso();
 
             EfectoInsectoComeHombres efectoInsectoComeHombres = new EfectoInsectoComeHombres();
@@ -14,11 +14,19 @@ public class InsectoComeHombresTest {
         }
 
         @Test
-        public void InsectoComeHombresEsAtacado() {
+        public void InsectoComeHombresAtaca() {
             InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
-            AgujeroNegro agujeroNegro = new AgujeroNegro();
-            InsectoComeHombres.atacar(agujeroNegro);
+            HuevoMonstruoso huevoMonstruoso = new HuevoMonstruoso();
+            insectoComeHombres.atacar(huevoMonstruoso);
 
-            assertTrue(new Cementerio().equals(agujeroNegro.getUbicacion()));
+            assertTrue(new Cementerio().equals(huevoMonstruoso.getUbicacion()));
         }
-}
+        @Test
+        public void InsectoComeHombresEsAtacado() {
+            HuevoMonstruoso huevoMonstruoso = new HuevoMonstruoso();
+            AgujeroNegro agujeroNegro = new AgujeroNegro();
+            huevoMonstruoso.atacar(agujeroNegro);
+
+            assertTrue(new Cementerio().equals(huevoMonstruoso.getUbicacion()));
+        }
+    }
