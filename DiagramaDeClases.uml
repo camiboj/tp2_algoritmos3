@@ -11,13 +11,13 @@
     <node x="880.0" y="881.0">Mazo</node>
     <node x="515.5" y="456.0">Estado</node>
     <node x="0.0" y="781.0">ZonaMonstruo</node>
-    <node x="430.0" y="380.0">MonstruoSinEfecto</node>
+    <node x="430.0" y="380.0">MonstruoNivel1</node>
     <node x="367.5" y="154.0">Monstruo</node>
     <node x="190.0" y="1005.0">Efecto</node>
     <node x="406.0" y="781.0">ZonaTrampaMagica</node>
     <node x="29.5" y="214.5">Magica</node>
     <node x="328.0" y="1005.0">Nivel</node>
-    <node x="632.0" y="380.0">MonstruoConEfecto</node>
+    <node x="632.0" y="380.0">MonstruoNivel2</node>
     <node x="264.0" y="700.0">Zona</node>
     <node x="225.0" y="781.0">ZonaCampo</node>
     <node x="397.0" y="561.0">PonerBocaArriba</node>
@@ -32,7 +32,7 @@
   </nodes>
   <notes />
   <edges>
-    <edge source="MonstruoConEfecto" target="Monstruo">
+    <edge source="MonstruoNivel2" target="Monstruo">
       <point x="0.0" y="-15.5" />
       <point x="726.0" y="355.0" />
       <point x="623.3333333333333" y="355.0" />
@@ -84,7 +84,7 @@
       <point x="333.16666666666663" y="756.0" />
       <point x="27.66666666666663" y="15.5" />
     </edge>
-    <edge source="MonstruoSinEfecto" target="Monstruo">
+    <edge source="MonstruoNivel1" target="Monstruo">
       <point x="0.0" y="-15.5" />
       <point x="0.0" y="88.0" />
     </edge>

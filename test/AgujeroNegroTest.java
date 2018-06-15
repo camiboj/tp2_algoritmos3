@@ -22,6 +22,7 @@ public class AgujeroNegroTest {
         agujeroNegro.atacar(huevoMonstruoso);
 
         assertTrue(new Cementerio().equals(huevoMonstruoso.getUbicacion()));
+
     }
 }
 
