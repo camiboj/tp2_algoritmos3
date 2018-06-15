@@ -1,17 +1,18 @@
 package test;
 import org.junit.Assert;
 import org.junit.Test;
-
+/*
 public class CartaTest {
     @Test
     public void tesholaMundoTest(){
         Assert.assertTrue(true);
     }
-}
-/*
+
     @Test
     public void crearCartaMonstruoYColocarlaEnPosicionDeAtaque() {
-        Monstruo cartaMonstruo = Carta.crearCarta('Huevo Monstruoso');
+        Punto puntoAtaque = new Punto(1);
+
+        MonstruoNivel1 cartaMonstruo = new MonstruoNivel1('Huevo Monstruoso');
         //Ceci:
         // para mi acá debería ir:
         //Punto puntosAtaque = new Punto(600);
@@ -22,6 +23,8 @@ public class CartaTest {
         //Assert.assertEquals(cartaMonstruo.estado() IsInstanceOf posicionDeAtaque);
 
     }
+}
+
     @Test
     public void crearCartaMonstruoYColocarlaEnPosicionDeDefensa() {
         Monstruo cartaMonstruo = Carta.crearCarta('Huevo Monstruoso');
