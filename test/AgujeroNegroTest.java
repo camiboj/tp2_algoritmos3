@@ -24,5 +24,22 @@ public class AgujeroNegroTest {
         assertTrue(new Cementerio().equals(huevoMonstruoso.getUbicacion()));
 
     }
+     @Test
+    public void MonstruEnModoDeAtaque() {
+        HuevoMonstruoso huevoMonstruoso = new HuevoMonstruoso();
+        huevoMonstruoso.invocar();
+        huevoMonstruoso.modoDeAtaque();
+        assertTrue(huevoMonstruoso.modo().equals(new ModoDeAtaque()));
+        
+    }
+    @Test
+    public void MonstruEnModoDeDefensa() {
+        HuevoMonstruoso huevoMonstruoso = new HuevoMonstruoso();
+        huevoMonstruoso.invocar();
+        huevoMonstruoso.modoDeDefensa();
+        assertTrue(huevoMonstruoso.modo().equals(new ModoDeDefensa()));
+        
+    }
+    
 }
 
