@@ -1,3 +1,5 @@
-public class Modo {
-    private boolean ataque;
+package estadosDeCartas;
+
+public abstract class Modo {
+
 }
