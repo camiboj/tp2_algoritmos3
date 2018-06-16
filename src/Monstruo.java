@@ -2,7 +2,7 @@ public class Monstruo extends Carta {
     protected Punto puntosAtaque;
     protected Punto puntosDefensa;
     protected Nivel nivel;
-    protected Modo modo;
+    protected estadosDeCartas.Modo modo;
     protected String nombre;
 
     public Monstruo(String nombre, Punto puntosAtaque, Punto puntosDefensa, Nivel nivel) {

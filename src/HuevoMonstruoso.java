@@ -1,10 +1,10 @@
 public class HuevoMonstruoso {
-    private Modo modo;
+    private estadosDeCartas.Modo modo;
 
 	public Object getUbicacion() {
         return new Cementerio();
     }
-	private void cambiarEstado(Modo m) {
+	private void cambiarEstado(estadosDeCartas.Modo m) {
 		this.modo= m;
 	}
     public void atacar(AgujeroNegro agujeroNegro) {

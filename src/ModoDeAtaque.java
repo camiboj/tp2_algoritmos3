@@ -1,6 +1,4 @@
-package estadosDeCartas;
-
-public class ModoDeAtaque extends Modo{
+public class ModoDeAtaque extends estadosDeCartas.Modo {
 
 	
 	@Override
