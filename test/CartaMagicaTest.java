@@ -24,6 +24,6 @@ public class CartaMagicaTest {
         CreadoraDeCartas manager = new CreadoraDeCartas();
         Carta unaCarta = manager.crearCarta("Agujero Negro");
         unaCarta.colocarBocaAbajo();
-        assertTrue(tablero.colocarZonaMagica(unaCarta, jugador1));
+        assertTrue(tablero.colocarZonaTrampaMagica(unaCarta, jugador1));
     }
 }

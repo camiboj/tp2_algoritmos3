@@ -20,8 +20,8 @@ public class Tablero {
 		return divisiones.get(jugador1);
 	}
 
-	public boolean colocarZonaMagica(Carta unaCarta, Jugador jugador) {
+	public boolean colocarZonaTrampaMagica(Carta unaCarta, Jugador jugador) {
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
-		return ladoDelCampo.colocarZonaMagica(unaCarta);
+		return ladoDelCampo.colocarZonaTrampaMagica(unaCarta);
 	}
 }

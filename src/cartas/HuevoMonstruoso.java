@@ -18,17 +18,13 @@ public class HuevoMonstruoso {
     }
 
 	public void invocar() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public void modoDeAtaque() {
-		// TODO Auto-generated method stub
 		 cambiarEstado(new ModoDeAtaque());
 	}
 
 	public Object modo() {
-		// TODO Auto-generated method stub
 		return modo;
 	}
 

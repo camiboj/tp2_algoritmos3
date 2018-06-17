@@ -6,7 +6,6 @@ import tablero.Cementerio;
 public class AgujeroNegro extends Carta{
     public AgujeroNegro() {
 		super("Agujero Negro");
-		// TODO Auto-generated constructor stub
 	}
 
 	public Cementerio getUbicacion() {

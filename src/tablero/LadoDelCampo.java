@@ -20,7 +20,7 @@ public class LadoDelCampo {
 		miZonaMonstruo = new ZonaMonstruo();
 	}
 
-	public boolean colocarZonaMagica (Carta unaCarta) {
+	public boolean colocarZonaTrampaMagica (Carta unaCarta) {
 		return miZonaDeTrampasYMagia.colocarCarta(unaCarta);
 	}
 }
