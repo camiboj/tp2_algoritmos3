@@ -13,14 +13,10 @@ public class Tablero {
 		divisiones = new HashMap<Jugador, LadoDelCampo>();
 		divisiones.put(jugador1, new LadoDelCampo());
 		divisiones.put(jugador2, new LadoDelCampo());
-		
 	}
 
 	public LadoDelCampo get(Jugador jugador1) {
-		// TODO Auto-generated method stub
 		return divisiones.get(jugador1);
 	}
-    
-    
-    
+	
 }

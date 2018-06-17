@@ -10,5 +10,13 @@ public class LadoDelCampo {
 	
 	@Override
 	public boolean equals(Object object){return this.getClass().equals(object.getClass());}
-	
+
+	public LadoDelCampo () {
+		miCementerio = new Cementerio();
+		miMazo = new Mazo();
+		miZonaCampo = new ZonaCampo();
+		miZonaDeTrampasYMagia = new ZonaTrampaMagica();
+		miZonaMonstruo = new ZonaMonstruo();
+	}
+
 }

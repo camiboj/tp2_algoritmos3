@@ -2,5 +2,11 @@ package tablero;
 import cartas.Carta;
 
 public class ZonaCampo extends Zona {
-    private Carta[] cartas;
+    private Casillero casillero; //Momentaneo: entiendo que hay una carta en el tablero
+
+    public ZonaCampo() {
+        casillero = new Casillero();
+    }
 }
+
+
