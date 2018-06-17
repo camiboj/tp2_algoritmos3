@@ -1,5 +1,6 @@
 package tablero;
 import jugador.Mazo;
+import cartas.Carta;
 
 public class LadoDelCampo {
 	private Cementerio miCementerio;
@@ -19,4 +20,7 @@ public class LadoDelCampo {
 		miZonaMonstruo = new ZonaMonstruo();
 	}
 
+	public boolean colocarZonaMagica (Carta unaCarta) {
+		return miZonaDeTrampasYMagia.colocarCarta(unaCarta);
+	}
 }

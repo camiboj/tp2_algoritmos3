@@ -1,6 +1,8 @@
 package tablero;
 
-public class ZonaMonstruo extends Zona {
+import cartas.Carta;
+
+public class ZonaMonstruo implements Zona {
     private Casillero[] casilleros;
 
     public ZonaMonstruo () {
@@ -8,5 +10,9 @@ public class ZonaMonstruo extends Zona {
         for (int i = 0; i < 5; i += 1) {
             casilleros[i] = new Casillero();
         }
+    }
+
+    public boolean colocarCarta(Carta carta) {
+        return true;
     }
 }

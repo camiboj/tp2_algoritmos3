@@ -1,3 +1,6 @@
 package tablero;
-public abstract class Zona {
+import cartas.Carta;
+
+public interface Zona {
+    boolean colocarCarta(Carta carta);
 }

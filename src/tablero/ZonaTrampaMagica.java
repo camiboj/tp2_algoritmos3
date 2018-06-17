@@ -1,11 +1,26 @@
 package tablero;
-public class ZonaTrampaMagica extends Zona {
+
+import cartas.Carta;
+
+public class ZonaTrampaMagica implements Zona {
     private Casillero[] casilleros;
+    private boolean estaCompleto;
 
     public ZonaTrampaMagica () {
         casilleros = new Casillero[5];
         for (int i = 0; i < 5; i += 1) {
             casilleros[i] = new Casillero();
         }
+    }
+
+    public boolean colocarCarta(Carta carta) {
+        //Devuelve true si pudo colocarla y false si la zona estaba completa
+        for (int i = 0; i < 5; i += 1) {
+            if (casilleros[i].estaVacio()) {
+                casilleros[i].colocarCarta(carta);
+                return true;
+            }
+        }
+        return false;
     }
 }

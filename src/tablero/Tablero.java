@@ -1,6 +1,7 @@
 package tablero;
 import java.util.HashMap;
 
+import cartas.Carta;
 import jugador.Jugador;
 
 
@@ -18,5 +19,9 @@ public class Tablero {
 	public LadoDelCampo get(Jugador jugador1) {
 		return divisiones.get(jugador1);
 	}
-	
+
+	public boolean colocarZonaMagica(Carta unaCarta, Jugador jugador) {
+		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
+		return ladoDelCampo.colocarZonaMagica(unaCarta);
+	}
 }

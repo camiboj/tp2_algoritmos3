@@ -22,7 +22,6 @@ public abstract class Carta {
 
 
 	public Estado getEstado() {
-		// TODO Auto-generated method stub
 		return estado;
 	}
 
