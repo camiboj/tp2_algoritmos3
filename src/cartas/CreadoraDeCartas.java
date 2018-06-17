@@ -8,6 +8,7 @@ public class CreadoraDeCartas {
 				return new CilindroMagico();
 			case "Agujero Negro":
 				return new AgujeroNegro();
+
 		default:
 			break;
 		}

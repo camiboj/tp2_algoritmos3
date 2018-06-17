@@ -19,4 +19,7 @@ public class Casillero {
     public boolean estaVacio() {
         return estaVacio;
     }
+
+    @Override
+    public boolean equals(Object object){return this.getClass().equals(object.getClass());}
 }
