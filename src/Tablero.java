@@ -4,4 +4,6 @@ public class Tablero {
     private ZonaTrampaMagica sectorTrampaMagica;
     private Mazo mazo1;
     private Mazo mazo2;
+    private Cementerio cementerio1;
+    private Cementerio cementerio2;
 }

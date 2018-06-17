@@ -1,0 +1,16 @@
+language: java
+jdk:
+  - oraclejdk8
+
+install: ant
+script: ant test
+
+notifications:
+ email:
+    recipients:
+      - camiboj@gmail.com
+      - ceci.hortas@gmail.com
+      - maxiyung@gmail.com
+      - german.boso@gmail.com
+    on_failure: always
+    on_success: always

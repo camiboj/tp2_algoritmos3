@@ -1,4 +1,4 @@
 public class Casillero {
     private Estado estado;
-    private Modo modo;
+    private estadosDeCartas.Modo modo;
 }
