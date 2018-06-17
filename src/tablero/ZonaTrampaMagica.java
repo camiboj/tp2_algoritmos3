@@ -4,7 +4,6 @@ import cartas.Carta;
 
 public class ZonaTrampaMagica implements Zona {
     private Casillero[] casilleros;
-    private boolean estaCompleto;
 
     public ZonaTrampaMagica () {
         casilleros = new Casillero[5];

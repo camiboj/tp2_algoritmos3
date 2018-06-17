@@ -13,6 +13,13 @@ public class ZonaMonstruo implements Zona {
     }
 
     public boolean colocarCarta(Carta carta) {
-        return true;
+        //Devuelve true si pudo colocarla y false si la zona estaba completa
+        for (int i = 0; i < 5; i += 1) {
+            if (casilleros[i].estaVacio()) {
+                casilleros[i].colocarCarta(carta);
+                return true;
+            }
+        }
+        return false;
     }
 }
