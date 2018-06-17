@@ -1,4 +1,18 @@
+import cartas.Carta;
+import cartas.CreadoraDeCartas;
+import cartas.HuevoMonstruoso;
+import efectos.AgujeroNegro;
+import efectos.EfectoAgujeroNegro;
+import estadosDeCartas.BocaAbajo;
+import estadosDeCartas.ModoDeAtaque;
+import estadosDeCartas.ModoDeDefensa;
+import jugador.Jugador;
+import org.hamcrest.core.IsInstanceOf;
 import org.junit.Test;
+
+import tablero.Cementerio;
+import tablero.LadoDelCampo;
+import tablero.Tablero;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
@@ -24,8 +38,8 @@ public class AgujeroNegroTest {
         assertTrue(new Cementerio().equals(huevoMonstruoso.getUbicacion()));
 
     }
-     @Test
-    public void MonstruEnModoDeAtaque() {
+    @Test
+    public void MonstruoEnModoDeAtaque() {
         HuevoMonstruoso huevoMonstruoso = new HuevoMonstruoso();
         huevoMonstruoso.invocar();
         huevoMonstruoso.modoDeAtaque();
@@ -33,7 +47,7 @@ public class AgujeroNegroTest {
         
     }
     @Test
-    public void MonstruEnModoDeDefensa() {
+    public void MonstruoEnModoDeDefensa() {
         HuevoMonstruoso huevoMonstruoso = new HuevoMonstruoso();
         huevoMonstruoso.invocar();
         huevoMonstruoso.modoDeDefensa();
@@ -41,5 +55,26 @@ public class AgujeroNegroTest {
         
     }
     
+    @Test
+    public void ColocarCartaMagicaBocaAbajo(){
+    	CreadoraDeCartas manager= new CreadoraDeCartas();
+        Carta cualquierCarta= manager.crearCarta("Agujero Negro");
+        cualquierCarta.colocarBocaAbajo();
+        assertTrue(cualquierCarta.getEstado().equals(new BocaAbajo()) );
+    }
+    
+    @Test
+    public void CrearTablero(){
+        Jugador jugador1 = new Jugador();
+        Jugador jugador2 = new Jugador();
+        Tablero tablero= new Tablero(jugador1, jugador2);
+        assertTrue(tablero.get(jugador1).equals(new LadoDelCampo()) );
+        assertTrue(tablero.get(jugador2).equals(new LadoDelCampo()) );
+    }
+    
+    public void ColocarCasillerosEnTablero() {
+    	
+    		
+    }
 }
 
