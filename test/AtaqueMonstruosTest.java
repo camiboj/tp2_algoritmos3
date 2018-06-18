@@ -31,8 +31,8 @@ public class AtaqueMonstruosTest {
         cartaDefensora.invocar();
         AlasDeLaLlamaPerversa cartaAtacante = new AlasDeLaLlamaPerversa();
         cartaAtacante.invocar();
-        cartaDefensora.modoDeAtaque();
-        cartaAtacante.modoDeAtaque();
+        cartaDefensora.colocarEnModoDeAtaque();
+        cartaAtacante.colocarEnModoDeAtaque();
         tablero.colocarZonaMonstruo(cartaDefensora, jugadorDefensor);
         tablero.colocarZonaMonstruo(cartaAtacante, jugadorAtacante);
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
@@ -52,8 +52,8 @@ public class AtaqueMonstruosTest {
         cartaDefensora.invocar();
         AlasDeLaLlamaPerversa cartaAtacante = new AlasDeLaLlamaPerversa();
         cartaAtacante.invocar();
-        cartaDefensora.modoDeAtaque();
-        cartaAtacante.modoDeAtaque();
+        cartaDefensora.colocarEnModoDeAtaque();
+        cartaAtacante.colocarEnModoDeAtaque();
         tablero.colocarZonaMonstruo(cartaDefensora, jugadorDefensor);
         tablero.colocarZonaMonstruo(cartaAtacante, jugadorAtacante);
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
@@ -70,8 +70,8 @@ public class AtaqueMonstruosTest {
         cartaAtacante.invocar();
         AlasDeLaLlamaPerversa cartaDefensora = new AlasDeLaLlamaPerversa();
         cartaDefensora.invocar();
-        cartaAtacante.modoDeAtaque();
-        cartaDefensora.modoDeAtaque();
+        cartaAtacante.colocarEnModoDeAtaque();
+        cartaDefensora.colocarEnModoDeAtaque();
         tablero.colocarZonaMonstruo(cartaAtacante, jugadorAtacante);
         tablero.colocarZonaMonstruo(cartaDefensora, jugadorDefensor);
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
@@ -90,8 +90,8 @@ public class AtaqueMonstruosTest {
         cartaAtacante.invocar();
         AlasDeLaLlamaPerversa cartaDefensora = new AlasDeLaLlamaPerversa();
         cartaDefensora.invocar();
-        cartaAtacante.modoDeAtaque();
-        cartaDefensora.modoDeAtaque();
+        cartaAtacante.colocarEnModoDeAtaque();
+        cartaDefensora.colocarEnModoDeAtaque();
         tablero.colocarZonaMonstruo(cartaAtacante, jugadorAtacante);
         tablero.colocarZonaMonstruo(cartaDefensora, jugadorDefensor);
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
@@ -108,8 +108,8 @@ public class AtaqueMonstruosTest {
         cartaAtacante.invocar();
         HuevoMonstruoso cartaDefensora = new HuevoMonstruoso();
         cartaDefensora.invocar();
-        cartaAtacante.modoDeAtaque();
-        cartaDefensora.modoDeAtaque();
+        cartaAtacante.colocarEnModoDeAtaque();
+        cartaDefensora.colocarEnModoDeAtaque();
         tablero.colocarZonaMonstruo(cartaAtacante, jugadorAtacante);
         tablero.colocarZonaMonstruo(cartaDefensora, jugadorDefensor);
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
@@ -130,8 +130,8 @@ public class AtaqueMonstruosTest {
         cartaAtacante.invocar();
         HuevoMonstruoso cartaDefensora = new HuevoMonstruoso();
         cartaDefensora.invocar();
-        cartaAtacante.modoDeAtaque();
-        cartaDefensora.modoDeAtaque();
+        cartaAtacante.colocarEnModoDeAtaque();
+        cartaDefensora.colocarEnModoDeAtaque();
         tablero.colocarZonaMonstruo(cartaAtacante, jugadorAtacante);
         tablero.colocarZonaMonstruo(cartaDefensora, jugadorDefensor);
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);

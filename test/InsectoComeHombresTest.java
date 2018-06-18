@@ -24,7 +24,7 @@ public class InsectoComeHombresTest {
         public void InsectoComeHombresAtaca() {
             InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
             HuevoMonstruoso huevoMonstruoso = new HuevoMonstruoso();
-            insectoComeHombres.atacar(huevoMonstruoso);
+            insectoComeHombres.obtenerGanadoraContra(huevoMonstruoso);
 
             assertTrue(new Cementerio().equals(huevoMonstruoso.getUbicacion()));
         }
@@ -32,7 +32,7 @@ public class InsectoComeHombresTest {
         public void InsectoComeHombresEsAtacado() {
             HuevoMonstruoso huevoMonstruoso = new HuevoMonstruoso();
             AgujeroNegro agujeroNegro = new AgujeroNegro();
-            huevoMonstruoso.atacar(agujeroNegro);
+            huevoMonstruoso.obtenerGanadoraContra(agujeroNegro);
 
             assertTrue(new Cementerio().equals(huevoMonstruoso.getUbicacion()));
         }

@@ -22,31 +22,34 @@ public abstract class CartaMonstruo extends Carta {
         this.modo= m;
     }
 
-    public void modoDeAtaque() {
-        cambiarEstado(new ModoDeAtaque());
+    public void colocarEnModoDeAtaque() {
+        cambiarEstado(new ModoDeAtaque(puntosAtaque));
     }
 
-    public void modoDeDefensa() {
-        cambiarEstado(new ModoDeDefensa());
+    public void colocarEnModoDeDefensa() {
+        cambiarEstado(new ModoDeDefensa(puntosDefensa));
     }
 
-    public Punto obtenerPuntosAtaque () {
-        return puntosAtaque;
+    public Punto obtenerPuntos() {
+        return modo.obtenerPuntos();
     }
 
     public void invocar() { }
 
-    public CartaMonstruo atacar(CartaMonstruo unaCartaOponente) { //Devuelve la carta de mayor puntos de ataque
-        Punto puntosAtaqueOponente = unaCartaOponente.obtenerPuntosAtaque();
-        if (puntosAtaqueOponente.esMayor(puntosAtaque)) { return unaCartaOponente; }
-        return this;
-    }
-
     public boolean igualPuntos(CartaMonstruo unaCartaOponente) {
-        return puntosAtaque.obtenerNumero() == (unaCartaOponente.obtenerPuntosAtaque().obtenerNumero());
+        return puntosAtaque.obtenerNumero() == (unaCartaOponente.obtenerPuntos().obtenerNumero());
     }
 
     public Modo obtenerModo() {
         return modo;
     }
+
+    public CartaMonstruo obtenerGanadoraContra(CartaMonstruo cartaMonstruo) { //Devuelve la carta de mayor puntos de ataque
+        Punto puntosAtaqueOponente = obtenerPuntos();
+        if (puntosAtaqueOponente.esMayor(cartaMonstruo.puntosAtaque)) { return this; }
+        return cartaMonstruo;
+    }
+
+    public boolean enModoAtaque() {return modo.enAtaque();}
+    public boolean enModoDefensa() {return modo.enDefensa();}
 }

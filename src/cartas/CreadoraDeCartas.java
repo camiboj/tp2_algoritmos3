@@ -12,6 +12,8 @@ public class CreadoraDeCartas {
 				return new CilindroMagico();
 			case "Agujero Negro":
 				return new AgujeroNegro();
+			case "Alcanzador de Garra":
+				return new AlcanzadorDeGarra();
 
 		default:
 			break;

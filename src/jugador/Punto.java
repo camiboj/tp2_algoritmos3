@@ -3,8 +3,8 @@ package jugador;
 public class Punto {
     private int numero;
 
-    public Punto(int unPunto) {
-        numero = unPunto;
+    public Punto(int unValor) {
+        numero = unValor;
     }
 
     public int obtenerNumero() {

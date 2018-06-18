@@ -17,10 +17,10 @@ public class AlasDeLaLlamaPerversaAtacaAHuevoMonstruosoTest {
         huevoMonstruoso.invocar();
         alasDeLaLlamaPerversa.invocar();
 
-        huevoMonstruoso.modoDeAtaque();
-        alasDeLaLlamaPerversa.modoDeAtaque();
+        huevoMonstruoso.colocarEnModoDeAtaque();
+        alasDeLaLlamaPerversa.colocarEnModoDeAtaque();
 
-        alasDeLaLlamaPerversa.atacar(huevoMonstruoso);
+        alasDeLaLlamaPerversa.obtenerGanadoraContra(huevoMonstruoso);
 
         assertTrue(new Cementerio().equals(huevoMonstruoso.getUbicacion()));
         assertTrue(new Casillero().equals(alasDeLaLlamaPerversa.getUbicacion()));
