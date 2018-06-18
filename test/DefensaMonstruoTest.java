@@ -82,7 +82,4 @@ public class DefensaMonstruoTest {
         assertTrue(jugadorDefensor.obtenerPuntos().equals(new Punto(8000)) &&
                 jugadorAtacante.obtenerPuntos().equals(new Punto(8000)));
     }
-
-
-
 }
