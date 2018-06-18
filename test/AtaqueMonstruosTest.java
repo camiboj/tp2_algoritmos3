@@ -4,6 +4,7 @@ import jugador.Punto;
 import org.junit.Test;
 import tablero.Cementerio;
 import tablero.Tablero;
+import tablero.ZonaMonstruo;
 
 import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.assertFalse;
@@ -37,6 +38,9 @@ public class AtaqueMonstruosTest {
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
         Cementerio cementerio = tablero.mostrarCementerio(jugadorDefensor);
         assertTrue(cementerio.existe(cartaDefensora));
+        ZonaMonstruo zonaMonstruo = tablero.mostrarZonaMonstruo(jugadorDefensor);
+        assertFalse(zonaMonstruo.existe(cartaDefensora));
+
     }
 
     @Test
@@ -73,6 +77,8 @@ public class AtaqueMonstruosTest {
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
         Cementerio cementerio = tablero.mostrarCementerio(jugadorAtacante);
         assertTrue(cementerio.existe(cartaAtacante));
+        ZonaMonstruo zonaMonstruo = tablero.mostrarZonaMonstruo(jugadorAtacante);
+        assertFalse(zonaMonstruo.existe(cartaAtacante));
     }
 
     @Test
@@ -109,7 +115,10 @@ public class AtaqueMonstruosTest {
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
         Cementerio cementerioDefensor = tablero.mostrarCementerio(jugadorDefensor);
         Cementerio cementerioAtacante = tablero.mostrarCementerio(jugadorAtacante);
-        assertTrue(cementerioDefensor.existe(cartaDefensora) && cementerioAtacante.existe(cartaAtacante));
+        assertTrue(cementerioDefensor.existe(cartaDefensora) && cementerioAtacante.existe(cartaAtacante));        ZonaMonstruo zonaMonstruo = tablero.mostrarZonaMonstruo(jugadorAtacante);
+        ZonaMonstruo zonaMonstruoAtacante = tablero.mostrarZonaMonstruo(jugadorAtacante);
+        ZonaMonstruo zonaMonstruoDefensor = tablero.mostrarZonaMonstruo(jugadorDefensor);
+        assertFalse(zonaMonstruoAtacante.existe(cartaAtacante) && zonaMonstruoDefensor.existe(cartaDefensora));
     }
 
     @Test

@@ -16,7 +16,7 @@ public class Casillero {
         carta = unaCarta;
     }
 
-    public void borrarCarta(Carta unaCarta) {
+    public void borrarCarta() {
         estaVacio = true;
     }
 
@@ -26,4 +26,8 @@ public class Casillero {
 
     @Override
     public boolean equals(Object object){return this.getClass().equals(object.getClass());}
+
+    public boolean comparar(Carta unaCarta) {
+        return carta == unaCarta && !estaVacio;
+    }
 }

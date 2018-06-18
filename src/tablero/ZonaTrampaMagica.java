@@ -12,7 +12,7 @@ public class ZonaTrampaMagica implements Zona {
         }
     }
 
-    public void eliminar(Carta carta) {
+    public void eliminarCarta(Carta carta) {
         return;
     }
 

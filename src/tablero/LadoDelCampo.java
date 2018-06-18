@@ -1,4 +1,5 @@
 package tablero;
+import cartas.CartaMonstruo;
 import jugador.Mazo;
 import cartas.Carta;
 
@@ -32,7 +33,16 @@ public class LadoDelCampo {
 		return miZonaMonstruo.colocarCarta(unaCarta);
 	}
 
-	public void colocarCementerio(Carta unaCarta) { //Falta borrar la carta de la zona correspondiente
+	public void colocarCementerio(Carta unaCarta) {
 		miCementerio.colocarCarta(unaCarta);
+
+	}
+
+	public void eliminarDeZonaMonstruo(CartaMonstruo unaCarta) {
+		miZonaMonstruo.eliminarCarta(unaCarta);
+	}
+
+	public ZonaMonstruo mostrarZonaMonstruo() {
+		return miZonaMonstruo;
 	}
 }

@@ -15,7 +15,7 @@ public class Cementerio implements Zona {
         return true;
     }
 
-    public void eliminar(Carta carta) {
+    public void eliminarCarta(Carta carta) {
         cartas.remove(carta);
     }
 

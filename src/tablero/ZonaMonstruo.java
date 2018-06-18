@@ -1,11 +1,13 @@
 package tablero;
 
 import cartas.Carta;
+import cartas.CartaMonstruo;
+import cartas.HuevoMonstruoso;
 
 public class ZonaMonstruo implements Zona {
     private Casillero[] casilleros;
 
-    public ZonaMonstruo () {
+    public ZonaMonstruo() {
         casilleros = new Casillero[5];
         for (int i = 0; i < 5; i += 1) {
             casilleros[i] = new Casillero();
@@ -22,7 +24,21 @@ public class ZonaMonstruo implements Zona {
         }
         return false;
     }
-    public void eliminar(Carta carta) {
-        return;
+
+    public void eliminarCarta(Carta carta) {
+        for (int i = 0; i < 5; i += 1) {
+            if (casilleros[i].comparar(carta)) {
+                casilleros[i].borrarCarta();
+            }
+        }
+    }
+
+    public boolean existe(CartaMonstruo unaCarta) {
+        for (int i = 0; i < 5; i += 1) {
+            if (casilleros[i].comparar(unaCarta)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

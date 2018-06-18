@@ -34,7 +34,7 @@ public class Tablero {
 		return ladoDelCampo.colocarZonaMonstruo(unaCarta);
 	}
 
-	public void colocarCementerio(Carta unaCarta, Jugador jugador) { //zona como lugar del que vienen
+	public void colocarCementerio(Carta unaCarta, Jugador jugador) {
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
 		ladoDelCampo.colocarCementerio(unaCarta);
 	}
@@ -58,6 +58,7 @@ public class Tablero {
 			jugadorGanador = jugadorAtacante;
 		}
 		colocarCementerio(cartaPerdedora, jugadorPerdedor);
+		eliminarDeZonaMonstruo(cartaPerdedora, jugadorPerdedor);
 		Punto puntosGanadores = cartaGanadora.obtenerPuntosAtaque();
 		Punto puntosPerdedores = cartaPerdedora.obtenerPuntosAtaque();
 		Punto diferenciaPuntos = puntosGanadores.restar(puntosPerdedores);
@@ -66,6 +67,17 @@ public class Tablero {
 		//Caso especial de que ambas cartas tengan la misma cantidad de puntos de ataque
 		if (cartaGanadora.igualPuntos(cartaDefensora)) {
 			colocarCementerio(cartaGanadora, jugadorGanador);
+			eliminarDeZonaMonstruo(cartaGanadora, jugadorGanador);
 		}
+	}
+
+	private void eliminarDeZonaMonstruo(CartaMonstruo unaCarta, Jugador unJugador) {
+		LadoDelCampo ladoDelCampo = divisiones.get(unJugador);
+		ladoDelCampo.eliminarDeZonaMonstruo(unaCarta);
+	}
+
+	public ZonaMonstruo mostrarZonaMonstruo(Jugador unJugador) {
+		LadoDelCampo ladoDelCampo = divisiones.get(unJugador);
+		return ladoDelCampo.mostrarZonaMonstruo();
 	}
 }
