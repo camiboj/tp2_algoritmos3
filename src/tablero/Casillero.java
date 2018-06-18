@@ -14,7 +14,7 @@ public class Casillero {
     public void colocarCarta(Carta unaCarta) {
         estaVacio = false;
         carta = unaCarta;
-        carta.colocarBocaAbajo();
+        carta.colocarBocaArriba();
     }
 
     public void borrarCarta() {

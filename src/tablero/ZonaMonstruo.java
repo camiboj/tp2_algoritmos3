@@ -41,4 +41,22 @@ public class ZonaMonstruo implements Zona {
         }
         return false;
     }
+
+    public void efectoAgujeroNegro(){
+        for (int i = 0; i<5; i+=1){
+            if(!casilleros[i].estaVacio()){
+                casilleros[i].borrarCarta();
+            }
+        }
+
+    }
+
+    public boolean estaVacia() {
+        for (int i = 0; i<5; i+=1){
+            if(!casilleros[i].estaVacio()){
+                return false;
+            }
+        }
+        return true;
+    }
 }

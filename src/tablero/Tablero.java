@@ -83,4 +83,19 @@ public class Tablero {
 		LadoDelCampo ladoDelCampo = divisiones.get(unJugador);
 		return ladoDelCampo.mostrarZonaMonstruo();
 	}
+
+	public void accionAgujeroNegro() {
+
+        for (LadoDelCampo l: divisiones.values()) {
+            l.efectoAgujeroNegro();
+
+        }
+	}
+
+    public boolean noTieneCartasMonstruo() {
+        for (LadoDelCampo l: divisiones.values()) {
+            if(!l.zonaMonstruoEstaVacia())return false;
+        }
+        return true;
+    }
 }

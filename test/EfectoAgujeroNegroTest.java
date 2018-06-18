@@ -33,8 +33,13 @@ public class EfectoAgujeroNegroTest {
         tablero.colocarZonaMonstruo(carta3,jugador2);
 
         AgujeroNegro agujeroNegro = new AgujeroNegro();
-        tablero.colocarZonaTrampaMagica(agujeroNegro,jugador2);
-        assertTrue(true);
+        tablero.colocarZonaTrampaMagica(agujeroNegro,jugador2); //Se coloca boca arriba por ahora
+
+        agujeroNegro.activarEfecto(tablero);
+
+        assertTrue(tablero.noTieneCartasMonstruo());
+
+
 
 
     }

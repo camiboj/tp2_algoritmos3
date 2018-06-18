@@ -45,4 +45,12 @@ public class LadoDelCampo {
 	public ZonaMonstruo mostrarZonaMonstruo() {
 		return miZonaMonstruo;
 	}
+
+	public void efectoAgujeroNegro() {
+		miZonaMonstruo.efectoAgujeroNegro();
+		}
+
+	public boolean zonaMonstruoEstaVacia(){
+		return miZonaMonstruo.estaVacia();
+	}
 }
