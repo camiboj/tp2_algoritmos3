@@ -44,10 +44,10 @@ public abstract class CartaMonstruo extends Carta {
         return modo;
     }
 
-    public CartaMonstruo obtenerGanadoraContra(CartaMonstruo cartaMonstruo) { //Devuelve la carta de mayor puntos de ataque
-        Punto puntosAtaqueOponente = obtenerPuntos();
-        if (puntosAtaqueOponente.esMayor(cartaMonstruo.puntosAtaque)) { return this; }
-        return cartaMonstruo;
+    public CartaMonstruo obtenerGanadoraContra(CartaMonstruo cartaOponente) { //Devuelve la carta de mayor puntos de ataque
+        Punto puntosOponente = cartaOponente.obtenerPuntos();
+        if (puntosOponente.esMayor(this.puntosAtaque)) { return cartaOponente; }
+        return this;
     }
 
     public boolean enModoAtaque() {return modo.enAtaque();}

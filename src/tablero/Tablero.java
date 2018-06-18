@@ -44,7 +44,7 @@ public class Tablero {
 								   Jugador jugadorDefensor) {
 
 
-		CartaMonstruo cartaGanadora = cartaDefensora.obtenerGanadoraContra(cartaAtacante);
+		CartaMonstruo cartaGanadora = cartaAtacante.obtenerGanadoraContra(cartaDefensora);
 		Jugador jugadorPerdedor;
 		Jugador jugadorGanador;
 		CartaMonstruo cartaPerdedora;
@@ -61,7 +61,7 @@ public class Tablero {
 		}
 		colocarCementerio(cartaPerdedora, jugadorPerdedor);
 		eliminarDeZonaMonstruo(cartaPerdedora, jugadorPerdedor);
-		if (cartaDefensora.enModoDefensa()){return;}
+		if (cartaDefensora.enModoDefensa()) {return;}
 		Punto puntosGanadores = cartaGanadora.obtenerPuntos();
 		Punto puntosPerdedores = cartaPerdedora.obtenerPuntos();
 		Punto diferenciaPuntos = puntosGanadores.restar(puntosPerdedores);

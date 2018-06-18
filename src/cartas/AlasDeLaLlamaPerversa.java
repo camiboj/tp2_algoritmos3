@@ -12,11 +12,7 @@ public class AlasDeLaLlamaPerversa extends CartaMonstruo {
     //efecto
 
     public AlasDeLaLlamaPerversa() {
-        super("Alas De La Llama Perversa", 700, 900);
+        super("Alas De La Llama Perversa", 700, 600);
         modo = null;
-    }
-
-    public Object getUbicacion() {
-        return new Casillero();
     }
 }
