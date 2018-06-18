@@ -16,6 +16,10 @@ public class Casillero {
         carta = unaCarta;
     }
 
+    public void borrarCarta(Carta unaCarta) {
+        estaVacio = true;
+    }
+
     public boolean estaVacio() {
         return estaVacio;
     }

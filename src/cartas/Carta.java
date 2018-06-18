@@ -19,15 +19,8 @@ public abstract class Carta {
     public void colocarBocaAbajo() {
     	this.estado = new BocaAbajo();
 	}
-
-
 	public Estado getEstado() {
 		return estado;
 	}
-
-
-    /*public Carta crearCarta(char unNombre) {
-        Carta resultado = new Carta(unNombre);
-        return resultado;
-    }*/
+    public boolean equals(Object object){return this.getClass().equals(object.getClass());}
 }

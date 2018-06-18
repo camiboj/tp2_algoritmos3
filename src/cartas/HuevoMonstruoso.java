@@ -1,34 +1,23 @@
-package cartas;
-import efectos.AgujeroNegro;
+package cartas;;
 import estadosDeCartas.Modo;
-import estadosDeCartas.ModoDeAtaque;
-import estadosDeCartas.ModoDeDefensa;
+import jugador.Punto;
 import tablero.Cementerio;
+import cartas.CartaMonstruo;
 
-public class HuevoMonstruoso {
+public class HuevoMonstruoso extends CartaMonstruo {
     private Modo modo;
+    private Punto puntosAtaque;
+    private Punto puntosDefensa;
+    //nivel
+	//efecto
+
+	public HuevoMonstruoso() {
+		super("Huevo Monstruoso", 600, 900);
+		modo = null;
+	}
 
 	public Object getUbicacion() {
         return new Cementerio();
     }
-	private void cambiarEstado(Modo m) {
-		this.modo= m;
-	}
-    public void atacar(AgujeroNegro agujeroNegro) {
-    }
-
-	public void invocar() {
-	}
-
-	public void modoDeAtaque() {
-		 cambiarEstado(new ModoDeAtaque());
-	}
-
-	public Object modo() {
-		return modo;
-	}
-
-	public void modoDeDefensa() {
-		cambiarEstado(new ModoDeDefensa());
-	}
+	public boolean equals(Object object){return this.getClass().equals(object.getClass());}
 }

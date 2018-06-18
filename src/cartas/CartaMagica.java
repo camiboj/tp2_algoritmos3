@@ -1,10 +1,10 @@
 package cartas;
 import efectos.Efecto;
 
-public abstract class Magica extends Carta {
+public abstract class CartaMagica extends Carta {
     protected Efecto efecto;
 
-    public Magica(String unNombre) {
+    public CartaMagica(String unNombre) {
         super(unNombre);
     }
 }

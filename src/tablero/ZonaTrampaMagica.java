@@ -12,6 +12,10 @@ public class ZonaTrampaMagica implements Zona {
         }
     }
 
+    public void eliminar(Carta carta) {
+        return;
+    }
+
     public boolean colocarCarta(Carta carta) {
         //Devuelve true si pudo colocarla y false si la zona estaba completa
         for (int i = 0; i < 5; i += 1) {

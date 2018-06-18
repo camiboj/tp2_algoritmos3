@@ -1,36 +1,22 @@
 package cartas;
-
-import efectos.AgujeroNegro;
 import estadosDeCartas.Modo;
-import estadosDeCartas.ModoDeAtaque;
 import estadosDeCartas.ModoDeDefensa;
+import jugador.Punto;
 import tablero.Casillero;
-import tablero.Cementerio;
 
-public class AlasDeLaLlamaPerversa {
+public class AlasDeLaLlamaPerversa extends CartaMonstruo {
     private Modo modo;
+    private Punto puntosAtaque;
+    private Punto puntosDefensa;
+    //nivel
+    //efecto
+
+    public AlasDeLaLlamaPerversa() {
+        super("Alas De La Llama Perversa", 700, 900);
+        modo = null;
+    }
 
     public Object getUbicacion() {
         return new Casillero();
-    }
-    private void cambiarEstado(Modo m) {
-        this.modo= m;
-    }
-    public void atacar(HuevoMonstruoso huevoMonstruoso) {
-    }
-
-    public void invocar() {
-    }
-
-    public void modoDeAtaque() {
-        cambiarEstado(new ModoDeAtaque());
-    }
-
-    public Object modo() {
-        return modo;
-    }
-
-    public void modoDeDefensa() {
-        cambiarEstado(new ModoDeDefensa());
     }
 }

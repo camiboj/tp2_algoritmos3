@@ -9,7 +9,8 @@ import tablero.Cementerio;
 import static junit.framework.TestCase.assertTrue;
 
 public class InsectoComeHombresTest {
-        @Test
+    /*
+    @Test
         public void EfectoInsectoComeHombres() {
             HuevoMonstruoso huevoMonstruoso = new HuevoMonstruoso();
 
@@ -35,4 +36,6 @@ public class InsectoComeHombresTest {
 
             assertTrue(new Cementerio().equals(huevoMonstruoso.getUbicacion()));
         }
+        */
     }
+

@@ -16,6 +16,10 @@ public class ZonaCampo implements Zona {
         }
         return false;
     }
+
+    public void eliminar(Carta carta) {
+        return;
+    }
 }
 
 

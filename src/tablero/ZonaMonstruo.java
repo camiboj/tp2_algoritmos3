@@ -22,4 +22,7 @@ public class ZonaMonstruo implements Zona {
         }
         return false;
     }
+    public void eliminar(Carta carta) {
+        return;
+    }
 }

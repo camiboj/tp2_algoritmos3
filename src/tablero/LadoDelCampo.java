@@ -20,7 +20,19 @@ public class LadoDelCampo {
 		miZonaMonstruo = new ZonaMonstruo();
 	}
 
+	public Cementerio mostrarCementerio() {
+		return miCementerio;
+	}
+
 	public boolean colocarZonaTrampaMagica (Carta unaCarta) {
 		return miZonaDeTrampasYMagia.colocarCarta(unaCarta);
+	}
+
+	public boolean colocarZonaMonstruo (Carta unaCarta) {
+		return miZonaMonstruo.colocarCarta(unaCarta);
+	}
+
+	public void colocarCementerio(Carta unaCarta) { //Falta borrar la carta de la zona correspondiente
+		miCementerio.colocarCarta(unaCarta);
 	}
 }
