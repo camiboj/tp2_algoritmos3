@@ -45,19 +45,27 @@ public class Tablero {
 
 	    CartaMonstruo cartaGanadora = cartaAtacante.atacar(cartaDefensora);
 		Jugador jugadorPerdedor;
+		Jugador jugadorGanador;
 		CartaMonstruo cartaPerdedora;
 		if (cartaGanadora == cartaDefensora) {
 			jugadorPerdedor = jugadorAtacante;
 			cartaPerdedora = cartaAtacante;
+			jugadorGanador = jugadorDefensor;
 		}
 		else {
 			jugadorPerdedor = jugadorDefensor;
 			cartaPerdedora = cartaDefensora;
+			jugadorGanador = jugadorAtacante;
 		}
 		colocarCementerio(cartaPerdedora, jugadorPerdedor);
 		Punto puntosGanadores = cartaGanadora.obtenerPuntosAtaque();
 		Punto puntosPerdedores = cartaPerdedora.obtenerPuntosAtaque();
 		Punto diferenciaPuntos = puntosGanadores.restar(puntosPerdedores);
 		jugadorPerdedor.restarPuntos(diferenciaPuntos);
+
+		//Caso especial de que ambas cartas tengan la misma cantidad de puntos de ataque
+		if (cartaGanadora.igualPuntos(cartaDefensora)) {
+			colocarCementerio(cartaGanadora, jugadorGanador);
+		}
 	}
 }

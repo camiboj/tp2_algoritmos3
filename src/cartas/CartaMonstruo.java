@@ -40,7 +40,10 @@ public abstract class CartaMonstruo extends Carta {
         Punto puntosAtaqueOponente = unaCartaOponente.obtenerPuntosAtaque();
         if (puntosAtaqueOponente.esMayor(puntosAtaque)) { return unaCartaOponente; }
         return this;
+    }
 
+    public boolean igualPuntos(CartaMonstruo unaCartaOponente) {
+        return puntosAtaque.obtenerNumero() == (unaCartaOponente.obtenerPuntosAtaque().obtenerNumero());
     }
 
     public Modo obtenerModo() {

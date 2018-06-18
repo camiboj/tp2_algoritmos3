@@ -7,16 +7,16 @@ public class Punto {
         numero = unPunto;
     }
 
-    public int obtenerPunto() {
+    public int obtenerNumero() {
         return numero;
     }
 
     public boolean esMayor(Punto unPunto) {
-        return numero > unPunto.obtenerPunto();
+        return numero > unPunto.obtenerNumero();
     }
 
     public Punto restar(Punto unPunto) {
-        Punto resultado = new Punto(numero - (unPunto.obtenerPunto()));
+        Punto resultado = new Punto(numero - (unPunto.obtenerNumero()));
         return resultado;
     }
 
