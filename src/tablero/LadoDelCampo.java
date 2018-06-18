@@ -47,7 +47,7 @@ public class LadoDelCampo {
 	}
 
 	public void efectoAgujeroNegro() {
-		miZonaMonstruo.efectoAgujeroNegro();
+		miZonaMonstruo.efectoAgujeroNegro(miCementerio);
 		}
 
 	public boolean zonaMonstruoEstaVacia(){

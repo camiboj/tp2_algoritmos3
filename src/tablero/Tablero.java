@@ -86,9 +86,8 @@ public class Tablero {
 
 	public void accionAgujeroNegro() {
 
-        for (LadoDelCampo l: divisiones.values()) {
-            l.efectoAgujeroNegro();
-
+        for (LadoDelCampo unLadoDelCampo: divisiones.values()) {
+            unLadoDelCampo.efectoAgujeroNegro();
         }
 	}
 

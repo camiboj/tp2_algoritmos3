@@ -42,9 +42,11 @@ public class ZonaMonstruo implements Zona {
         return false;
     }
 
-    public void efectoAgujeroNegro(){
-        for (int i = 0; i<5; i+=1){
+    public void efectoAgujeroNegro(Cementerio unCementerio){
+        for (int i = 0; i<5; i+=1) {
             if(!casilleros[i].estaVacio()){
+                Carta unaCarta = casilleros[i].mostrarCarta();
+                unCementerio.colocarCarta(unaCarta);
                 casilleros[i].borrarCarta();
             }
         }
@@ -58,5 +60,9 @@ public class ZonaMonstruo implements Zona {
             }
         }
         return true;
+    }
+
+    public Casillero[] getCasilleros(){
+        return this.casilleros;
     }
 }

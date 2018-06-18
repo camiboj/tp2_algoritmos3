@@ -11,6 +11,10 @@ public class Casillero {
         estaVacio = true;
     }
 
+    public Carta mostrarCarta() {
+        return carta;
+    }
+
     public void colocarCarta(Carta unaCarta) {
         estaVacio = false;
         carta = unaCarta;
