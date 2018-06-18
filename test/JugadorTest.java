@@ -22,39 +22,75 @@ public class JugadorTest {
     }
 
     @Test
-    public void DosJugadoresPonenSusMonstruosEnPosiciondeAtaqueyElPerdedorVaAlCementerio () {
-        Jugador jugadorPerdedor = new Jugador();
-        Jugador jugadorGanador = new Jugador();
-        Tablero tablero = new Tablero(jugadorPerdedor, jugadorGanador);
-        HuevoMonstruoso cartaPerdedora = new HuevoMonstruoso();
-        cartaPerdedora.invocar();
-        AlasDeLaLlamaPerversa cartaGanadora = new AlasDeLaLlamaPerversa();
-        cartaGanadora.invocar();
-        cartaPerdedora.modoDeAtaque();
-        cartaGanadora.modoDeAtaque();
-        tablero.colocarZonaMonstruo(cartaPerdedora, jugadorPerdedor);
-        tablero.colocarZonaMonstruo(cartaGanadora, jugadorGanador);
-        tablero.atacarDosMonstruos(cartaGanadora, jugadorGanador, cartaPerdedora, jugadorPerdedor);
-        Cementerio cementerio = tablero.mostrarCementerio(jugadorPerdedor);
-        assertTrue(cementerio.existe(cartaPerdedora));
+    public void DosJugadoresPonenSusMonstruosEnPosiciondeAtaqueyElDefensorVaAlCementerio () {
+        Jugador jugadorDefensor = new Jugador();
+        Jugador jugadorAtacante = new Jugador();
+        Tablero tablero = new Tablero(jugadorDefensor, jugadorAtacante);
+        HuevoMonstruoso cartaDefensora = new HuevoMonstruoso();
+        cartaDefensora.invocar();
+        AlasDeLaLlamaPerversa cartaAtacante = new AlasDeLaLlamaPerversa();
+        cartaAtacante.invocar();
+        cartaDefensora.modoDeAtaque();
+        cartaAtacante.modoDeAtaque();
+        tablero.colocarZonaMonstruo(cartaDefensora, jugadorDefensor);
+        tablero.colocarZonaMonstruo(cartaAtacante, jugadorAtacante);
+        tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+        Cementerio cementerio = tablero.mostrarCementerio(jugadorDefensor);
+        assertTrue(cementerio.existe(cartaDefensora));
     }
 
     @Test
-    public void DosJugadoresPonenSusMonstruosEnPosiciondeAtaqueyElPerdedorPierdePuntos () {
-        Jugador jugador1 = new Jugador();
-        Jugador jugador2 = new Jugador();
-        Tablero tablero = new Tablero(jugador1, jugador2);
-        HuevoMonstruoso carta1 = new HuevoMonstruoso();
-        carta1.invocar();
-        AlasDeLaLlamaPerversa carta2 = new AlasDeLaLlamaPerversa();
-        carta2.invocar();
-        carta1.modoDeAtaque();
-        carta2.modoDeAtaque();
-        tablero.colocarZonaMonstruo(carta1, jugador1);
-        tablero.colocarZonaMonstruo(carta2, jugador2);
-        tablero.atacarDosMonstruos(carta2, jugador2, carta1, jugador1);
-        assertTrue(jugador1.obtenerPuntos().equals(new Punto(8000 - 100)) &&
-                    jugador2.obtenerPuntos().equals(new Punto(8000)));
+    public void DosJugadoresPonenSusMonstruosEnPosiciondeAtaqueyElDefensorPierdePuntos () {
+        Jugador jugadorDefensor = new Jugador();
+        Jugador jugadorAtacante = new Jugador();
+        Tablero tablero = new Tablero(jugadorDefensor, jugadorAtacante);
+        HuevoMonstruoso cartaDefensora = new HuevoMonstruoso();
+        cartaDefensora.invocar();
+        AlasDeLaLlamaPerversa cartaAtacante = new AlasDeLaLlamaPerversa();
+        cartaAtacante.invocar();
+        cartaDefensora.modoDeAtaque();
+        cartaAtacante.modoDeAtaque();
+        tablero.colocarZonaMonstruo(cartaDefensora, jugadorDefensor);
+        tablero.colocarZonaMonstruo(cartaAtacante, jugadorAtacante);
+        tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+        assertTrue(jugadorDefensor.obtenerPuntos().equals(new Punto(8000 - 100)) &&
+                    jugadorAtacante.obtenerPuntos().equals(new Punto(8000)));
     }
 
+
+    @Test
+    public void DosJugadoresPonenSusMonstruosEnPosiciondeAtaqueyElAtacanteVaAlCementerio () {
+        Jugador jugadorAtacante = new Jugador();
+        Jugador jugadorDefensor = new Jugador();
+        Tablero tablero = new Tablero(jugadorAtacante, jugadorDefensor);
+        HuevoMonstruoso cartaAtacante = new HuevoMonstruoso();
+        cartaAtacante.invocar();
+        AlasDeLaLlamaPerversa cartaDefensora = new AlasDeLaLlamaPerversa();
+        cartaDefensora.invocar();
+        cartaAtacante.modoDeAtaque();
+        cartaDefensora.modoDeAtaque();
+        tablero.colocarZonaMonstruo(cartaAtacante, jugadorAtacante);
+        tablero.colocarZonaMonstruo(cartaDefensora, jugadorDefensor);
+        tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+        Cementerio cementerio = tablero.mostrarCementerio(jugadorAtacante);
+        assertTrue(cementerio.existe(cartaAtacante));
+    }
+
+    @Test
+    public void DosJugadoresPonenSusMonstruosEnPosiciondeAtaqueyElAtacantePierdePuntos () {
+        Jugador jugadorAtacante = new Jugador();
+        Jugador jugadorDefensor = new Jugador();
+        Tablero tablero = new Tablero(jugadorAtacante, jugadorDefensor);
+        HuevoMonstruoso cartaAtacante = new HuevoMonstruoso();
+        cartaAtacante.invocar();
+        AlasDeLaLlamaPerversa cartaDefensora = new AlasDeLaLlamaPerversa();
+        cartaDefensora.invocar();
+        cartaAtacante.modoDeAtaque();
+        cartaDefensora.modoDeAtaque();
+        tablero.colocarZonaMonstruo(cartaAtacante, jugadorAtacante);
+        tablero.colocarZonaMonstruo(cartaDefensora, jugadorDefensor);
+        tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+        assertTrue(jugadorAtacante.obtenerPuntos().equals(new Punto(8000 - 100)) &&
+                jugadorDefensor.obtenerPuntos().equals(new Punto(8000)));
+    }
 }
