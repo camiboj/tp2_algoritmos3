@@ -105,5 +105,37 @@ public class MonstruoSacrificioTest {
     }
 
     @Test
-    public void invocarMonstruo7EstrellasRequiere2Sacrificios () {assertTrue(true);}
+    public void invocarMonstruo7EstrellasRequiere2Sacrificios () {
+        ArañaLanzadora cartaCausanteSacrificios = new ArañaLanzadora();
+        HuevoMonstruoso cartaSacrificada1 = new HuevoMonstruoso();
+        AlasDeLaLlamaPerversa cartaSacrificada2 = new AlasDeLaLlamaPerversa();
+        List <CartaMonstruo> cartasASacrificar = new ArrayList <>();
+        cartasASacrificar.add(cartaSacrificada1);
+        cartasASacrificar.add(cartaSacrificada2);
+
+        InvocacionCartaMonstruo invocacionCausanteSacrificios =
+                new InvocacionCartaMonstruo(cartaCausanteSacrificios, cartasASacrificar);
+        InvocacionDefault invocacionHuevoMonstruoso = new InvocacionDefault(cartaSacrificada1);
+        InvocacionDefault invocacionAlasDeLaLlamaPerversa = new InvocacionDefault(cartaSacrificada2);
+
+
+        Jugador jugador1 = new Jugador();
+        Jugador jugador2 = new Jugador();
+        Tablero tablero = new Tablero(jugador1, jugador2);
+        Cementerio cementerio = tablero.mostrarCementerio(jugador1);
+        ZonaMonstruo zonaMonstruo = tablero.mostrarZonaMonstruo(jugador1);
+
+        tablero.colocarZonaMonstruo(invocacionAlasDeLaLlamaPerversa, jugador1);
+        tablero.colocarZonaMonstruo(invocacionHuevoMonstruoso, jugador1);
+        tablero.colocarZonaMonstruo(invocacionCausanteSacrificios, jugador1);
+
+        //Las cartas sacrificadas esta en el cementerio y fueron retiradas del campo
+        assertTrue(cementerio.existe(cartaSacrificada1));
+        assertFalse(zonaMonstruo.existe(cartaSacrificada1));
+        assertTrue(cementerio.existe(cartaSacrificada2));
+        assertFalse(zonaMonstruo.existe(cartaSacrificada2));
+
+        //Se puede colocar la carta en el campo
+        assertTrue(zonaMonstruo.existe(cartaCausanteSacrificios));
+    }
 }
