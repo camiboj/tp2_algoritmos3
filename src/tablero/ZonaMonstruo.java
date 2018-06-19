@@ -23,7 +23,7 @@ public abstract class ZonaMonstruo implements Zona {
         List<CartaMonstruo> resultado = new ArrayList<>();
         for (int i = 0; i < CANT_CASILLEROS; i++) {
             CasilleroMonstruo casillero = casilleros.get(i);
-            if (! casillero.estaVacio()) resultado.add(casillero.mostrarCarta());
+            if (! casillero.estaVacio()) resultado.add((CartaMonstruo) casillero.mostrarCarta());
         }
         return resultado;
     }
