@@ -18,8 +18,10 @@ public class AtaqueMonstruosTest {
         Tablero tablero = new Tablero(jugador1, jugador2);
         CreadoraDeCartas manager = new CreadoraDeCartas();
         Carta carta1 = manager.crearCarta("Agujero Negro");
+        DefaultInvocacion invocacion1 = new DefaultInvocacion(carta1);
         Carta carta2 = manager.crearCarta("Cilindro Magico");
-        assertTrue(tablero.colocarZonaTrampaMagica(carta1, jugador1) && tablero.colocarZonaTrampaMagica(carta2, jugador2));
+        DefaultInvocacion invocacion2 = new DefaultInvocacion(carta2);
+        assertTrue(tablero.colocarZonaTrampaMagica(invocacion1, jugador1) && tablero.colocarZonaTrampaMagica(invocacion2, jugador2));
     }
 
     @Test
@@ -28,13 +30,15 @@ public class AtaqueMonstruosTest {
         Jugador jugadorAtacante = new Jugador();
         Tablero tablero = new Tablero(jugadorDefensor, jugadorAtacante);
         HuevoMonstruoso cartaDefensora = new HuevoMonstruoso();
-        //cartaDefensora.invocar();
+        InvocacionCartaMonstruo cartaInvocadaDefensora = new InvocacionCartaMonstruo(cartaDefensora, null); // No requiere sacrificios
+        cartaInvocadaDefensora.invocar();
         AlasDeLaLlamaPerversa cartaAtacante = new AlasDeLaLlamaPerversa();
-        //cartaAtacante.invocar();
+        InvocacionCartaMonstruo cartaInvocadaAtacante = new InvocacionCartaMonstruo(cartaAtacante, null); // No requiere sacrificios
+        cartaInvocadaAtacante.invocar();
         cartaDefensora.colocarEnModoDeAtaque();
         cartaAtacante.colocarEnModoDeAtaque();
-        tablero.colocarZonaMonstruo(cartaDefensora, jugadorDefensor);
-        tablero.colocarZonaMonstruo(cartaAtacante, jugadorAtacante);
+        tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
+        tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
         Cementerio cementerio = tablero.mostrarCementerio(jugadorDefensor);
         assertTrue(cementerio.existe(cartaDefensora));
@@ -49,13 +53,15 @@ public class AtaqueMonstruosTest {
         Jugador jugadorAtacante = new Jugador();
         Tablero tablero = new Tablero(jugadorDefensor, jugadorAtacante);
         HuevoMonstruoso cartaDefensora = new HuevoMonstruoso();
-        //cartaDefensora.invocar();
+        InvocacionCartaMonstruo cartaInvocadaDefensora = new InvocacionCartaMonstruo(cartaDefensora, null); // No requiere sacrificios
+        cartaInvocadaDefensora.invocar();
         AlasDeLaLlamaPerversa cartaAtacante = new AlasDeLaLlamaPerversa();
-        //cartaAtacante.invocar();
+        InvocacionCartaMonstruo cartaInvocadaAtacante = new InvocacionCartaMonstruo(cartaAtacante, null); // No requiere sacrificios
+        cartaInvocadaAtacante.invocar();
         cartaDefensora.colocarEnModoDeAtaque();
         cartaAtacante.colocarEnModoDeAtaque();
-        tablero.colocarZonaMonstruo(cartaDefensora, jugadorDefensor);
-        tablero.colocarZonaMonstruo(cartaAtacante, jugadorAtacante);
+        tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
+        tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
         assertTrue(jugadorDefensor.obtenerPuntos().equals(new Punto(8000 - 100)) &&
                     jugadorAtacante.obtenerPuntos().equals(new Punto(8000)));
@@ -67,13 +73,15 @@ public class AtaqueMonstruosTest {
         Jugador jugadorDefensor = new Jugador();
         Tablero tablero = new Tablero(jugadorAtacante, jugadorDefensor);
         HuevoMonstruoso cartaAtacante = new HuevoMonstruoso();
-        //cartaAtacante.invocar();
+        InvocacionCartaMonstruo cartaInvocadaAtacante = new InvocacionCartaMonstruo(cartaAtacante, null); // No requiere sacrificios
+        cartaInvocadaAtacante.invocar();
         AlasDeLaLlamaPerversa cartaDefensora = new AlasDeLaLlamaPerversa();
-        //cartaDefensora.invocar();
+        InvocacionCartaMonstruo cartaInvocadaDefensora = new InvocacionCartaMonstruo(cartaDefensora, null); // No requiere sacrificios
+        cartaInvocadaDefensora.invocar();
         cartaAtacante.colocarEnModoDeAtaque();
         cartaDefensora.colocarEnModoDeAtaque();
-        tablero.colocarZonaMonstruo(cartaAtacante, jugadorAtacante);
-        tablero.colocarZonaMonstruo(cartaDefensora, jugadorDefensor);
+        tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
+        tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
         Cementerio cementerio = tablero.mostrarCementerio(jugadorAtacante);
         assertTrue(cementerio.existe(cartaAtacante));
@@ -87,13 +95,15 @@ public class AtaqueMonstruosTest {
         Jugador jugadorDefensor = new Jugador();
         Tablero tablero = new Tablero(jugadorAtacante, jugadorDefensor);
         HuevoMonstruoso cartaAtacante = new HuevoMonstruoso();
-        //cartaAtacante.invocar();
+        InvocacionCartaMonstruo cartaInvocadaAtacante = new InvocacionCartaMonstruo(cartaAtacante, null); // No requiere sacrificios
+        cartaInvocadaAtacante.invocar();
         AlasDeLaLlamaPerversa cartaDefensora = new AlasDeLaLlamaPerversa();
-        //cartaDefensora.invocar();
+        InvocacionCartaMonstruo cartaInvocadaDefensora = new InvocacionCartaMonstruo(cartaDefensora, null); // No requiere sacrificios
+        cartaInvocadaDefensora.invocar();
         cartaAtacante.colocarEnModoDeAtaque();
         cartaDefensora.colocarEnModoDeAtaque();
-        tablero.colocarZonaMonstruo(cartaAtacante, jugadorAtacante);
-        tablero.colocarZonaMonstruo(cartaDefensora, jugadorDefensor);
+        tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
+        tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
         assertTrue(jugadorAtacante.obtenerPuntos().equals(new Punto(8000 - 100)) &&
                 jugadorDefensor.obtenerPuntos().equals(new Punto(8000)));
@@ -105,13 +115,15 @@ public class AtaqueMonstruosTest {
         Jugador jugadorDefensor = new Jugador();
         Tablero tablero = new Tablero(jugadorAtacante, jugadorDefensor);
         HuevoMonstruoso cartaAtacante = new HuevoMonstruoso();
-        //cartaAtacante.invocar();
+        InvocacionCartaMonstruo cartaInvocadaAtacante = new InvocacionCartaMonstruo(cartaAtacante, null); // No requiere sacrificios
+        cartaInvocadaAtacante.invocar();
         HuevoMonstruoso cartaDefensora = new HuevoMonstruoso();
-        //cartaDefensora.invocar();
+        InvocacionCartaMonstruo cartaInvocadaDefensora = new InvocacionCartaMonstruo(cartaDefensora, null); // No requiere sacrificios
+        cartaInvocadaDefensora.invocar();
         cartaAtacante.colocarEnModoDeAtaque();
         cartaDefensora.colocarEnModoDeAtaque();
-        tablero.colocarZonaMonstruo(cartaAtacante, jugadorAtacante);
-        tablero.colocarZonaMonstruo(cartaDefensora, jugadorDefensor);
+        tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
+        tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
         Cementerio cementerioDefensor = tablero.mostrarCementerio(jugadorDefensor);
         Cementerio cementerioAtacante = tablero.mostrarCementerio(jugadorAtacante);
@@ -127,13 +139,15 @@ public class AtaqueMonstruosTest {
         Jugador jugadorDefensor = new Jugador();
         Tablero tablero = new Tablero(jugadorAtacante, jugadorDefensor);
         HuevoMonstruoso cartaAtacante = new HuevoMonstruoso();
-        //cartaAtacante.invocar();
+        InvocacionCartaMonstruo cartaInvocadaAtacante = new InvocacionCartaMonstruo(cartaAtacante, null); // No requiere sacrificios
+        cartaInvocadaAtacante.invocar();
         HuevoMonstruoso cartaDefensora = new HuevoMonstruoso();
-        //cartaDefensora.invocar();
+        InvocacionCartaMonstruo cartaInvocadaDefensora = new InvocacionCartaMonstruo(cartaDefensora, null); // No requiere sacrificios
+        cartaInvocadaDefensora.invocar();
         cartaAtacante.colocarEnModoDeAtaque();
         cartaDefensora.colocarEnModoDeAtaque();
-        tablero.colocarZonaMonstruo(cartaAtacante, jugadorAtacante);
-        tablero.colocarZonaMonstruo(cartaDefensora, jugadorDefensor);
+        tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
+        tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
         assertTrue(jugadorAtacante.obtenerPuntos().equals(new Punto(8000)) &&
                 jugadorDefensor.obtenerPuntos().equals(new Punto(8000)));

@@ -1,7 +1,4 @@
-import cartas.AlasDeLaLlamaPerversa;
-import cartas.AlcanzadorDeGarra;
-import cartas.HuevoMonstruoso;
-import cartas.AgujeroNegro;
+import cartas.*;
 import efectos.EfectoAgujeroNegro;
 import jugador.Jugador;
 import jugador.Punto;
@@ -19,30 +16,33 @@ public class EfectoAgujeroNegroTest {
         Jugador jugador2 = new Jugador();
         Tablero tablero = new Tablero(jugador1, jugador2);
         HuevoMonstruoso carta1 = new HuevoMonstruoso();
-        //carta1.invocar();
+        InvocacionCartaMonstruo cartaInvocada1 = new InvocacionCartaMonstruo(carta1, null); // No requiere sacrificios
+        cartaInvocada1.invocar();
         carta1.colocarEnModoDeAtaque();
-        tablero.colocarZonaMonstruo(carta1,jugador1);
-
+        tablero.colocarZonaMonstruo(cartaInvocada1,jugador1);
         AlasDeLaLlamaPerversa carta2 = new AlasDeLaLlamaPerversa();
-        //carta2.invocar();
+        InvocacionCartaMonstruo cartaInvocada2 = new InvocacionCartaMonstruo(carta2, null); // No requiere sacrificios
+        cartaInvocada2.invocar();
         carta2.colocarEnModoDeAtaque();
-        tablero.colocarZonaMonstruo(carta2,jugador1);
+        tablero.colocarZonaMonstruo(cartaInvocada2,jugador1);
 
         AlcanzadorDeGarra carta3 = new AlcanzadorDeGarra();
-        //carta3.invocar();
+        InvocacionCartaMonstruo cartaInvocada3 = new InvocacionCartaMonstruo(carta3, null); // No requiere sacrificios
+        cartaInvocada3.invocar();
         carta3.colocarEnModoDeDefensa();
-        tablero.colocarZonaMonstruo(carta3,jugador2);
+        tablero.colocarZonaMonstruo(cartaInvocada3,jugador2);
         AgujeroNegro agujeroNegro = new AgujeroNegro();
-        tablero.colocarZonaTrampaMagica(agujeroNegro,jugador2); //Se coloca boca arriba por Test11
+        DefaultInvocacion invocacionAgujeroNegro = new DefaultInvocacion(agujeroNegro);
+        tablero.colocarZonaTrampaMagica(invocacionAgujeroNegro,jugador2); //Se coloca boca arriba por Test11
         agujeroNegro.activarEfecto(tablero);
         assertTrue(tablero.noTieneCartasMonstruo());
         Cementerio cementerio1 = tablero.mostrarCementerio(jugador1);
         Cementerio cementerio2 = tablero.mostrarCementerio(jugador2);
         assertTrue(true);
-        //assertTrue(cementerio1.existe(carta1) && cementerio1.existe(carta2));
-        //assertTrue(cementerio2.existe(carta3));
-        //assertTrue(jugador1.obtenerPuntos().equals(new Punto(8000)) &&
-        //        jugador2.obtenerPuntos().equals(new Punto(8000)));
+        assertTrue(cementerio1.existe(carta1) && cementerio1.existe(carta2));
+        assertTrue(cementerio2.existe(carta3));
+        assertTrue(jugador1.obtenerPuntos().equals(new Punto(8000)) &&
+                jugador2.obtenerPuntos().equals(new Punto(8000)));
     }
 
     @Test

@@ -19,7 +19,6 @@ public abstract class Carta {
     }
 
     public void activarEfecto() {
-
     }
 
     public void colocarBocaAbajo() {
@@ -28,5 +27,6 @@ public abstract class Carta {
 	public Estado getEstado() {
 		return estado;
 	}
+
     public boolean equals(Object object){return this.getClass().equals(object.getClass());}
 }

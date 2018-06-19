@@ -2,6 +2,8 @@ package tablero;
 import java.util.HashMap;
 import cartas.Carta;
 import cartas.CartaMonstruo;
+import cartas.Invocacion;
+import cartas.InvocacionCartaMonstruo;
 import jugador.Jugador;
 import jugador.Punto;
 
@@ -24,14 +26,14 @@ public class Tablero {
 		LadoDelCampo ladoDelCampo = divisiones.get(unJugador);
 		return ladoDelCampo.mostrarCementerio();
 	}
-	public boolean colocarZonaTrampaMagica(Carta unaCarta, Jugador jugador) {
+	public boolean colocarZonaTrampaMagica(Invocacion unaInvocacion, Jugador jugador) {
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
-		return ladoDelCampo.colocarZonaTrampaMagica(unaCarta);
+		return ladoDelCampo.colocarZonaTrampaMagica(unaInvocacion);
 	}
 
-	public boolean colocarZonaMonstruo(Carta unaCarta, Jugador jugador) {
+	public boolean colocarZonaMonstruo(Invocacion unaInvocacion, Jugador jugador) {
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
-		return ladoDelCampo.colocarZonaMonstruo(unaCarta);
+		return ladoDelCampo.colocarZonaMonstruo(unaInvocacion);
 	}
 
 	public void colocarCementerio(Carta unaCarta, Jugador jugador) {

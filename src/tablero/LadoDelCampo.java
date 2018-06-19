@@ -1,5 +1,7 @@
 package tablero;
 import cartas.CartaMonstruo;
+import cartas.Invocacion;
+import cartas.InvocacionCartaMonstruo;
 import jugador.Mazo;
 import cartas.Carta;
 
@@ -19,10 +21,6 @@ public class LadoDelCampo {
 		miZonaCampo = new ZonaCampo();
 		miZonaDeTrampasYMagia = new ZonaTrampaMagica();
 		miZonaMonstruo = new ZonaMonstruo() {
-			@Override
-			public boolean colocarCarta(Carta carta) {
-				return false;
-			}
 		};
 	}
 
@@ -30,12 +28,12 @@ public class LadoDelCampo {
 		return miCementerio;
 	}
 
-	public boolean colocarZonaTrampaMagica (Carta unaCarta) {
-		return miZonaDeTrampasYMagia.colocarCarta(unaCarta);
+	public boolean colocarZonaTrampaMagica (Invocacion unaInvocacion) {
+		return miZonaDeTrampasYMagia.colocarCarta(unaInvocacion);
 	}
 
-	public boolean colocarZonaMonstruo (Carta unaCarta) {
-		return miZonaMonstruo.colocarCarta(unaCarta);
+	public boolean colocarZonaMonstruo (Invocacion unaInvocacion) {
+		return miZonaMonstruo.colocarCarta(unaInvocacion);
 	}
 
 	public void colocarCementerio(Carta unaCarta) {

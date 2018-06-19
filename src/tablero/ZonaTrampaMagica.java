@@ -1,6 +1,7 @@
 package tablero;
 
 import cartas.Carta;
+import cartas.Invocacion;
 
 public class ZonaTrampaMagica implements Zona {
     private Casillero[] casilleros;
@@ -16,7 +17,8 @@ public class ZonaTrampaMagica implements Zona {
         return;
     }
 
-    public boolean colocarCarta(Carta carta) {
+    public boolean colocarCarta(Invocacion invocacion) {
+        Carta carta = invocacion.invocar();
         //Devuelve true si pudo colocarla y false si la zona estaba completa
         for (int i = 0; i < 5; i += 1) {
             if (casilleros[i].estaVacio()) {

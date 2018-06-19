@@ -1,5 +1,6 @@
 import cartas.Carta;
 import cartas.CreadoraDeCartas;
+import cartas.DefaultInvocacion;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Tablero;
@@ -14,8 +15,9 @@ public class CartaTrampaTest {
         Tablero tablero = new Tablero(jugador1, jugador2);
         CreadoraDeCartas manager = new CreadoraDeCartas();
         Carta unaCarta = manager.crearCarta("Cilindro Magico");
+        DefaultInvocacion unaInvocacion = new DefaultInvocacion(unaCarta);
         unaCarta.colocarBocaAbajo();
-        assertTrue(tablero.colocarZonaTrampaMagica(unaCarta, jugador1));
+        assertTrue(tablero.colocarZonaTrampaMagica(unaInvocacion, jugador1));
     }
 
 
