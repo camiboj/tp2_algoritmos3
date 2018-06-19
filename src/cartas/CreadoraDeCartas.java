@@ -13,6 +13,12 @@ public class CreadoraDeCartas {
 				return new AgujeroNegro();
 			case "Alcanzador de Garra":
 				return new AlcanzadorDeGarra();
+			case "Araña Lanzadora":
+				return new ArañaLanzadora();
+			case "Bestia De Talwar":
+				return new BestiaDeTalwar();
+			case "Aitsu":
+				return new Aitsu();
 
 		default:
 			break;
