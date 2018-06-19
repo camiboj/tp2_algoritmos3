@@ -8,11 +8,11 @@ public class AlasDeLaLlamaPerversa extends CartaMonstruo {
     private Modo modo;
     private Punto puntosAtaque;
     private Punto puntosDefensa;
-    //nivel
+    private Nivel nivel;
     //efecto
 
     public AlasDeLaLlamaPerversa() {
-        super("Alas De La Llama Perversa", 700, 600);
+        super("Alas De La Llama Perversa", 700, 600, 2);
         modo = null;
     }
 }

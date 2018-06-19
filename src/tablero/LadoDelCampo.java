@@ -18,7 +18,12 @@ public class LadoDelCampo {
 		miMazo = new Mazo();
 		miZonaCampo = new ZonaCampo();
 		miZonaDeTrampasYMagia = new ZonaTrampaMagica();
-		miZonaMonstruo = new ZonaMonstruo();
+		miZonaMonstruo = new ZonaMonstruo() {
+			@Override
+			public boolean colocarCarta(Carta carta) {
+				return false;
+			}
+		};
 	}
 
 	public Cementerio mostrarCementerio() {

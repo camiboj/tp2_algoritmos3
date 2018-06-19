@@ -8,11 +8,11 @@ public class AlcanzadorDeGarra extends CartaMonstruo {
     private Modo modo;
     private Punto puntosAtaque;
     private Punto puntosDefensa;
-    //nivel
+    private Nivel nivel;
     //efecto
 
     public AlcanzadorDeGarra() {
-        super("Alcanzador de Garra", 1000, 800);
+        super("Alcanzador de Garra", 1000, 800, 3);
         modo = null;
     }
 }

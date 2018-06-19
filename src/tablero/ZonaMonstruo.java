@@ -2,40 +2,47 @@ package tablero;
 
 import cartas.Carta;
 import cartas.CartaMonstruo;
-import cartas.HuevoMonstruoso;
+import cartas.Invocacion;
 
-public class ZonaMonstruo implements Zona {
-    private Casillero[] casilleros;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public abstract class ZonaMonstruo implements Zona {
+    private static final int CANT_CASILLEROS = 5;
+
+    private List<Casillero> casilleros;
 
     public ZonaMonstruo() {
-        casilleros = new Casillero[5];
-        for (int i = 0; i < 5; i += 1) {
-            casilleros[i] = new Casillero();
-        }
+        casilleros = new ArrayList<>();
+        for (int i = 0; i < CANT_CASILLEROS; i++) casilleros.add(new Casillero());
     }
 
-    public boolean colocarCarta(Carta carta) {
-        //Devuelve true si pudo colocarla y false si la zona estaba completa
-        for (int i = 0; i < 5; i += 1) {
-            if (casilleros[i].estaVacio()) {
-                casilleros[i].colocarCarta(carta);
-                return true;
-            }
+    public boolean colocarCarta(Invocacion invocacion) {
+        List<Casillero> vacios = casilleros.stream().filter(casillero -> casillero.estaVacio()).collect(Collectors.toList());
+        if (vacios.size() == 0) return false;
+
+        //Devuelve true si pudo colocarla y false si la zona estaba completa}
+        try {
+            Carta carta = invocacion.invocar();
+            vacios.get(0).colocarCarta(carta);
+        } catch (Exception e) {
+            return false;
         }
-        return false;
+        return true;
     }
 
     public void eliminarCarta(Carta carta) {
         for (int i = 0; i < 5; i += 1) {
-            if (casilleros[i].comparar(carta)) {
-                casilleros[i].borrarCarta();
+            if (casilleros.get(i).comparar(carta)) {
+                casilleros.get(i).borrarCarta();
             }
         }
     }
 
     public boolean existe(CartaMonstruo unaCarta) {
         for (int i = 0; i < 5; i += 1) {
-            if (casilleros[i].comparar(unaCarta)) {
+            if (casilleros.get(i).comparar(unaCarta)) {
                 return true;
             }
         }
@@ -44,10 +51,10 @@ public class ZonaMonstruo implements Zona {
 
     public void efectoAgujeroNegro(Cementerio unCementerio){
         for (int i = 0; i<5; i+=1) {
-            if(!casilleros[i].estaVacio()){
-                Carta unaCarta = casilleros[i].mostrarCarta();
+            if(!casilleros.get(i).estaVacio()){
+                Carta unaCarta = casilleros.get(i).mostrarCarta();
                 unCementerio.colocarCarta(unaCarta);
-                casilleros[i].borrarCarta();
+                casilleros.get(i).borrarCarta();
             }
         }
 
@@ -55,14 +62,14 @@ public class ZonaMonstruo implements Zona {
 
     public boolean estaVacia() {
         for (int i = 0; i<5; i+=1){
-            if(!casilleros[i].estaVacio()){
+            if(!casilleros.get(i).estaVacio()){
                 return false;
             }
         }
         return true;
     }
 
-    public Casillero[] getCasilleros(){
+    public List<Casillero> getCasilleros(){
         return this.casilleros;
     }
 }

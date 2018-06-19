@@ -1,5 +1,4 @@
 package cartas;
-import efectos.AgujeroNegro;
 
 public class CreadoraDeCartas {
 	public static final Carta crearCarta(String nombre) {

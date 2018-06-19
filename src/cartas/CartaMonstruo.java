@@ -5,17 +5,20 @@ import estadosDeCartas.ModoDeAtaque;
 import estadosDeCartas.ModoDeDefensa;
 import jugador.Punto;
 
+import java.util.List;
+
 public abstract class CartaMonstruo extends Carta {
     private Modo modo;
     private Punto puntosAtaque;
     private Punto puntosDefensa;
-    //nivel
+    private Nivel nivel;
     //efecto
 
-    public CartaMonstruo(String unNombredeCarta, int unosPuntosAtaque, int unosPuntosDefensa) {
+    public CartaMonstruo(String unNombredeCarta, int unosPuntosAtaque, int unosPuntosDefensa, int cantidadEstrellas) {
         super(unNombredeCarta);
         puntosAtaque = new Punto(unosPuntosAtaque);
         puntosDefensa = new Punto(unosPuntosDefensa);
+        nivel = new Nivel(cantidadEstrellas);
     }
 
     private void cambiarEstado(Modo m) {
@@ -34,7 +37,9 @@ public abstract class CartaMonstruo extends Carta {
         return modo.obtenerPuntos();
     }
 
-    public void invocar() { }
+    public boolean puedeInvocarse(List<CartaMonstruo> cartasASacrificar) {
+        return nivel.validarSacrificios(cartasASacrificar);
+    }
 
     public boolean igualPuntos(CartaMonstruo unaCartaOponente) {
         return puntosAtaque.obtenerNumero() == (unaCartaOponente.obtenerPuntos().obtenerNumero());

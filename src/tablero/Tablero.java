@@ -39,7 +39,6 @@ public class Tablero {
 		ladoDelCampo.colocarCementerio(unaCarta);
 	}
 
-
 	public void atacarDosMonstruos(CartaMonstruo cartaAtacante, Jugador jugadorAtacante, CartaMonstruo cartaDefensora,
 								   Jugador jugadorDefensor) {
 

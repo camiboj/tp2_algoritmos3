@@ -15,7 +15,13 @@ public abstract class Carta {
 
     public void colocarBocaArriba(){
         this.estado = new BocaArriba();
+        this.activarEfecto();
     }
+
+    public void activarEfecto() {
+
+    }
+
     public void colocarBocaAbajo() {
     	this.estado = new BocaAbajo();
 	}

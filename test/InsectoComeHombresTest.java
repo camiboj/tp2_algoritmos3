@@ -1,11 +1,4 @@
-import cartas.HuevoMonstruoso;
-import cartas.InsectoComeHombres;
-import efectos.AgujeroNegro;
-import efectos.EfectoInsectoComeHombres;
-import org.junit.Assert;
 import org.junit.Test;
-
-import tablero.Cementerio;
 
 import static junit.framework.TestCase.assertTrue;
 
