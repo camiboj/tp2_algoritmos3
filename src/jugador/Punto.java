@@ -23,7 +23,7 @@ public class Punto {
     public boolean equals(Object object){return this.getClass().equals(object.getClass());}
 
     public Punto sumar(Punto puntosDefensaAdicionales) {
-        Punto resultado = new Punto(numero - puntosDefensaAdicionales.obtenerNumero());
+        Punto resultado = new Punto(numero + puntosDefensaAdicionales.obtenerNumero());
         return resultado;
     }
 }

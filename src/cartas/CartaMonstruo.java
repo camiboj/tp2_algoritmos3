@@ -63,10 +63,11 @@ public abstract class CartaMonstruo extends Carta {
     public boolean enModoDefensa() {return modo.enDefensa();}
 
     public void aumentarAtaque(Punto puntosAtaqueAdicionales) {
-        puntosAtaque.sumar(puntosAtaqueAdicionales);
+        puntosAtaque = puntosAtaque.sumar(puntosAtaqueAdicionales);
     }
 
     public void aumentarDefensa(Punto puntosDefensaAdicionales) {
-        puntosDefensa.sumar(puntosDefensaAdicionales);
+
+        puntosDefensa = puntosDefensa.sumar(puntosDefensaAdicionales);
     }
 }

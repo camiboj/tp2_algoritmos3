@@ -36,7 +36,10 @@ public class WastelandTest {
         InvocacionCartaCampo invocacionWasteland = new InvocacionCartaCampo(wasteland, monstruosJugador1, monstruosJugador2);
         tablero.colocarZonaCampo(invocacionWasteland, jugador1, jugador2);
 
-        //assertTrue(monstruo1.obtenerPuntosAtaque().obtenerNumero() == 800);
-        //assertTrue(monstruo1.obtenerPuntosDefensa().obtenerNumero() == 900);
+
+        assertTrue(monstruo1.obtenerPuntosAtaque().obtenerNumero() == 800);
+        assertTrue(monstruo1.obtenerPuntosDefensa().obtenerNumero() == 900);
+        assertTrue(monstruo2.obtenerPuntosAtaque().obtenerNumero() == 700);
+        assertTrue(monstruo2.obtenerPuntosDefensa().obtenerNumero() == 900);
     }
 }
