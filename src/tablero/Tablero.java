@@ -22,6 +22,9 @@ public class Tablero {
 	}
 
 	public boolean colocarZonaCampo(InvocacionCartaCampo unaInvocacion, Jugador jugador, Jugador jugadorOponente) {
+		//Si es Wasteland: primero pasar Jugador y después JugadorOponente
+		//Si es Sogen: primero pasar JugadorOponente y después Jugador
+
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
 		LadoDelCampo ladoDelCampoOponente = divisiones.get(jugadorOponente);
 		ZonaMonstruo zonaMonstruoJugador = ladoDelCampo.mostrarZonaMonstruo();
