@@ -16,18 +16,18 @@ public class EfectoAgujeroNegroTest {
         Jugador jugador2 = new Jugador();
         Tablero tablero = new Tablero(jugador1, jugador2);
         HuevoMonstruoso carta1 = new HuevoMonstruoso();
-        InvocacionCartaMonstruo cartaInvocada1 = new InvocacionCartaMonstruo(carta1, null); // No requiere sacrificios
+        DefaultInvocacion cartaInvocada1 = new DefaultInvocacion(carta1); // No requiere sacrificios
         cartaInvocada1.invocar();
         carta1.colocarEnModoDeAtaque();
         tablero.colocarZonaMonstruo(cartaInvocada1,jugador1);
         AlasDeLaLlamaPerversa carta2 = new AlasDeLaLlamaPerversa();
-        InvocacionCartaMonstruo cartaInvocada2 = new InvocacionCartaMonstruo(carta2, null); // No requiere sacrificios
+        DefaultInvocacion cartaInvocada2 = new DefaultInvocacion(carta2); // No requiere sacrificios
         cartaInvocada2.invocar();
         carta2.colocarEnModoDeAtaque();
         tablero.colocarZonaMonstruo(cartaInvocada2,jugador1);
 
         AlcanzadorDeGarra carta3 = new AlcanzadorDeGarra();
-        InvocacionCartaMonstruo cartaInvocada3 = new InvocacionCartaMonstruo(carta3, null); // No requiere sacrificios
+        DefaultInvocacion cartaInvocada3 = new DefaultInvocacion(carta3); // No requiere sacrificios
         cartaInvocada3.invocar();
         carta3.colocarEnModoDeDefensa();
         tablero.colocarZonaMonstruo(cartaInvocada3,jugador2);
