@@ -37,6 +37,10 @@ public abstract class CartaMonstruo extends Carta {
         return modo.obtenerPuntos();
     }
 
+    public Punto obtenerPuntosAtaque() { return puntosAtaque;} //Para test de Wasteland
+
+    public Punto obtenerPuntosDefensa() { return puntosDefensa;} //Para test de Wasteland
+
     public boolean puedeInvocarse(List<CartaMonstruo> cartasASacrificar) {
         return nivel.validarSacrificios(cartasASacrificar);
     }
@@ -57,4 +61,12 @@ public abstract class CartaMonstruo extends Carta {
 
     public boolean enModoAtaque() {return modo.enAtaque();}
     public boolean enModoDefensa() {return modo.enDefensa();}
+
+    public void aumentarAtaque(Punto puntosAtaqueAdicionales) {
+        puntosAtaque.sumar(puntosAtaqueAdicionales);
+    }
+
+    public void aumentarDefensa(Punto puntosDefensaAdicionales) {
+        puntosDefensa.sumar(puntosDefensaAdicionales);
+    }
 }

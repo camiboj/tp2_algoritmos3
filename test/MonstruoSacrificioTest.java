@@ -22,7 +22,7 @@ public class MonstruoSacrificioTest {
 
         InvocacionCartaMonstruo invocacionCausanteSacrificios =
                 new InvocacionCartaMonstruo(cartaCausanteSacrificios, cartasASacrificar);
-        InvocacionDefault invocacionHuevoMonstruoso = new InvocacionDefault(cartaSacrificada);
+        InvocacionCartaMonstruo  invocacionHuevoMonstruoso = new InvocacionCartaMonstruo (cartaSacrificada, null);
 
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
@@ -51,8 +51,8 @@ public class MonstruoSacrificioTest {
 
         InvocacionCartaMonstruo invocacionCausanteSacrificios =
                 new InvocacionCartaMonstruo(cartaCausanteSacrificios, cartasASacrificar);
-        InvocacionDefault invocacionHuevoMonstruoso = new InvocacionDefault(cartaSacrificada);
-        InvocacionDefault invocacionAlasDeLaLLamaPerversa = new InvocacionDefault(cartaNoSacrificada);
+        InvocacionCartaMonstruo invocacionHuevoMonstruoso = new InvocacionCartaMonstruo (cartaSacrificada, null);
+        InvocacionCartaMonstruo  invocacionAlasDeLaLLamaPerversa = new InvocacionCartaMonstruo (cartaNoSacrificada, null);
 
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
@@ -85,7 +85,7 @@ public class MonstruoSacrificioTest {
 
         InvocacionCartaMonstruo invocacionCausanteSacrificios =
                 new InvocacionCartaMonstruo(cartaCausanteSacrificios, cartasASacrificar);
-        InvocacionDefault invocacionHuevoMonstruoso = new InvocacionDefault(cartaSacrificada);
+        InvocacionCartaMonstruo invocacionHuevoMonstruoso = new InvocacionCartaMonstruo (cartaSacrificada, null);
 
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
@@ -115,8 +115,8 @@ public class MonstruoSacrificioTest {
 
         InvocacionCartaMonstruo invocacionCausanteSacrificios =
                 new InvocacionCartaMonstruo(cartaCausanteSacrificios, cartasASacrificar);
-        InvocacionDefault invocacionHuevoMonstruoso = new InvocacionDefault(cartaSacrificada1);
-        InvocacionDefault invocacionAlasDeLaLlamaPerversa = new InvocacionDefault(cartaSacrificada2);
+        InvocacionCartaMonstruo invocacionHuevoMonstruoso = new InvocacionCartaMonstruo (cartaSacrificada1, null);
+        InvocacionCartaMonstruo invocacionAlasDeLaLlamaPerversa = new InvocacionCartaMonstruo (cartaSacrificada2, null);
 
 
         Jugador jugador1 = new Jugador();

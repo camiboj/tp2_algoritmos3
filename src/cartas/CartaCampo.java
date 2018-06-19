@@ -1,6 +1,25 @@
 package cartas;
-public class CartaCampo extends CartaMagica {
+
+import jugador.Punto;
+
+import java.util.List;
+
+public class CartaCampo extends Carta {
+    Punto puntosAdicionalesAtaque;
+    Punto puntosAdicionalesDefensa;
+
     public CartaCampo(String unNombre) {
         super(unNombre);
+    }
+
+    public void activarEfecto(List<CartaMonstruo> cartasEfectoAtaque, List <CartaMonstruo> cartasEfectoDefensa) {
+        Punto puntosAtaque = new Punto(200);
+        Punto puntosDefensa = new Punto(300);
+        for (CartaMonstruo carta : cartasEfectoAtaque) {
+            carta.aumentarAtaque(puntosAtaque);
+        }
+        for (CartaMonstruo carta : cartasEfectoDefensa) {
+            carta.aumentarDefensa(puntosDefensa);
+        }
     }
 }

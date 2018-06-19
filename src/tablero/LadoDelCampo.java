@@ -1,9 +1,6 @@
 package tablero;
-import cartas.CartaMonstruo;
-import cartas.Invocacion;
-import cartas.InvocacionCartaMonstruo;
+import cartas.*;
 import jugador.Mazo;
-import cartas.Carta;
 
 public class LadoDelCampo {
 	private Cementerio miCementerio;
@@ -32,7 +29,7 @@ public class LadoDelCampo {
 		return miZonaDeTrampasYMagia.colocarCarta(unaInvocacion);
 	}
 
-	public boolean colocarZonaMonstruo (Invocacion unaInvocacion) {
+	public boolean colocarZonaMonstruo (InvocacionCartaMonstruo unaInvocacion) {
 		return miZonaMonstruo.colocarCarta(unaInvocacion);
 	}
 
@@ -56,4 +53,8 @@ public class LadoDelCampo {
 	public boolean zonaMonstruoEstaVacia(){
 		return miZonaMonstruo.estaVacia();
 	}
+
+    public boolean colocarZonaCampo(InvocacionCartaCampo unaInvocacion) {
+		return miZonaCampo.colocarCarta(unaInvocacion);
+    }
 }

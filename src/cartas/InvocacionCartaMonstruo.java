@@ -2,17 +2,17 @@ package cartas;
 
 import java.util.List;
 
-public class InvocacionCartaMonstruo implements Invocacion {
+public class InvocacionCartaMonstruo extends Invocacion {
 
     private CartaMonstruo carta;
     private List<CartaMonstruo> sacrificios;
 
-    public InvocacionCartaMonstruo(CartaMonstruo carta, List<CartaMonstruo> sacrificios) {
-        this.carta = carta;
+    public InvocacionCartaMonstruo(CartaMonstruo unaCarta, List<CartaMonstruo> sacrificios) {
+        super(unaCarta);
+        carta = unaCarta;
         this.sacrificios = sacrificios;
     }
 
-    @Override
     public Carta invocar() {
         if (carta.puedeInvocarse(sacrificios)) {
             return carta;
@@ -26,6 +26,7 @@ public class InvocacionCartaMonstruo implements Invocacion {
     }
 
     public boolean debeSacrificar() {
+        if (sacrificios== null) return false;
         return sacrificios.size()>0;
     }
 }

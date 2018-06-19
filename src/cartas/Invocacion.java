@@ -1,9 +1,11 @@
 package cartas;
 
-import java.util.List;
+public abstract class Invocacion {
+    Carta carta;
 
-public interface Invocacion {
-    Carta invocar();
-    boolean debeSacrificar();
-    List<CartaMonstruo> mostrarCartasASacrificar();
+    public Invocacion(Carta unaCarta) {
+        carta = unaCarta;
+    }
+
+    public Carta invocar () { return carta; }
 }

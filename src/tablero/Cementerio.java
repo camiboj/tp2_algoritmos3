@@ -1,6 +1,5 @@
 package tablero;
 import cartas.Carta;
-import cartas.Invocacion;
 
 import java.util.ArrayList;
 

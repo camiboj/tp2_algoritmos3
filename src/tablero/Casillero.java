@@ -18,7 +18,7 @@ public class Casillero {
     public void colocarCarta(Carta unaCarta) {
         estaVacio = false;
         carta = unaCarta;
-        carta.colocarBocaArriba();
+        carta.colocarBocaArriba(); //Por default la coloca boca arriba. Probablemente a cambiar.
     }
 
     public void borrarCarta() {

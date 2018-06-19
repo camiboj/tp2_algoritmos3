@@ -19,6 +19,8 @@ public class CreadoraDeCartas {
 				return new BestiaDeTalwar();
 			case "Aitsu":
 				return new Aitsu();
+			case "Wasteland":
+				return new Wasteland();
 
 		default:
 			break;

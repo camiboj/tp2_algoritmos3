@@ -1,18 +1,21 @@
 package tablero;
 import cartas.Carta;
+import cartas.CartaCampo;
 import cartas.Invocacion;
+import cartas.InvocacionCartaCampo;
 
-public class ZonaCampo implements Zona {
-    private Casillero casillero; //Momentaneo: entiendo que hay una carta en el tablero
+public class ZonaCampo { //Le saque la interfaz porque no coloca una carta cualquiera, esa carta activa efecto
+    private Casillero casillero; //Ceci: entiendo que hay una carta en el tablero
 
     public ZonaCampo() {
         casillero = new Casillero();
     }
 
-    public boolean colocarCarta(Invocacion invocacion) {
+    public boolean colocarCarta(InvocacionCartaCampo invocacion) {
         //Devuelve true si pudo colocarla y false si la zona estaba completa
         if (casillero.estaVacio()) {
-            Carta carta = invocacion.invocar();
+            CartaCampo carta = invocacion.invocar();
+            carta.activarEfecto();
             casillero.colocarCarta(carta);
             return true;
         }

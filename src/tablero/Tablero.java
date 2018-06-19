@@ -2,10 +2,7 @@ package tablero;
 import java.util.HashMap;
 import java.util.List;
 
-import cartas.Carta;
-import cartas.CartaMonstruo;
-import cartas.Invocacion;
-import cartas.InvocacionCartaMonstruo;
+import cartas.*;
 import jugador.Jugador;
 import jugador.Punto;
 
@@ -24,6 +21,11 @@ public class Tablero {
 		return divisiones.get(jugador1);
 	}
 
+	public boolean colocarZonaCampo(InvocacionCartaCampo unaInvocacion, Jugador jugador) {
+		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
+		return ladoDelCampo.colocarZonaCampo(unaInvocacion);
+	}
+
 	public Cementerio mostrarCementerio(Jugador unJugador) {
 		LadoDelCampo ladoDelCampo = divisiones.get(unJugador);
 		return ladoDelCampo.mostrarCementerio();
@@ -33,7 +35,7 @@ public class Tablero {
 		return ladoDelCampo.colocarZonaTrampaMagica(unaInvocacion);
 	}
 
-	public boolean colocarZonaMonstruo(Invocacion unaInvocacion, Jugador jugador) {
+	public boolean colocarZonaMonstruo(InvocacionCartaMonstruo unaInvocacion, Jugador jugador) {
 		if (unaInvocacion.debeSacrificar()) {
 			List<CartaMonstruo> sacrificios = unaInvocacion.mostrarCartasASacrificar();
 			for (CartaMonstruo carta: sacrificios) {

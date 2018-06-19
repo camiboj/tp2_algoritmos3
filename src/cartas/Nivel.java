@@ -16,6 +16,7 @@ public class Nivel {
     }
 
     public boolean validarSacrificios(List<CartaMonstruo> cartasASacrificar) {
+        if (cartasASacrificar == null && devolverNumeroDeSacrificios() == 0) return true;
         return cartasASacrificar.size() == devolverNumeroDeSacrificios();
     }
 }
