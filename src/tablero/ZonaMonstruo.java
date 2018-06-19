@@ -12,11 +12,20 @@ import java.util.stream.Collectors;
 public abstract class ZonaMonstruo implements Zona {
     private static final int CANT_CASILLEROS = 5;
 
-    private List<Casillero> casilleros;
+    private List<CasilleroMonstruo> casilleros;
 
     public ZonaMonstruo() {
         casilleros = new ArrayList<>();
-        for (int i = 0; i < CANT_CASILLEROS; i++) casilleros.add(new Casillero());
+        for (int i = 0; i < CANT_CASILLEROS; i++) casilleros.add(new CasilleroMonstruo());
+    }
+
+    public List<CartaMonstruo> obtenerMonstruos() {
+        List<CartaMonstruo> resultado = new ArrayList<>();
+        for (int i = 0; i < CANT_CASILLEROS; i++) {
+            CasilleroMonstruo casillero = casilleros.get(i);
+            if (! casillero.estaVacio()) resultado.add(casillero.mostrarCarta());
+        }
+        return resultado;
     }
 
     public boolean estaLleno() {
@@ -77,7 +86,7 @@ public abstract class ZonaMonstruo implements Zona {
         return true;
     }
 
-    public List<Casillero> getCasilleros(){
+    public List<CasilleroMonstruo> getCasilleros(){
         return this.casilleros;
     }
 }

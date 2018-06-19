@@ -21,9 +21,15 @@ public class Tablero {
 		return divisiones.get(jugador1);
 	}
 
-	public boolean colocarZonaCampo(InvocacionCartaCampo unaInvocacion, Jugador jugador) {
+	public boolean colocarZonaCampo(InvocacionCartaCampo unaInvocacion, Jugador jugador, Jugador jugadorOponente) {
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
-		return ladoDelCampo.colocarZonaCampo(unaInvocacion);
+		LadoDelCampo ladoDelCampoOponente = divisiones.get(jugadorOponente);
+		ZonaMonstruo zonaMonstruoJugador = ladoDelCampo.mostrarZonaMonstruo();
+        ZonaMonstruo zonaMonstruoJugadorOponente = ladoDelCampoOponente.mostrarZonaMonstruo()    ;
+		List<CartaMonstruo> monstruosJugador = zonaMonstruoJugador.obtenerMonstruos();
+        List<CartaMonstruo> monstruosJugadorOponente = zonaMonstruoJugadorOponente.obtenerMonstruos();
+
+        return ladoDelCampo.colocarZonaCampo(unaInvocacion, monstruosJugador, monstruosJugadorOponente);
 	}
 
 	public Cementerio mostrarCementerio(Jugador unJugador) {

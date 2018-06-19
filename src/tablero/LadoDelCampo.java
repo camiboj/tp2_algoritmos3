@@ -2,6 +2,8 @@ package tablero;
 import cartas.*;
 import jugador.Mazo;
 
+import java.util.List;
+
 public class LadoDelCampo {
 	private Cementerio miCementerio;
 	private Mazo miMazo;
@@ -54,7 +56,8 @@ public class LadoDelCampo {
 		return miZonaMonstruo.estaVacia();
 	}
 
-    public boolean colocarZonaCampo(InvocacionCartaCampo unaInvocacion) {
-		return miZonaCampo.colocarCarta(unaInvocacion);
+    public boolean colocarZonaCampo(InvocacionCartaCampo unaInvocacion, List<CartaMonstruo> monstruosJugador,
+									List<CartaMonstruo> monstruosJugadorOponente) {
+		return miZonaCampo.colocarCarta(unaInvocacion, monstruosJugador, monstruosJugadorOponente);
     }
 }

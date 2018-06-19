@@ -20,14 +20,4 @@ public class InvocacionCartaCampo extends Invocacion {
         return carta;
     }
 
-    /*
-    public activarEfecto(Punto puntosAtaque, Punto puntosDefensa) {
-        for (CartaMonstruo carta : monstruosAtaque) {
-            carta.aumentarAtaque(puntosAtaque);
-        }
-        for (CartaMonstruo carta : monstruosDefensa) {
-            carta.aumentarDefensa(puntosDefensa);
-        }
-    }
-    */
 }

@@ -16,6 +16,7 @@ public class CartaCampo extends Carta {
         Punto puntosAtaque = new Punto(200);
         Punto puntosDefensa = new Punto(300);
         for (CartaMonstruo carta : cartasEfectoAtaque) {
+            if (carta == null) System.out.println("CACA");
             carta.aumentarAtaque(puntosAtaque);
         }
         for (CartaMonstruo carta : cartasEfectoDefensa) {
