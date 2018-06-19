@@ -41,6 +41,5 @@ public class SogenTest {
         assertTrue(monstruo1.obtenerPuntosDefensa().obtenerNumero() == 1400);
         assertTrue(monstruo2.obtenerPuntosAtaque().obtenerNumero() == 900);
         assertTrue(monstruo2.obtenerPuntosDefensa().obtenerNumero() == 600);
-
     }
 }

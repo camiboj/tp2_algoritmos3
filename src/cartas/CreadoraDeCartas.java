@@ -21,6 +21,8 @@ public class CreadoraDeCartas {
 				return new Aitsu();
 			case "Wasteland":
 				return new Wasteland();
+			case "Olla De La Codicia":
+				return new OllaDeLaCodicia();
 
 		default:
 			break;

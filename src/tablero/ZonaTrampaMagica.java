@@ -1,5 +1,4 @@
 package tablero;
-
 import cartas.Carta;
 import cartas.Invocacion;
 

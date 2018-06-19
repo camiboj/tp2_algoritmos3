@@ -7,4 +7,9 @@ public abstract class CartaMagica extends Carta {
     public CartaMagica(String unNombre) {
         super(unNombre);
     }
+
+    @Override
+    public void activarEfecto() {
+        super.activarEfecto();
+    }
 }
