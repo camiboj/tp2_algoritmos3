@@ -20,4 +20,12 @@ public class InvocacionCartaMonstruo implements Invocacion {
             throw new RuntimeException("Los sacrificios");
         }
     }
+
+    public List<CartaMonstruo> mostrarCartasASacrificar() {
+        return sacrificios;
+    }
+
+    public boolean debeSacrificar() {
+        return sacrificios.size()>0;
+    }
 }

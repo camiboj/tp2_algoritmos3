@@ -10,7 +10,7 @@ public class Aitsu extends CartaMonstruo {
     //efecto
 
     public Aitsu() {
-        super("Aitsu", 100, 100, 4);
+        super("Aitsu", 100, 100, 5);
         modo = null;
     }
 }

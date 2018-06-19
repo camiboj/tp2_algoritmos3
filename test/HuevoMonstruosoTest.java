@@ -1,4 +1,4 @@
-import cartas.DefaultInvocacion;
+import cartas.InvocacionDefault;
 import cartas.HuevoMonstruoso;
 import estadosDeCartas.ModoDeAtaque;
 import estadosDeCartas.ModoDeDefensa;
@@ -11,7 +11,7 @@ public class HuevoMonstruosoTest {
     @Test
     public void MonstruoEnModoDeAtaque() {
         HuevoMonstruoso huevoMonstruoso = new HuevoMonstruoso();
-        DefaultInvocacion cartaInvocada = new DefaultInvocacion(huevoMonstruoso); // No requiere sacrificios
+        InvocacionDefault cartaInvocada = new InvocacionDefault(huevoMonstruoso); // No requiere sacrificios
         cartaInvocada.invocar();
         huevoMonstruoso.colocarEnModoDeAtaque();
         Punto unPunto = new Punto(400);
@@ -21,7 +21,7 @@ public class HuevoMonstruosoTest {
     @Test
     public void MonstruoEnModoDeDefensa() {
         HuevoMonstruoso huevoMonstruoso = new HuevoMonstruoso();
-        DefaultInvocacion cartaInvocada = new DefaultInvocacion(huevoMonstruoso); // No requiere sacrificios
+        InvocacionDefault cartaInvocada = new InvocacionDefault(huevoMonstruoso); // No requiere sacrificios
         cartaInvocada.invocar();
         huevoMonstruoso.colocarEnModoDeDefensa();
         Punto unPunto = new Punto(400);

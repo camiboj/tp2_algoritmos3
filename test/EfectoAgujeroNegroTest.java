@@ -16,23 +16,23 @@ public class EfectoAgujeroNegroTest {
         Jugador jugador2 = new Jugador();
         Tablero tablero = new Tablero(jugador1, jugador2);
         HuevoMonstruoso carta1 = new HuevoMonstruoso();
-        DefaultInvocacion cartaInvocada1 = new DefaultInvocacion(carta1); // No requiere sacrificios
+        InvocacionDefault cartaInvocada1 = new InvocacionDefault(carta1); // No requiere sacrificios
         cartaInvocada1.invocar();
         carta1.colocarEnModoDeAtaque();
         tablero.colocarZonaMonstruo(cartaInvocada1,jugador1);
         AlasDeLaLlamaPerversa carta2 = new AlasDeLaLlamaPerversa();
-        DefaultInvocacion cartaInvocada2 = new DefaultInvocacion(carta2); // No requiere sacrificios
+        InvocacionDefault cartaInvocada2 = new InvocacionDefault(carta2); // No requiere sacrificios
         cartaInvocada2.invocar();
         carta2.colocarEnModoDeAtaque();
         tablero.colocarZonaMonstruo(cartaInvocada2,jugador1);
 
         AlcanzadorDeGarra carta3 = new AlcanzadorDeGarra();
-        DefaultInvocacion cartaInvocada3 = new DefaultInvocacion(carta3); // No requiere sacrificios
+        InvocacionDefault cartaInvocada3 = new InvocacionDefault(carta3); // No requiere sacrificios
         cartaInvocada3.invocar();
         carta3.colocarEnModoDeDefensa();
         tablero.colocarZonaMonstruo(cartaInvocada3,jugador2);
         AgujeroNegro agujeroNegro = new AgujeroNegro();
-        DefaultInvocacion invocacionAgujeroNegro = new DefaultInvocacion(agujeroNegro);
+        InvocacionDefault invocacionAgujeroNegro = new InvocacionDefault(agujeroNegro);
         tablero.colocarZonaTrampaMagica(invocacionAgujeroNegro,jugador2); //Se coloca boca arriba por Test11
         agujeroNegro.activarEfecto(tablero);
         assertTrue(tablero.noTieneCartasMonstruo());

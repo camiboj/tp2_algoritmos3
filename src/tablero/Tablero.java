@@ -1,5 +1,7 @@
 package tablero;
 import java.util.HashMap;
+import java.util.List;
+
 import cartas.Carta;
 import cartas.CartaMonstruo;
 import cartas.Invocacion;
@@ -32,6 +34,13 @@ public class Tablero {
 	}
 
 	public boolean colocarZonaMonstruo(Invocacion unaInvocacion, Jugador jugador) {
+		if (unaInvocacion.debeSacrificar()) {
+			List<CartaMonstruo> sacrificios = unaInvocacion.mostrarCartasASacrificar();
+			for (CartaMonstruo carta: sacrificios) {
+				colocarCementerio(carta, jugador);
+				eliminarDeZonaMonstruo(carta, jugador);
+			}
+		}
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
 		return ladoDelCampo.colocarZonaMonstruo(unaInvocacion);
 	}
@@ -86,7 +95,6 @@ public class Tablero {
 	}
 
 	public void accionAgujeroNegro() {
-
         for (LadoDelCampo unLadoDelCampo: divisiones.values()) {
             unLadoDelCampo.efectoAgujeroNegro();
         }

@@ -1,6 +1,6 @@
 import cartas.Carta;
 import cartas.CreadoraDeCartas;
-import cartas.DefaultInvocacion;
+import cartas.InvocacionDefault;
 import estadosDeCartas.BocaAbajo;
 import jugador.Jugador;
 import tablero.Tablero;
@@ -24,7 +24,7 @@ public class CartaMagicaTest {
         Tablero tablero = new Tablero(jugador1, jugador2);
         CreadoraDeCartas manager = new CreadoraDeCartas();
         Carta unaCarta = manager.crearCarta("Agujero Negro");
-        DefaultInvocacion invocacion = new DefaultInvocacion(unaCarta);
+        InvocacionDefault invocacion = new InvocacionDefault(unaCarta);
         unaCarta.colocarBocaAbajo();
         assertTrue(tablero.colocarZonaTrampaMagica(invocacion, jugador1));
     }
