@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 
 public abstract class ZonaMonstruo implements Zona {
     private static final int CANT_CASILLEROS = 5;
-
     private List<Casillero> casilleros;
 
     public ZonaMonstruo() {
@@ -44,7 +43,6 @@ public abstract class ZonaMonstruo implements Zona {
             return false;
         }
         return true;
-
     }
 
     public void eliminarCarta(Carta carta) {

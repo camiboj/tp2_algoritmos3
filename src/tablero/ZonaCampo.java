@@ -26,5 +26,3 @@ public class ZonaCampo { //Le saque la interfaz porque no coloca una carta cualq
         return;
     }
 }
-
-

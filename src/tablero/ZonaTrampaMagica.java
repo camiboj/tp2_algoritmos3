@@ -2,14 +2,17 @@ package tablero;
 import cartas.Carta;
 import cartas.Invocacion;
 
-public class ZonaTrampaMagica implements Zona {
-    private Casillero[] casilleros;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
-    public ZonaTrampaMagica () {
-        casilleros = new Casillero[5];
-        for (int i = 0; i < 5; i += 1) {
-            casilleros[i] = new Casillero();
-        }
+public class ZonaTrampaMagica implements Zona {
+    private static final int CANT_CASILLEROS = 5;
+    private List<Casillero> casilleros;
+
+    public ZonaTrampaMagica() {
+        casilleros = new ArrayList<>();
+        for (int i = 0; i < CANT_CASILLEROS; i++) casilleros.add(new Casillero());
     }
 
     public void eliminarCarta(Carta carta) {
@@ -17,14 +20,14 @@ public class ZonaTrampaMagica implements Zona {
     }
 
     public boolean colocarCarta(Invocacion invocacion) {
-        Carta carta = invocacion.invocar();
-        //Devuelve true si pudo colocarla y false si la zona estaba completa
-        for (int i = 0; i < 5; i += 1) {
-            if (casilleros[i].estaVacio()) {
-                casilleros[i].colocarCarta(carta);
-                return true;
-            }
+        List<Casillero> vacios = casilleros.stream().filter(casillero -> casillero.estaVacio()).collect(Collectors.toList());
+        if (vacios.size() == 0) return false; //No hay espacio
+        try {
+            Carta carta = invocacion.invocar();
+            vacios.get(0).colocarCarta(carta);
+        } catch (Exception e) {
+            return false;
         }
-        return false;
+        return true;
     }
 }
