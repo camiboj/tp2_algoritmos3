@@ -1,7 +1,6 @@
 package jugador;
 import cartas.Carta;
 import cartas.CreadoraDeCartas;
-import cartas.HuevoMonstruoso;
 import java.io.File;
 import java.util.Scanner;
 import java.util.Stack;
@@ -57,8 +56,9 @@ public class Mazo {
     }
 
     public void agregarCarta(String nombreDeCarta) {
+
         if (cartas.size()<40){
-            CreadoraDeCartas.crearCarta(nombreDeCarta);
+            cartas.push(CreadoraDeCartas.crearCarta(nombreDeCarta));
         }
 
 
