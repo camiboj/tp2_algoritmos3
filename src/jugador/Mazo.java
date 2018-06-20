@@ -9,7 +9,7 @@ public class Mazo {
 
     public Mazo() {
         cartas = new Stack();
-        cantidadDeCartas = 0;
+        cantidadDeCartas = 40;
         for(int i = 0; i<40; i++) {
             HuevoMonstruoso carta = new HuevoMonstruoso();
             cartas.push(carta);
@@ -18,6 +18,11 @@ public class Mazo {
 
     public Carta sacarCarta() {
         Carta carta = cartas.pop();
+        cantidadDeCartas --;
         return carta;
+    }
+
+    public int obtenerCantidad() {
+        return cantidadDeCartas;
     }
 }

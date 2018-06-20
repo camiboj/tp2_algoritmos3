@@ -12,17 +12,17 @@ import java.util.stream.Collectors;
 public abstract class ZonaMonstruo implements Zona {
     private static final int CANT_CASILLEROS = 5;
 
-    private List<CasilleroMonstruo> casilleros;
+    private List<Casillero> casilleros;
 
     public ZonaMonstruo() {
         casilleros = new ArrayList<>();
-        for (int i = 0; i < CANT_CASILLEROS; i++) casilleros.add(new CasilleroMonstruo());
+        for (int i = 0; i < CANT_CASILLEROS; i++) casilleros.add(new Casillero());
     }
 
     public List<CartaMonstruo> obtenerMonstruos() {
         List<CartaMonstruo> resultado = new ArrayList<>();
         for (int i = 0; i < CANT_CASILLEROS; i++) {
-            CasilleroMonstruo casillero = casilleros.get(i);
+            Casillero casillero = casilleros.get(i);
             if (! casillero.estaVacio()) resultado.add((CartaMonstruo) casillero.mostrarCarta());
         }
         return resultado;
@@ -86,7 +86,7 @@ public abstract class ZonaMonstruo implements Zona {
         return true;
     }
 
-    public List<CasilleroMonstruo> getCasilleros(){
+    public List<Casillero> getCasilleros(){
         return this.casilleros;
     }
 }

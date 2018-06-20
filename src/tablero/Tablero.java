@@ -31,7 +31,8 @@ public class Tablero {
         ZonaMonstruo zonaMonstruoJugadorOponente = ladoDelCampoOponente.mostrarZonaMonstruo()    ;
 		List<CartaMonstruo> monstruosJugador = zonaMonstruoJugador.obtenerMonstruos();
         List<CartaMonstruo> monstruosJugadorOponente = zonaMonstruoJugadorOponente.obtenerMonstruos();
-
+		Carta carta = unaInvocacion.invocar();
+		jugador.sacarDeMano(carta);
         return ladoDelCampo.colocarZonaCampo(unaInvocacion, monstruosJugador, monstruosJugadorOponente);
 	}
 
@@ -40,6 +41,8 @@ public class Tablero {
 		return ladoDelCampo.mostrarCementerio();
 	}
 	public boolean colocarZonaTrampaMagica(Invocacion unaInvocacion, Jugador jugador) {
+		Carta carta = unaInvocacion.invocar();
+		jugador.sacarDeMano(carta);
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
 		return ladoDelCampo.colocarZonaTrampaMagica(unaInvocacion);
 	}
@@ -52,6 +55,8 @@ public class Tablero {
 				eliminarDeZonaMonstruo(carta, jugador);
 			}
 		}
+		Carta carta = unaInvocacion.invocar();
+		jugador.sacarDeMano(carta);
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
 		return ladoDelCampo.colocarZonaMonstruo(unaInvocacion);
 	}
@@ -118,6 +123,4 @@ public class Tablero {
         return true;
     }
 
-	public void accionarOllaDeLaCodicia() {
-	}
 }
