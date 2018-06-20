@@ -105,9 +105,9 @@ public class Tablero {
 		return ladoDelCampo.mostrarZonaMonstruo();
 	}
 
-	public void accionAgujeroNegro() {
+	public void borrarMonstruos() {
         for (LadoDelCampo unLadoDelCampo: divisiones.values()) {
-            unLadoDelCampo.efectoAgujeroNegro();
+            unLadoDelCampo.borrarMonstruos();
         }
 	}
 
@@ -117,4 +117,7 @@ public class Tablero {
         }
         return true;
     }
+
+	public void accionarOllaDeLaCodicia() {
+	}
 }

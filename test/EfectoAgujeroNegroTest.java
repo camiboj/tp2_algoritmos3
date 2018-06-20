@@ -31,18 +31,16 @@ public class EfectoAgujeroNegroTest {
         cartaInvocada3.invocar();
         carta3.colocarEnModoDeDefensa();
         tablero.colocarZonaMonstruo(cartaInvocada3,jugador2);
-        AgujeroNegro agujeroNegro = new AgujeroNegro();
+        AgujeroNegro agujeroNegro = new AgujeroNegro(tablero,jugador1);
         InvocacionDefault invocacionAgujeroNegro = new InvocacionDefault(agujeroNegro);
-        tablero.colocarZonaTrampaMagica(invocacionAgujeroNegro,jugador2); //Se coloca boca arriba por Test11
-        agujeroNegro.activarEfecto(tablero);
-
+        tablero.colocarZonaTrampaMagica(invocacionAgujeroNegro, jugador1);
         assertTrue(tablero.noTieneCartasMonstruo());
 
         Cementerio cementerio1 = tablero.mostrarCementerio(jugador1);
         Cementerio cementerio2 = tablero.mostrarCementerio(jugador2);
 
         assertTrue(true);
-       assertTrue(cementerio1.existe(carta1) && cementerio1.existe(carta2));
+        assertTrue(cementerio1.existe(carta1) && cementerio1.existe(carta2));
         assertTrue(cementerio2.existe(carta3));
         assertTrue(jugador1.obtenerPuntos().equals(new Punto(8000)) &&
                 jugador2.obtenerPuntos().equals(new Punto(8000)));
@@ -55,16 +53,6 @@ public class EfectoAgujeroNegroTest {
 
         EfectoAgujeroNegro efectoAgujeroNegro = new EfectoAgujeroNegro();
         efectoAgujeroNegro.utilizarSobre(huevoMonstruoso);
-        assertTrue(new Cementerio().equals(huevoMonstruoso.getUbicacion()));
-
-    }
-
-    @Test
-    public void EfectoAgujeroNegroAtaca() {
-        HuevoMonstruoso huevoMonstruoso = new HuevoMonstruoso();
-        AgujeroNegro agujeroNegro = new AgujeroNegro();
-        agujeroNegro.atacar(huevoMonstruoso);
-
         assertTrue(new Cementerio().equals(huevoMonstruoso.getUbicacion()));
 
     }

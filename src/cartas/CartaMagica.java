@@ -1,15 +1,15 @@
 package cartas;
 import efectos.Efecto;
+import jugador.Jugador;
+import tablero.Tablero;
 
 public abstract class CartaMagica extends Carta {
-    protected Efecto efecto;
+
 
     public CartaMagica(String unNombre) {
         super(unNombre);
     }
 
-    @Override
-    public void activarEfecto() {
-        super.activarEfecto();
-    }
+
+    public void activarEfecto(Tablero tablero, Jugador jugadorInvocador) {}
 }

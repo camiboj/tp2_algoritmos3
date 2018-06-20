@@ -48,8 +48,8 @@ public class LadoDelCampo {
 		return miZonaMonstruo;
 	}
 
-	public void efectoAgujeroNegro() {
-		miZonaMonstruo.efectoAgujeroNegro(miCementerio);
+	public void borrarMonstruos() {
+		miZonaMonstruo.borrarMonstruos(miCementerio);
 		}
 
 	public boolean zonaMonstruoEstaVacia(){

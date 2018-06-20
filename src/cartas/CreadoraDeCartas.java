@@ -10,7 +10,7 @@ public class CreadoraDeCartas {
 			case "Cilindro Magico":
 				return new CilindroMagico();
 			case "Agujero Negro":
-				return new AgujeroNegro();
+				//return new AgujeroNegro();
 			case "Alcanzador de Garra":
 				return new AlcanzadorDeGarra();
 			case "Araña Lanzadora":
@@ -21,8 +21,8 @@ public class CreadoraDeCartas {
 				return new Aitsu();
 			case "Wasteland":
 				return new Wasteland();
-			case "Olla De La Codicia":
-				return new OllaDeLaCodicia();
+			//case "Olla De La Codicia":
+				//return new OllaDeLaCodicia();
 
 		default:
 			break;

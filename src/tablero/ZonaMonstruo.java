@@ -66,7 +66,7 @@ public abstract class ZonaMonstruo implements Zona {
         return false;
     }
 
-    public void efectoAgujeroNegro(Cementerio unCementerio){
+    public void borrarMonstruos(Cementerio unCementerio){
         for (int i = 0; i<5; i+=1) {
             if(!casilleros.get(i).estaVacio()){
                 Carta unaCarta = casilleros.get(i).mostrarCarta();

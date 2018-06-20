@@ -1,6 +1,8 @@
 package cartas;
 
-public class OllaDeLaCodicia extends CartaMagica {
+import tablero.Tablero;
+
+/* public class OllaDeLaCodicia extends CartaMagica {
     public OllaDeLaCodicia(String unNombre) {
         super(unNombre);
     }
@@ -10,8 +12,6 @@ public class OllaDeLaCodicia extends CartaMagica {
     }
 
     public void activarEfecto() {
-        //Sacar dos cartas del mazo
-
-
     }
 }
+*/
