@@ -8,17 +8,17 @@ import jugador.Punto;
 import java.util.List;
 
 public abstract class CartaMonstruo extends Carta {
-    private Modo modo;
-    private Punto puntosAtaque;
-    private Punto puntosDefensa;
-    private Nivel nivel;
-    //efecto
+    protected Modo modo;
+    protected Punto puntosAtaque;
+    protected Punto puntosDefensa;
+    protected Nivel nivel;
 
     public CartaMonstruo(String unNombredeCarta, int unosPuntosAtaque, int unosPuntosDefensa, int cantidadEstrellas) {
         super(unNombredeCarta);
         puntosAtaque = new Punto(unosPuntosAtaque);
         puntosDefensa = new Punto(unosPuntosDefensa);
         nivel = new Nivel(cantidadEstrellas);
+        modo = null;
     }
 
     private void cambiarEstado(Modo m) {

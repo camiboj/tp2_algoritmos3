@@ -8,10 +8,10 @@ import jugador.Punto;
 
 
 public class Tablero {
-    private HashMap<Jugador, LadoDelCampo> divisiones;
+	private HashMap<Jugador, LadoDelCampo> divisiones;
 
 	public Tablero(Jugador jugador1, Jugador jugador2) {
-		
+
 		divisiones = new HashMap<Jugador, LadoDelCampo>();
 		divisiones.put(jugador1, new LadoDelCampo());
 		divisiones.put(jugador2, new LadoDelCampo());
@@ -28,18 +28,19 @@ public class Tablero {
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
 		LadoDelCampo ladoDelCampoOponente = divisiones.get(jugadorOponente);
 		ZonaMonstruo zonaMonstruoJugador = ladoDelCampo.mostrarZonaMonstruo();
-        ZonaMonstruo zonaMonstruoJugadorOponente = ladoDelCampoOponente.mostrarZonaMonstruo()    ;
+		ZonaMonstruo zonaMonstruoJugadorOponente = ladoDelCampoOponente.mostrarZonaMonstruo();
 		List<CartaMonstruo> monstruosJugador = zonaMonstruoJugador.obtenerMonstruos();
-        List<CartaMonstruo> monstruosJugadorOponente = zonaMonstruoJugadorOponente.obtenerMonstruos();
+		List<CartaMonstruo> monstruosJugadorOponente = zonaMonstruoJugadorOponente.obtenerMonstruos();
 		Carta carta = unaInvocacion.invocar();
 		jugador.sacarDeMano(carta);
-        return ladoDelCampo.colocarZonaCampo(unaInvocacion, monstruosJugador, monstruosJugadorOponente);
+		return ladoDelCampo.colocarZonaCampo(unaInvocacion, monstruosJugador, monstruosJugadorOponente);
 	}
 
 	public Cementerio mostrarCementerio(Jugador unJugador) {
 		LadoDelCampo ladoDelCampo = divisiones.get(unJugador);
 		return ladoDelCampo.mostrarCementerio();
 	}
+
 	public boolean colocarZonaTrampaMagica(Invocacion unaInvocacion, Jugador jugador) {
 		Carta carta = unaInvocacion.invocar();
 		jugador.sacarDeMano(carta);
@@ -50,7 +51,7 @@ public class Tablero {
 	public boolean colocarZonaMonstruo(InvocacionCartaMonstruo unaInvocacion, Jugador jugador) {
 		if (unaInvocacion.debeSacrificar()) {
 			List<CartaMonstruo> sacrificios = unaInvocacion.mostrarCartasASacrificar();
-			for (CartaMonstruo carta: sacrificios) {
+			for (CartaMonstruo carta : sacrificios) {
 				colocarCementerio(carta, jugador);
 				eliminarDeZonaMonstruo(carta, jugador);
 			}
@@ -74,20 +75,23 @@ public class Tablero {
 		Jugador jugadorPerdedor;
 		Jugador jugadorGanador;
 		CartaMonstruo cartaPerdedora;
-		if (cartaDefensora == cartaGanadora && cartaDefensora.enModoDefensa()){return;}
+		if (cartaDefensora == cartaGanadora && cartaDefensora.enModoDefensa()) {
+			return;
+		}
 		if (cartaGanadora == cartaDefensora) {
 			jugadorPerdedor = jugadorAtacante;
 			cartaPerdedora = cartaAtacante;
 			jugadorGanador = jugadorDefensor;
-		}
-		else {
+		} else {
 			jugadorPerdedor = jugadorDefensor;
 			cartaPerdedora = cartaDefensora;
 			jugadorGanador = jugadorAtacante;
 		}
 		colocarCementerio(cartaPerdedora, jugadorPerdedor);
 		eliminarDeZonaMonstruo(cartaPerdedora, jugadorPerdedor);
-		if (cartaDefensora.enModoDefensa()) {return;}
+		if (cartaDefensora.enModoDefensa()) {
+			return;
+		}
 		Punto puntosGanadores = cartaGanadora.obtenerPuntos();
 		Punto puntosPerdedores = cartaPerdedora.obtenerPuntos();
 		Punto diferenciaPuntos = puntosGanadores.restar(puntosPerdedores);
@@ -111,24 +115,37 @@ public class Tablero {
 	}
 
 	public void borrarMonstruos() {
-        for (LadoDelCampo unLadoDelCampo: divisiones.values()) {
-            unLadoDelCampo.borrarMonstruos();
-        }
+		for (LadoDelCampo unLadoDelCampo : divisiones.values()) {
+			unLadoDelCampo.borrarMonstruos();
+		}
 	}
 
-    public boolean noTieneCartasMonstruo() {
-        for (LadoDelCampo l: divisiones.values()) {
-            if(!l.zonaMonstruoEstaVacia())return false;
-        }
-        return true;
-    }
+	public boolean noTieneCartasMonstruo() {
+		for (LadoDelCampo l : divisiones.values()) {
+			if (!l.zonaMonstruoEstaVacia()) return false;
+		}
+		return true;
+	}
+
 
 	public void eliminarMonstruoDebil(Jugador jugadorAtacante) {
-		for (Jugador jugador: divisiones.keySet()) {
-			if (jugador != jugadorAtacante){
-				LadoDelCampo ladoDelCampo = divisiones.get(jugador);
-				ladoDelCampo.eliminarMonstruoDebil();
+		Jugador jugador = this.buscarOponente(jugadorAtacante);
+		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
+		ladoDelCampo.eliminarMonstruoDebil();
+	}
+
+	private Jugador buscarOponente(Jugador jugadorAtacante) {
+		Jugador jugadorADevolver = null;
+		for (Jugador jugador : divisiones.keySet()) {
+			if (jugador != jugadorAtacante) {
+				jugadorADevolver = jugador;
 			}
 		}
+		return jugadorADevolver;
+	}
+
+	public void restarPuntosAOponente(Jugador jugador, Punto puntosAtaque) {
+		Jugador jugadorOponente = this.buscarOponente(jugador);
+		jugadorOponente.restarPuntos(puntosAtaque);
 	}
 }
