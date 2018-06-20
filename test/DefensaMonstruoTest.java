@@ -16,10 +16,10 @@ public class DefensaMonstruoTest {
         Jugador jugadorAtacante = new Jugador();
         Tablero tablero = new Tablero(jugadorDefensor, jugadorAtacante);
         HuevoMonstruoso cartaDefensora = new HuevoMonstruoso();
-        InvocacionCartaMonstruo cartaInvocadaDefensora = new InvocacionCartaMonstruo(cartaDefensora, null); // No requiere sacrificios
+        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora, null); // No requiere sacrificios
         cartaInvocadaDefensora.invocar();
         AlasDeLaLlamaPerversa cartaAtacante = new AlasDeLaLlamaPerversa();
-        InvocacionCartaMonstruo cartaInvocadaAtacante = new InvocacionCartaMonstruo(cartaAtacante, null); // No requiere sacrificios
+        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante, null); // No requiere sacrificios
         cartaInvocadaAtacante.invocar();
         cartaDefensora.colocarEnModoDeDefensa();
         cartaAtacante.colocarEnModoDeAtaque();
@@ -42,10 +42,10 @@ public class DefensaMonstruoTest {
         Jugador jugadorAtacante = new Jugador();
         Tablero tablero = new Tablero(jugadorDefensor, jugadorAtacante);
         HuevoMonstruoso cartaDefensora = new HuevoMonstruoso();
-        InvocacionCartaMonstruo cartaInvocadaDefensora = new InvocacionCartaMonstruo(cartaDefensora, null); // No requiere sacrificios
+        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora, null); // No requiere sacrificios
         cartaInvocadaDefensora.invocar();
         AlcanzadorDeGarra cartaAtacante = new AlcanzadorDeGarra();
-        InvocacionCartaMonstruo cartaInvocadaAtacante = new InvocacionCartaMonstruo(cartaAtacante, null); // No requiere sacrificios
+        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante, null); // No requiere sacrificios
         cartaInvocadaAtacante.invocar();
         cartaDefensora.colocarEnModoDeDefensa();
         cartaAtacante.colocarEnModoDeAtaque();
@@ -66,10 +66,10 @@ public class DefensaMonstruoTest {
         Jugador jugadorAtacante = new Jugador();
         Tablero tablero = new Tablero(jugadorDefensor, jugadorAtacante);
         HuevoMonstruoso cartaAtacante = new HuevoMonstruoso();
-        InvocacionCartaMonstruo cartaInvocadaAtacante = new InvocacionCartaMonstruo(cartaAtacante, null); // No requiere sacrificios
+        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante, null); // No requiere sacrificios
         cartaInvocadaAtacante.invocar();
         AlasDeLaLlamaPerversa cartaDefensora = new AlasDeLaLlamaPerversa();
-        InvocacionCartaMonstruo cartaInvocadaDefensora = new InvocacionCartaMonstruo(cartaDefensora, null); // No requiere sacrificios
+        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora, null); // No requiere sacrificios
         cartaInvocadaDefensora.invocar();
         cartaDefensora.colocarEnModoDeDefensa();
         cartaAtacante.colocarEnModoDeAtaque();

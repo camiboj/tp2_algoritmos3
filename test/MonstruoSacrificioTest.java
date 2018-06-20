@@ -20,9 +20,10 @@ public class MonstruoSacrificioTest {
         List<CartaMonstruo> cartasASacrificar = new ArrayList<>();
         cartasASacrificar.add(cartaSacrificada);
 
-        InvocacionCartaMonstruo invocacionCausanteSacrificios =
-                new InvocacionCartaMonstruo(cartaCausanteSacrificios, cartasASacrificar);
-        InvocacionCartaMonstruo  invocacionHuevoMonstruoso = new InvocacionCartaMonstruo (cartaSacrificada, null);
+
+        InvocacionCartaMonstruoGenerica invocacionCausanteSacrificios =
+                new InvocacionCartaMonstruoGenerica(cartaCausanteSacrificios, cartasASacrificar);
+        InvocacionCartaMonstruoGenerica invocacionHuevoMonstruoso = new InvocacionCartaMonstruoGenerica(cartaSacrificada, null);
 
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
@@ -49,10 +50,10 @@ public class MonstruoSacrificioTest {
         cartasASacrificar.add(cartaSacrificada);
         AlasDeLaLlamaPerversa cartaNoSacrificada = new AlasDeLaLlamaPerversa();
 
-        InvocacionCartaMonstruo invocacionCausanteSacrificios =
-                new InvocacionCartaMonstruo(cartaCausanteSacrificios, cartasASacrificar);
-        InvocacionCartaMonstruo invocacionHuevoMonstruoso = new InvocacionCartaMonstruo (cartaSacrificada, null);
-        InvocacionCartaMonstruo  invocacionAlasDeLaLLamaPerversa = new InvocacionCartaMonstruo (cartaNoSacrificada, null);
+        InvocacionCartaMonstruoGenerica invocacionCausanteSacrificios =
+                new InvocacionCartaMonstruoGenerica(cartaCausanteSacrificios, cartasASacrificar);
+        InvocacionCartaMonstruoGenerica invocacionHuevoMonstruoso = new InvocacionCartaMonstruoGenerica(cartaSacrificada, null);
+        InvocacionCartaMonstruoGenerica invocacionAlasDeLaLLamaPerversa = new InvocacionCartaMonstruoGenerica(cartaNoSacrificada, null);
 
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
@@ -83,9 +84,9 @@ public class MonstruoSacrificioTest {
         List <CartaMonstruo> cartasASacrificar = new ArrayList <>();
         cartasASacrificar.add(cartaSacrificada);
 
-        InvocacionCartaMonstruo invocacionCausanteSacrificios =
-                new InvocacionCartaMonstruo(cartaCausanteSacrificios, cartasASacrificar);
-        InvocacionCartaMonstruo invocacionHuevoMonstruoso = new InvocacionCartaMonstruo (cartaSacrificada, null);
+        InvocacionCartaMonstruoGenerica invocacionCausanteSacrificios =
+                new InvocacionCartaMonstruoGenerica(cartaCausanteSacrificios, cartasASacrificar);
+        InvocacionCartaMonstruoGenerica invocacionHuevoMonstruoso = new InvocacionCartaMonstruoGenerica(cartaSacrificada, null);
 
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
@@ -113,10 +114,10 @@ public class MonstruoSacrificioTest {
         cartasASacrificar.add(cartaSacrificada1);
         cartasASacrificar.add(cartaSacrificada2);
 
-        InvocacionCartaMonstruo invocacionCausanteSacrificios =
-                new InvocacionCartaMonstruo(cartaCausanteSacrificios, cartasASacrificar);
-        InvocacionCartaMonstruo invocacionHuevoMonstruoso = new InvocacionCartaMonstruo (cartaSacrificada1, null);
-        InvocacionCartaMonstruo invocacionAlasDeLaLlamaPerversa = new InvocacionCartaMonstruo (cartaSacrificada2, null);
+        InvocacionCartaMonstruoGenerica invocacionCausanteSacrificios =
+                new InvocacionCartaMonstruoGenerica(cartaCausanteSacrificios, cartasASacrificar);
+        InvocacionCartaMonstruoGenerica invocacionHuevoMonstruoso = new InvocacionCartaMonstruoGenerica(cartaSacrificada1, null);
+        InvocacionCartaMonstruoGenerica invocacionAlasDeLaLlamaPerversa = new InvocacionCartaMonstruoGenerica(cartaSacrificada2, null);
 
 
         Jugador jugador1 = new Jugador();

@@ -18,9 +18,9 @@ public class SogenTest {
         Jugador jugador2 = new Jugador();
         Tablero tablero = new Tablero(jugador1, jugador2);
         HuevoMonstruoso monstruo1 = new HuevoMonstruoso();
-        InvocacionCartaMonstruo invocacionMonstruo1 = new InvocacionCartaMonstruo(monstruo1, null);
+        InvocacionCartaMonstruoGenerica invocacionMonstruo1 = new InvocacionCartaMonstruoGenerica(monstruo1, null);
         AlasDeLaLlamaPerversa monstruo2 = new AlasDeLaLlamaPerversa();
-        InvocacionCartaMonstruo invocacionMonstruo2 = new InvocacionCartaMonstruo(monstruo2, null);
+        InvocacionCartaMonstruoGenerica invocacionMonstruo2 = new InvocacionCartaMonstruoGenerica(monstruo2, null);
         tablero.colocarZonaMonstruo(invocacionMonstruo1, jugador1);
         tablero.colocarZonaMonstruo(invocacionMonstruo2, jugador2);
         ZonaMonstruo zonaMonstruo1 = tablero.mostrarZonaMonstruo(jugador1);

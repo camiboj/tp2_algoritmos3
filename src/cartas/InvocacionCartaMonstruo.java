@@ -2,15 +2,14 @@ package cartas;
 
 import java.util.List;
 
-public class InvocacionCartaMonstruo extends Invocacion {
+public abstract class InvocacionCartaMonstruo extends Invocacion {
+    protected CartaMonstruo carta;
+    protected List<CartaMonstruo> sacrificios;
 
-    private CartaMonstruo carta;
-    private List<CartaMonstruo> sacrificios;
-
-    public InvocacionCartaMonstruo(CartaMonstruo unaCarta, List<CartaMonstruo> sacrificios) {
+    public InvocacionCartaMonstruo(CartaMonstruo unaCarta, List unosSacrificios){
         super(unaCarta);
         carta = unaCarta;
-        this.sacrificios = sacrificios;
+        this.sacrificios = unosSacrificios;
     }
 
     public Carta invocar() {
@@ -21,12 +20,7 @@ public class InvocacionCartaMonstruo extends Invocacion {
         }
     }
 
-    public List<CartaMonstruo> mostrarCartasASacrificar() {
-        return sacrificios;
-    }
+    public abstract boolean debeSacrificar();
 
-    public boolean debeSacrificar() {
-        if (sacrificios== null) return false;
-        return sacrificios.size()>0;
-    }
+    public abstract List<CartaMonstruo> mostrarCartasASacrificar();
 }

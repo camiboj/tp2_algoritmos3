@@ -1,7 +1,7 @@
 package cartas;
 
 public abstract class Invocacion {
-    Carta carta;
+    protected Carta carta;
 
     public Invocacion(Carta unaCarta) {
         carta = unaCarta;

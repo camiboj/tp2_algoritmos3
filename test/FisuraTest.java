@@ -18,8 +18,8 @@ public class FisuraTest {
 
         AlasDeLaLlamaPerversa cartaSobreviviente = new AlasDeLaLlamaPerversa();
         HuevoMonstruoso cartaAMorir = new HuevoMonstruoso();
-        InvocacionCartaMonstruo invocacionSobreviviente = new InvocacionCartaMonstruo(cartaSobreviviente, null);
-        InvocacionCartaMonstruo invocacionMuerto = new InvocacionCartaMonstruo(cartaAMorir, null);
+        InvocacionCartaMonstruoGenerica invocacionSobreviviente = new InvocacionCartaMonstruoGenerica(cartaSobreviviente, null);
+        InvocacionCartaMonstruoGenerica invocacionMuerto = new InvocacionCartaMonstruoGenerica(cartaAMorir, null);
         tablero.colocarZonaMonstruo(invocacionSobreviviente, jugadorOponente);
         tablero.colocarZonaMonstruo(invocacionMuerto, jugadorOponente);
 
