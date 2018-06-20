@@ -10,6 +10,4 @@ public abstract class CartaMagica extends Carta {
         super(unNombre);
     }
 
-
-    public void activarEfecto(Tablero tablero, Jugador jugadorInvocador) {}
 }

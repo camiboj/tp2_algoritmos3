@@ -3,7 +3,6 @@ package tablero;
 import cartas.Carta;
 import cartas.CartaMonstruo;
 import cartas.Invocacion;
-import cartas.InvocacionCartaMonstruo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,5 +87,16 @@ public abstract class ZonaMonstruo implements Zona {
 
     public List<Casillero> getCasilleros(){
         return this.casilleros;
+    }
+
+    public CartaMonstruo obtenerMonstruoDebil(){
+        List<CartaMonstruo> monstruos = this.obtenerMonstruos();
+
+        CartaMonstruo cartaDebil = monstruos.get(0);
+        for (int i = 1; i < monstruos.size(); i+=1){
+            CartaMonstruo carta = (CartaMonstruo) casilleros.get(i).mostrarCarta();
+            cartaDebil = carta.obtenerAtaqueMinimo(cartaDebil);
+        }
+        return cartaDebil;
     }
 }

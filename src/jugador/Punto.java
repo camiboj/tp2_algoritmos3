@@ -26,4 +26,8 @@ public class Punto {
         Punto resultado = new Punto(numero + puntosDefensaAdicionales.obtenerNumero());
         return resultado;
     }
+
+    public boolean esMenor(Punto unPunto) {
+        return numero < unPunto.obtenerNumero();
+    }
 }

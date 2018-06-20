@@ -60,4 +60,10 @@ public class LadoDelCampo {
 									List<CartaMonstruo> monstruosJugadorOponente) {
 		return miZonaCampo.colocarCarta(unaInvocacion, monstruosJugador, monstruosJugadorOponente);
     }
+
+    public void eliminarMonstruoDebil() {
+    	CartaMonstruo cartaDebil = miZonaMonstruo.obtenerMonstruoDebil();
+		eliminarDeZonaMonstruo(cartaDebil);
+		colocarCementerio(cartaDebil);
+	}
 }

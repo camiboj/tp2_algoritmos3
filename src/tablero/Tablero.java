@@ -123,4 +123,12 @@ public class Tablero {
         return true;
     }
 
+	public void eliminarMonstruoDebil(Jugador jugadorAtacante) {
+		for (Jugador jugador: divisiones.keySet()) {
+			if (jugador != jugadorAtacante){
+				LadoDelCampo ladoDelCampo = divisiones.get(jugador);
+				ladoDelCampo.eliminarMonstruoDebil();
+			}
+		}
+	}
 }

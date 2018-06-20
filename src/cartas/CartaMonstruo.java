@@ -70,4 +70,10 @@ public abstract class CartaMonstruo extends Carta {
 
         puntosDefensa = puntosDefensa.sumar(puntosDefensaAdicionales);
     }
+
+    public CartaMonstruo obtenerAtaqueMinimo(CartaMonstruo cartaDebil) {
+        Punto puntosDebil = cartaDebil.obtenerPuntosAtaque();
+        if (puntosDebil.esMenor(this.puntosAtaque)) { return cartaDebil; }
+        return this;
+    }
 }
