@@ -35,7 +35,7 @@ public class CilindroMagicoTest {
         Cementerio cementerio2= tablero.mostrarCementerio(jugadorDefensor);
         assertTrue(cementerio2.existe(cilindro_magico));
         int numeroAtaque = cartaAtacante.obtenerPuntosAtaque().obtenerNumero();
-        assertTrue(jugadorDefensor.obtenerPuntos().equals(new Punto(8000)) &&
-                jugadorAtacante.obtenerPuntos().equals(new Punto((8000 - numeroAtaque))));
+        assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero() == 8000 - numeroAtaque);
+        assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 8000);
     }
 }

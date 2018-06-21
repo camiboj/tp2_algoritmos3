@@ -26,7 +26,8 @@ public class Jugador {
     }
 
     public void restarPuntos(Punto puntosRestados) {
-        puntosJuego.restar(puntosRestados);
+        Punto resultado = puntosJuego.restar(puntosRestados);
+        puntosJuego = resultado;
     }
 
     @Override

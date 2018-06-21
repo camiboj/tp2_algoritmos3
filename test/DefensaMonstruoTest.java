@@ -35,8 +35,8 @@ public class DefensaMonstruoTest {
         ZonaMonstruo zonaMonstruoDefensor = tablero.mostrarZonaMonstruo(jugadorDefensor);
         ZonaMonstruo zonaMonstruoAtacante = tablero.mostrarZonaMonstruo(jugadorAtacante);
         assertTrue(zonaMonstruoDefensor.existe(cartaDefensora) && zonaMonstruoAtacante.existe(cartaAtacante));
-        assertTrue(jugadorDefensor.obtenerPuntos().equals(new Punto(8000)) &&
-                jugadorAtacante.obtenerPuntos().equals(new Punto(8000)));
+        assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero() == 8000);
+        assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 8000);
     }
 
     @Test
@@ -59,8 +59,8 @@ public class DefensaMonstruoTest {
         assertTrue(cementerio.existe(cartaDefensora));
         ZonaMonstruo zonaMonstruo = tablero.mostrarZonaMonstruo(jugadorDefensor);
         assertFalse(zonaMonstruo.existe(cartaDefensora));
-        assertTrue(jugadorDefensor.obtenerPuntos().equals(new Punto(8000)) &&
-                jugadorAtacante.obtenerPuntos().equals(new Punto(8000)));
+        assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero() == 8000);
+        assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 8000);
     }
 
     @Test
@@ -87,7 +87,7 @@ public class DefensaMonstruoTest {
         assertTrue(cementerioDefensor.existe(cartaDefensora));
         ZonaMonstruo zonaMonstruoDefensor = tablero.mostrarZonaMonstruo(jugadorDefensor);
         assertFalse(zonaMonstruoDefensor.existe(cartaDefensora));
-        assertTrue(jugadorDefensor.obtenerPuntos().equals(new Punto(8000)) &&
-                jugadorAtacante.obtenerPuntos().equals(new Punto(8000)));
+        assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero() == 8000);
+        assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 8000);
     }
 }

@@ -32,8 +32,8 @@ public class Jinzo7Test {
         Cementerio cementerioOponente = tablero.mostrarCementerio(jugadorOponente);
         ZonaMonstruo zonaMonstruoOponente = tablero.mostrarZonaMonstruo(jugadorOponente);
 
-        assertTrue(jugador.obtenerPuntos().equals(new Punto(8000)) &&
-                jugadorOponente.obtenerPuntos().equals(new Punto(8000 - 500)));
+        assertTrue(jugadorOponente.obtenerPuntos().obtenerNumero() == 8000-500);
+        assertTrue(jugador.obtenerPuntos().obtenerNumero() == 8000);
 
         assertFalse(cementerioOponente.existe(cartaSobreviviente));
         assertTrue(zonaMonstruoOponente.existe(cartaSobreviviente));

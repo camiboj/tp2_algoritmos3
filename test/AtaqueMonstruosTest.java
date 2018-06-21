@@ -67,8 +67,8 @@ public class AtaqueMonstruosTest {
         tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
         tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
-        assertTrue(jugadorDefensor.obtenerPuntos().equals(new Punto(8000 - 100)) &&
-                    jugadorAtacante.obtenerPuntos().equals(new Punto(8000)));
+        assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 7900);
+        assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero() == 8000);
     }
 
     @Test
@@ -109,8 +109,8 @@ public class AtaqueMonstruosTest {
         tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
         tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
-        assertTrue(jugadorAtacante.obtenerPuntos().equals(new Punto(8000 - 100)) &&
-                jugadorDefensor.obtenerPuntos().equals(new Punto(8000)));
+        assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero() == 7900);
+        assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 8000);
     }
 
     @Test
@@ -153,7 +153,7 @@ public class AtaqueMonstruosTest {
         tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
         tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
-        assertTrue(jugadorAtacante.obtenerPuntos().equals(new Punto(8000)) &&
-                jugadorDefensor.obtenerPuntos().equals(new Punto(8000)));
+        assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero() == 8000);
+        assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 8000);
     }
 }
