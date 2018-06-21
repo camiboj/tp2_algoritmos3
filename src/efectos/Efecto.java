@@ -1,5 +1,11 @@
 package efectos;
 
 
-public class Efecto {
+import cartas.Carta;
+import cartas.CartaMonstruo;
+import jugador.Jugador;
+import tablero.InterrumpirAtaqueException;
+
+public interface Efecto {
+    public void activarAnteUnAtaque(CartaMonstruo cartaAtacante, Jugador jugadorAtacante, CartaMonstruo monstruoDefensor, Jugador jugadorDefensor, Carta cartaJugada) throws InterrumpirAtaqueException;
 }

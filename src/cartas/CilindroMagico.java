@@ -1,7 +1,9 @@
 package cartas;
 
-public class CilindroMagico extends Carta {
+import efectos.EfectoCilindroMagico;
+
+public class CilindroMagico extends Trampa {
     public CilindroMagico() {
-        super("Cilindro Magico");
+        super("Cilindro Magico", new EfectoCilindroMagico());
     }
 }

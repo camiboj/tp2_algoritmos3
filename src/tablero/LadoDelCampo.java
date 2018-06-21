@@ -1,5 +1,6 @@
 package tablero;
 import cartas.*;
+import jugador.Jugador;
 import jugador.Mazo;
 
 import java.util.List;
@@ -66,4 +67,21 @@ public class LadoDelCampo {
 		eliminarDeZonaMonstruo(cartaDebil);
 		colocarCementerio(cartaDebil);
 	}
+
+	public boolean zonaTrampaMagicaEstaVacia() {
+		return miZonaDeTrampasYMagia.estaVacia();
+	}
+
+	public void activarTrampa(Carta trampa, CartaMonstruo cartaAtacante, Jugador jugadorAtacante, CartaMonstruo cartaDefensora,
+                              Jugador jugadorDefensor) throws  InterrumpirAtaqueException{
+		miZonaDeTrampasYMagia.activar(trampa, cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+	}
+
+    public List<Trampa> obtenerTrampas() {
+	    return miZonaDeTrampasYMagia.obtenerCartasTrampas();
+    }
+    public void eliminarCartaDeZonaMagicaOTrampa(Carta carta) {
+        miZonaDeTrampasYMagia.eliminarCarta(carta);
+
+    }
 }

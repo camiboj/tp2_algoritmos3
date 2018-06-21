@@ -75,6 +75,20 @@ public class Tablero {
 		Jugador jugadorPerdedor;
 		Jugador jugadorGanador;
 		CartaMonstruo cartaPerdedora;
+		if (!divisiones.get(jugadorDefensor).zonaTrampaMagicaEstaVacia()){
+			try {
+				List<Trampa> cartasTrampa = divisiones.get(jugadorDefensor).obtenerTrampas();
+				for (Trampa trampa:
+					 cartasTrampa) {
+					divisiones.get(jugadorDefensor).activarTrampa(trampa, cartaAtacante, jugadorAtacante, cartaDefensora,jugadorDefensor);
+				}
+			}
+			catch (InterrumpirAtaqueException datos){
+				colocarCartaEnCementerio(datos.obtenerCartaUsada(), datos.obtenerJugadorQueLaJugo());
+				return;
+			}
+
+		}
 		if (cartaDefensora == cartaGanadora && cartaDefensora.enModoDefensa()) {
 			return;
 		}
@@ -102,6 +116,11 @@ public class Tablero {
 			colocarCementerio(cartaGanadora, jugadorGanador);
 			eliminarDeZonaMonstruo(cartaGanadora, jugadorGanador);
 		}
+	}
+
+	private void colocarCartaEnCementerio(Carta carta, Jugador jugador) {
+		divisiones.get(jugador).eliminarCartaDeZonaMagicaOTrampa(carta);
+		divisiones.get(jugador).colocarCementerio(carta);
 	}
 
 	private void eliminarDeZonaMonstruo(CartaMonstruo unaCarta, Jugador unJugador) {
