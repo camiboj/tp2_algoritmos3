@@ -2,6 +2,7 @@ package cartas.invocacion;
 
 import cartas.cartasMonstruo.CartaMonstruo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InvocacionCartaMonstruoGenerica extends InvocacionCartaMonstruo {
@@ -12,6 +13,11 @@ public class InvocacionCartaMonstruoGenerica extends InvocacionCartaMonstruo {
         this.sacrificios = sacrificios;
     }
 
+    public InvocacionCartaMonstruoGenerica(CartaMonstruo unaCarta) {
+        super(unaCarta, new ArrayList<>());
+        carta = unaCarta;
+    }
+    //Le podemos pasar el cementerio y la zona monstruo para que esta opere
     public List<CartaMonstruo> mostrarCartasASacrificar() {
         return sacrificios;
     }

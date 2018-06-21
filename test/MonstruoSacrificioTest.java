@@ -24,7 +24,8 @@ public class MonstruoSacrificioTest {
 
         InvocacionCartaMonstruoGenerica invocacionCausanteSacrificios =
                 new InvocacionCartaMonstruoGenerica(cartaCausanteSacrificios, cartasASacrificar);
-        InvocacionCartaMonstruoGenerica invocacionHuevoMonstruoso = new InvocacionCartaMonstruoGenerica(cartaSacrificada, null);
+        InvocacionCartaMonstruoGenerica invocacionHuevoMonstruoso = new InvocacionCartaMonstruoGenerica(cartaSacrificada,
+                null);
 
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();

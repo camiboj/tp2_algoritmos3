@@ -53,7 +53,8 @@ public class Tablero {
 		this.colocarCementerio(carta, jugador);
 		return ladoDelCampo.colocarZonaTrampaMagica(unaInvocacion);
 	}
-
+	//colocar sin sacrificio y sin sacrificios
+	//llamar a la invocacion para que lo haga y le paso zona monstruo y cementerio
 	public boolean colocarZonaMonstruo(InvocacionCartaMonstruo unaInvocacion, Jugador jugador) {
 		if (unaInvocacion.debeSacrificar()) {
 			List<CartaMonstruo> sacrificios = unaInvocacion.mostrarCartasASacrificar();
