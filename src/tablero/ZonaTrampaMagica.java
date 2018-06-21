@@ -32,6 +32,7 @@ public class ZonaTrampaMagica implements Zona {
         if (vacios.size() == 0) return false; //No hay espacio
         try {
             Carta carta = invocacion.invocar();
+            carta.colocarBocaAbajo(); //Las cartas mágicas y trampas inicialmente van boca abajo
             vacios.get(0).colocarCarta(carta);
         } catch (Exception e) {
             return false;

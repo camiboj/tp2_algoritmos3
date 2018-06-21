@@ -8,6 +8,7 @@ import tablero.InterrumpirAtaqueException;
 
 public class Trampa extends Carta {
     private Efecto efectoDeLaTrampa;
+
     public Trampa(String unNombre, Efecto efectoDeLaTrampa) {
         super(unNombre);
         this.efectoDeLaTrampa= efectoDeLaTrampa;
