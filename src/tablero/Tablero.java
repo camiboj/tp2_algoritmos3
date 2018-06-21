@@ -4,7 +4,7 @@ import java.util.List;
 
 import cartas.*;
 import cartas.cartasMonstruo.CartaMonstruo;
-import cartas.cartasTrampa.Trampa;
+import cartas.cartasTrampa.CartaTrampa;
 import cartas.invocacion.Invocacion;
 import cartas.invocacion.InvocacionCartaCampo;
 import cartas.invocacion.InvocacionCartaMonstruo;
@@ -50,6 +50,7 @@ public class Tablero {
 		Carta carta = unaInvocacion.invocar();
 		jugador.sacarDeMano(carta);
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
+		this.colocarCementerio(carta, jugador);
 		return ladoDelCampo.colocarZonaTrampaMagica(unaInvocacion);
 	}
 
@@ -75,25 +76,27 @@ public class Tablero {
 	public void atacarDosMonstruos(CartaMonstruo cartaAtacante, Jugador jugadorAtacante, CartaMonstruo cartaDefensora,
 								   Jugador jugadorDefensor) {
 
-
-		CartaMonstruo cartaGanadora = cartaAtacante.obtenerGanadoraContra(cartaDefensora);
-		Jugador jugadorPerdedor;
-		Jugador jugadorGanador;
-		CartaMonstruo cartaPerdedora;
+		//Activacion de la carta trampa
 		if (!divisiones.get(jugadorDefensor).zonaTrampaMagicaEstaVacia()){
 			try {
-				List<Trampa> cartasTrampa = divisiones.get(jugadorDefensor).obtenerTrampas();
-				for (Trampa trampa:
+				List<CartaTrampa> cartasTrampa = divisiones.get(jugadorDefensor).obtenerTrampas();
+				for (CartaTrampa trampa:
 					 cartasTrampa) {
 					divisiones.get(jugadorDefensor).activarTrampa(trampa, cartaAtacante, jugadorAtacante, cartaDefensora,jugadorDefensor);
+				    eliminarDeZonaTrampaMagica(trampa, jugadorDefensor);
 				}
 			}
 			catch (InterrumpirAtaqueException datos){
 				colocarCartaEnCementerio(datos.obtenerCartaUsada(), datos.obtenerJugadorQueLaJugo());
 				return;
 			}
-
 		}
+
+		//Ejecucion del ataque de dos monstruos
+		CartaMonstruo cartaGanadora = cartaAtacante.obtenerGanadoraContra(cartaDefensora);
+		Jugador jugadorPerdedor;
+		Jugador jugadorGanador;
+		CartaMonstruo cartaPerdedora;
 		if (cartaDefensora == cartaGanadora && cartaDefensora.enModoDefensa()) {
 			return;
 		}
@@ -106,6 +109,7 @@ public class Tablero {
 			cartaPerdedora = cartaDefensora;
 			jugadorGanador = jugadorAtacante;
 		}
+
 		colocarCementerio(cartaPerdedora, jugadorPerdedor);
 		eliminarDeZonaMonstruo(cartaPerdedora, jugadorPerdedor);
 		if (cartaDefensora.enModoDefensa()) {
@@ -123,8 +127,13 @@ public class Tablero {
 		}
 	}
 
-	private void colocarCartaEnCementerio(Carta carta, Jugador jugador) {
-		divisiones.get(jugador).eliminarCartaDeZonaMagicaOTrampa(carta);
+    private void eliminarDeZonaTrampaMagica(CartaTrampa unaCarta, Jugador unJugador) {
+        LadoDelCampo ladoDelCampo = divisiones.get(unJugador);
+        ladoDelCampo.eliminarDeZonaTrampaMagica(unaCarta);
+    }
+
+    private void colocarCartaEnCementerio(Carta carta, Jugador jugador) {
+		divisiones.get(jugador).eliminarDeZonaTrampaMagica(carta);
 		divisiones.get(jugador).colocarCementerio(carta);
 	}
 
@@ -171,5 +180,10 @@ public class Tablero {
 	public void restarPuntosAOponente(Jugador jugador, Punto puntosAtaque) {
 		Jugador jugadorOponente = this.buscarOponente(jugador);
 		jugadorOponente.restarPuntos(puntosAtaque);
+	}
+
+    public ZonaTrampaMagica mostrarZonaTrampaMagica(Jugador unJugador) {
+        LadoDelCampo ladoDelCampo = divisiones.get(unJugador);
+        return ladoDelCampo.mostrarZonaTrampaMagica();
 	}
 }

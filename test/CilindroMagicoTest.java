@@ -20,13 +20,10 @@ public class CilindroMagicoTest {
         Tablero tablero = new Tablero(jugadorDefensor, jugadorAtacante);
         Carta cilindro_magico = CreadoraDeCartas.crearCarta("Cilindro Magico");
         InvocacionDefault InvocacionCilindroMagico = new InvocacionDefault(cilindro_magico);
-        cilindro_magico.colocarBocaAbajo();
         HuevoMonstruoso cartaAtacante = new HuevoMonstruoso();
         InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante, null); // No requiere sacrificios
-        cartaInvocadaAtacante.invocar();
         AlasDeLaLlamaPerversa cartaDefensora = new AlasDeLaLlamaPerversa();
         InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora, null); // No requiere sacrificios
-        cartaInvocadaDefensora.invocar();
         cartaAtacante.colocarEnModoDeAtaque();
         cartaDefensora.colocarEnModoDeAtaque();
         tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);

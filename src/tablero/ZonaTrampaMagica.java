@@ -2,7 +2,7 @@ package tablero;
 import cartas.Carta;
 import cartas.cartasMonstruo.CartaMonstruo;
 import cartas.invocacion.Invocacion;
-import cartas.cartasTrampa.Trampa;
+import cartas.cartasTrampa.CartaTrampa;
 import jugador.Jugador;
 
 import java.util.ArrayList;
@@ -59,16 +59,16 @@ public class ZonaTrampaMagica implements Zona {
     }
     public void activar(Carta trampa, CartaMonstruo cartaAtacante, Jugador jugadorAtacante, CartaMonstruo cartaDefensora, Jugador jugadorDefensor) throws InterrumpirAtaqueException{
         if(existe(trampa)) {
-            Trampa trampaAActivar=(Trampa) trampa;
+            CartaTrampa trampaAActivar=(CartaTrampa) trampa;
             trampaAActivar.activarAnteUnAtaque(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
         }
     }
 
-    public List<Trampa> obtenerCartasTrampas() {
-        List<Trampa> resultado = new ArrayList<>();
+    public List<CartaTrampa> obtenerCartasTrampas() {
+        List<CartaTrampa> resultado = new ArrayList<>();
         for (int i = 0; i < CANT_CASILLEROS; i++) {
             Casillero casillero = casilleros.get(i);
-            if (! casillero.estaVacio() &&( casillero.mostrarCarta() instanceof Trampa ) ) resultado.add((Trampa) casillero.mostrarCarta());
+            if (! casillero.estaVacio() &&( casillero.mostrarCarta() instanceof CartaTrampa) ) resultado.add((CartaTrampa) casillero.mostrarCarta());
         }
         return resultado;
     }

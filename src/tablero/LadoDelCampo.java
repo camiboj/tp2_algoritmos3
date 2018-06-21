@@ -1,7 +1,7 @@
 package tablero;
 import cartas.*;
 import cartas.cartasMonstruo.CartaMonstruo;
-import cartas.cartasTrampa.Trampa;
+import cartas.cartasTrampa.CartaTrampa;
 import cartas.invocacion.Invocacion;
 import cartas.invocacion.InvocacionCartaCampo;
 import cartas.invocacion.InvocacionCartaMonstruo;
@@ -16,11 +16,13 @@ public class LadoDelCampo {
 	private ZonaCampo miZonaCampo;
 	private ZonaTrampaMagica miZonaDeTrampasYMagia;
 	private ZonaMonstruo miZonaMonstruo;
-	
-	@Override
-	public boolean equals(Object object){return this.getClass().equals(object.getClass());}
 
-	public LadoDelCampo () {
+	@Override
+	public boolean equals(Object object) {
+		return this.getClass().equals(object.getClass());
+	}
+
+	public LadoDelCampo() {
 		miCementerio = new Cementerio();
 		miMazo = new Mazo();
 		miZonaCampo = new ZonaCampo();
@@ -33,11 +35,11 @@ public class LadoDelCampo {
 		return miCementerio;
 	}
 
-	public boolean colocarZonaTrampaMagica (Invocacion unaInvocacion) {
+	public boolean colocarZonaTrampaMagica(Invocacion unaInvocacion) {
 		return miZonaDeTrampasYMagia.colocarCarta(unaInvocacion);
 	}
 
-	public boolean colocarZonaMonstruo (InvocacionCartaMonstruo unaInvocacion) {
+	public boolean colocarZonaMonstruo(InvocacionCartaMonstruo unaInvocacion) {
 		return miZonaMonstruo.colocarCarta(unaInvocacion);
 	}
 
@@ -56,19 +58,19 @@ public class LadoDelCampo {
 
 	public void borrarMonstruos() {
 		miZonaMonstruo.borrarMonstruos(miCementerio);
-		}
+	}
 
-	public boolean zonaMonstruoEstaVacia(){
+	public boolean zonaMonstruoEstaVacia() {
 		return miZonaMonstruo.estaVacia();
 	}
 
-    public boolean colocarZonaCampo(InvocacionCartaCampo unaInvocacion, List<CartaMonstruo> monstruosJugador,
-									List<CartaMonstruo> monstruosJugadorOponente) {
+	public boolean colocarZonaCampo(InvocacionCartaCampo unaInvocacion, List <CartaMonstruo> monstruosJugador,
+									List <CartaMonstruo> monstruosJugadorOponente) {
 		return miZonaCampo.colocarCarta(unaInvocacion, monstruosJugador, monstruosJugadorOponente);
-    }
+	}
 
-    public void eliminarMonstruoDebil() {
-    	CartaMonstruo cartaDebil = miZonaMonstruo.obtenerMonstruoDebil();
+	public void eliminarMonstruoDebil() {
+		CartaMonstruo cartaDebil = miZonaMonstruo.obtenerMonstruoDebil();
 		eliminarDeZonaMonstruo(cartaDebil);
 		colocarCementerio(cartaDebil);
 	}
@@ -78,15 +80,20 @@ public class LadoDelCampo {
 	}
 
 	public void activarTrampa(Carta trampa, CartaMonstruo cartaAtacante, Jugador jugadorAtacante, CartaMonstruo cartaDefensora,
-                              Jugador jugadorDefensor) throws  InterrumpirAtaqueException{
+							  Jugador jugadorDefensor) throws InterrumpirAtaqueException {
 		miZonaDeTrampasYMagia.activar(trampa, cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
 	}
 
-    public List<Trampa> obtenerTrampas() {
-	    return miZonaDeTrampasYMagia.obtenerCartasTrampas();
-    }
-    public void eliminarCartaDeZonaMagicaOTrampa(Carta carta) {
-        miZonaDeTrampasYMagia.eliminarCarta(carta);
+	public List <CartaTrampa> obtenerTrampas() {
+		return miZonaDeTrampasYMagia.obtenerCartasTrampas();
+	}
 
-    }
+	public void eliminarDeZonaTrampaMagica(Carta carta) {
+		miZonaDeTrampasYMagia.eliminarCarta(carta);
+
+	}
+
+	public ZonaTrampaMagica mostrarZonaTrampaMagica() {
+		return miZonaDeTrampasYMagia;
+	}
 }

@@ -6,10 +6,10 @@ import efectos.Efecto;
 import jugador.Jugador;
 import tablero.InterrumpirAtaqueException;
 
-public class Trampa extends Carta {
+public abstract class CartaTrampa extends Carta {
     private Efecto efectoDeLaTrampa;
 
-    public Trampa(String unNombre, Efecto efectoDeLaTrampa) {
+    public CartaTrampa(String unNombre, Efecto efectoDeLaTrampa) {
         super(unNombre);
         this.efectoDeLaTrampa= efectoDeLaTrampa;
     }
