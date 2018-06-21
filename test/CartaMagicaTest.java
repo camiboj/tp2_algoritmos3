@@ -1,6 +1,6 @@
 import cartas.Carta;
 import cartas.CreadoraDeCartas;
-import cartas.InvocacionDefault;
+import cartas.invocacion.InvocacionDefault;
 import estadosDeCartas.BocaAbajo;
 import jugador.Jugador;
 import tablero.Tablero;

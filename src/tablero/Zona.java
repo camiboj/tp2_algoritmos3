@@ -1,6 +1,6 @@
 package tablero;
 import cartas.Carta;
-import cartas.Invocacion;
+import cartas.invocacion.Invocacion;
 
 public interface Zona {
     boolean colocarCarta(Invocacion invocacion);

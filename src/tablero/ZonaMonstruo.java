@@ -1,8 +1,8 @@
 package tablero;
 
 import cartas.Carta;
-import cartas.CartaMonstruo;
-import cartas.Invocacion;
+import cartas.cartasMonstruo.CartaMonstruo;
+import cartas.invocacion.Invocacion;
 
 import java.util.ArrayList;
 import java.util.List;

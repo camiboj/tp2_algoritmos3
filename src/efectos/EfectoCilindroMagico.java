@@ -1,7 +1,7 @@
 package efectos;
 
 import cartas.Carta;
-import cartas.CartaMonstruo;
+import cartas.cartasMonstruo.CartaMonstruo;
 import jugador.Jugador;
 import tablero.InterrumpirAtaqueException;
 

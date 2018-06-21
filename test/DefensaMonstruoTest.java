@@ -1,4 +1,7 @@
-import cartas.*;
+import cartas.cartasMonstruo.AlasDeLaLlamaPerversa;
+import cartas.cartasMonstruo.AlcanzadorDeGarra;
+import cartas.cartasMonstruo.HuevoMonstruoso;
+import cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import jugador.Jugador;
 import jugador.Punto;
 import org.junit.Test;

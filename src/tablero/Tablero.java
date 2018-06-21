@@ -3,6 +3,11 @@ import java.util.HashMap;
 import java.util.List;
 
 import cartas.*;
+import cartas.cartasMonstruo.CartaMonstruo;
+import cartas.cartasTrampa.Trampa;
+import cartas.invocacion.Invocacion;
+import cartas.invocacion.InvocacionCartaCampo;
+import cartas.invocacion.InvocacionCartaMonstruo;
 import jugador.Jugador;
 import jugador.Punto;
 

@@ -1,4 +1,9 @@
-import cartas.*;
+import cartas.cartasMonstruo.CartaMonstruo;
+import cartas.cartasMonstruo.DragonBlancoDeOjosAzules;
+import cartas.cartasMonstruo.DragonDefinitivoDeOjosAzules;
+import cartas.cartasMonstruo.HuevoMonstruoso;
+import cartas.invocacion.InvocacionCartaDragonDefinitivoOjosAzules;
+import cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Cementerio;

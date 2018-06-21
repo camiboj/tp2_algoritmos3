@@ -1,5 +1,5 @@
 package efectos;
-import cartas.HuevoMonstruoso;
+import cartas.cartasMonstruo.HuevoMonstruoso;
 
 public class EfectoAgujeroNegro {
     public void utilizarSobre(HuevoMonstruoso huevoMonstruoso) {

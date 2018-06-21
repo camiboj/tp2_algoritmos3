@@ -1,5 +1,9 @@
 package cartas;
 
+import cartas.cartasCampo.Wasteland;
+import cartas.cartasTrampa.CilindroMagico;
+import cartas.cartasMonstruo.*;
+
 public class CreadoraDeCartas {
 	public static final Carta crearCarta(String nombre) {
 		switch (nombre) {

@@ -1,4 +1,8 @@
 import cartas.*;
+import cartas.cartasMonstruo.AlasDeLaLlamaPerversa;
+import cartas.cartasMonstruo.HuevoMonstruoso;
+import cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import cartas.invocacion.InvocacionDefault;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Cementerio;
@@ -32,6 +36,10 @@ public class CilindroMagicoTest {
         assertFalse(cementerio.existe(cartaAtacante));
         Cementerio cementerio2= tablero.mostrarCementerio(jugadorDefensor);
         assertTrue(cementerio2.existe(cilindro_magico));
+        int numeroAtaque = cartaAtacante.obtenerPuntosAtaque().obtenerNumero();
+       /* assertTrue(jugadorDefensor.obtenerPuntos().equals(new Punto(8000)) &&
+                jugadorAtacante.obtenerPuntos().equals(new Punto((8000 - numeroAtaque))));
         //assertTrue(tablero.colocarZonaTrampaMagica(unaInvocacion, jugadorDefensor));
+        */
     }
 }

@@ -1,5 +1,5 @@
-import cartas.InvocacionDefault;
-import cartas.HuevoMonstruoso;
+import cartas.invocacion.InvocacionDefault;
+import cartas.cartasMonstruo.HuevoMonstruoso;
 import estadosDeCartas.ModoDeAtaque;
 import estadosDeCartas.ModoDeDefensa;
 import jugador.Punto;

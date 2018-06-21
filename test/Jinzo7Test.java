@@ -1,4 +1,6 @@
-import cartas.*;
+import cartas.cartasMonstruo.IdoloDeLosMilOjos;
+import cartas.cartasMonstruo.Jinzo7;
+import cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import jugador.Jugador;
 import jugador.Punto;
 import org.junit.Test;

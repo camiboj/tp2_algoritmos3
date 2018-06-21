@@ -1,4 +1,9 @@
-import cartas.*;
+import cartas.cartasMagicas.AgujeroNegro;
+import cartas.cartasMonstruo.AlasDeLaLlamaPerversa;
+import cartas.cartasMonstruo.AlcanzadorDeGarra;
+import cartas.cartasMonstruo.HuevoMonstruoso;
+import cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import cartas.invocacion.InvocacionDefault;
 import efectos.EfectoAgujeroNegro;
 import jugador.Jugador;
 import jugador.Punto;

@@ -1,4 +1,5 @@
-import cartas.*;
+import cartas.cartasMonstruo.*;
+import cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Cementerio;

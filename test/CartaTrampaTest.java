@@ -1,6 +1,6 @@
 import cartas.Carta;
 import cartas.CreadoraDeCartas;
-import cartas.InvocacionDefault;
+import cartas.invocacion.InvocacionDefault;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Tablero;

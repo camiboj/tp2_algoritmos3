@@ -1,4 +1,9 @@
-import cartas.*;
+import cartas.cartasCampo.Wasteland;
+import cartas.cartasMonstruo.AlasDeLaLlamaPerversa;
+import cartas.cartasMonstruo.CartaMonstruo;
+import cartas.cartasMonstruo.HuevoMonstruoso;
+import cartas.invocacion.InvocacionCartaCampo;
+import cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Tablero;
