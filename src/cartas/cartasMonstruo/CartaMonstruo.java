@@ -22,6 +22,8 @@ public abstract class CartaMonstruo extends Carta {
         modo = null;
     }
 
+    public void activarEfecto(){}
+
     private void cambiarEstado(Modo m) {
         this.modo= m;
     }

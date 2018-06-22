@@ -25,6 +25,7 @@ public class Jinzo7Test {
         Jinzo7 jinzo7 = new Jinzo7(jugadorOponente);
         InvocacionCartaMonstruoGenerica invocacionJinzo7 = new InvocacionCartaMonstruoGenerica(jinzo7);
         tablero.colocarZonaMonstruo(invocacionJinzo7, jugador);
+        jinzo7.colocarBocaArriba();
 
         Cementerio cementerioJugador = tablero.mostrarCementerio(jugador);
         ZonaMonstruo zonaMonstruoJugador = tablero.mostrarZonaMonstruo(jugador);

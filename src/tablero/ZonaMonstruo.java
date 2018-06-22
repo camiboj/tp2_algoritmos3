@@ -3,6 +3,7 @@ package tablero;
 import cartas.Carta;
 import cartas.cartasMonstruo.CartaMonstruo;
 import cartas.invocacion.Invocacion;
+import jugador.Punto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,5 +97,19 @@ public abstract class ZonaMonstruo implements Zona {
             cartaDebil = carta.obtenerAtaqueMinimo(cartaDebil);
         }
         return cartaDebil;
+    }
+
+    public void aumentarDefensa(Punto puntosAdicionalesDefensa) {
+        List<CartaMonstruo> monstruos = obtenerMonstruos();
+        for (CartaMonstruo monstruo : monstruos) {
+            monstruo.aumentarDefensa(puntosAdicionalesDefensa);
+        }
+    }
+
+    public void aumentarAtaque(Punto puntosAdicionalesAtaque) {
+        List<CartaMonstruo> monstruos = obtenerMonstruos();
+        for (CartaMonstruo monstruo : monstruos) {
+            monstruo.aumentarAtaque(puntosAdicionalesAtaque);
+        }
     }
 }

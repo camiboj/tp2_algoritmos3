@@ -2,6 +2,7 @@ package tablero;
 import cartas.*;
 import cartas.cartasCampo.CartaCampo;
 import cartas.cartasMonstruo.CartaMonstruo;
+import cartas.invocacion.Invocacion;
 import cartas.invocacion.InvocacionCartaCampo;
 
 import java.util.List;
@@ -13,12 +14,11 @@ public class ZonaCampo { //Le saque la interfaz porque no coloca una carta cualq
         casillero = new Casillero();
     }
 
-        public boolean colocarCarta(InvocacionCartaCampo invocacion, List<CartaMonstruo> monstruosJugador,
-                                    List<CartaMonstruo> monstruosJugadorOponente) {
+        public boolean colocarCarta(Invocacion invocacion) {
         //Devuelve true si pudo colocarla y false si la zona estaba completa
         if (casillero.estaVacio()) {
-            CartaCampo carta = invocacion.invocar();
-            carta.activarEfecto(monstruosJugador, monstruosJugadorOponente);
+            Carta carta = invocacion.invocar();
+            carta.activarEfecto();
             casillero.colocarCarta(carta);
             return true;
         }

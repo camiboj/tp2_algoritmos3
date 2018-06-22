@@ -26,19 +26,13 @@ public class Tablero {
 		return divisiones.get(jugador1);
 	}
 
-	public boolean colocarZonaCampo(InvocacionCartaCampo unaInvocacion, Jugador jugador, Jugador jugadorOponente) {
+	public boolean colocarZonaCampo(Invocacion unaInvocacion, Jugador jugador) {
 		//Si es Wasteland: primero pasar Jugador y después JugadorOponente
 		//Si es Sogen: primero pasar JugadorOponente y después Jugador
 
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
-		LadoDelCampo ladoDelCampoOponente = divisiones.get(jugadorOponente);
-		ZonaMonstruo zonaMonstruoJugador = ladoDelCampo.mostrarZonaMonstruo();
-		ZonaMonstruo zonaMonstruoJugadorOponente = ladoDelCampoOponente.mostrarZonaMonstruo();
-		List<CartaMonstruo> monstruosJugador = zonaMonstruoJugador.obtenerMonstruos();
-		List<CartaMonstruo> monstruosJugadorOponente = zonaMonstruoJugadorOponente.obtenerMonstruos();
-		Carta carta = unaInvocacion.invocar();
-		jugador.sacarDeMano(carta);
-		return ladoDelCampo.colocarZonaCampo(unaInvocacion, monstruosJugador, monstruosJugadorOponente);
+
+		return ladoDelCampo.colocarZonaCampo(unaInvocacion);
 	}
 
 	public Cementerio mostrarCementerio(Jugador unJugador) {

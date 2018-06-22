@@ -64,9 +64,8 @@ public class LadoDelCampo {
 		return miZonaMonstruo.estaVacia();
 	}
 
-	public boolean colocarZonaCampo(InvocacionCartaCampo unaInvocacion, List <CartaMonstruo> monstruosJugador,
-									List <CartaMonstruo> monstruosJugadorOponente) {
-		return miZonaCampo.colocarCarta(unaInvocacion, monstruosJugador, monstruosJugadorOponente);
+	public boolean colocarZonaCampo(Invocacion unaInvocacion) {
+		return miZonaCampo.colocarCarta(unaInvocacion);
 	}
 
 	public void eliminarMonstruoDebil() {

@@ -16,4 +16,5 @@ public class Wattcoladragon extends CartaMonstruo {
         super("Wattcoladragon", 2500, 1000, 6);
         modo = null;
     }
+
 }

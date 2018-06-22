@@ -21,10 +21,11 @@ public class CreadoraDeCartas {
 				return new ArañaLanzadora();
 			case "Bestia De Talwar":
 				return new BestiaDeTalwar();*/
-			case "Aitsu":
+			/*case "Aitsu":
 				return new Aitsu();
 			case "Wasteland":
 				return new Wasteland();
+			*/
 			//case "Olla De La Codicia":
 				//return new OllaDeLaCodicia();
 

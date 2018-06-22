@@ -14,7 +14,9 @@ public abstract class CartaTrampa extends Carta {
         this.efectoTrampaDeLaTrampa = efectoTrampaDeLaTrampa;
     }
 
-    public void activarAnteUnAtaque(CartaMonstruo cartaAtacante, Jugador atacante, CartaMonstruo cartaDefensora, Jugador jugadorDefensor) throws InterrumpirAtaqueException {
+    public void activarAnteUnAtaque(CartaMonstruo cartaAtacante, Jugador atacante, CartaMonstruo cartaDefensora,
+                                    Jugador jugadorDefensor) throws InterrumpirAtaqueException {
         efectoTrampaDeLaTrampa.activarAnteUnAtaque(cartaAtacante,atacante, cartaDefensora, jugadorDefensor, this);
     }
+
 }

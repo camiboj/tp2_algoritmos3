@@ -4,6 +4,7 @@ import cartas.cartasMonstruo.CartaMonstruo;
 import cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import cartas.invocacion.InvocacionCartaCampo;
 import cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import cartas.invocacion.InvocacionDefault;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Tablero;
@@ -19,32 +20,40 @@ public class SogenTest {
     @Test
     public void activacionCartaSogenHaceLoEsperado () {
 
-        Jugador jugador1 = new Jugador();
-        Jugador jugador2 = new Jugador();
-        Tablero tablero = new Tablero(jugador1, jugador2);
-        HuevoMonstruoso monstruo1 = new HuevoMonstruoso();
-        InvocacionCartaMonstruoGenerica invocacionMonstruo1 = new InvocacionCartaMonstruoGenerica(monstruo1);
-        AlasDeLaLlamaPerversa monstruo2 = new AlasDeLaLlamaPerversa();
-        InvocacionCartaMonstruoGenerica invocacionMonstruo2 = new InvocacionCartaMonstruoGenerica(monstruo2);
-        tablero.colocarZonaMonstruo(invocacionMonstruo1, jugador1);
-        tablero.colocarZonaMonstruo(invocacionMonstruo2, jugador2);
-        ZonaMonstruo zonaMonstruo1 = tablero.mostrarZonaMonstruo(jugador1);
-        ZonaMonstruo zonaMonstruo2 = tablero.mostrarZonaMonstruo(jugador2);
+        Jugador jugadorSogen = new Jugador();
+        Jugador otroJugador = new Jugador();
+        Tablero tablero = new Tablero(jugadorSogen, otroJugador);
+
+        HuevoMonstruoso monstruoLadoSogen = new HuevoMonstruoso();
+        InvocacionCartaMonstruoGenerica invocacionMonstuoLadoSogen = new InvocacionCartaMonstruoGenerica(monstruoLadoSogen);
+        tablero.colocarZonaMonstruo(invocacionMonstuoLadoSogen, jugadorSogen);
+
+        AlasDeLaLlamaPerversa otroMonstruo = new AlasDeLaLlamaPerversa();
+        InvocacionCartaMonstruoGenerica invocacionOtroMonstruo = new InvocacionCartaMonstruoGenerica(otroMonstruo);
+        tablero.colocarZonaMonstruo(invocacionOtroMonstruo, otroJugador);
+
+        ZonaMonstruo zonaMonstruoSogen = tablero.mostrarZonaMonstruo(jugadorSogen);
+        ZonaMonstruo zonaMonstruoOtro = tablero.mostrarZonaMonstruo(otroJugador);
+
         //Verifico que los dos monstruos están en el campo
-        assertTrue(zonaMonstruo1.existe(monstruo1) && zonaMonstruo2.existe(monstruo2));
+        assertTrue(zonaMonstruoSogen.existe(monstruoLadoSogen) && zonaMonstruoOtro.existe(otroMonstruo));
 
 
-        List <CartaMonstruo> monstruosJugador1 = new ArrayList <>();
+       /* List <CartaMonstruo> monstruosJugador1 = new ArrayList <>();
         monstruosJugador1.add(monstruo1);
         List <CartaMonstruo> monstruosJugador2 = new ArrayList <>();
-        monstruosJugador2.add(monstruo2);
-        Sogen sogen = new Sogen();
-        InvocacionCartaCampo invocacionSogen = new InvocacionCartaCampo(sogen, monstruosJugador1, monstruosJugador2);
-        tablero.colocarZonaCampo(invocacionSogen, jugador2, jugador1); //Si falla ver acá. Pasamos los jugadores al revés.
+        monstruosJugador2.add(monstruo2);*/
+        Sogen sogen = new Sogen(zonaMonstruoSogen, zonaMonstruoOtro);
+        InvocacionDefault invocacionSogen = new InvocacionDefault(sogen);
+        //InvocacionCartaCampo invocacionSogen = new InvocacionCartaCampo(sogen, monstruosJugador1, monstruosJugador2);
+        tablero.colocarZonaCampo(invocacionSogen, jugadorSogen); //Si falla ver acá. Pasamos los jugadores al revés.
 
-        assertTrue(monstruo1.obtenerPuntosAtaque().obtenerNumero() == 600);
-        assertTrue(monstruo1.obtenerPuntosDefensa().obtenerNumero() == 1400);
-        assertTrue(monstruo2.obtenerPuntosAtaque().obtenerNumero() == 900);
-        assertTrue(monstruo2.obtenerPuntosDefensa().obtenerNumero() == 600);
+        int ataqueHuevoMonstruoso = otroMonstruo.obtenerPuntosAtaque().obtenerNumero();
+        System.out.println(ataqueHuevoMonstruoso);
+
+        assertTrue(monstruoLadoSogen.obtenerPuntosAtaque().obtenerNumero() == 600);
+        assertTrue(monstruoLadoSogen.obtenerPuntosDefensa().obtenerNumero() == 1400);
+        assertTrue(otroMonstruo.obtenerPuntosAtaque().obtenerNumero() == 900);
+        assertTrue(otroMonstruo.obtenerPuntosDefensa().obtenerNumero() == 600);
     }
 }

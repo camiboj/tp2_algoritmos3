@@ -6,4 +6,7 @@ public class CilindroMagico extends CartaTrampa {
     public CilindroMagico() {
         super("Cilindro Magico", new EfectoTrampaCilindroMagico());
     }
+
+    @Override
+    public void activarEfecto() { }
 }
