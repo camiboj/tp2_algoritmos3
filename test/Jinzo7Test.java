@@ -20,11 +20,11 @@ public class Jinzo7Test {
         Tablero tablero = new Tablero(jugador, jugadorOponente);
 
         IdoloDeLosMilOjos cartaSobreviviente = new IdoloDeLosMilOjos();
-        InvocacionCartaMonstruoGenerica invocacionSobreviviente = new InvocacionCartaMonstruoGenerica(cartaSobreviviente, null);
+        InvocacionCartaMonstruoGenerica invocacionSobreviviente = new InvocacionCartaMonstruoGenerica(cartaSobreviviente);
         tablero.colocarZonaMonstruo(invocacionSobreviviente, jugadorOponente);
 
         Jinzo7 jinzo7 = new Jinzo7(tablero, jugador);
-        InvocacionCartaMonstruoGenerica invocacionJinzo7 = new InvocacionCartaMonstruoGenerica(jinzo7, null);
+        InvocacionCartaMonstruoGenerica invocacionJinzo7 = new InvocacionCartaMonstruoGenerica(jinzo7);
         tablero.colocarZonaMonstruo(invocacionJinzo7, jugador);
 
         Cementerio cementerioJugador = tablero.mostrarCementerio(jugador);

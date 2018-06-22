@@ -31,14 +31,14 @@ public class ReinforcementsTest {
         tablero.colocarZonaTrampaMagica(invocacionReinforcements, jugadorDefensor);
         HuevoMonstruoso cartaDefensora = new HuevoMonstruoso(); //puntosAtaque = 600
         cartaDefensora.colocarEnModoDeAtaque();
-        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora, null); // No requiere sacrificios
+        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora); // No requiere sacrificios
         tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
 
         //Creo alcanzador de garra y lo pongo en el tablero
         AlcanzadorDeGarra cartaAtacante = new AlcanzadorDeGarra(); //puntos ataque = 1000
         cartaAtacante.colocarEnModoDeAtaque();
 
-        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante, null); // No requiere sacrificios
+        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante); // No requiere sacrificios
         tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
 
         //Ataca el monstruo atacante al defensor
