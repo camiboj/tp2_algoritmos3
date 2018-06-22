@@ -27,7 +27,7 @@ public class FisuraTest {
         tablero.colocarZonaMonstruo(invocacionSobreviviente, jugadorOponente);
         tablero.colocarZonaMonstruo(invocacionMuerto, jugadorOponente);
 
-        Fisura fisura = new Fisura(tablero, jugador);
+        Fisura fisura = new Fisura(tablero.mostrarLadoDelCampo(jugadorOponente));
         InvocacionDefault invocacionFisura = new InvocacionDefault(fisura);
         tablero.colocarZonaTrampaMagica(invocacionFisura, jugador);
 

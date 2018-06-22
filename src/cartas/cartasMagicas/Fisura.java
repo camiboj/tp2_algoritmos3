@@ -1,21 +1,21 @@
 package cartas.cartasMagicas;
 
 import cartas.cartasMagicas.CartaMagica;
+import efectos.Efecto;
 import jugador.Jugador;
+import tablero.LadoDelCampo;
 import tablero.Tablero;
 
-public class Fisura extends CartaMagica {
-    Tablero tablero;
-    Jugador jugador;
+public class Fisura extends CartaMagica implements Efecto {
+    private final LadoDelCampo ladoDelCampoOponente;
 
-    public Fisura(Tablero unTablero, Jugador unJugador) {
+    public Fisura(LadoDelCampo unLadoDelCampoOponente) {
         super("Fisura");
-        tablero = unTablero;
-        jugador = unJugador;
+        ladoDelCampoOponente = unLadoDelCampoOponente;
     }
 
     public void activarEfecto(){
-        tablero.eliminarMonstruoDebil(jugador);
+        ladoDelCampoOponente.eliminarMonstruoDebil();
     }
 
 }

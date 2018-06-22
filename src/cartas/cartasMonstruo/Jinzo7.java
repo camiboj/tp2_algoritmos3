@@ -1,8 +1,9 @@
 package cartas.cartasMonstruo;
 
+import efectos.Efecto;
 import jugador.Jugador;
 
-public class Jinzo7 extends CartaMonstruo implements CartaMonstruoConEfecto {
+public class Jinzo7 extends CartaMonstruo implements Efecto {
     Jugador jugadorOponente;
 
     public Jinzo7 (Jugador unJugadorOponente)  {

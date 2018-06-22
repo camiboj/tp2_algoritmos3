@@ -183,4 +183,8 @@ public class Tablero {
         LadoDelCampo ladoDelCampo = divisiones.get(unJugador);
         return ladoDelCampo.mostrarZonaTrampaMagica();
 	}
+
+	public LadoDelCampo mostrarLadoDelCampo(Jugador jugadorOponente) {
+		return divisiones.get(jugadorOponente);
+	}
 }

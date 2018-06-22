@@ -1,16 +1,15 @@
 package cartas.cartasMagicas;
 
 import cartas.cartasMagicas.CartaMagica;
+import efectos.Efecto;
 import jugador.Jugador;
 import tablero.Tablero;
 
- public class OllaDeLaCodicia extends CartaMagica {
-     Tablero tablero;
+ public class OllaDeLaCodicia extends CartaMagica implements Efecto {
      Jugador jugador;
 
-    public OllaDeLaCodicia(Tablero unTablero, Jugador unJugador) {
+    public OllaDeLaCodicia(Jugador unJugador) {
         super("Olla De La Codicia");
-        tablero = unTablero;
         jugador = unJugador;
     }
 

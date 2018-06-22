@@ -1,8 +1,8 @@
 package cartas.cartasTrampa;
-import efectos.EfectoReinforcements;
+import efectos.EfectoTrampaReinforcements;
 
 public class Reinforcements extends CartaTrampa {
     public Reinforcements() {
-        super("Reinforcements", new EfectoReinforcements());
+        super("Reinforcements", new EfectoTrampaReinforcements());
     }
 }
