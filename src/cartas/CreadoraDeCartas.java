@@ -1,8 +1,8 @@
 package cartas;
 
 import cartas.cartasCampo.Wasteland;
+import cartas.cartasMonstruo.cartasBasicas.*;
 import cartas.cartasTrampa.CilindroMagico;
-import cartas.cartasMonstruo.*;
 
 public class CreadoraDeCartas {
 	public static final Carta crearCarta(String nombre) {
@@ -17,10 +17,10 @@ public class CreadoraDeCartas {
 				//return new AgujeroNegro();
 			case "Alcanzador de Garra":
 				return new AlcanzadorDeGarra();
-			case "Araña Lanzadora":
+			/*case "Araña Lanzadora":
 				return new ArañaLanzadora();
 			case "Bestia De Talwar":
-				return new BestiaDeTalwar();
+				return new BestiaDeTalwar();*/
 			case "Aitsu":
 				return new Aitsu();
 			case "Wasteland":

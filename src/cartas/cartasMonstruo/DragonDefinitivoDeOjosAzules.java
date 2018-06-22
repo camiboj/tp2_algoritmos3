@@ -1,5 +1,7 @@
 package cartas.cartasMonstruo;
 
+import cartas.cartasMonstruo.cartasBasicas.DragonBlancoDeOjosAzules;
+
 import java.util.List;
 
 public class DragonDefinitivoDeOjosAzules extends CartaMonstruo {

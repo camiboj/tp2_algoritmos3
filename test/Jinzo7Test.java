@@ -1,8 +1,7 @@
-import cartas.cartasMonstruo.IdoloDeLosMilOjos;
+import cartas.cartasMonstruo.cartasBasicas.IdoloDeLosMilOjos;
 import cartas.cartasMonstruo.Jinzo7;
 import cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import jugador.Jugador;
-import jugador.Punto;
 import org.junit.Test;
 import tablero.Cementerio;
 import tablero.Tablero;
@@ -23,7 +22,7 @@ public class Jinzo7Test {
         InvocacionCartaMonstruoGenerica invocacionSobreviviente = new InvocacionCartaMonstruoGenerica(cartaSobreviviente);
         tablero.colocarZonaMonstruo(invocacionSobreviviente, jugadorOponente);
 
-        Jinzo7 jinzo7 = new Jinzo7(tablero, jugador);
+        Jinzo7 jinzo7 = new Jinzo7(jugadorOponente);
         InvocacionCartaMonstruoGenerica invocacionJinzo7 = new InvocacionCartaMonstruoGenerica(jinzo7);
         tablero.colocarZonaMonstruo(invocacionJinzo7, jugador);
 

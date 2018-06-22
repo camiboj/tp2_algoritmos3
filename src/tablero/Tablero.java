@@ -178,10 +178,6 @@ public class Tablero {
 		return jugadorADevolver;
 	}
 
-	public void restarPuntosAOponente(Jugador jugador, Punto puntosAtaque) {
-		Jugador jugadorOponente = this.buscarOponente(jugador);
-		jugadorOponente.restarPuntos(puntosAtaque);
-	}
 
     public ZonaTrampaMagica mostrarZonaTrampaMagica(Jugador unJugador) {
         LadoDelCampo ladoDelCampo = divisiones.get(unJugador);

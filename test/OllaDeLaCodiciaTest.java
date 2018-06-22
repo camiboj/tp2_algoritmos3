@@ -1,5 +1,5 @@
 import cartas.invocacion.InvocacionDefault;
-import cartas.cartasMonstruo.OllaDeLaCodicia;
+import cartas.cartasMagicas.OllaDeLaCodicia;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Tablero;

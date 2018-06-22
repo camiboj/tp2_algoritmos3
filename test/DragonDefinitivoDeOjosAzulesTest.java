@@ -1,7 +1,7 @@
 import cartas.cartasMonstruo.CartaMonstruo;
-import cartas.cartasMonstruo.DragonBlancoDeOjosAzules;
+import cartas.cartasMonstruo.cartasBasicas.DragonBlancoDeOjosAzules;
 import cartas.cartasMonstruo.DragonDefinitivoDeOjosAzules;
-import cartas.cartasMonstruo.HuevoMonstruoso;
+import cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import cartas.invocacion.InvocacionCartaDragonDefinitivoOjosAzules;
 import cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import jugador.Jugador;

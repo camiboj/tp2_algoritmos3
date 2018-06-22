@@ -1,6 +1,6 @@
 import cartas.cartasMagicas.Fisura;
-import cartas.cartasMonstruo.AlasDeLaLlamaPerversa;
-import cartas.cartasMonstruo.HuevoMonstruoso;
+import cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
+import cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import cartas.invocacion.InvocacionDefault;
 import jugador.Jugador;

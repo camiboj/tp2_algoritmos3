@@ -1,7 +1,7 @@
 import cartas.cartasCampo.Sogen;
-import cartas.cartasMonstruo.AlasDeLaLlamaPerversa;
+import cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
 import cartas.cartasMonstruo.CartaMonstruo;
-import cartas.cartasMonstruo.HuevoMonstruoso;
+import cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import cartas.invocacion.InvocacionCartaCampo;
 import cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import jugador.Jugador;
