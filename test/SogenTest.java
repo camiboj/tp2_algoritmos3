@@ -38,18 +38,10 @@ public class SogenTest {
         //Verifico que los dos monstruos están en el campo
         assertTrue(zonaMonstruoSogen.existe(monstruoLadoSogen) && zonaMonstruoOtro.existe(otroMonstruo));
 
-
-       /* List <CartaMonstruo> monstruosJugador1 = new ArrayList <>();
-        monstruosJugador1.add(monstruo1);
-        List <CartaMonstruo> monstruosJugador2 = new ArrayList <>();
-        monstruosJugador2.add(monstruo2);*/
         Sogen sogen = new Sogen(zonaMonstruoSogen, zonaMonstruoOtro);
         InvocacionDefault invocacionSogen = new InvocacionDefault(sogen);
-        //InvocacionCartaCampo invocacionSogen = new InvocacionCartaCampo(sogen, monstruosJugador1, monstruosJugador2);
-        tablero.colocarZonaCampo(invocacionSogen, jugadorSogen); //Si falla ver acá. Pasamos los jugadores al revés.
+        tablero.colocarZonaCampo(invocacionSogen, jugadorSogen);
 
-        int ataqueHuevoMonstruoso = otroMonstruo.obtenerPuntosAtaque().obtenerNumero();
-        System.out.println(ataqueHuevoMonstruoso);
 
         assertTrue(monstruoLadoSogen.obtenerPuntosAtaque().obtenerNumero() == 600);
         assertTrue(monstruoLadoSogen.obtenerPuntosDefensa().obtenerNumero() == 1400);

@@ -13,6 +13,10 @@ public class Jugador {
         mano = this.crearMano();
     }
 
+    public boolean sinMazo() {
+        return mazo.estaVacio();
+    }
+
     public Mazo obtenerMazo() {
         return mazo;
     }
@@ -30,7 +34,6 @@ public class Jugador {
         puntosJuego = resultado;
     }
 
-    @Override
     public boolean equals(Object object){return this.getClass().equals(object.getClass());}
 
     public void agarraCartas(int cantidad) {
@@ -60,5 +63,9 @@ public class Jugador {
 
     public void sacarDeMano(Carta carta) {
         mano.sacar(carta);
+    }
+
+    public boolean sinPuntos() {
+        return puntosJuego.obtenerNumero()<0;
     }
 }

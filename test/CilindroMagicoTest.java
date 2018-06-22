@@ -8,8 +8,8 @@ import org.junit.Test;
 import tablero.Cementerio;
 import tablero.Tablero;
 
-import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 public class CilindroMagicoTest {
     @Test

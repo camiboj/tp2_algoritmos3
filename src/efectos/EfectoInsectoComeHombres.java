@@ -1,7 +1,15 @@
 package efectos;
-import cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
+import cartas.Carta;
+import cartas.cartasMonstruo.CartaMonstruo;
+import jugador.Jugador;
+import tablero.InterrumpirAtaqueException;
 
-public class EfectoInsectoComeHombres {
-    public void utilizarSobre(HuevoMonstruoso huevoMonstruoso) {
+public class EfectoInsectoComeHombres implements EfectoTrampa {
+
+    public void activarAnteUnAtaque(CartaMonstruo cartaAtacante, Jugador jugadorAtacante,
+                                    CartaMonstruo monstruoDefensor, Jugador jugadorDefensor, Carta cartaJugada)
+            throws InterrumpirAtaqueException {
+        jugadorAtacante.restarPuntos(cartaAtacante.obtenerPuntosAtaque());
+        throw new InterrumpirAtaqueException(cartaJugada, jugadorDefensor);
     }
 }

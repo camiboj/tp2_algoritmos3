@@ -40,6 +40,7 @@ public abstract class ZonaMonstruo implements Zona {
         try {
             Carta carta = invocacion.invocar();
             vacios.get(0).colocarCarta(carta);
+            carta.colocarBocaAbajo();
         } catch (Exception e) {
             return false;
         }

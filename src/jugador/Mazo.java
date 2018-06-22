@@ -45,6 +45,10 @@ public class Mazo {
         }
     }
 
+    public boolean estaVacio() {
+        return cartas.empty();
+    }
+
     public Carta sacarCarta() {
         Carta carta = cartas.pop();
 
@@ -57,10 +61,8 @@ public class Mazo {
 
     public void agregarCarta(String nombreDeCarta) {
 
-        if (cartas.size()<40){
+        if (cartas.size()<40) {
             cartas.push(CreadoraDeCartas.crearCarta(nombreDeCarta));
         }
-
-
     }
 }

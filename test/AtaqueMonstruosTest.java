@@ -47,7 +47,6 @@ public class AtaqueMonstruosTest {
         assertTrue(cementerio.existe(cartaDefensora));
         ZonaMonstruo zonaMonstruo = tablero.mostrarZonaMonstruo(jugadorDefensor);
         assertFalse(zonaMonstruo.existe(cartaDefensora));
-
     }
 
     @Test
