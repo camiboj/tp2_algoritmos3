@@ -17,8 +17,8 @@ public class FinMazoTest {
             jugador1.sacarCarta();
         }
 
-        assertTrue(jugador1.pierde() && jugador2.gana());
-        assertFalse(jugador1.gana() && jugador2.pierde());
+        assertTrue(jugador1.pierde(jugador2.mostrarMano()) && jugador2.gana());
+        assertFalse(jugador1.gana() && jugador2.pierde(jugador1.mostrarMano()));
         assertTrue(juego.finDelJuego());
     }
 }

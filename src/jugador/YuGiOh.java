@@ -13,9 +13,8 @@ public class YuGiOh {
     }
 
     public boolean finDelJuego() {
-        boolean sinPuntos = (jugador1.sinPuntos() || jugador2.sinPuntos());
-        boolean sinMazo = (jugador1.sinMazo() || jugador2.sinMazo());
-        return sinPuntos || sinMazo;
+        return (jugador1.pierde(jugador2.mostrarMano()) && jugador2.gana() ||
+                jugador1.gana() && jugador2.pierde(jugador1.mostrarMano()));
     }
 
     public Jugador obtenerJugador1() { return jugador1; }

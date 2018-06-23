@@ -2,7 +2,7 @@ package cartas.cartasMonstruo.exodia;
 
 import cartas.cartasMonstruo.CartaMonstruo;
 
-public class BrazoDerechoDelProhibido extends CartaMonstruo {
+public class BrazoDerechoDelProhibido extends CartaMonstruoExodia {
 
 
     public BrazoDerechoDelProhibido() {

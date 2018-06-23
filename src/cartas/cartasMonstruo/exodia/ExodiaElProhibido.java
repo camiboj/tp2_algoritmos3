@@ -1,8 +1,7 @@
 package cartas.cartasMonstruo.exodia;
 
-import cartas.cartasMonstruo.CartaMonstruo;
 
-public class ExodiaElProhibido extends CartaMonstruo {
+public class ExodiaElProhibido extends CartaMonstruoExodia {
 
     public ExodiaElProhibido() {
         super("Exodia El Prohibido", 1000, 1000, 3);

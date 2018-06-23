@@ -1,6 +1,9 @@
 package jugador;
 
 import cartas.Carta;
+import cartas.cartasMonstruo.exodia.CartaMonstruoExodia;
+
+import java.util.List;
 
 public class Jugador {
     private Punto puntosJuego;
@@ -34,12 +37,12 @@ public class Jugador {
         puntosJuego = resultado;
     }
 
-    public boolean pierde() {
-        return this.sinPuntos() || this.sinMazo();
+    public boolean pierde(Mano manoJugadorOponente) {
+        return this.sinPuntos() || this.sinMazo() || manoJugadorOponente.sonTodasExodia();
     }
 
     public boolean gana() {
-        return ! this.sinPuntos() && ! this.sinMazo();
+        return (! this.sinPuntos() && ! this.sinMazo()) || mano.sonTodasExodia();
     }
 
     public boolean equals(Object object){return this.getClass().equals(object.getClass());}
@@ -50,6 +53,14 @@ public class Jugador {
             mano.agregarCarta(carta);
 
         }
+    }
+
+    public void crearManoConCartas(List <Carta> cartas) {
+        Mano unaMano = new Mano();
+        for (Carta carta: cartas) {
+            unaMano.agregarCarta(carta);
+        }
+        mano = unaMano;
     }
 
     public Mano crearMano(){
@@ -76,4 +87,6 @@ public class Jugador {
     public boolean sinPuntos() {
         return puntosJuego.obtenerNumero()<0;
     }
+
+    public Mano mostrarMano() { return mano; }
 }
