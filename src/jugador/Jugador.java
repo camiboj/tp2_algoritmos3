@@ -34,6 +34,14 @@ public class Jugador {
         puntosJuego = resultado;
     }
 
+    public boolean pierde() {
+        return this.sinPuntos() || this.sinMazo();
+    }
+
+    public boolean gana() {
+        return ! this.sinPuntos() && ! this.sinMazo();
+    }
+
     public boolean equals(Object object){return this.getClass().equals(object.getClass());}
 
     public void agarraCartas(int cantidad) {

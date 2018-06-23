@@ -18,4 +18,8 @@ public class YuGiOh {
         return sinPuntos || sinMazo;
     }
 
+    public Jugador obtenerJugador1() { return jugador1; }
+
+    public Jugador obtenerJugador2() { return jugador2; }
+
 }
