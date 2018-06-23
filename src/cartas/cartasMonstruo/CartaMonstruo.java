@@ -70,11 +70,14 @@ public abstract class CartaMonstruo extends Carta {
         //puntosAtaque = punto.sumar(puntosAtaqueAdicionales);
 
         Punto resultado = puntosAtaque.sumar(puntosAtaqueAdicionales);
+        if(modo != null)
+            modo.actualizarPuntos(resultado);
         puntosAtaque = resultado;
     }
 
     public void aumentarDefensa(Punto puntosDefensaAdicionales) {
-
+        if(modo != null)
+            modo.actualizarPuntos(puntosDefensaAdicionales);
         puntosDefensa = puntosDefensa.sumar(puntosDefensaAdicionales);
     }
 

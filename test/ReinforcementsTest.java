@@ -18,9 +18,9 @@ public class ReinforcementsTest {
 
     @Test
     public void ReinforcementsTieneElEfectoEsperado() {
-        assertTrue(true);
+        //assertTrue(true);
 
-        /*
+
         //Creación del tablero
         Jugador jugadorDefensor = new Jugador();
         Jugador jugadorAtacante = new Jugador();
@@ -48,14 +48,8 @@ public class ReinforcementsTest {
         //La carta atacante por el efecto Reinforcements está en el cementerio
         Cementerio cementerioAtacante = tablero.mostrarCementerio(jugadorAtacante);
         ZonaMonstruo zonaMonstruoAtacante = tablero.mostrarZonaMonstruo(jugadorAtacante);
-        //assertTrue(cementerioAtacante.existe(cartaAtacante)); NO FUNCIONA
-        //assertFalse(zonaMonstruoAtacante.existe(cartaAtacante)); NO FUNCIONA
-
-        //Estos no son los test. Es una prueba de que nunca le suma los puntos a la carta.
-        Cementerio cementerioDefensor = tablero.mostrarCementerio(jugadorDefensor);
-        assertTrue(cementerioDefensor.existe(cartaDefensora));
-        ZonaMonstruo zonaMonstruoDefensora = tablero.mostrarZonaMonstruo(jugadorDefensor);
-        assertFalse(zonaMonstruoDefensora.existe(cartaDefensora));
+        assertTrue(cementerioAtacante.existe(cartaAtacante));
+        assertFalse(zonaMonstruoAtacante.existe(cartaAtacante));
 
         //La carta reinforcements esta en el cementerio porque ya ataco
         Cementerio cementerioReinforcements = tablero.mostrarCementerio(jugadorDefensor);
@@ -65,13 +59,13 @@ public class ReinforcementsTest {
         assertFalse(zonaTrampaMagica.existe(reinforcements));
 
         //El jugador atacante perdio 100 puntos de vida y el otro esta intacto
-        //assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 8000);
-        //assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero()== 8000-100);
+        assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 8000);
+        assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero()== 8000-100);
 
         System.out.println("Puntos del defensor");
         System.out.println(jugadorDefensor.obtenerPuntos().obtenerNumero());
         System.out.println("Puntos del atacante");
         System.out.println(jugadorAtacante.obtenerPuntos().obtenerNumero());
-        */
+
     }
 }

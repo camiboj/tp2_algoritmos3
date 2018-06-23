@@ -12,6 +12,6 @@ public class EfectoTrampaReinforcements implements EfectoTrampa {
 
         Punto puntosAtaqueAdicionales = new Punto(500);
         monstruoDefensor.aumentarAtaque(puntosAtaqueAdicionales);
-        throw new InterrumpirAtaqueException(cartaJugada, jugadorDefensor);
+        throw new InterrumpirAtaqueException(cartaJugada, jugadorDefensor,monstruoDefensor);
     }
 }

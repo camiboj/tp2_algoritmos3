@@ -83,8 +83,10 @@ public class Tablero {
 			}
 			catch (InterrumpirAtaqueException datos){
 				colocarCartaEnCementerio(datos.obtenerCartaUsada(), datos.obtenerJugadorQueLaJugo());
-				return;
+				if (datos.obtenerCartaNuevoAtaque() == null)
+					return;
 			}
+
 		}
 
 		//Ejecucion del ataque de dos monstruos

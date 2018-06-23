@@ -15,4 +15,10 @@ public abstract class Modo {
     public abstract boolean enAtaque();
 
     public abstract boolean enDefensa();
+
+    public void actualizarPuntos(Punto nuevoValor) {
+        punto = nuevoValor;
+    }
+
+
 }

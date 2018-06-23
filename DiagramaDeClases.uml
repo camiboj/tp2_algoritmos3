@@ -3,109 +3,53 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="0.0" y="456.0">Tablero</node>
-    <node x="634.0" y="561.0">PonerBocaAbajo</node>
-    <node x="656.0" y="700.0">YuGiOh</node>
-    <node x="684.0" y="881.0">Cementerio</node>
-    <node x="116.0" y="380.0">Comunes</node>
-    <node x="880.0" y="881.0">Mazo</node>
-    <node x="515.5" y="456.0">Estado</node>
-    <node x="0.0" y="781.0">ZonaMonstruo</node>
-    <node x="430.0" y="380.0">MonstruoNivel1</node>
-    <node x="367.5" y="154.0">Monstruo</node>
-    <node x="190.0" y="1005.0">Efecto</node>
-    <node x="406.0" y="781.0">ZonaTrampaMagica</node>
-    <node x="29.5" y="214.5">Magica</node>
-    <node x="328.0" y="1005.0">Nivel</node>
-    <node x="632.0" y="380.0">MonstruoNivel2</node>
-    <node x="264.0" y="700.0">Zona</node>
-    <node x="225.0" y="781.0">ZonaCampo</node>
-    <node x="397.0" y="561.0">PonerBocaArriba</node>
-    <node x="463.0" y="881.0">Modo</node>
-    <node x="248.0" y="380.0">MonstruoFusion</node>
-    <node x="212.0" y="881.0">Jugador</node>
-    <node x="694.5" y="226.5">Trampa</node>
-    <node x="0.0" y="380.0">Campo</node>
-    <node x="0.0" y="881.0">Casillero</node>
-    <node x="0.0" y="1005.0">Punto</node>
-    <node x="406.5" y="0.0">Carta</node>
+    <node x="783.0" y="940.0">tablero.Tablero</node>
+    <node x="1113.0" y="479.5">cartas.cartasMagicas.CartaMagica</node>
+    <node x="1643.0" y="1522.0">cartas.invocacion.Invocacion</node>
+    <node x="0.0" y="1522.0">tablero.ZonaTrampaMagica</node>
+    <node x="0.0" y="251.0">cartas.cartasMonstruo.CartaMonstruo</node>
+    <node x="864.0" y="0.0">cartas.Carta</node>
+    <node x="118.0" y="790.0">cartas.cartasMonstruo.CartaMonstruoConEfecto</node>
+    <node x="1269.0" y="443.0">cartas.cartasCampo.CartaCampo</node>
+    <node x="0.0" y="940.0">tablero.LadoDelCampo</node>
+    <node x="1434.0" y="940.0">tablero.ZonaMonstruo</node>
+    <node x="483.0" y="455.0">cartas.cartasTrampa.CartaTrampa</node>
+    <node x="906.0" y="1522.0">tablero.ZonaCampo</node>
+    <node x="597.0" y="1522.0">tablero.Cementerio</node>
+    <node x="0.0" y="1792.0">cartas.CreadoraDeCartas</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="MonstruoNivel2" target="Monstruo">
-      <point x="0.0" y="-15.5" />
-      <point x="726.0" y="355.0" />
-      <point x="623.3333333333333" y="355.0" />
-      <point x="102.33333333333326" y="88.0" />
+    <edge source="cartas.cartasTrampa.CartaTrampa" target="cartas.Carta">
+      <point x="0.0" y="-40.5" />
+      <point x="788.0" y="231.0" />
+      <point x="954.375" y="231.0" />
+      <point x="-30.125" y="100.5" />
     </edge>
-    <edge source="Campo" target="Magica">
-      <point x="0.0" y="-15.5" />
-      <point x="48.0" y="355.0" />
-      <point x="69.75" y="355.0" />
-      <point x="-40.25" y="27.5" />
+    <edge source="cartas.cartasMagicas.CartaMagica" target="cartas.Carta">
+      <point x="0.0" y="-16.0" />
+      <point x="1181.0" y="231.0" />
+      <point x="1014.625" y="231.0" />
+      <point x="30.125" y="100.5" />
     </edge>
-    <edge source="MonstruoFusion" target="Monstruo">
-      <point x="0.0" y="-15.5" />
-      <point x="329.0" y="355.0" />
-      <point x="418.66666666666674" y="355.0" />
-      <point x="-102.33333333333326" y="88.0" />
+    <edge source="cartas.cartasMonstruo.CartaMonstruoConEfecto" target="cartas.cartasMonstruo.CartaMonstruo">
+      <point x="0.0" y="-52.5" />
+      <point x="0.0" y="244.5" />
     </edge>
-    <edge source="ZonaMonstruo" target="Zona">
-      <point x="0.0" y="-27.5" />
-      <point x="102.5" y="756.0" />
-      <point x="277.83333333333337" y="756.0" />
-      <point x="-27.66666666666663" y="15.5" />
+    <edge source="cartas.cartasMonstruo.CartaMonstruo" target="cartas.Carta">
+      <point x="0.0" y="-244.5" />
+      <point x="231.5" y="221.0" />
+      <point x="894.125" y="221.0" />
+      <point x="-90.375" y="100.5" />
     </edge>
-    <edge source="Comunes" target="Magica">
-      <point x="0.0" y="-15.5" />
-      <point x="172.0" y="355.0" />
-      <point x="150.25" y="355.0" />
-      <point x="40.25" y="27.5" />
-    </edge>
-    <edge source="PonerBocaAbajo" target="Estado">
-      <point x="0.0" y="-27.5" />
-      <point x="742.5" y="536.0" />
-      <point x="678.25" y="536.0" />
-      <point x="54.25" y="27.5" />
-    </edge>
-    <edge source="ZonaCampo" target="Zona">
-      <point x="0.0" y="-27.5" />
-      <point x="0.0" y="15.5" />
-    </edge>
-    <edge source="Magica" target="Carta">
-      <point x="0.0" y="-27.5" />
-      <point x="110.0" y="129.0" />
-      <point x="444.66666666666663" y="129.0" />
-      <point x="-76.33333333333337" y="52.0" />
-    </edge>
-    <edge source="ZonaTrampaMagica" target="Zona">
-      <point x="0.0" y="-27.5" />
-      <point x="508.5" y="756.0" />
-      <point x="333.16666666666663" y="756.0" />
-      <point x="27.66666666666663" y="15.5" />
-    </edge>
-    <edge source="MonstruoNivel1" target="Monstruo">
-      <point x="0.0" y="-15.5" />
-      <point x="0.0" y="88.0" />
-    </edge>
-    <edge source="Trampa" target="Carta">
-      <point x="0.0" y="-15.5" />
-      <point x="744.5" y="129.0" />
-      <point x="597.3333333333334" y="129.0" />
-      <point x="76.33333333333337" y="52.0" />
-    </edge>
-    <edge source="Monstruo" target="Carta">
-      <point x="0.0" y="-88.0" />
-      <point x="0.0" y="52.0" />
-    </edge>
-    <edge source="PonerBocaArriba" target="Estado">
-      <point x="1.4210854715202004E-14" y="-27.5" />
-      <point x="505.5" y="536.0" />
-      <point x="569.75" y="536.0" />
-      <point x="-54.25" y="27.5" />
+    <edge source="cartas.cartasCampo.CartaCampo" target="cartas.Carta">
+      <point x="0.0" y="-52.5" />
+      <point x="1521.5" y="221.0" />
+      <point x="1074.875" y="221.0" />
+      <point x="90.375" y="100.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.46770334928229673" x="930.3427109974425" y="397.99999999999994" />
+  <settings layout="Hierarchic Group" zoom="0.5945026178010472" x="1401.2608367885412" y="2062.510788199031" />
   <SelectedNodes />
   <Categories>
     <Category>Fields</Category>
