@@ -10,7 +10,6 @@ public class CementerioDeMamuts extends CartaMonstruo {
     private Punto puntosAtaque;
     private Punto puntosDefensa;
     private Nivel nivel;
-    //efecto
 
     public CementerioDeMamuts() {
         super("Cementerio De Mamuts", 1200, 800, 3);
