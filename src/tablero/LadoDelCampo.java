@@ -99,4 +99,16 @@ public class LadoDelCampo {
 	public List <CartaMonstruo> obtenerMonstruos() {
 		return miZonaMonstruo.obtenerMonstruos();
 	}
+
+    public List<Casillero> mostrarCasillerosZonaMonstruo() {
+		return miZonaMonstruo.obtenerCasilleros();
+    }
+
+	public List<Casillero> mostrarCasillerosZonaCampo() {
+		return miZonaCampo.obtenerCasilleros();
+	}
+
+	public List<Casillero> mostrarCasillerosZonaTrampaMagica() {
+		return miZonaDeTrampasYMagia.obtenerCasilleros();
+	}
 }

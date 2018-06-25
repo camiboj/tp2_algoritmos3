@@ -10,20 +10,13 @@ import java.util.List;
 
 public class EfectoInsectoComeHombres implements Efecto {
 
-    public void activarAnteUnAtaque(CartaMonstruo cartaAtacante, Jugador jugadorAtacante,
-                                    CartaMonstruo monstruoDefensor, Jugador jugadorDefensor, Carta cartaJugada)
-            throws InterrumpirAtaqueException {
-        jugadorAtacante.restarPuntos(cartaAtacante.obtenerPuntosAtaque());
-        throw new InterrumpirAtaqueException(cartaJugada, jugadorDefensor);
-    }
-
     @Override
     public void activarEfecto() {
-
     }
 
     @Override
-    public void activarEfectoDeVolteoAnteAtaque(Jugador jugadorPoseedor, Jugador jugadorEnemigo, LadoDelCampo ladoEnemigo) throws InterrumpirAtaqueException {
+    public void activarEfectoDeVolteoAnteAtaque(Jugador jugadorPoseedor, Jugador jugadorEnemigo,
+                                                LadoDelCampo ladoEnemigo) throws InterrumpirAtaqueException {
         List<CartaMonstruo> monstruos=ladoEnemigo.obtenerMonstruos();
         List<Carta> cartaDestruidasDelAtacantePorElEfecto= new ArrayList<Carta>();
         if (monstruos.size()>0){
@@ -31,6 +24,5 @@ public class EfectoInsectoComeHombres implements Efecto {
         }
 
         throw new InterrumpirAtaqueException(jugadorPoseedor, jugadorEnemigo, cartaDestruidasDelAtacantePorElEfecto);
-
     }
 }

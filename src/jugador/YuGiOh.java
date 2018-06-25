@@ -21,4 +21,7 @@ public class YuGiOh {
 
     public Jugador obtenerJugador2() { return jugador2; }
 
+    public Tablero mostrarTablero() {
+        return tablero;
+    }
 }

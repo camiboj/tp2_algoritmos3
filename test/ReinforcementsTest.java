@@ -61,11 +61,5 @@ public class ReinforcementsTest {
         //El jugador atacante perdio 100 puntos de vida y el otro esta intacto
         assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 8000);
         assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero()== 8000-100);
-
-        System.out.println("Puntos del defensor");
-        System.out.println(jugadorDefensor.obtenerPuntos().obtenerNumero());
-        System.out.println("Puntos del atacante");
-        System.out.println(jugadorAtacante.obtenerPuntos().obtenerNumero());
-
     }
 }

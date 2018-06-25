@@ -15,9 +15,6 @@ public class InsectoComeHombresTest {
 
     @Test
     public void InsectoComeHombreMataCartaAtacante () {
-        assertTrue(true);
-
-
 
         Jugador jugadorDefensor = new Jugador();
         Jugador jugadorAtacante = new Jugador();
@@ -49,7 +46,6 @@ public class InsectoComeHombresTest {
 
         assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 8000);
         assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero() == 8000);
-
     }
 }
 

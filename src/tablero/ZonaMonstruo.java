@@ -85,8 +85,8 @@ public abstract class ZonaMonstruo implements Zona {
         return true;
     }
 
-    public List<Casillero> getCasilleros(){
-        return this.casilleros;
+    public List<Casillero> obtenerCasilleros(){
+        return casilleros;
     }
 
     public CartaMonstruo obtenerMonstruoDebil(){

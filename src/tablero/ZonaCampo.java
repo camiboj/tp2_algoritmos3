@@ -5,9 +5,10 @@ import cartas.cartasMonstruo.CartaMonstruo;
 import cartas.invocacion.Invocacion;
 import cartas.invocacion.InvocacionCartaCampo;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ZonaCampo { //Le saque la interfaz porque no coloca una carta cualquiera, esa carta activa efecto
+public class ZonaCampo implements Zona{ //Le saque la interfaz porque no coloca una carta cualquiera, esa carta activa efecto
     private Casillero casillero; //Ceci: entiendo que hay una carta en el tablero
 
     public ZonaCampo() {
@@ -23,6 +24,12 @@ public class ZonaCampo { //Le saque la interfaz porque no coloca una carta cualq
             return true;
         }
         return false;
+    }
+
+    public List<Casillero> obtenerCasilleros() {
+        List<Casillero> casilleros = new ArrayList<>();
+        casilleros.add(casillero);
+        return casilleros;
     }
 
     public void eliminarCarta(Carta carta) {

@@ -57,6 +57,11 @@ public class ZonaTrampaMagica implements Zona {
         }
         return false;
     }
+
+    public List<Casillero> obtenerCasilleros() {
+        return casilleros;
+    }
+
     public void activar(Carta trampa, CartaMonstruo cartaAtacante, Jugador jugadorAtacante, CartaMonstruo cartaDefensora, Jugador jugadorDefensor) throws InterrumpirAtaqueException{
         if(existe(trampa)) {
             CartaTrampa trampaAActivar=(CartaTrampa) trampa;

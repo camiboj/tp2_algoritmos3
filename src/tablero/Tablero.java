@@ -1,4 +1,5 @@
 package tablero;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,9 +18,13 @@ import jugador.Punto;
 
 public class Tablero {
 	private HashMap<Jugador, LadoDelCampo> divisiones;
+	private Jugador jugador1;
+	private Jugador jugador2;
 
 	public Tablero(Jugador jugador1, Jugador jugador2) {
 
+		this.jugador1 = jugador1;
+		this.jugador2 = jugador2;
 		divisiones = new HashMap<Jugador, LadoDelCampo>();
 		divisiones.put(jugador1, new LadoDelCampo());
 		divisiones.put(jugador2, new LadoDelCampo());
@@ -206,5 +211,33 @@ public class Tablero {
 
 	public LadoDelCampo mostrarLadoDelCampo(Jugador jugadorOponente) {
 		return divisiones.get(jugadorOponente);
+	}
+
+	public List<List<Casillero>> mostrarCasillerosZonaMonstruo() {
+		List<List<Casillero>> lista = new ArrayList();
+		List<Casillero> lista1 = divisiones.get(jugador1).mostrarCasillerosZonaMonstruo();
+		List<Casillero> lista2 = divisiones.get(jugador2).mostrarCasillerosZonaMonstruo();
+		lista.add(lista1);
+		lista.add(lista2);
+		return lista;
+	}
+
+	public List<List<Casillero>> mostrarCasillerosZonaCampo() {
+		List<List<Casillero>> lista = new ArrayList();
+		List<Casillero> lista1 = divisiones.get(jugador1).mostrarCasillerosZonaCampo();
+		List<Casillero> lista2 = divisiones.get(jugador2).mostrarCasillerosZonaCampo();
+		lista.add(lista1);
+		lista.add(lista2);
+		return lista;
+	}
+
+
+	public List<List<Casillero>> mostrarCasillerosZonaTrampaMagica() {
+		List<List<Casillero>> lista = new ArrayList();
+		List<Casillero> lista1 = divisiones.get(jugador1).mostrarCasillerosZonaTrampaMagica();
+		List<Casillero> lista2 = divisiones.get(jugador2).mostrarCasillerosZonaTrampaMagica();
+		lista.add(lista1);
+		lista.add(lista2);
+		return lista;
 	}
 }
