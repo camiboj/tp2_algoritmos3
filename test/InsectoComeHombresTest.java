@@ -35,7 +35,7 @@ public class InsectoComeHombresTest {
 
         ZonaMonstruo zonaMonstruoAtacante = tablero.mostrarZonaMonstruo(jugadorAtacante);
 
-        /*
+        tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, insectoComeHombres, jugadorDefensor);
         assertFalse(zonaMonstruoAtacante.existe(cartaAtacante));
 
         Cementerio cementerioAtacante = tablero.mostrarCementerio(jugadorAtacante);
@@ -49,7 +49,7 @@ public class InsectoComeHombresTest {
 
         assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 8000);
         assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero() == 8000);
-    */
+
     }
 }
 

@@ -2,6 +2,7 @@ import cartas.invocacion.InvocacionDefault;
 import cartas.cartasMagicas.OllaDeLaCodicia;
 import jugador.Jugador;
 import org.junit.Test;
+import tablero.InterrumpirAtaqueException;
 import tablero.Tablero;
 
 import static junit.framework.TestCase.assertTrue;
@@ -11,7 +12,7 @@ public class OllaDeLaCodiciaTest {
 
 
     @Test
-    public void ollaDeLaCodiciaTest() {
+    public void ollaDeLaCodiciaTest()  throws InterrumpirAtaqueException {
         assertTrue(true);
 
         Jugador jugador1 = new Jugador();

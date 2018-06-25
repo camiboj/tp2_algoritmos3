@@ -2,6 +2,7 @@ package cartas;
 import estadosDeCartas.BocaAbajo;
 import estadosDeCartas.BocaArriba;
 import estadosDeCartas.Estado;
+import tablero.InterrumpirAtaqueException;
 
 public abstract class Carta {
     protected String nombre;
@@ -13,7 +14,7 @@ public abstract class Carta {
         this.estado = null;
     }
 
-    public void colocarBocaArriba(){
+    public void colocarBocaArriba() throws InterrumpirAtaqueException {
         this.estado = new BocaArriba();
         this.activarEfecto();
     }

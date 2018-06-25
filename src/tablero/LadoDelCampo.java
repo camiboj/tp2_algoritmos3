@@ -95,4 +95,8 @@ public class LadoDelCampo {
 	public ZonaTrampaMagica mostrarZonaTrampaMagica() {
 		return miZonaDeTrampasYMagia;
 	}
+
+	public List <CartaMonstruo> obtenerMonstruos() {
+		return miZonaMonstruo.obtenerMonstruos();
+	}
 }

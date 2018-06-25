@@ -2,6 +2,8 @@ package cartas.cartasMonstruo;
 
 import efectos.Efecto;
 import jugador.Jugador;
+import tablero.InterrumpirAtaqueException;
+import tablero.LadoDelCampo;
 
 public class Jinzo7 extends CartaMonstruo implements Efecto {
     Jugador jugadorOponente;
@@ -15,6 +17,11 @@ public class Jinzo7 extends CartaMonstruo implements Efecto {
     @Override
     public void activarEfecto() {
         jugadorOponente.restarPuntos(this.puntosAtaque);
+    }
+
+    @Override
+    public void activarEfectoDeVolteoAnteAtaque(Jugador jugadorPoseedor, Jugador jugadorEnemigo, LadoDelCampo ladoEnemigo) throws InterrumpirAtaqueException {
+
     }
 
 }

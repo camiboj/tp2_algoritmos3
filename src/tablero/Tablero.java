@@ -8,6 +8,9 @@ import cartas.cartasTrampa.CartaTrampa;
 import cartas.invocacion.Invocacion;
 import cartas.invocacion.InvocacionCartaCampo;
 import cartas.invocacion.InvocacionCartaMonstruo;
+import efectos.Efecto;
+import efectos.EfectoTrampa;
+import estadosDeCartas.BocaAbajo;
 import jugador.Jugador;
 import jugador.Punto;
 
@@ -94,6 +97,23 @@ public class Tablero {
 		Jugador jugadorPerdedor;
 		Jugador jugadorGanador;
 		CartaMonstruo cartaPerdedora;
+		if (cartaDefensora.getEstado().getClass().equals(new BocaAbajo().getClass()) && cartaDefensora instanceof Efecto){
+			try {
+				Efecto monstruoConEfectoDeVolteo=(Efecto) cartaDefensora ;
+				monstruoConEfectoDeVolteo.activarEfectoDeVolteoAnteAtaque(jugadorDefensor,jugadorAtacante,divisiones.get(jugadorAtacante));
+
+			}
+			catch (InterrumpirAtaqueException datos){
+				for (Carta cartaDestruida:datos.obtenercartasDestruidasDelAtacante()
+					 ) {
+					colocarCartaEnCementerio(cartaDestruida, datos.obtenerJugadorAtacante());
+
+				}
+				if (datos.obtenercartasDestruidasDelAtacante().contains(cartaAtacante))
+					return;
+			}
+
+		}
 		if (cartaDefensora == cartaGanadora && cartaDefensora.enModoDefensa()) {
 			return;
 		}
@@ -130,7 +150,11 @@ public class Tablero {
     }
 
     private void colocarCartaEnCementerio(Carta carta, Jugador jugador) {
+		if(carta instanceof CartaMonstruo){
+			divisiones.get(jugador).eliminarDeZonaMonstruo((CartaMonstruo) carta);
+		}else{
 		divisiones.get(jugador).eliminarDeZonaTrampaMagica(carta);
+		}
 		divisiones.get(jugador).colocarCementerio(carta);
 	}
 
