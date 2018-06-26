@@ -2,6 +2,7 @@ package vista;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Side;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -18,12 +19,17 @@ public class ContenedorInicial extends VBox {
     public ContenedorInicial(Stage stage, YuGiOh yuGiOh) {
         super();
 
-        this.setAlignment(Pos.CENTER);
+
+        this.setAlignment(Pos.TOP_CENTER);
         this.setSpacing(20);
         this.setPadding(new Insets(25));
 
         Image imagen = new Image("vista/imagenes/YuGiOhInicial2.png");
-        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        BackgroundPosition position = new BackgroundPosition(Side.LEFT, 0.5,
+                true, Side.BOTTOM, 0, true);
+        BackgroundSize size = new BackgroundSize(0.75, 0.60, true, true, true, false);
+        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+                position, size);
         this.setBackground(new Background(imagenDeFondo));
 
         Button botonJugar = new Button();

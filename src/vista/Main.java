@@ -24,7 +24,7 @@ public class Main extends Application {
         Scene escenaInicial = new Scene(contenedorInicial, 640, 480);
 
         stage.setScene(escenaInicial);
-        stage.setFullScreen(true);
+        stage.setFullScreen(false);
 
         stage.show();
     }
