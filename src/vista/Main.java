@@ -1,11 +1,8 @@
 package vista;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import jugador.YuGiOh;
-import vista.ContenedorInicial;
 
 public class Main extends Application {
 
