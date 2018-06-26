@@ -1,9 +1,6 @@
 package tablero;
 import cartas.*;
-import cartas.cartasCampo.CartaCampo;
-import cartas.cartasMonstruo.CartaMonstruo;
 import cartas.invocacion.Invocacion;
-import cartas.invocacion.InvocacionCartaCampo;
 
 import java.util.ArrayList;
 import java.util.List;

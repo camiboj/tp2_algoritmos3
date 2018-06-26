@@ -33,7 +33,7 @@ public class DragonDefinitivoDeOjosAzulesTest {
         List <CartaMonstruo> lista2 = creaListaHuevos(tablero, jugador1);
         List <CartaMonstruo> lista3 = creaListaHuevos(tablero, jugador1);
 
-        List<CartaMonstruo> dragonesSacrificados = new ArrayList<>();
+        List<DragonBlancoDeOjosAzules> dragonesSacrificados = new ArrayList<>();
         DragonBlancoDeOjosAzules dragon1 = new DragonBlancoDeOjosAzules();
         DragonBlancoDeOjosAzules dragon2 = new DragonBlancoDeOjosAzules();
         DragonBlancoDeOjosAzules dragon3 = new DragonBlancoDeOjosAzules();

@@ -1,6 +1,8 @@
 package cartas.invocacion;
 
 import cartas.cartasMonstruo.CartaMonstruo;
+import tablero.Cementerio;
+import tablero.ZonaMonstruo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,5 +27,13 @@ public class InvocacionCartaMonstruoGenerica extends InvocacionCartaMonstruo {
     public boolean debeSacrificar() {
         if (sacrificios== null) return false;
         return sacrificios.size()>0;
+    }
+
+    public void sacrificar(Cementerio cementerio, ZonaMonstruo zonaMonstruo) {
+        if (sacrificios==null) return;
+        for (CartaMonstruo carta : sacrificios) {
+            zonaMonstruo.eliminarCarta(carta);
+            cementerio.colocarCarta(carta);
+        }
     }
 }

@@ -3,7 +3,6 @@ import cartas.*;
 import cartas.cartasMonstruo.CartaMonstruo;
 import cartas.cartasTrampa.CartaTrampa;
 import cartas.invocacion.Invocacion;
-import cartas.invocacion.InvocacionCartaCampo;
 import cartas.invocacion.InvocacionCartaMonstruo;
 import jugador.Jugador;
 import jugador.Mazo;

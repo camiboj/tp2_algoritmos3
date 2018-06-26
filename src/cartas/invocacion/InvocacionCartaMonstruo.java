@@ -2,6 +2,8 @@ package cartas.invocacion;
 
 import cartas.Carta;
 import cartas.cartasMonstruo.CartaMonstruo;
+import tablero.Cementerio;
+import tablero.ZonaMonstruo;
 
 import java.util.List;
 
@@ -23,7 +25,5 @@ public abstract class InvocacionCartaMonstruo extends Invocacion {
         }
     }
 
-    public abstract boolean debeSacrificar();
-
-    public abstract List<CartaMonstruo> mostrarCartasASacrificar();
+    public abstract void sacrificar(Cementerio cementerio, ZonaMonstruo zonaMonstruo);
 }

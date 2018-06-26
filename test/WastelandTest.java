@@ -1,17 +1,12 @@
 import cartas.cartasCampo.Wasteland;
 import cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
-import cartas.cartasMonstruo.CartaMonstruo;
 import cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
-import cartas.invocacion.InvocacionCartaCampo;
 import cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import cartas.invocacion.InvocacionDefault;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Tablero;
 import tablero.ZonaMonstruo;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static junit.framework.TestCase.assertTrue;
 

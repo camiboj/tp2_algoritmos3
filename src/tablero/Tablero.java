@@ -7,10 +7,8 @@ import cartas.*;
 import cartas.cartasMonstruo.CartaMonstruo;
 import cartas.cartasTrampa.CartaTrampa;
 import cartas.invocacion.Invocacion;
-import cartas.invocacion.InvocacionCartaCampo;
 import cartas.invocacion.InvocacionCartaMonstruo;
 import efectos.Efecto;
-import efectos.EfectoTrampa;
 import estadosDeCartas.BocaAbajo;
 import jugador.Jugador;
 import jugador.Punto;
@@ -55,16 +53,12 @@ public class Tablero {
 		this.colocarCementerio(carta, jugador);
 		return ladoDelCampo.colocarZonaTrampaMagica(unaInvocacion);
 	}
-	//colocar sin sacrificio y sin sacrificios
-	//llamar a la invocacion para que lo haga y le paso zona monstruo y cementerio
+
 	public boolean colocarZonaMonstruo(InvocacionCartaMonstruo unaInvocacion, Jugador jugador) {
-		if (unaInvocacion.debeSacrificar()) {
-			List<CartaMonstruo> sacrificios = unaInvocacion.mostrarCartasASacrificar();
-			for (CartaMonstruo carta : sacrificios) {
-				colocarCementerio(carta, jugador);
-				eliminarDeZonaMonstruo(carta, jugador);
-			}
-		}
+
+		Cementerio cementerio = divisiones.get(jugador).mostrarCementerio();
+		ZonaMonstruo zonaMonstruo = divisiones.get(jugador).mostrarZonaMonstruo();
+		unaInvocacion.sacrificar(cementerio, zonaMonstruo);
 		Carta carta = unaInvocacion.invocar();
 		jugador.sacarDeMano(carta);
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
