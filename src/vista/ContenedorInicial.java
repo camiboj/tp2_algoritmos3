@@ -17,16 +17,6 @@ public class ContenedorInicial extends VBox {
 
     public ContenedorInicial(Stage stage, YuGiOh yuGiOh) {
         super();
-        MediaPlayer mediaplayer;
-
-        //Reproductor de la cancion de inicio
-        String path = Main.class.getResource("sonidos/cancionInicio.mp3").toString(); //Agregar cancion_inicio
-        Media file = new Media(path);
-        mediaplayer = new MediaPlayer(file);
-        mediaplayer.setAutoPlay(true);
-        mediaplayer.setVolume(0.3);
-        mediaplayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaplayer.play();
 
         this.setAlignment(Pos.CENTER);
         this.setSpacing(20);
@@ -57,7 +47,7 @@ public class ContenedorInicial extends VBox {
         BotonInicializar botonInicializar = new BotonInicializar(this);
         botonNombres.setOnAction(botonInicializar);
 
-        BotonJugar botonJugarHandler = new BotonJugar(stage, yuGiOh, mediaplayer);
+        BotonJugar botonJugarHandler = new BotonJugar(stage, yuGiOh);
         botonJugar.setOnAction(botonJugarHandler);
 
         this.getChildren().addAll(botonJugar, jugador1, jugador2, botonNombres);
