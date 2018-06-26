@@ -32,7 +32,7 @@ public class ContenedorPrincipal extends BorderPane {
     }
 
     public void setFondo() {
-        fondo = new Canvas(800, 500);
+        fondo = new Canvas(1000, 1000);
         centro = new Pane(fondo);
         centro.setStyle("-fx-background-color: white;");
     }
