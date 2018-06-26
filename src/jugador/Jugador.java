@@ -48,7 +48,7 @@ public class Jugador {
     public boolean equals(Object object){return this.getClass().equals(object.getClass());}
 
     public void agarraCartas(int cantidad) {
-        for (int i = 0; i<2; i += 1) {
+        for (int i = 0; i<cantidad; i += 1) {
             Carta carta = mazo.sacarCarta();
             mano.agregarCarta(carta);
 
