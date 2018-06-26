@@ -7,6 +7,7 @@ import jugador.Jugador;
 import tablero.Tablero;
 import vista.botones.Boton;
 
+import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 
 
@@ -32,9 +33,8 @@ public class ContenedorPrincipal extends BorderPane {
 
     public void setFondo() {
         fondo = new Canvas(800, 500);
-        fondo.getGraphicsContext2D().setFill(Color.WHITE);
-        fondo.getGraphicsContext2D().fillRect(0, 0, 720, 420);
         centro = new Pane(fondo);
+        centro.setStyle("-fx-background-color: white;");
     }
 
     private void setBotonera() {

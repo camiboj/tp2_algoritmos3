@@ -32,11 +32,6 @@ public class ContenedorInicial extends VBox {
         subtitulo.setTextAlignment(TextAlignment.CENTER);
         subtitulo.setTextFill(Color.web("000000"));
 
-        /*
-        this.getChildren().addAll(titulo,subtitulo);
-        */
-
-
         this.setAlignment(Pos.TOP_CENTER);
         this.setSpacing(20);
         this.setPadding(new Insets(25));
