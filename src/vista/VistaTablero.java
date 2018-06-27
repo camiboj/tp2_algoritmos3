@@ -29,33 +29,45 @@ public class VistaTablero {
 
     public void dibujar() {
 
-        int x = 300;
-        int y = 225;
-
         List<List<Casillero>> casillerosMonstruos = tablero.mostrarCasillerosZonaMonstruo();
         List<List<Casillero>> casillerosTrampaMagica = tablero.mostrarCasillerosZonaTrampaMagica();
         List<List<Casillero>> casillerosCampo = tablero.mostrarCasillerosZonaCampo();
 
-        for (List<Casillero> list : casillerosMonstruos) {
+        dibujarMonstruos(casillerosMonstruos, 300, 225);
+        dibujarTrampaMagica(casillerosTrampaMagica, 300, 80);
+
+        dibujarCasillero(casillerosCampo, 300- 25 -80, 200 - 25 + 225, 300 + 440 + 25, 225+25,
+                "Carta \n Campo", LIGHTGREEN);
+        dibujarCasillero(casillerosCampo, 300-25-80, 225+25, 300+440+25, 200-25+225,
+                "Cementerio", LIGHTGREY);
+        dibujarCasillero(casillerosCampo, 300-25-80, 80-25, 300+440+25, 595,
+                "Mazo", LIGHTPINK);
+    }
+
+    private void dibujarCementerio(List<List<Casillero>> casillerosCampo, int i, int i1, int i2, int i3) {
+    }
+
+    private void dibujarCasillero(List<List<Casillero>> casillerosCampo, int x, int y, int xfinal, int yfinal,
+                                  String nombre, Color color) {
+        for (List<Casillero> list : casillerosCampo) {
             for (Casillero casillero : list) {
                 Rectangle rectangle = new Rectangle(80, 120);
-                Text text = new Text("Carta \n Monstruo");
+                Text text = new Text(nombre);
                 text.setTextAlignment(TextAlignment.CENTER);
                 text.relocate(x, y);
 
                 rectangle.setStroke(Color.BLACK);
-                rectangle.setFill(ORANGERED);
+                rectangle.setFill(color);
                 rectangle.relocate(x, y);
 
                 pane.getChildren().addAll(rectangle, text);
-                x += 90;
             }
-            y += 200;
-            x = 300;
+            y = yfinal;
+            x = xfinal;
         }
+    }
 
-        x = 300;
-        y = 80;
+    private void dibujarTrampaMagica(List<List<Casillero>> casillerosTrampaMagica, int x, int y) {
 
         for (List<Casillero> list : casillerosTrampaMagica) {
             for (Casillero casillero : list) {
@@ -74,7 +86,27 @@ public class VistaTablero {
             y += 490;
             x = 300;
         }
+    }
 
+    private void dibujarMonstruos(List<List<Casillero>> casillerosMonstruos, int x, int y) {
+
+        for (List<Casillero> list : casillerosMonstruos) {
+            for (Casillero casillero : list) {
+                Rectangle rectangle = new Rectangle(80, 120);
+                Text text = new Text("Carta \n Monstruo");
+                text.setTextAlignment(TextAlignment.CENTER);
+                text.relocate(x, y);
+
+                rectangle.setStroke(Color.BLACK);
+                rectangle.setFill(ORANGERED);
+                rectangle.relocate(x, y);
+
+                pane.getChildren().addAll(rectangle, text);
+                x += 90;
+            }
+            y += 200;
+            x = 300;
+        }
     }
 
 }

@@ -9,6 +9,7 @@ import tablero.Cementerio;
 import tablero.Tablero;
 import tablero.ZonaMonstruo;
 
+import static javafx.scene.paint.Color.LIGHTGREEN;
 import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.assertFalse;
 
@@ -16,6 +17,7 @@ public class AtaqueMonstruosTest {
 
     @Test
      public void DosJugadoresTiranSusCartas () {
+
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
         Tablero tablero = new Tablero(jugador1, jugador2);
