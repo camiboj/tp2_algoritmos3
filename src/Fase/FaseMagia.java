@@ -10,7 +10,7 @@ public class FaseMagia implements Fase {
     }
 
     @Override
-    public void ejecutarFase() {
+    public void finFase() {
         //Se pueden activar cartasdeMagia
     }
 }

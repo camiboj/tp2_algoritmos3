@@ -3,5 +3,5 @@ package Fase;
 import excepciones.FinDelJuegoException;
 
 public interface Fase {
-    void ejecutarFase() throws FinDelJuegoException;
+    void finFase() throws FinDelJuegoException;
 }

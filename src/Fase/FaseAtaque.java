@@ -4,16 +4,13 @@ import jugador.Jugador;
 
 public class FaseAtaque implements Fase {
     Jugador jugador;
-    FaseTrampa faseTrampa;
 
-    public FaseAtaque(Jugador unJugador, FaseTrampa unaFaseTrampa) {
+    public FaseAtaque(Jugador unJugador) {
         jugador = unJugador;
-        faseTrampa = unaFaseTrampa;
     }
 
     @Override
-    public void ejecutarFase() {
+    public void finFase() {
         //AtaqueDeMonstruos
-        faseTrampa.ejecutarFase();
     }
 }

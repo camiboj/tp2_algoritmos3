@@ -1,5 +1,6 @@
 package Fase;
 
+import excepciones.FinDelJuegoException;
 import jugador.Jugador;
 
 public class FaseTrampa implements Fase {
@@ -9,8 +10,12 @@ public class FaseTrampa implements Fase {
         jugador = unJugador;
     }
 
-    @Override
     public void ejecutarFase() {
         //Se ejecutan las trampas
+    }
+
+    @Override
+    public void finFase() throws FinDelJuegoException {
+
     }
 }

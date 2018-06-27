@@ -14,6 +14,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import jugador.YuGiOh;
+import vista.botones.BotonCartaBocaAbajo;
 import vista.botones.BotonInicializar;
 import vista.botones.BotonJugar;
 
@@ -50,6 +51,8 @@ public class ContenedorInicial extends VBox {
         botonJugar.setStyle("-fx-base: red;");
         botonJugar.setPrefSize(120, 30);
         botonJugar.setDisable(true);
+
+
 
         TextField jugador1 = new TextField();
         jugador1.setPromptText("nombre");

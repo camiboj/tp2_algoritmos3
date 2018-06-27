@@ -19,12 +19,20 @@ public class ContenedorPrincipal extends BorderPane {
     static ArrayList<Jugador> jugadores = new ArrayList<>();
     static VistaTablero vistaTablero;
     static Canvas fondo;
+    Consola consola;
+
 
     public ContenedorPrincipal(Tablero tablero) {
         this.setFondo();
         this.tablero = tablero;
         this.setCentro(tablero);
         this.setBotonera();
+        this.setConsola();
+    }
+
+    private void setConsola() {
+        consola = new Consola();
+        this.setRight(consola.getScrollPane());
     }
 
     public static ArrayList<Jugador> getJugadores() {

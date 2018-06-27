@@ -22,13 +22,14 @@ public class Turno {
         fases.add(new FaseInicial(unJugador));
         fases.add(new FasePreparacion(unJugador));
         FaseTrampa faseTrampa = new FaseTrampa(unJugador);
-        fases.add(new FaseAtaque(unJugador, faseTrampa));
+        fases.add(new FaseAtaque(unJugador));
         fases.add(new FaseMagia(unJugador));
     }
 
     public void cambiarDeFase() throws FinDelJuegoException {
-        for(Fase fase : fases) {
-            fase.ejecutarFase();
+        /*    for(Fase fase : fases) {
+            fase.finFase();
         }
+        */
     }
 }

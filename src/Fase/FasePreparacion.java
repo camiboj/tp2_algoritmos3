@@ -10,7 +10,7 @@ public class FasePreparacion implements Fase {
     }
 
     @Override
-    public void ejecutarFase() {
+    public void finFase() {
     //Puede colocar cartasTrampa y de magia pero 1 monstruo. Como hacer esto? Fase conoce a Tablero?
     }
 }
