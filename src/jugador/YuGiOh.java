@@ -1,4 +1,5 @@
 package jugador;
+import excepciones.FinDelJuegoException;
 import tablero.Tablero;
 
 import java.util.ArrayList;
@@ -25,11 +26,28 @@ public class YuGiOh {
     }
 
     public void ejecutarJuego() {
-        while (! finDelJuego()) {
-            turnos.get(0).cambiarDeFase();
-            turnos.get(1).cambiarDeFase();
-        }
-    }
+
+            try {
+                while (! finDelJuego()) {
+                turnos.get(0).cambiarDeFase();
+                turnos.get(1).cambiarDeFase();
+                }
+            }
+            catch (FinDelJuegoException datosDePartidaTerminada){
+                 datosDePartidaTerminada.obtenerMotivo();
+                 if (jugador1.equals(datosDePartidaTerminada.obtenerPerdedor()) && jugador1.pierde(jugador2.mostrarMano()) && jugador2.gana()) {
+                     //mostrar victoria jugador2
+                 }
+                 else if (jugador2.equals(datosDePartidaTerminada.obtenerPerdedor()) && jugador1.gana() && jugador2.pierde(jugador1.mostrarMano())){
+                     //mostrar victoria jugador 1
+                 }
+                 else {
+                         //empate
+                     }
+                 }
+            }
+
+
 
     public Jugador obtenerJugador1() { return jugador1; }
 

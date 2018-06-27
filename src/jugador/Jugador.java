@@ -2,7 +2,9 @@ package jugador;
 
 import cartas.Carta;
 import cartas.cartasMonstruo.exodia.CartaMonstruoExodia;
+import excepciones.FinDelJuegoException;
 
+import java.util.EmptyStackException;
 import java.util.List;
 
 public class Jugador {
@@ -15,6 +17,11 @@ public class Jugador {
         mazo = new Mazo(); //El jugador empieza con 8000 puntos de vida
         mano = this.crearMano();
     }
+    public Jugador (String mazoGuardado){
+        puntosJuego = new Punto(8000);
+        mazo = new Mazo(mazoGuardado); //El jugador empieza con 8000 puntos de vida
+        mano = this.crearMano();
+    }
 
     public boolean sinMazo() {
         return mazo.estaVacio();
@@ -24,8 +31,14 @@ public class Jugador {
         return mazo;
     }
 
-    public Carta sacarCarta () {
+    public Carta sacarCarta () throws FinDelJuegoException {
+        try{
         return mazo.sacarCarta();
+
+        }
+        catch (EmptyStackException datosDelFinal){
+            throw new FinDelJuegoException("No hay mas cartas en el mazo", this);
+        }
     }
 
     public Punto obtenerPuntos () {

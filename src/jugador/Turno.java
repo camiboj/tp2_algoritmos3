@@ -6,6 +6,8 @@ import Fase.FaseAtaque;
 import Fase.FaseTrampa;
 import Fase.FaseMagia;
 import Fase.FasePreparacion;
+import excepciones.FinDelJuegoException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +26,7 @@ public class Turno {
         fases.add(new FaseMagia(unJugador));
     }
 
-    public void cambiarDeFase() {
+    public void cambiarDeFase() throws FinDelJuegoException {
         for(Fase fase : fases) {
             fase.ejecutarFase();
         }
