@@ -3,6 +3,7 @@ import cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
 import cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import cartas.invocacion.InvocacionDefault;
+import excepciones.VictoriaException;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Tablero;
@@ -36,7 +37,12 @@ public class WastelandTest {
         */
         Wasteland wasteland = new Wasteland(zonaMonstruo1, zonaMonstruo2);
         InvocacionDefault invocacionWasteland = new InvocacionDefault(wasteland);
-        tablero.colocarZonaCampo(invocacionWasteland, jugador1);
+        try {
+            tablero.colocarZonaCampo(invocacionWasteland, jugador1);
+        } catch (VictoriaException e) {
+            //no deberia dispararse esta excepcion
+            assertTrue(false);
+        }
 
 
         assertTrue(monstruo1.obtenerPuntosAtaque().obtenerNumero() == 800);

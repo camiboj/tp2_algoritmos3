@@ -2,6 +2,7 @@ package cartas;
 
 import cartas.cartasCampo.Wasteland;
 import cartas.cartasMonstruo.cartasBasicas.*;
+import cartas.cartasMonstruo.exodia.*;
 import cartas.cartasTrampa.CilindroMagico;
 
 public class CreadoraDeCartas {
@@ -28,7 +29,16 @@ public class CreadoraDeCartas {
 			*/
 			//case "Olla De La Codicia":
 				//return new OllaDeLaCodicia();
-
+			case "Brazo Derecho Del Prohibido":
+				return new BrazoDerechoDelProhibido();
+			case "Brazo Izquierdo Del Prohibido":
+				return new BrazoIzquierdoDelProhibido();
+			case "Pierna Derecha Del Prohibido":
+				return new PiernaDerechaDelProhibido();
+			case "Pierna Izquierda Del Prohibido":
+				return new PiernaIzquierdaDelProhibido();
+			case "Exodia El Prohibido":
+				return  new ExodiaElProhibido();
 		default:
 			break;
 		}

@@ -1,8 +1,11 @@
 import cartas.Carta;
 import cartas.cartasMonstruo.exodia.*;
+import excepciones.FinDelJuegoException;
+import excepciones.VictoriaException;
 import jugador.Jugador;
 import jugador.YuGiOh;
 import org.junit.Test;
+import org.junit.internal.runners.statements.Fail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +17,7 @@ public class ExodiaTest {
     @Test
     public void Tener5PartesExodiaHaceQueGanesElJuego() {
 
-        YuGiOh juego = new YuGiOh();
+        YuGiOh juego = new YuGiOh("mazoTestExodia","jugadorPersonalizado");
         Jugador jugador1 = juego.obtenerJugador1();
         Jugador jugador2 = juego.obtenerJugador2();
 
@@ -25,10 +28,17 @@ public class ExodiaTest {
         cartasExodia.add(new PiernaDerechaDelProhibido());
         cartasExodia.add(new PiernaIzquierdaDelProhibido());
         cartasExodia.add(new ExodiaElProhibido());
-
+    try {
         jugador1.crearManoConCartas(cartasExodia);
-        assertTrue(jugador1.gana() && jugador2.pierde(jugador1.mostrarMano()));
-        assertTrue(juego.finDelJuego());
+        assertTrue(false);
+    }
+     catch (VictoriaException e) {
+         assertTrue(e.obtenerMotivo().equals("Se Convoca a Exodia!!"));
+         assertTrue(jugador1.gana() && jugador2.pierde(jugador1.mostrarMano()));
+         assertTrue(juego.finDelJuego());
+    }
+
+
     }
 
 }

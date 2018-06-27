@@ -1,9 +1,9 @@
 package jugador;
 import cartas.Carta;
 import cartas.cartasMonstruo.exodia.CartaMonstruoExodia;
+import excepciones.VictoriaException;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Mano {
     private List<Carta> cartas;
@@ -12,8 +12,12 @@ public class Mano {
         cartas = new ArrayList<>();
     }
 
-    public void agregarCarta(Carta carta) {
+    public void agregarCarta(Carta carta) throws VictoriaException {
         cartas.add(carta);
+        if(sonTodasExodia()){
+            throw new VictoriaException(new String("Se Convoca a Exodia!!"));
+
+        }
     }
 
     public int obtenerCantidad() {
@@ -25,10 +29,15 @@ public class Mano {
     }
 
     public boolean sonTodasExodia() {
+        Set<CartaMonstruoExodia> piezasDeExodia= new HashSet<CartaMonstruoExodia>();
         for (Carta carta: cartas) {
-            boolean resultado = carta instanceof CartaMonstruoExodia;
-            if (! resultado) { return false; }
+           if( carta instanceof CartaMonstruoExodia){
+                piezasDeExodia.add((CartaMonstruoExodia)carta);
+           }
+
         }
+        if (piezasDeExodia.size()==5)
         return true;
+        else return false;
     }
 }

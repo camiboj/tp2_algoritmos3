@@ -1,5 +1,7 @@
 package Fase;
 
+import excepciones.FinDelJuegoException;
+
 public interface Fase {
-    void ejecutarFase();
+    void ejecutarFase() throws FinDelJuegoException;
 }

@@ -3,6 +3,7 @@ package jugador;
 import cartas.Carta;
 import cartas.cartasMonstruo.exodia.CartaMonstruoExodia;
 import excepciones.FinDelJuegoException;
+import excepciones.VictoriaException;
 
 import java.util.EmptyStackException;
 import java.util.List;
@@ -15,12 +16,23 @@ public class Jugador {
     public Jugador() {
         puntosJuego = new Punto(8000);
         mazo = new Mazo(); //El jugador empieza con 8000 puntos de vida
-        mano = this.crearMano();
+        try {
+            this.crearMano();
+        }
+        catch (VictoriaException datos){
+            //no se puede ganar antes que empiece una partida
+        }
+
     }
-    public Jugador (String mazoGuardado){
+    public Jugador (String mazoGuardado) {
         puntosJuego = new Punto(8000);
         mazo = new Mazo(mazoGuardado); //El jugador empieza con 8000 puntos de vida
-        mano = this.crearMano();
+        try {
+            this.crearMano();
+        }
+        catch (VictoriaException datos){
+            //no se puede ganar antes que empiece una partida
+        }
     }
 
     public boolean sinMazo() {
@@ -60,7 +72,7 @@ public class Jugador {
 
     public boolean equals(Object object){return this.getClass().equals(object.getClass());}
 
-    public void agarraCartas(int cantidad) {
+    public void agarraCartas(int cantidad) throws VictoriaException {
         for (int i = 0; i<cantidad; i += 1) {
             Carta carta = mazo.sacarCarta();
             mano.agregarCarta(carta);
@@ -68,21 +80,21 @@ public class Jugador {
         }
     }
 
-    public void crearManoConCartas(List <Carta> cartas) {
-        Mano unaMano = new Mano();
+    public void crearManoConCartas(List <Carta> cartas) throws VictoriaException {
+        mano = new Mano();
         for (Carta carta: cartas) {
-            unaMano.agregarCarta(carta);
+            mano.agregarCarta(carta);
         }
-        mano = unaMano;
+
     }
 
-    public Mano crearMano(){
-        Mano unaMano = new Mano();
+    public void crearMano() throws VictoriaException {
+        mano = new Mano();
         for (int i = 0; i<5; i += 1) {
             Carta carta = mazo.sacarCarta();
-            unaMano.agregarCarta(carta);
+            mano.agregarCarta(carta);
         }
-        return unaMano;
+
     }
 
     public int cantidadDeCartasEnMano() {

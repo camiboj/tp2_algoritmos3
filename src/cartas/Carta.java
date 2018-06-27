@@ -2,6 +2,7 @@ package cartas;
 import estadosDeCartas.BocaAbajo;
 import estadosDeCartas.BocaArriba;
 import estadosDeCartas.Estado;
+import excepciones.VictoriaException;
 import tablero.InterrumpirAtaqueException;
 
 public abstract class Carta {
@@ -14,12 +15,12 @@ public abstract class Carta {
         this.estado = null;
     }
 
-    public void colocarBocaArriba() throws InterrumpirAtaqueException {
+    public void colocarBocaArriba() throws InterrumpirAtaqueException, VictoriaException {
         this.estado = new BocaArriba();
         this.activarEfecto();
     }
 
-    public abstract void activarEfecto();
+    public abstract void activarEfecto() throws VictoriaException;
 
     public void colocarBocaAbajo() {
     	this.estado = new BocaAbajo();

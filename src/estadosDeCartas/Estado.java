@@ -1,7 +1,8 @@
 package estadosDeCartas;
 import cartas.Carta;
+import excepciones.VictoriaException;
 import tablero.InterrumpirAtaqueException;
 
 public interface Estado {
-    void darVuelta(Carta carta) throws InterrumpirAtaqueException;
+    void darVuelta(Carta carta) throws InterrumpirAtaqueException, VictoriaException;
 }

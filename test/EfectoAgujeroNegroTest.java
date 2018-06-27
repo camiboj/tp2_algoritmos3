@@ -5,6 +5,7 @@ import cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import cartas.invocacion.InvocacionDefault;
 import efectos.EfectoAgujeroNegro;
+import excepciones.VictoriaException;
 import jugador.Jugador;
 import jugador.Punto;
 import org.junit.Test;
@@ -40,7 +41,12 @@ public class EfectoAgujeroNegroTest {
         AgujeroNegro agujeroNegro = new AgujeroNegro(tablero,jugador1);
         InvocacionDefault invocacionAgujeroNegro = new InvocacionDefault(agujeroNegro);
         tablero.colocarZonaTrampaMagica(invocacionAgujeroNegro, jugador1);
-        agujeroNegro.colocarBocaArriba();
+        try {
+            agujeroNegro.colocarBocaArriba();
+        } catch (VictoriaException e) {
+            //no deberia ocurrir en este test
+            assertTrue(false);
+        }
         assertTrue(tablero.noTieneCartasMonstruo());
 
         Cementerio cementerio1 = tablero.mostrarCementerio(jugador1);

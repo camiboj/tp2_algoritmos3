@@ -1,6 +1,7 @@
 import cartas.cartasMonstruo.cartasBasicas.IdoloDeLosMilOjos;
 import cartas.cartasMonstruo.Jinzo7;
 import cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import excepciones.VictoriaException;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Cementerio;
@@ -26,7 +27,12 @@ public class Jinzo7Test {
         Jinzo7 jinzo7 = new Jinzo7(jugadorOponente);
         InvocacionCartaMonstruoGenerica invocacionJinzo7 = new InvocacionCartaMonstruoGenerica(jinzo7);
         tablero.colocarZonaMonstruo(invocacionJinzo7, jugador);
-        jinzo7.colocarBocaArriba();
+        try {
+            jinzo7.colocarBocaArriba();
+        } catch (VictoriaException e) {
+            //no deberia dispararse esta excepcion
+            assertTrue(false);
+        }
 
         Cementerio cementerioJugador = tablero.mostrarCementerio(jugador);
         ZonaMonstruo zonaMonstruoJugador = tablero.mostrarZonaMonstruo(jugador);

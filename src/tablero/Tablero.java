@@ -10,6 +10,7 @@ import cartas.invocacion.Invocacion;
 import cartas.invocacion.InvocacionCartaMonstruo;
 import efectos.Efecto;
 import estadosDeCartas.BocaAbajo;
+import excepciones.VictoriaException;
 import jugador.Jugador;
 import jugador.Punto;
 
@@ -32,7 +33,7 @@ public class Tablero {
 		return divisiones.get(jugador1);
 	}
 
-	public boolean colocarZonaCampo(Invocacion unaInvocacion, Jugador jugador) {
+	public boolean colocarZonaCampo(Invocacion unaInvocacion, Jugador jugador) throws VictoriaException {
 		//Si es Wasteland: primero pasar Jugador y después JugadorOponente
 		//Si es Sogen: primero pasar JugadorOponente y después Jugador
 

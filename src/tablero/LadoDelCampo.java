@@ -4,6 +4,7 @@ import cartas.cartasMonstruo.CartaMonstruo;
 import cartas.cartasTrampa.CartaTrampa;
 import cartas.invocacion.Invocacion;
 import cartas.invocacion.InvocacionCartaMonstruo;
+import excepciones.VictoriaException;
 import jugador.Jugador;
 import jugador.Mazo;
 
@@ -63,7 +64,7 @@ public class LadoDelCampo {
 		return miZonaMonstruo.estaVacia();
 	}
 
-	public boolean colocarZonaCampo(Invocacion unaInvocacion) {
+	public boolean colocarZonaCampo(Invocacion unaInvocacion) throws VictoriaException {
 		return miZonaCampo.colocarCarta(unaInvocacion);
 	}
 

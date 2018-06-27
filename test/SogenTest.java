@@ -3,6 +3,7 @@ import cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
 import cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import cartas.invocacion.InvocacionDefault;
+import excepciones.VictoriaException;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Tablero;
@@ -35,7 +36,12 @@ public class SogenTest {
 
         Sogen sogen = new Sogen(zonaMonstruoSogen, zonaMonstruoOtro);
         InvocacionDefault invocacionSogen = new InvocacionDefault(sogen);
-        tablero.colocarZonaCampo(invocacionSogen, jugadorSogen);
+        try {
+            tablero.colocarZonaCampo(invocacionSogen, jugadorSogen);
+        } catch (VictoriaException e) {
+            //no deberia dispararse esta excepcion
+            assertTrue(false);
+        }
 
 
         assertTrue(monstruoLadoSogen.obtenerPuntosAtaque().obtenerNumero() == 600);

@@ -1,5 +1,6 @@
 import cartas.invocacion.InvocacionDefault;
 import cartas.cartasMagicas.OllaDeLaCodicia;
+import excepciones.VictoriaException;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.InterrumpirAtaqueException;
@@ -21,7 +22,12 @@ public class OllaDeLaCodiciaTest {
         OllaDeLaCodicia ollaDeLaCodicia = new OllaDeLaCodicia(jugador1);
         InvocacionDefault invocacionOllaDeLaCodicia = new InvocacionDefault(ollaDeLaCodicia);
         tablero.colocarZonaTrampaMagica(invocacionOllaDeLaCodicia, jugador1);
-        ollaDeLaCodicia.colocarBocaArriba();
+        try {
+            ollaDeLaCodicia.colocarBocaArriba();
+        } catch (VictoriaException e) {
+            //no deberia dispararse esta excepcion
+            assertTrue(false);
+        }
 
         assertTrue((jugador1.cantidadDeCartasEnMazo() == 33));
 

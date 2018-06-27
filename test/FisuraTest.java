@@ -3,6 +3,7 @@ import cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
 import cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import cartas.invocacion.InvocacionDefault;
+import excepciones.VictoriaException;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Cementerio;
@@ -31,7 +32,12 @@ public class FisuraTest {
         Fisura fisura = new Fisura(tablero.mostrarLadoDelCampo(jugadorOponente));
         InvocacionDefault invocacionFisura = new InvocacionDefault(fisura);
         tablero.colocarZonaTrampaMagica(invocacionFisura, jugador);
-        fisura.colocarBocaArriba();
+        try {
+            fisura.colocarBocaArriba();
+        } catch (VictoriaException e) {
+            //no deberia dispararse esta excepcion
+            assertTrue(false);
+        }
 
         Cementerio cementerio = tablero.mostrarCementerio(jugadorOponente);
         ZonaMonstruo zonaMonstruo = tablero.mostrarZonaMonstruo(jugadorOponente);

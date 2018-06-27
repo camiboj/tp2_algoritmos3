@@ -2,6 +2,7 @@ package cartas.cartasMagicas;
 
 import cartas.cartasMagicas.CartaMagica;
 import efectos.Efecto;
+import excepciones.VictoriaException;
 import jugador.Jugador;
 import tablero.InterrumpirAtaqueException;
 import tablero.LadoDelCampo;
@@ -15,7 +16,7 @@ import tablero.Tablero;
         jugador = unJugador;
     }
 
-    public void activarEfecto() {
+    public void activarEfecto() throws VictoriaException {
         jugador.agarraCartas(2);
     }
 

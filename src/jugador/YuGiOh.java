@@ -19,6 +19,14 @@ public class YuGiOh {
         turnos.add(new Turno(jugador1));
         turnos.add(new Turno(jugador2));
     }
+    public YuGiOh(String mazoJugador1, String mazoJugador2) {
+        jugador1 = new Jugador(mazoJugador1);
+        jugador2 = new Jugador(mazoJugador2);
+        tablero = new Tablero(jugador1, jugador2);
+        turnos = new ArrayList <>();
+        turnos.add(new Turno(jugador1));
+        turnos.add(new Turno(jugador2));
+    }
 
     public boolean finDelJuego() {
         return (jugador1.pierde(jugador2.mostrarMano()) && jugador2.gana() ||
