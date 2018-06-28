@@ -1,5 +1,6 @@
 package jugador;
 import excepciones.FinDelJuegoException;
+import excepciones.VictoriaException;
 import tablero.Tablero;
 
 import java.util.ArrayList;
@@ -11,17 +12,9 @@ public class YuGiOh {
     private Tablero tablero;
     private List<Turno> turnos;
 
-    public YuGiOh() {
+    public YuGiOh() throws VictoriaException {
         jugador1 = new Jugador();
         jugador2 = new Jugador();
-        tablero = new Tablero(jugador1, jugador2);
-        turnos = new ArrayList <>();
-        turnos.add(new Turno(jugador1));
-        turnos.add(new Turno(jugador2));
-    }
-    public YuGiOh(String mazoJugador1, String mazoJugador2) {
-        jugador1 = new Jugador(mazoJugador1);
-        jugador2 = new Jugador(mazoJugador2);
         tablero = new Tablero(jugador1, jugador2);
         turnos = new ArrayList <>();
         turnos.add(new Turno(jugador1));

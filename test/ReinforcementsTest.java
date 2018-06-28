@@ -4,6 +4,7 @@ import cartas.cartasTrampa.CartaTrampa;
 import cartas.cartasTrampa.Reinforcements;
 import cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import cartas.invocacion.InvocacionDefault;
+import excepciones.VictoriaException;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Cementerio;
@@ -17,7 +18,7 @@ import static org.junit.Assert.assertFalse;
 public class ReinforcementsTest {
 
     @Test
-    public void ReinforcementsTieneElEfectoEsperado() {
+    public void ReinforcementsTieneElEfectoEsperado() throws VictoriaException {
         //assertTrue(true);
 
 

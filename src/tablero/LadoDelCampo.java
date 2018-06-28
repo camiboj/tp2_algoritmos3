@@ -24,13 +24,16 @@ public class LadoDelCampo {
 
 	public LadoDelCampo() {
 		miCementerio = new Cementerio();
-		miMazo = new Mazo();
 		miZonaCampo = new ZonaCampo();
 		miZonaDeTrampasYMagia = new ZonaTrampaMagica();
 		miZonaMonstruo = new ZonaMonstruo() {
 		};
 	}
 
+	public void guardarMazo(Jugador miJugador, Jugador jugadorContrario, ZonaMonstruo zonaMonstruoContraria) throws VictoriaException {
+		miMazo = new Mazo("",miJugador, jugadorContrario, zonaMonstruoContraria, miZonaMonstruo);
+		miJugador.guardarMazo(miMazo);
+	}
 	public Cementerio mostrarCementerio() {
 		return miCementerio;
 	}
@@ -110,5 +113,9 @@ public class LadoDelCampo {
 
 	public List<Casillero> mostrarCasillerosZonaTrampaMagica() {
 		return miZonaDeTrampasYMagia.obtenerCasilleros();
+	}
+
+	public ZonaMonstruo obtenerZonaMonstruos() {
+		return miZonaMonstruo;
 	}
 }

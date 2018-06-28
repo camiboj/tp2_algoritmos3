@@ -1,5 +1,6 @@
 import cartas.Carta;
 import excepciones.FinDelJuegoException;
+import excepciones.VictoriaException;
 import jugador.Jugador;
 import jugador.YuGiOh;
 import org.junit.Test;
@@ -11,7 +12,7 @@ import static org.junit.Assert.assertFalse;
 
 public class FinMazoTest {
     @Test
-    public void agarrarTodasCartasMazoTerminaJuego() {
+    public void agarrarTodasCartasMazoTerminaJuego() throws VictoriaException {
 
         YuGiOh juego = new YuGiOh();
         Jugador jugador1 = juego.obtenerJugador1();
@@ -32,7 +33,7 @@ public class FinMazoTest {
         assertTrue(juego.finDelJuego());
     }
     @Test
-    public void agarrarMuchoMasQueTodasCartasMazoTerminaJuego() {
+    public void agarrarMuchoMasQueTodasCartasMazoTerminaJuego() throws VictoriaException {
 
         YuGiOh juego = new YuGiOh();
         Jugador jugador1 = juego.obtenerJugador1();

@@ -22,13 +22,14 @@ public class Consola {
 
         HBox consola = new HBox(text);
         consola.setStyle("-fx-background-color: grey;");
-        consola.setPrefWidth(100);
+        consola.setPrefHeight(70);
         contenedorConsola = consola;
 
         scrollPane = new ScrollPane(contenedorConsola);
         scrollPane.setStyle("-fx-background: grey;");
         scrollPane.vvalueProperty().bind(contenedorConsola.widthProperty());
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        scrollPane.setStyle("");
     }
 
     public void escribirInstruccion(String instruccion) {

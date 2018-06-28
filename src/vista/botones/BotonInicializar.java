@@ -15,5 +15,6 @@ public class BotonInicializar implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent arg0) {
         contenedor.habilitarJugarTrasAceptar();
+
     }
 }

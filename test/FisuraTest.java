@@ -17,7 +17,7 @@ import static junit.framework.TestCase.assertTrue;
 public class FisuraTest {
 
     @Test
-    public void FisuraTest() throws InterrumpirAtaqueException{
+    public void FisuraTest() throws InterrumpirAtaqueException, VictoriaException {
         Jugador jugador = new Jugador();
         Jugador jugadorOponente = new Jugador();
         Tablero tablero = new Tablero(jugador, jugadorOponente);

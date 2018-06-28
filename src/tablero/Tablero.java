@@ -20,13 +20,21 @@ public class Tablero {
 	private Jugador jugador1;
 	private Jugador jugador2;
 
-	public Tablero(Jugador jugador1, Jugador jugador2) {
+	public Tablero(Jugador jugador1, Jugador jugador2) throws VictoriaException {
 
 		this.jugador1 = jugador1;
 		this.jugador2 = jugador2;
 		divisiones = new HashMap<Jugador, LadoDelCampo>();
-		divisiones.put(jugador1, new LadoDelCampo());
-		divisiones.put(jugador2, new LadoDelCampo());
+		LadoDelCampo lado1 = new LadoDelCampo();
+		LadoDelCampo lado2 = new LadoDelCampo();
+		divisiones.put(jugador1, lado1);
+		divisiones.put(jugador2, lado2);
+		lado1.guardarMazo(jugador1, jugador2, lado2.obtenerZonaMonstruos());
+
+		lado2.guardarMazo(jugador2, jugador1, lado1.obtenerZonaMonstruos());
+
+
+
 	}
 
 	public LadoDelCampo get(Jugador jugador1) {

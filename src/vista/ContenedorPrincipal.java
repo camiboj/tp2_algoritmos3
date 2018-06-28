@@ -32,7 +32,7 @@ public class ContenedorPrincipal extends BorderPane {
 
     private void setConsola() {
         consola = new Consola();
-        this.setRight(consola.getScrollPane());
+        this.setBottom(consola.getScrollPane());
     }
 
     public static ArrayList<Jugador> getJugadores() {

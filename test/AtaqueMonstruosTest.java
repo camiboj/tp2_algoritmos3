@@ -1,8 +1,10 @@
 import cartas.*;
+import cartas.cartasMagicas.AgujeroNegro;
 import cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
 import cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import cartas.invocacion.InvocacionDefault;
+import excepciones.VictoriaException;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Cementerio;
@@ -16,21 +18,21 @@ import static junit.framework.TestCase.assertFalse;
 public class AtaqueMonstruosTest {
 
     @Test
-     public void DosJugadoresTiranSusCartas () {
+     public void DosJugadoresTiranSusCartas () throws VictoriaException {
 
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
         Tablero tablero = new Tablero(jugador1, jugador2);
         CreadoraDeCartas manager = new CreadoraDeCartas();
-        Carta carta1 = manager.crearCarta("Agujero Negro");
+        Carta carta1 = new AgujeroNegro(tablero, jugador1);
         InvocacionDefault invocacion1 = new InvocacionDefault(carta1);
-        Carta carta2 = manager.crearCarta("Cilindro Magico");
+        Carta carta2 = new AgujeroNegro(tablero, jugador2);
         InvocacionDefault invocacion2 = new InvocacionDefault(carta2);
         assertTrue(tablero.colocarZonaTrampaMagica(invocacion1, jugador1) && tablero.colocarZonaTrampaMagica(invocacion2, jugador2));
     }
 
     @Test
-    public void DosJugadoresPonenSusMonstruosEnPosiciondeAtaqueyElDefensorVaAlCementerio () {
+    public void DosJugadoresPonenSusMonstruosEnPosiciondeAtaqueyElDefensorVaAlCementerio () throws VictoriaException {
         Jugador jugadorDefensor = new Jugador();
         Jugador jugadorAtacante = new Jugador();
         Tablero tablero = new Tablero(jugadorDefensor, jugadorAtacante);
@@ -52,7 +54,7 @@ public class AtaqueMonstruosTest {
     }
 
     @Test
-    public void DosJugadoresPonenSusMonstruosEnPosiciondeAtaqueyElDefensorPierdePuntos () {
+    public void DosJugadoresPonenSusMonstruosEnPosiciondeAtaqueyElDefensorPierdePuntos () throws VictoriaException {
         Jugador jugadorDefensor = new Jugador();
         Jugador jugadorAtacante = new Jugador();
         Tablero tablero = new Tablero(jugadorDefensor, jugadorAtacante);
@@ -72,7 +74,7 @@ public class AtaqueMonstruosTest {
     }
 
     @Test
-    public void DosJugadoresPonenSusMonstruosEnPosiciondeAtaqueyElAtacanteVaAlCementerio () {
+    public void DosJugadoresPonenSusMonstruosEnPosiciondeAtaqueyElAtacanteVaAlCementerio () throws VictoriaException {
         Jugador jugadorAtacante = new Jugador();
         Jugador jugadorDefensor = new Jugador();
         Tablero tablero = new Tablero(jugadorAtacante, jugadorDefensor);
@@ -94,7 +96,7 @@ public class AtaqueMonstruosTest {
     }
 
     @Test
-    public void DosJugadoresPonenSusMonstruosEnPosiciondeAtaqueyElAtacantePierdePuntos () {
+    public void DosJugadoresPonenSusMonstruosEnPosiciondeAtaqueyElAtacantePierdePuntos () throws VictoriaException {
         Jugador jugadorAtacante = new Jugador();
         Jugador jugadorDefensor = new Jugador();
         Tablero tablero = new Tablero(jugadorAtacante, jugadorDefensor);
@@ -114,7 +116,7 @@ public class AtaqueMonstruosTest {
     }
 
     @Test
-    public void DosJugadoresPonenSusMonstruosEnPosiciondeAtaqueyAmbosVanAlCementerio () {
+    public void DosJugadoresPonenSusMonstruosEnPosiciondeAtaqueyAmbosVanAlCementerio () throws VictoriaException {
         Jugador jugadorAtacante = new Jugador();
         Jugador jugadorDefensor = new Jugador();
         Tablero tablero = new Tablero(jugadorAtacante, jugadorDefensor);
@@ -138,7 +140,7 @@ public class AtaqueMonstruosTest {
     }
 
     @Test
-    public void DosJugadoresPonenSusMonstruosEnPosiciondeAtaqueyNadiePierdePuntos () {
+    public void DosJugadoresPonenSusMonstruosEnPosiciondeAtaqueyNadiePierdePuntos () throws VictoriaException {
         Jugador jugadorAtacante = new Jugador();
         Jugador jugadorDefensor = new Jugador();
         Tablero tablero = new Tablero(jugadorAtacante, jugadorDefensor);

@@ -1,12 +1,16 @@
 package cartas;
 
 import cartas.cartasCampo.Wasteland;
+import cartas.cartasMagicas.OllaDeLaCodicia;
 import cartas.cartasMonstruo.cartasBasicas.*;
 import cartas.cartasMonstruo.exodia.*;
 import cartas.cartasTrampa.CilindroMagico;
+import jugador.Jugador;
+import tablero.ZonaMonstruo;
 
 public class CreadoraDeCartas {
-	public static final Carta crearCarta(String nombre) {
+	public static final Carta crearCarta(String nombre, Jugador jugador, Jugador jugadorContrario,
+										 ZonaMonstruo zonaMonstruoAtacante, ZonaMonstruo zonaMonstruoPropia) {
 		switch (nombre) {
 			case "Huevo Monstruoso":
 				return new HuevoMonstruoso();
@@ -18,17 +22,16 @@ public class CreadoraDeCartas {
 				//return new AgujeroNegro();
 			case "Alcanzador de Garra":
 				return new AlcanzadorDeGarra();
-			/*case "Araña Lanzadora":
+			case "Araña Lanzadora":
 				return new ArañaLanzadora();
 			case "Bestia De Talwar":
-				return new BestiaDeTalwar();*/
-			/*case "Aitsu":
+				return new BestiaDeTalwar();
+			case "Aitsu":
 				return new Aitsu();
 			case "Wasteland":
-				return new Wasteland();
-			*/
-			//case "Olla De La Codicia":
-				//return new OllaDeLaCodicia();
+				return new Wasteland(zonaMonstruoAtacante, zonaMonstruoPropia);
+			case "Olla De La Codicia":
+				return new OllaDeLaCodicia(jugador);
 			case "Brazo Derecho Del Prohibido":
 				return new BrazoDerechoDelProhibido();
 			case "Brazo Izquierdo Del Prohibido":
@@ -39,6 +42,7 @@ public class CreadoraDeCartas {
 				return new PiernaIzquierdaDelProhibido();
 			case "Exodia El Prohibido":
 				return  new ExodiaElProhibido();
+
 		default:
 			break;
 		}

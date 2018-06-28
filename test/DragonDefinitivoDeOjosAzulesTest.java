@@ -4,6 +4,7 @@ import cartas.cartasMonstruo.DragonDefinitivoDeOjosAzules;
 import cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import cartas.invocacion.InvocacionCartaDragonDefinitivoOjosAzules;
 import cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import excepciones.VictoriaException;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Cementerio;
@@ -20,7 +21,7 @@ public class DragonDefinitivoDeOjosAzulesTest {
 
 
     @Test
-    public void InvocacionDragonDefinitivoDeOjosAzules(){
+    public void InvocacionDragonDefinitivoDeOjosAzules() throws VictoriaException {
         assertTrue(true);
 
         Jugador jugador1 = new Jugador();

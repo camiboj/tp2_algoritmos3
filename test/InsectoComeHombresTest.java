@@ -2,6 +2,7 @@ import cartas.cartasMonstruo.InsectoComeHombres;
 import cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
 import cartas.invocacion.InvocacionCartaMonstruo;
 import cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import excepciones.VictoriaException;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Cementerio;
@@ -14,7 +15,7 @@ import static org.junit.Assert.assertFalse;
 public class InsectoComeHombresTest {
 
     @Test
-    public void InsectoComeHombreMataCartaAtacante () {
+    public void InsectoComeHombreMataCartaAtacante () throws VictoriaException {
 
         Jugador jugadorDefensor = new Jugador();
         Jugador jugadorAtacante = new Jugador();

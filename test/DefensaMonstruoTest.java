@@ -2,6 +2,7 @@ import cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
 import cartas.cartasMonstruo.cartasBasicas.AlcanzadorDeGarra;
 import cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import excepciones.VictoriaException;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Cementerio;
@@ -13,7 +14,7 @@ import static junit.framework.TestCase.assertFalse;
 
 public class DefensaMonstruoTest {
     @Test
-    public void cartaEnModoDefensaEsAtacadaYGana(){
+    public void cartaEnModoDefensaEsAtacadaYGana() throws VictoriaException {
         Jugador jugadorDefensor = new Jugador();
         Jugador jugadorAtacante = new Jugador();
         Tablero tablero = new Tablero(jugadorDefensor, jugadorAtacante);
@@ -39,7 +40,7 @@ public class DefensaMonstruoTest {
     }
 
     @Test
-    public void cartaEnModoDefensaEsAtacadaYPierdeConPuntosDeSobra(){
+    public void cartaEnModoDefensaEsAtacadaYPierdeConPuntosDeSobra() throws VictoriaException {
         Jugador jugadorDefensor = new Jugador();
         Jugador jugadorAtacante = new Jugador();
         Tablero tablero = new Tablero(jugadorDefensor, jugadorAtacante);
@@ -63,7 +64,7 @@ public class DefensaMonstruoTest {
     }
 
     @Test
-    public void cartaEnModoDefensaEsAtacadaYPierdeConPuntosIguales(){
+    public void cartaEnModoDefensaEsAtacadaYPierdeConPuntosIguales() throws VictoriaException {
         Jugador jugadorDefensor = new Jugador();
         Jugador jugadorAtacante = new Jugador();
         Tablero tablero = new Tablero(jugadorDefensor, jugadorAtacante);

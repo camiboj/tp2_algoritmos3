@@ -1,3 +1,4 @@
+import excepciones.VictoriaException;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.LadoDelCampo;
@@ -7,7 +8,7 @@ import static junit.framework.TestCase.assertTrue;
 public class TableroTest {
 
     @Test
-    public void CrearTablero(){
+    public void CrearTablero() throws VictoriaException {
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
         Tablero tablero = new Tablero(jugador1, jugador2);

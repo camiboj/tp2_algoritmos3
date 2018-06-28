@@ -4,6 +4,7 @@ import cartas.Carta;
 import cartas.cartasMonstruo.exodia.CartaMonstruoExodia;
 import excepciones.FinDelJuegoException;
 import excepciones.VictoriaException;
+import tablero.ZonaMonstruo;
 
 import java.util.EmptyStackException;
 import java.util.List;
@@ -13,7 +14,7 @@ public class Jugador {
     private Mazo mazo;
     private Mano mano;
 
-    public Jugador() {
+   /* public Jugador() {
         puntosJuego = new Punto(8000);
         mazo = new Mazo(); //El jugador empieza con 8000 puntos de vida
         try {
@@ -23,16 +24,15 @@ public class Jugador {
             //no se puede ganar antes que empiece una partida
         }
 
-    }
-    public Jugador (String mazoGuardado) {
+    }*/
+    public Jugador () {
         puntosJuego = new Punto(8000);
-        mazo = new Mazo(mazoGuardado); //El jugador empieza con 8000 puntos de vida
-        try {
-            this.crearMano();
-        }
-        catch (VictoriaException datos){
-            //no se puede ganar antes que empiece una partida
-        }
+        //mazo = new Mazo(nombreDelMazo, jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia); //El jugador empieza con 8000 puntos de vida
+    }
+
+    public void guardarMazo(Mazo mazo) throws VictoriaException {
+        this.mazo = mazo;
+        this.crearMano();
     }
 
     public boolean sinMazo() {

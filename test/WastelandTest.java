@@ -14,7 +14,7 @@ import static junit.framework.TestCase.assertTrue;
 public class WastelandTest {
 
     @Test
-    public void activacionCartaWastelandHaceLoEsperado () {
+    public void activacionCartaWastelandHaceLoEsperado () throws VictoriaException {
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
         Tablero tablero = new Tablero(jugador1, jugador2);

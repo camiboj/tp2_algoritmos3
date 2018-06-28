@@ -15,9 +15,9 @@ import static junit.framework.TestCase.assertTrue;
 public class ExodiaTest {
 
     @Test
-    public void Tener5PartesExodiaHaceQueGanesElJuego() {
+    public void Tener5PartesExodiaHaceQueGanesElJuego() throws VictoriaException {
 
-        YuGiOh juego = new YuGiOh("mazoTestExodia","jugadorPersonalizado");
+        YuGiOh juego = new YuGiOh();
         Jugador jugador1 = juego.obtenerJugador1();
         Jugador jugador2 = juego.obtenerJugador2();
 

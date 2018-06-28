@@ -68,7 +68,11 @@ public class ContenedorInicial extends VBox {
         botonNombres.setText("Aceptar");
         botonNombres.setStyle("-fx-base: red;");
         BotonInicializar botonInicializar = new BotonInicializar(this);
+        botonNombres.setDefaultButton(true);
         botonNombres.setOnAction(botonInicializar);
+
+
+
 
         BotonJugar botonJugarHandler = new BotonJugar(stage, yuGiOh);
         botonJugar.setOnAction(botonJugarHandler);

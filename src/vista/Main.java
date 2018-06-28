@@ -1,4 +1,5 @@
 package vista;
+import excepciones.VictoriaException;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -11,7 +12,7 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(final Stage stage)  {
+    public void start(final Stage stage) throws VictoriaException {
 
         stage.setTitle("YuGiOh");
 

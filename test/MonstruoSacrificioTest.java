@@ -1,6 +1,7 @@
 import cartas.cartasMonstruo.*;
 import cartas.cartasMonstruo.cartasBasicas.*;
 import cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import excepciones.VictoriaException;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Cementerio;
@@ -16,7 +17,7 @@ import static org.junit.Assert.assertFalse;
 public class MonstruoSacrificioTest {
 
     @Test
-    public void invocarMonstruo5EstrellasRequiere1Sacrificio(){
+    public void invocarMonstruo5EstrellasRequiere1Sacrificio() throws VictoriaException {
         Aitsu cartaCausanteSacrificios = new Aitsu();
         HuevoMonstruoso cartaSacrificada = new HuevoMonstruoso();
         List<CartaMonstruo> cartasASacrificar = new ArrayList<>();
@@ -45,7 +46,7 @@ public class MonstruoSacrificioTest {
     }
 
     @Test
-    public void invocarMonstruo5EstrellasRequiere1SacrificioYElige (){
+    public void invocarMonstruo5EstrellasRequiere1SacrificioYElige () throws VictoriaException {
         Aitsu cartaCausanteSacrificios = new Aitsu();
         HuevoMonstruoso cartaSacrificada = new HuevoMonstruoso();
         List<CartaMonstruo> cartasASacrificar = new ArrayList<>();
@@ -80,7 +81,7 @@ public class MonstruoSacrificioTest {
     }
 
     @Test
-    public void invocarMonstruo6EstrellasRequiere1Sacrificio () {
+    public void invocarMonstruo6EstrellasRequiere1Sacrificio () throws VictoriaException {
         BestiaDeTalwar cartaCausanteSacrificios = new BestiaDeTalwar();
         HuevoMonstruoso cartaSacrificada = new HuevoMonstruoso();
         List <CartaMonstruo> cartasASacrificar = new ArrayList <>();
@@ -108,7 +109,7 @@ public class MonstruoSacrificioTest {
     }
 
     @Test
-    public void invocarMonstruo7EstrellasRequiere2Sacrificios () {
+    public void invocarMonstruo7EstrellasRequiere2Sacrificios () throws VictoriaException {
         ArañaLanzadora cartaCausanteSacrificios = new ArañaLanzadora();
         HuevoMonstruoso cartaSacrificada1 = new HuevoMonstruoso();
         AlasDeLaLlamaPerversa cartaSacrificada2 = new AlasDeLaLlamaPerversa();

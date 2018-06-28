@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 public class SogenTest {
 
     @Test
-    public void activacionCartaSogenHaceLoEsperado () {
+    public void activacionCartaSogenHaceLoEsperado () throws VictoriaException {
 
         Jugador jugadorSogen = new Jugador();
         Jugador otroJugador = new Jugador();

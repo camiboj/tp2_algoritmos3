@@ -1,13 +1,15 @@
 package jugador;
 import cartas.Carta;
 import cartas.CreadoraDeCartas;
+import tablero.ZonaMonstruo;
+
 import java.io.File;
 import java.util.Scanner;
 import java.util.Stack;
 public class Mazo {
     private Stack<Carta> cartas;
 
-    public Mazo() {
+   /* public Mazo() {
         cartas = new Stack();
 
         try {
@@ -24,8 +26,9 @@ public class Mazo {
                 agregarCarta( "Huevo Monstruoso");
             }
         }
-    }
-    public Mazo(String nombreDelMazo){
+    }*/
+    public Mazo(String nombreDelMazo, Jugador jugador, Jugador jugadorContrario,
+                ZonaMonstruo zonaMonstruoAtacante, ZonaMonstruo zonaMonstruoPropia){
         //Constructor creado para tests y debug
         cartas = new Stack();
 
@@ -34,13 +37,14 @@ public class Mazo {
             String nombreDeCarta;
             while (mazoGuardado.hasNext()) {
                 nombreDeCarta = mazoGuardado.nextLine();
-                agregarCarta(nombreDeCarta);
+                agregarCarta(nombreDeCarta, jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia);
+
             }
             mazoGuardado.close();
         }
         catch (Exception e){
             for(int i = 0; i<40; i++) {
-                agregarCarta( "Huevo Monstruoso");
+                agregarCarta( "Huevo Monstruoso", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia);
             }
         }
     }
@@ -59,10 +63,11 @@ public class Mazo {
         return cartas.size();
     }
 
-    public void agregarCarta(String nombreDeCarta) {
+    public void agregarCarta(String nombreDeCarta, Jugador jugador, Jugador jugadorContrario,
+                             ZonaMonstruo zonaMonstruoAtacante, ZonaMonstruo zonaMonstruoPropia) {
 
         if (cartas.size()<40) {
-            cartas.push(CreadoraDeCartas.crearCarta(nombreDeCarta));
+            cartas.push(CreadoraDeCartas.crearCarta(nombreDeCarta, jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia));
         }
     }
 }

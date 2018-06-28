@@ -1,8 +1,10 @@
 import cartas.*;
 import cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
 import cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
+import cartas.cartasTrampa.CilindroMagico;
 import cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import cartas.invocacion.InvocacionDefault;
+import excepciones.VictoriaException;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Cementerio;
@@ -13,11 +15,11 @@ import static org.junit.Assert.assertFalse;
 
 public class CilindroMagicoTest {
     @Test
-    public void ColocarCartaTrampaBocaAbajoEnCampoParaJugador1() {
+    public void ColocarCartaTrampaBocaAbajoEnCampoParaJugador1() throws VictoriaException {
         Jugador jugadorDefensor = new Jugador();
         Jugador jugadorAtacante = new Jugador();
         Tablero tablero = new Tablero(jugadorDefensor, jugadorAtacante);
-        Carta cilindro_magico = CreadoraDeCartas.crearCarta("Cilindro Magico");
+        Carta cilindro_magico = new CilindroMagico();
         InvocacionDefault InvocacionCilindroMagico = new InvocacionDefault(cilindro_magico);
         HuevoMonstruoso cartaAtacante = new HuevoMonstruoso();
         InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante, null); // No requiere sacrificios

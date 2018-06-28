@@ -13,7 +13,7 @@ public class OllaDeLaCodiciaTest {
 
 
     @Test
-    public void ollaDeLaCodiciaTest()  throws InterrumpirAtaqueException {
+    public void ollaDeLaCodiciaTest() throws InterrumpirAtaqueException, VictoriaException {
         assertTrue(true);
 
         Jugador jugador1 = new Jugador();

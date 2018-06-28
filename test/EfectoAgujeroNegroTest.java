@@ -18,7 +18,7 @@ import static junit.framework.TestCase.assertTrue;
 public class EfectoAgujeroNegroTest {
 
     @Test
-    public void AgujeroNegroMataMonstruos() throws InterrumpirAtaqueException {
+    public void AgujeroNegroMataMonstruos() throws InterrumpirAtaqueException, VictoriaException {
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
         Tablero tablero = new Tablero(jugador1, jugador2);
