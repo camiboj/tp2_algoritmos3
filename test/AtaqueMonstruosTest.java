@@ -24,9 +24,9 @@ public class AtaqueMonstruosTest {
         Jugador jugador2 = new Jugador();
         Tablero tablero = new Tablero(jugador1, jugador2);
         CreadoraDeCartas manager = new CreadoraDeCartas();
-        Carta carta1 = new AgujeroNegro(tablero, jugador1);
+        Carta carta1 = new AgujeroNegro(tablero);
         InvocacionDefault invocacion1 = new InvocacionDefault(carta1);
-        Carta carta2 = new AgujeroNegro(tablero, jugador2);
+        Carta carta2 = new AgujeroNegro(tablero);
         InvocacionDefault invocacion2 = new InvocacionDefault(carta2);
         assertTrue(tablero.colocarZonaTrampaMagica(invocacion1, jugador1) && tablero.colocarZonaTrampaMagica(invocacion2, jugador2));
     }

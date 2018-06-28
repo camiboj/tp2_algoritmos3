@@ -14,17 +14,6 @@ public class Jugador {
     private Mazo mazo;
     private Mano mano;
 
-   /* public Jugador() {
-        puntosJuego = new Punto(8000);
-        mazo = new Mazo(); //El jugador empieza con 8000 puntos de vida
-        try {
-            this.crearMano();
-        }
-        catch (VictoriaException datos){
-            //no se puede ganar antes que empiece una partida
-        }
-
-    }*/
     public Jugador () {
         puntosJuego = new Punto(8000);
         //mazo = new Mazo(nombreDelMazo, jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia); //El jugador empieza con 8000 puntos de vida

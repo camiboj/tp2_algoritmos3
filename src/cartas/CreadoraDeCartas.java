@@ -1,16 +1,18 @@
 package cartas;
 
 import cartas.cartasCampo.Wasteland;
+import cartas.cartasMagicas.AgujeroNegro;
 import cartas.cartasMagicas.OllaDeLaCodicia;
 import cartas.cartasMonstruo.cartasBasicas.*;
 import cartas.cartasMonstruo.exodia.*;
 import cartas.cartasTrampa.CilindroMagico;
 import jugador.Jugador;
+import tablero.Tablero;
 import tablero.ZonaMonstruo;
 
 public class CreadoraDeCartas {
 	public static final Carta crearCarta(String nombre, Jugador jugador, Jugador jugadorContrario,
-										 ZonaMonstruo zonaMonstruoAtacante, ZonaMonstruo zonaMonstruoPropia) {
+										 ZonaMonstruo zonaMonstruoAtacante, ZonaMonstruo zonaMonstruoPropia, Tablero tablero) {
 		switch (nombre) {
 			case "Huevo Monstruoso":
 				return new HuevoMonstruoso();
@@ -19,7 +21,7 @@ public class CreadoraDeCartas {
 			case "Cilindro Magico":
 				return new CilindroMagico();
 			case "Agujero Negro":
-				//return new AgujeroNegro();
+				return new AgujeroNegro(tablero);
 			case "Alcanzador de Garra":
 				return new AlcanzadorDeGarra();
 			case "Araña Lanzadora":

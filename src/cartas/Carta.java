@@ -25,9 +25,14 @@ public abstract class Carta {
     public void colocarBocaAbajo() {
     	this.estado = new BocaAbajo();
 	}
+
 	public Estado getEstado() {
 		return estado;
 	}
 
     public boolean equals(Object object){return this.getClass().equals(object.getClass());}
+
+    public String getNombre(){
+        return nombre;
+    }
 }

@@ -4,12 +4,10 @@ import tablero.Tablero;
 
 public class AgujeroNegro extends CartaMagica {
     private Tablero tablero;
-    private Jugador jugador;
 
-    public AgujeroNegro(Tablero unTablero, Jugador unJugador) {
+    public AgujeroNegro(Tablero unTablero) {
 		super("Agujero Negro");
 		tablero = unTablero;
-		jugador = unJugador;
 	}
 
 

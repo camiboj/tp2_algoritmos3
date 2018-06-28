@@ -35,7 +35,7 @@ public class FisuraTest {
         try {
             fisura.colocarBocaArriba();
         } catch (VictoriaException e) {
-            //no deberia dispararse esta excepcion
+
             assertTrue(false);
         }
 

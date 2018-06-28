@@ -30,7 +30,6 @@ public class Jinzo7Test {
         try {
             jinzo7.colocarBocaArriba();
         } catch (VictoriaException e) {
-            //no deberia dispararse esta excepcion
             assertTrue(false);
         }
 

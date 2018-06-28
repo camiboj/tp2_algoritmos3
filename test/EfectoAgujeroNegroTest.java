@@ -38,7 +38,7 @@ public class EfectoAgujeroNegroTest {
         cartaInvocada3.invocar();
         carta3.colocarEnModoDeDefensa();
         tablero.colocarZonaMonstruo(cartaInvocada3,jugador2);
-        AgujeroNegro agujeroNegro = new AgujeroNegro(tablero,jugador1);
+        AgujeroNegro agujeroNegro = new AgujeroNegro(tablero);
         InvocacionDefault invocacionAgujeroNegro = new InvocacionDefault(agujeroNegro);
         tablero.colocarZonaTrampaMagica(invocacionAgujeroNegro, jugador1);
         try {
