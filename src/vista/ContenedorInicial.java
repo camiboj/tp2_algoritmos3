@@ -20,28 +20,18 @@ public class ContenedorInicial extends VBox {
     public ContenedorInicial(Stage stage, YuGiOh yuGiOh) {
         super();
 
-        //Agrego titulo y subtitulo
-        Label titulo = new Label("Yu-Gi-Oh!");
-        titulo.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
-        titulo.setTextAlignment(TextAlignment.CENTER);
-        titulo.setTextFill(Color.web("000000"));
-        Label subtitulo = new Label("The Darkest Side Of Dimensions");
-        subtitulo.setFont(Font.font("Tahoma", FontWeight.BOLD, 14));
-        subtitulo.setTextAlignment(TextAlignment.CENTER);
-        subtitulo.setTextFill(Color.web("000000"));
+        this.ubicarTituloSubtitulo();
 
         this.setAlignment(Pos.TOP_CENTER);
         this.setSpacing(20);
         this.setPadding(new Insets(25));
 
-        Image imagen = new Image("vista/imagenes/YuGiOhInicial2.png");
-        BackgroundPosition position = new BackgroundPosition(Side.LEFT, 0.5,
-                true, Side.BOTTOM, 0, true);
-        BackgroundSize size = new BackgroundSize(0.20, 0.40, true, true, true, false);
-        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-                position, size);
-        this.setBackground(new Background(imagenDeFondo));
+        this.fijarFondo();
 
+        this.fijarBotones(stage, yuGiOh);
+    }
+
+    private void fijarBotones(Stage stage, YuGiOh yuGiOh) {
         TextField jugador1 = new TextField();
         jugador1.setPromptText("Ingrese su nombre");
         jugador1.setMaxWidth(250);
@@ -61,10 +51,29 @@ public class ContenedorInicial extends VBox {
         botonJugar.setDefaultButton(true);
         botonJugar.setOnAction(botonJugar);
 
-        this.getChildren().addAll(botonJugar, titulo, subtitulo, jugador1, jugador2);
+        this.getChildren().addAll(botonJugar, jugador1, jugador2);
     }
 
-    public void habilitarJugarTrasAceptar() {
-        this.getChildren().get(0).setDisable(false);
+    private void fijarFondo() {
+
+        Image imagen = new Image("vista/imagenes/YuGiOhInicial2.png");
+        BackgroundPosition position = new BackgroundPosition(Side.LEFT, 0.5,
+                true, Side.BOTTOM, 0, true);
+        BackgroundSize size = new BackgroundSize(0.20, 0.40, true, true, true, false);
+        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+                position, size);
+        this.setBackground(new Background(imagenDeFondo));
+    }
+
+    private void ubicarTituloSubtitulo() {
+        Label titulo = new Label("Yu-Gi-Oh!");
+        titulo.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
+        titulo.setTextAlignment(TextAlignment.CENTER);
+        titulo.setTextFill(Color.web("000000"));
+        Label subtitulo = new Label("The Darkest Side Of Dimensions");
+        subtitulo.setFont(Font.font("Tahoma", FontWeight.BOLD, 14));
+        subtitulo.setTextAlignment(TextAlignment.CENTER);
+        subtitulo.setTextFill(Color.web("000000"));
+        this.getChildren().addAll(titulo, subtitulo);
     }
 }
