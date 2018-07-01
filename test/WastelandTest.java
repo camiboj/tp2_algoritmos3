@@ -29,12 +29,6 @@ public class WastelandTest {
         //Verifico que los dos monstruos están en el campo
         assertTrue(zonaMonstruo1.existe(monstruo1) && zonaMonstruo2.existe(monstruo2));
 
-        /*
-        List<CartaMonstruo> monstruosJugador1 = new ArrayList<>();
-        monstruosJugador1.add(monstruo1);
-        List<CartaMonstruo> monstruosJugador2= new ArrayList<>();
-        monstruosJugador2.add(monstruo2);
-        */
         Wasteland wasteland = new Wasteland(zonaMonstruo1, zonaMonstruo2);
         InvocacionDefault invocacionWasteland = new InvocacionDefault(wasteland);
         try {

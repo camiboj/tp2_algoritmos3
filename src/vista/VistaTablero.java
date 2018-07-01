@@ -1,6 +1,7 @@
 package vista;
 
 import javafx.scene.canvas.Canvas;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -16,19 +17,27 @@ import java.util.List;
 
 import static javafx.scene.paint.Color.*;
 
-public class VistaTablero {
+public class VistaTablero extends GridPane {
 
     Tablero tablero;
-    Pane pane;
-    Canvas canvas;
+    //GridPane gridPane;
+    //Pane pane;
+    //Canvas canvas;
 
-    VistaTablero(Tablero tablero, Pane pane, Canvas canvas){
+    VistaTablero(Tablero tablero) { //, Pane pane, Canvas canvas){
         this.tablero = tablero;
-        this.pane = pane;
-        this.canvas = canvas;
+        //this.gridPane = new GridPane();
+        //this.pane = pane;
+        //this.canvas = canvas;
+    }
+
+    public void dibujar() {
+
+
     }
 
 
+    /*
     public void dibujar() {
 
         List<List<Casillero>> casillerosMonstruos = tablero.mostrarCasillerosZonaMonstruo();
@@ -128,5 +137,5 @@ public class VistaTablero {
             x = 330;
         }
     }
-
+    */
 }

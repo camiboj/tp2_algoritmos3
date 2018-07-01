@@ -71,9 +71,6 @@ public class ContenedorInicial extends VBox {
         botonNombres.setDefaultButton(true);
         botonNombres.setOnAction(botonInicializar);
 
-
-
-
         BotonJugar botonJugarHandler = new BotonJugar(stage, yuGiOh);
         botonJugar.setOnAction(botonJugarHandler);
 

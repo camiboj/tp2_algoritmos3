@@ -30,7 +30,6 @@ public class Tablero {
 		divisiones.put(jugador1, lado1);
 		divisiones.put(jugador2, lado2);
 		lado1.guardarMazo(jugador1, jugador2, lado2.obtenerZonaMonstruos(), this);
-
 		lado2.guardarMazo(jugador2, jugador1, lado1.obtenerZonaMonstruos(), this);
 
 
