@@ -1,11 +1,8 @@
 package cartas.cartasMagicas;
 
-import cartas.cartasMagicas.CartaMagica;
 import efectos.Efecto;
 import excepciones.VictoriaException;
 import jugador.Jugador;
-import tablero.InterrumpirAtaqueException;
-import tablero.LadoDelCampo;
 import tablero.Tablero;
 
  public class OllaDeLaCodicia extends CartaMagica implements Efecto {
@@ -21,7 +18,9 @@ import tablero.Tablero;
     }
 
      @Override
-     public void activarEfectoDeVolteoAnteAtaque(Jugador jugadorPoseedor, Jugador jugadorEnemigo, LadoDelCampo ladoEnemigo) throws InterrumpirAtaqueException {
-         //no posee este efecto por lo que no hara nada si
+     public void activarEfectoDeVolteoAnteAtaque(Jugador jugadorPoseedor, Jugador jugadorEnemigo, Tablero tablero) {
+
      }
+
+
  }

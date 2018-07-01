@@ -10,7 +10,6 @@ import jugador.Jugador;
 import jugador.Punto;
 import org.junit.Test;
 import tablero.Cementerio;
-import tablero.InterrumpirAtaqueException;
 import tablero.Tablero;
 
 import static junit.framework.TestCase.assertTrue;
@@ -18,7 +17,7 @@ import static junit.framework.TestCase.assertTrue;
 public class EfectoAgujeroNegroTest {
 
     @Test
-    public void AgujeroNegroMataMonstruos() throws InterrumpirAtaqueException, VictoriaException {
+    public void AgujeroNegroMataMonstruos() throws VictoriaException {
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
         Tablero tablero = new Tablero(jugador1, jugador2);

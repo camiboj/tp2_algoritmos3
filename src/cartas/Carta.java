@@ -3,7 +3,6 @@ import estadosDeCartas.BocaAbajo;
 import estadosDeCartas.BocaArriba;
 import estadosDeCartas.Estado;
 import excepciones.VictoriaException;
-import tablero.InterrumpirAtaqueException;
 
 public abstract class Carta {
     protected String nombre;
@@ -15,7 +14,7 @@ public abstract class Carta {
         this.estado = null;
     }
 
-    public void colocarBocaArriba() throws InterrumpirAtaqueException, VictoriaException {
+    public void colocarBocaArriba() throws  VictoriaException {
         this.estado = new BocaArriba();
         this.activarEfecto();
     }

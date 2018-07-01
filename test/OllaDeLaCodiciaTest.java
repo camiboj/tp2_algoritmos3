@@ -3,7 +3,6 @@ import cartas.cartasMagicas.OllaDeLaCodicia;
 import excepciones.VictoriaException;
 import jugador.Jugador;
 import org.junit.Test;
-import tablero.InterrumpirAtaqueException;
 import tablero.Tablero;
 
 import static junit.framework.TestCase.assertTrue;
@@ -13,7 +12,7 @@ public class OllaDeLaCodiciaTest {
 
 
     @Test
-    public void ollaDeLaCodiciaTest() throws InterrumpirAtaqueException, VictoriaException {
+    public void ollaDeLaCodiciaTest() throws  VictoriaException {
         assertTrue(true);
 
         Jugador jugador1 = new Jugador();

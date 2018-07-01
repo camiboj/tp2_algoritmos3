@@ -62,10 +62,10 @@ public class ZonaTrampaMagica implements Zona {
         return casilleros;
     }
 
-    public void activar(Carta trampa, CartaMonstruo cartaAtacante, Jugador jugadorAtacante, CartaMonstruo cartaDefensora, Jugador jugadorDefensor) throws InterrumpirAtaqueException{
+    public void activar(Carta trampa, CartaMonstruo cartaAtacante, Jugador jugadorAtacante, CartaMonstruo cartaDefensora, Jugador jugadorDefensor, Tablero tablero) {
         if(existe(trampa)) {
             CartaTrampa trampaAActivar=(CartaTrampa) trampa;
-            trampaAActivar.activarAnteUnAtaque(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+            trampaAActivar.activarAnteUnAtaque(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor,tablero);
         }
     }
 

@@ -5,7 +5,6 @@ import excepciones.VictoriaException;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Cementerio;
-import tablero.InterrumpirAtaqueException;
 import tablero.Tablero;
 import tablero.ZonaMonstruo;
 
@@ -15,7 +14,7 @@ import static org.junit.Assert.assertFalse;
 public class Jinzo7Test {
 
     @Test
-    public void Jinzo7PuedeAtacarPuntosDeVidaDirectamente() throws InterrumpirAtaqueException, VictoriaException {
+    public void Jinzo7PuedeAtacarPuntosDeVidaDirectamente() throws  VictoriaException {
         Jugador jugador = new Jugador();
         Jugador jugadorOponente = new Jugador();
         Tablero tablero = new Tablero(jugador, jugadorOponente);

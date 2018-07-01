@@ -83,8 +83,8 @@ public class LadoDelCampo {
 	}
 
 	public void activarTrampa(Carta trampa, CartaMonstruo cartaAtacante, Jugador jugadorAtacante, CartaMonstruo cartaDefensora,
-							  Jugador jugadorDefensor) throws InterrumpirAtaqueException {
-		miZonaDeTrampasYMagia.activar(trampa, cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+							  Jugador jugadorDefensor, Tablero tablero) {
+		miZonaDeTrampasYMagia.activar(trampa, cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor, tablero);
 	}
 
 	public List <CartaTrampa> obtenerTrampas() {
@@ -119,4 +119,6 @@ public class LadoDelCampo {
 	public ZonaMonstruo obtenerZonaMonstruos() {
 		return miZonaMonstruo;
 	}
+
+
 }

@@ -7,7 +7,6 @@ import excepciones.VictoriaException;
 import jugador.Jugador;
 import org.junit.Test;
 import tablero.Cementerio;
-import tablero.InterrumpirAtaqueException;
 import tablero.Tablero;
 import tablero.ZonaMonstruo;
 
@@ -17,7 +16,7 @@ import static junit.framework.TestCase.assertTrue;
 public class FisuraTest {
 
     @Test
-    public void FisuraTest() throws InterrumpirAtaqueException, VictoriaException {
+    public void FisuraTest() throws  VictoriaException {
         Jugador jugador = new Jugador();
         Jugador jugadorOponente = new Jugador();
         Tablero tablero = new Tablero(jugador, jugadorOponente);

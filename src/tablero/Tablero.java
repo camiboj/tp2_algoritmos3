@@ -83,19 +83,20 @@ public class Tablero {
 
 		//Activacion de la carta trampa
 		if (!divisiones.get(jugadorDefensor).zonaTrampaMagicaEstaVacia()){
-			try {
+
 				List<CartaTrampa> cartasTrampa = divisiones.get(jugadorDefensor).obtenerTrampas();
 				for (CartaTrampa trampa:
 					 cartasTrampa) {
-					divisiones.get(jugadorDefensor).activarTrampa(trampa, cartaAtacante, jugadorAtacante, cartaDefensora,jugadorDefensor);
+
+					divisiones.get(jugadorDefensor).activarTrampa(trampa, cartaAtacante, jugadorAtacante, cartaDefensora,jugadorDefensor,this);
 				    eliminarDeZonaTrampaMagica(trampa, jugadorDefensor);
+				    if (!divisiones.get(jugadorAtacante).obtenerMonstruos().contains(cartaAtacante) || trampa.interrumpeAtaque()){
+						return;
+					}
+
 				}
-			}
-			catch (InterrumpirAtaqueException datos){
-				colocarCartaEnCementerio(datos.obtenerCartaUsada(), datos.obtenerJugadorQueLaJugo());
-				if (datos.obtenerCartaNuevoAtaque() == null)
-					return;
-			}
+
+
 
 		}
 
@@ -105,20 +106,14 @@ public class Tablero {
 		Jugador jugadorGanador;
 		CartaMonstruo cartaPerdedora;
 		if (cartaDefensora.getEstado().getClass().equals(new BocaAbajo().getClass()) && cartaDefensora instanceof Efecto){
-			try {
+
 				Efecto monstruoConEfectoDeVolteo=(Efecto) cartaDefensora ;
-				monstruoConEfectoDeVolteo.activarEfectoDeVolteoAnteAtaque(jugadorDefensor,jugadorAtacante,divisiones.get(jugadorAtacante));
-
-			}
-			catch (InterrumpirAtaqueException datos){
-				for (Carta cartaDestruida:datos.obtenercartasDestruidasDelAtacante()
-					 ) {
-					colocarCartaEnCementerio(cartaDestruida, datos.obtenerJugadorAtacante());
-
-				}
-				if (datos.obtenercartasDestruidasDelAtacante().contains(cartaAtacante))
+				monstruoConEfectoDeVolteo.activarEfectoDeVolteoAnteAtaque(jugadorDefensor,jugadorAtacante,this);
+				if (!divisiones.get(jugadorAtacante).obtenerMonstruos().contains(cartaAtacante)){
 					return;
-			}
+				}
+
+
 
 		}
 		if (cartaDefensora == cartaGanadora && cartaDefensora.enModoDefensa()) {

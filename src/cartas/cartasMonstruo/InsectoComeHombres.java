@@ -1,11 +1,8 @@
 package cartas.cartasMonstruo;
-import cartas.Carta;
 import efectos.Efecto;
 import efectos.EfectoInsectoComeHombres;
 import jugador.Jugador;
-import jugador.Punto;
-import tablero.InterrumpirAtaqueException;
-import tablero.LadoDelCampo;
+import tablero.Tablero;
 
 public class InsectoComeHombres extends CartaMonstruo implements Efecto {
     EfectoInsectoComeHombres efectoInsectoComeHombres;
@@ -21,7 +18,9 @@ public class InsectoComeHombres extends CartaMonstruo implements Efecto {
     }
 
     @Override
-    public void activarEfectoDeVolteoAnteAtaque(Jugador jugadorPoseedor, Jugador jugadorEnemigo, LadoDelCampo ladoEnemigo) throws InterrumpirAtaqueException {
-        efectoInsectoComeHombres.activarEfectoDeVolteoAnteAtaque(jugadorPoseedor,jugadorEnemigo,ladoEnemigo);
+    public void activarEfectoDeVolteoAnteAtaque(Jugador jugadorPoseedor, Jugador jugadorEnemigo, Tablero tablero) {
+        efectoInsectoComeHombres.activarEfectoDeVolteoAnteAtaque(jugadorPoseedor,jugadorEnemigo,tablero);
     }
+
+
 }
