@@ -16,9 +16,6 @@ public class Consola {
     ScrollPane scrollPane;
 
     public Consola() {
-        /*Text text = new Text(">>> Consola");
-        text.setFont(Font.font("Courier New", 12));
-        text.setFill(Color.BLACK);*/
 
         HBox consola = new HBox();
         consola.setStyle("-fx-background-color: grey;");
@@ -35,11 +32,7 @@ public class Consola {
 
     public void escribirInstruccion(String instruccion) {
 
-        /*if (contenedorConsola == null) {
-            System.out.println(instruccion);
-            return;
-        }*/
-        Text text = new Text(instruccion);
+        Text text = new Text(">>> " + instruccion);
         text.setFont(Font.font("Courier New", 12));
         text.setFill(Color.BLACK);
         contenedorConsola.getChildren().add(text);

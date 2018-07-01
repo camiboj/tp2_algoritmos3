@@ -42,24 +42,22 @@ public class ContenedorInicial extends VBox {
                 position, size);
         this.setBackground(new Background(imagenDeFondo));
 
-        BotonIniciarJuego botonJugar = new BotonIniciarJuego(stage, yuGiOh);
+        TextField jugador1 = new TextField();
+        jugador1.setPromptText("Ingrese su nombre");
+        jugador1.setMaxWidth(250);
+        jugador1.setText("Jugador 1");
+
+        TextField jugador2 = new TextField();
+        jugador2.setPromptText("Ingrese su nombre");
+        jugador2.setMaxWidth(250);
+        jugador2.setText("Jugador 2");
+
+        BotonIniciarJuego botonJugar = new BotonIniciarJuego(stage, yuGiOh, jugador1, jugador2);
         botonJugar.setText("Iniciar partida");
         botonJugar.setDefaultButton(true);
         botonJugar.setStyle("-fx-base: red;");
         botonJugar.setPrefSize(120, 30);
 
-
-        TextField jugador1 = new TextField();
-        jugador1.setPromptText("nombre");
-        jugador1.setMaxWidth(250);
-        jugador1.setText("Jugador 1");
-
-        TextField jugador2 = new TextField();
-        jugador2.setPromptText("nombre");
-        jugador2.setMaxWidth(250);
-        jugador2.setText("Jugador 2");
-
-        botonJugar.guardarNombres(jugador1.getText() , jugador2.getText());
         botonJugar.setDefaultButton(true);
         botonJugar.setOnAction(botonJugar);
 
