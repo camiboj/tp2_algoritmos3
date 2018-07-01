@@ -2,7 +2,6 @@ package vista;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -11,8 +10,11 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
 import jugador.Jugador;
+import jugador.YuGiOh;
 import tablero.Tablero;
+import vista.botones.BotonCambiarTurno;
 
 import java.util.ArrayList;
 
@@ -20,24 +22,49 @@ import java.util.ArrayList;
 public class ContenedorBase extends GridPane {
 
     private Tablero tablero;
-    private VistaJugador vistaActual;
     private Pane centro;
-    private ArrayList<Jugador> jugadores = new ArrayList<>();
+    private ArrayList<Jugador> jugadores;
     private Canvas fondo;
     private Consola consola;
+    private Jugador jugadorTurno;
+    private YuGiOh juego;
+    private Stage stage;
+    private VistaJugador vistaJugador1;
+    private VistaJugador vistaJugador2;
+    private VistaJugador vistaActual;
+    private VistaJugador vistaContrincante;
 
 
-    public ContenedorBase(Tablero tablero) {
+    public ContenedorBase(Stage stage, YuGiOh juego, Tablero tablero) {
+        this.stage = stage;
+        this.juego = juego;
+        this.jugadores = juego.obtenerJugadores();
         this.setFondo();
+        this.jugadorTurno = juego.obtenerJugador1();
+        this.vistaJugador1 = new VistaJugador(juego.obtenerJugador1(), tablero.mostrarLadoDelCampo(juego.obtenerJugador1()),
+                juego.obtenerJugador1().obtenerNombre());
+        this.vistaJugador2 = new VistaJugador(juego.obtenerJugador2(), tablero.mostrarLadoDelCampo(juego.obtenerJugador2()),
+                juego.obtenerJugador2().obtenerNombre());
+
+        this.vistaActual = vistaJugador1;
+        this.vistaContrincante = vistaJugador2;
+
         this.tablero = tablero;
         this.setGrilla();
         this.setBotonera();
         this.setConsola();
+        this.setVista();
+    }
+
+    private void setVista() {
+        this.add(vistaActual, 0, 0, 2, 5);
+        this.add(vistaContrincante, 8, 0, 2, 5);
     }
 
     private void setConsola() {
         consola = new Consola();
         this.add(consola.getScrollPane(), 0, 4, 12, 1);
+        consola.escribirInstruccion("Es el turno de " + jugadorTurno.obtenerNombre());
     }
 
     public Consola obtenerConsola() {
@@ -48,13 +75,50 @@ public class ContenedorBase extends GridPane {
 
     }
 
+    public void cambiarTurno(){
+        limpiarVista();
+        jugadorTurno = obtenerSiguienteJugador(jugadorTurno);
+        if (jugadorTurno == juego.obtenerJugador1()) {
+            vistaActual = vistaJugador1;
+            vistaContrincante = vistaJugador2;
+        }
+        else {
+            vistaActual = vistaJugador2;
+            vistaContrincante = vistaJugador1;
+        }
+        consola.escribirInstruccion("Es el turno de " + jugadorTurno.obtenerNombre());
+        setVista();
+    }
+
+    private void limpiarVista() {
+        this.getChildren().remove(vistaActual);
+        this.getChildren().remove(vistaContrincante);
+    }
+
+    private Jugador obtenerSiguienteJugador(Jugador actual) {
+        if (actual == juego.obtenerJugador1()) return juego.obtenerJugador2();
+        return juego.obtenerJugador1();
+    }
+
     public void setFondo() {
         fondo = new Canvas(1000, 1000);
         centro = new Pane(fondo);
         centro.setStyle("-fx-background-color: white;");
     }
 
-    private void setBotonera() {
+    private void setBotonera() { //Faltarían los botones de cambiar de fase
+
+        BotonCambiarTurno botonCambiarTurno = new BotonCambiarTurno(this);
+        botonCambiarTurno.setText("Fin del Turno");
+        botonCambiarTurno.setDefaultButton(true);
+        botonCambiarTurno.setStyle("-fx-base: red;");
+        botonCambiarTurno.setPrefSize(150, 30);
+
+        botonCambiarTurno.setDefaultButton(true);
+        botonCambiarTurno.setOnAction(botonCambiarTurno);
+
+        this.add(botonCambiarTurno, 9, 3, 3, 1);
+
     }
 
     private void setGrilla() {
@@ -156,4 +220,10 @@ public class ContenedorBase extends GridPane {
         ImageView mazo2 = new ImageView(imagen);
         ubicarObjeto(mazo2, 3, 8);
     }
+
+
+
+
+
+
 }

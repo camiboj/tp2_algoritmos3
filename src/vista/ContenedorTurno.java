@@ -33,8 +33,8 @@ public class ContenedorTurno extends GridPane {
         this.setearBase();
         this.generarTitulos();
         this.jugadores = juego.obtenerJugadores();
-        vistaJugador1 = new VistaJugador(juego.obtenerJugador1(),juego.obtenerJugador1().obtenerNombre(), contenedorBase);
-        vistaJugador2 = new VistaJugador(juego.obtenerJugador2(),juego.obtenerJugador2().obtenerNombre(), contenedorBase);
+        //vistaJugador1 = new VistaJugador(juego.obtenerJugador1(),juego.obtenerJugador1().obtenerNombre(), contenedorBase);
+        //vistaJugador2 = new VistaJugador(juego.obtenerJugador2(),juego.obtenerJugador2().obtenerNombre(), contenedorBase);
         vistaActual = vistaJugador1;
         jugadorTurno = juego.obtenerJugador1(); //Ya se que esta harcodeadisimo pero despues lo cambiamos
         contenedorBase.obtenerConsola().escribirInstruccion("Es el turno de " + jugadorTurno.obtenerNombre());
@@ -45,9 +45,7 @@ public class ContenedorTurno extends GridPane {
 
 
     private void setearBase() {
-        //this.getChildren().addAll(vistaActual);
-        //Para que no rompa:
-        this.getChildren().addAll(contenedorBase);
+        this.getChildren().addAll(vistaActual);
     }
 
 

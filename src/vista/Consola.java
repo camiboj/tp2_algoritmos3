@@ -32,10 +32,11 @@ public class Consola {
 
     public void escribirInstruccion(String instruccion) {
 
+        contenedorConsola.getChildren().clear();
         Text text = new Text(">>> " + instruccion);
         text.setFont(Font.font("Courier New", 12));
         text.setFill(Color.BLACK);
-        contenedorConsola.getChildren().add(text);
+        contenedorConsola.getChildren().addAll(text);
     }
 
     public Node getScrollPane() {
