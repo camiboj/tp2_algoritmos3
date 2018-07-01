@@ -13,6 +13,7 @@ public class Jugador {
     private Punto puntosJuego;
     private Mazo mazo;
     private Mano mano;
+    private String nombre;
 
     public Jugador () {
         puntosJuego = new Punto(8000);
@@ -103,4 +104,12 @@ public class Jugador {
     }
 
     public Mano mostrarMano() { return mano; }
+
+    public void guardarNombre(String nombre1) {
+        this.nombre = nombre1;
+    }
+
+    public String obtenerNombre() {
+        return nombre;
+    }
 }

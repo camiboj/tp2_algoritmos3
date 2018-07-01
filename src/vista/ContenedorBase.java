@@ -17,7 +17,7 @@ import tablero.Tablero;
 import java.util.ArrayList;
 
 
-public class ContenedorPrincipal extends GridPane {
+public class ContenedorBase extends GridPane {
 
     private Tablero tablero;
     private VistaJugador vistaActual;
@@ -27,7 +27,7 @@ public class ContenedorPrincipal extends GridPane {
     private Consola consola;
 
 
-    public ContenedorPrincipal(Tablero tablero) {
+    public ContenedorBase(Tablero tablero) {
         this.setFondo();
         this.tablero = tablero;
         this.setGrilla();
@@ -40,8 +40,16 @@ public class ContenedorPrincipal extends GridPane {
         this.add(consola.getScrollPane(), 0, 4, 11, 1);
     }
 
+    public Consola obtenerConsola() {
+        return consola;
+    }
+
     public static ArrayList<Jugador> getJugadores() {
         return jugadores;
+    }
+
+    public static void setJugadores () {
+
     }
 
     public void setFondo() {
@@ -152,11 +160,4 @@ public class ContenedorPrincipal extends GridPane {
         ImageView mazo2 = new ImageView(imagen);
         ubicarObjeto(mazo2, 3, 8);
     }
-    /*
-    public static void actualizar() {
-        visorActual.reset();
-        VistaJugador vjActual = VistaJugador.getPorNombre(ControladorDeTurno.getInstance().getJugadorActual().getNombre());
-        visorActual = new Visor(vjActual, centro);
-    }
-    */
 }
