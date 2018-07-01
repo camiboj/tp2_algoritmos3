@@ -3,7 +3,6 @@ package vista;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Side;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -14,9 +13,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import jugador.YuGiOh;
-import vista.botones.BotonCartaBocaAbajo;
-import vista.botones.BotonInicializar;
-import vista.botones.BotonJugar;
+import vista.botones.BotonIniciarJuego;
 
 public class ContenedorInicial extends VBox {
 
@@ -45,13 +42,11 @@ public class ContenedorInicial extends VBox {
                 position, size);
         this.setBackground(new Background(imagenDeFondo));
 
-        Button botonJugar = new Button();
+        BotonIniciarJuego botonJugar = new BotonIniciarJuego(stage, yuGiOh);
         botonJugar.setText("Iniciar partida");
         botonJugar.setDefaultButton(true);
         botonJugar.setStyle("-fx-base: red;");
         botonJugar.setPrefSize(120, 30);
-        botonJugar.setDisable(true);
-
 
 
         TextField jugador1 = new TextField();
@@ -64,17 +59,11 @@ public class ContenedorInicial extends VBox {
         jugador2.setMaxWidth(250);
         jugador2.setText("Jugador 2");
 
-        Button botonNombres = new Button();
-        botonNombres.setText("Aceptar");
-        botonNombres.setStyle("-fx-base: red;");
-        BotonInicializar botonInicializar = new BotonInicializar(this);
-        botonNombres.setDefaultButton(true);
-        botonNombres.setOnAction(botonInicializar);
+        botonJugar.guardarNombres(jugador1.getText() , jugador2.getText());
+        botonJugar.setDefaultButton(true);
+        botonJugar.setOnAction(botonJugar);
 
-        BotonJugar botonJugarHandler = new BotonJugar(stage, yuGiOh);
-        botonJugar.setOnAction(botonJugarHandler);
-
-        this.getChildren().addAll(botonJugar, titulo, subtitulo, jugador1, jugador2, botonNombres);
+        this.getChildren().addAll(botonJugar, titulo, subtitulo, jugador1, jugador2);
     }
 
     public void habilitarJugarTrasAceptar() {

@@ -19,13 +19,12 @@ import java.util.ArrayList;
 
 public class ContenedorPrincipal extends GridPane {
 
-    Tablero tablero;
-    VBox contenedorCentral;
+    private Tablero tablero;
+    private VistaJugador vistaActual;
     static Pane centro;
     static ArrayList<Jugador> jugadores = new ArrayList<>();
-    static VistaTablero vistaTablero;
     static Canvas fondo;
-    Consola consola;
+    private Consola consola;
 
 
     public ContenedorPrincipal(Tablero tablero) {
@@ -58,9 +57,19 @@ public class ContenedorPrincipal extends GridPane {
         this.setGridLinesVisible(true);
         final int numColumnas = 11 ;
         final int numFilas = 4 ;
-        for (int i = 0; i < numColumnas; i++) {
+        for (int i = 0; i < 3; i++) {
             ColumnConstraints columna = new ColumnConstraints();
-            columna.setPercentWidth(100.0 / numColumnas);
+            columna.setPercentWidth(7.09);
+            this.getColumnConstraints().add(columna);
+        }
+        for (int i = 3; i < 8; i++) {
+            ColumnConstraints columna = new ColumnConstraints();
+            columna.setPercentWidth(11.49);
+            this.getColumnConstraints().add(columna);
+        }
+        for (int i = 7; i < numColumnas; i++) {
+            ColumnConstraints columna = new ColumnConstraints();
+            columna.setPercentWidth(7.09);
             this.getColumnConstraints().add(columna);
         }
         for (int i = 0; i < numFilas; i++) {
@@ -72,16 +81,13 @@ public class ContenedorPrincipal extends GridPane {
         ultimaFila.setPercentHeight(10);
         this.getRowConstraints().add(ultimaFila);
 
-
-
-
         this.setTablero();
     }
 
-    private Rectangle generarRectangulo(Color color) {
+    private Rectangle generarRectangulo(Color color, int ancho, int alto) {
         Rectangle rec = new Rectangle();
-        rec.setWidth(100);
-        rec.setHeight(100);
+        rec.setWidth(ancho);
+        rec.setHeight(alto);
         rec.setStroke(Color.BLACK);
         rec.setFill(color);
         return rec;
@@ -108,7 +114,7 @@ public class ContenedorPrincipal extends GridPane {
         //Setteo cartas trampa
         for(int i = 0; i <= 3; i+=3) {
             for (int j = 3; j <= 7; j++) {
-                Rectangle recTrampa = generarRectangulo(Color.DARKTURQUOISE);
+                Rectangle recTrampa = generarRectangulo(Color.DARKTURQUOISE, 125, 125);
                 ubicarObjeto(recTrampa, i, j);
                 ubicarTexto("Carta Trampa",i,j);
             }
@@ -117,27 +123,27 @@ public class ContenedorPrincipal extends GridPane {
         //Setteo cartas monstruo
         for(int i = 1; i <= 2; i++) {
             for (int j = 3; j <= 7; j++) {
-                Rectangle recMonstruo = generarRectangulo(Color.DARKORANGE);
+                Rectangle recMonstruo = generarRectangulo(Color.DARKORANGE, 125, 125);
                 ubicarObjeto(recMonstruo, i, j);
                 ubicarTexto("Carta Monstruo", i, j);
             }
         }
 
         //Setteo cartas campo
-        Rectangle recCampo1 = generarRectangulo(Color.GREEN);
+        Rectangle recCampo1 = generarRectangulo(Color.GREEN, 80, 125);
         ubicarObjeto(recCampo1, 2, 2);
         ubicarTexto("Carta Campo", 2, 2);
-        Rectangle recCampo2 = generarRectangulo(Color.GREEN);
+        Rectangle recCampo2 = generarRectangulo(Color.GREEN, 80, 125);
         ubicarObjeto(recCampo2, 1, 8);
         ubicarTexto("Carta Campo", 1, 8);
 
         //Setteo cartas cementerio
-        Rectangle recCementerio1 = generarRectangulo(Color.GRAY);
+        Rectangle recCementerio1 = generarRectangulo(Color.GRAY, 80, 125);
         ubicarObjeto(recCementerio1, 1, 2);
-        ubicarTexto("Carta Campo", 1, 2);
-        Rectangle recCementerio2 = generarRectangulo(Color.GRAY);
+        ubicarTexto("Cementerio", 1, 2);
+        Rectangle recCementerio2 = generarRectangulo(Color.GRAY, 80, 125);
         ubicarObjeto(recCementerio2, 2, 8);
-        ubicarTexto("Carta Campo", 2, 8);
+        ubicarTexto("Cementerio", 2, 8);
 
         //Setteo mazo
         Image imagen = new Image(getClass().getResourceAsStream("/vista/imagenes/cartaAtras.jpg"));
@@ -146,4 +152,11 @@ public class ContenedorPrincipal extends GridPane {
         ImageView mazo2 = new ImageView(imagen);
         ubicarObjeto(mazo2, 3, 8);
     }
+    /*
+    public static void actualizar() {
+        visorActual.reset();
+        VistaJugador vjActual = VistaJugador.getPorNombre(ControladorDeTurno.getInstance().getJugadorActual().getNombre());
+        visorActual = new Visor(vjActual, centro);
+    }
+    */
 }
