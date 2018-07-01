@@ -57,4 +57,11 @@ public class YuGiOh {
     public Tablero mostrarTablero() {
         return tablero;
     }
+
+    public ArrayList<Jugador> obtenerJugadores() {
+        ArrayList<Jugador> jugadores = new ArrayList <>();
+        jugadores.add(jugador1);
+        jugadores.add(jugador2);
+        return jugadores;
+    }
 }

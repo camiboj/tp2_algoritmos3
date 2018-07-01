@@ -16,13 +16,14 @@ public class Consola {
     ScrollPane scrollPane;
 
     public Consola() {
-        Text text = new Text(">>> Consola");
+        /*Text text = new Text(">>> Consola");
         text.setFont(Font.font("Courier New", 12));
-        text.setFill(Color.BLACK);
+        text.setFill(Color.BLACK);*/
 
-        HBox consola = new HBox(text);
+        HBox consola = new HBox();
         consola.setStyle("-fx-background-color: grey;");
         consola.setPrefHeight(70);
+        consola.setPrefWidth(20000);
         contenedorConsola = consola;
 
         scrollPane = new ScrollPane(contenedorConsola);

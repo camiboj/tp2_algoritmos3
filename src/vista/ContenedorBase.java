@@ -21,9 +21,9 @@ public class ContenedorBase extends GridPane {
 
     private Tablero tablero;
     private VistaJugador vistaActual;
-    static Pane centro;
-    static ArrayList<Jugador> jugadores = new ArrayList<>();
-    static Canvas fondo;
+    private Pane centro;
+    private ArrayList<Jugador> jugadores = new ArrayList<>();
+    private Canvas fondo;
     private Consola consola;
 
 
@@ -37,15 +37,11 @@ public class ContenedorBase extends GridPane {
 
     private void setConsola() {
         consola = new Consola();
-        this.add(consola.getScrollPane(), 0, 4, 11, 1);
+        this.add(consola.getScrollPane(), 0, 4, 12, 1);
     }
 
     public Consola obtenerConsola() {
         return consola;
-    }
-
-    public static ArrayList<Jugador> getJugadores() {
-        return jugadores;
     }
 
     public static void setJugadores () {
@@ -107,9 +103,9 @@ public class ContenedorBase extends GridPane {
         this.getChildren().addAll(rectangle);
     }
 
-    private void ubicarTexto(String name, int fila, int columna){
+    public void ubicarTexto(String name, int tam, int fila, int columna){
         Label text = new Label(name);
-        text.setFont(Font.font("Tahoma", FontWeight.BOLD, 10));
+        text.setFont(Font.font("Tahoma", FontWeight.BOLD, tam));
         text.setTextAlignment(TextAlignment.CENTER);
         text.setTextFill(Color.web("000000"));
         this.setRowIndex(text, fila);
@@ -124,7 +120,7 @@ public class ContenedorBase extends GridPane {
             for (int j = 3; j <= 7; j++) {
                 Rectangle recTrampa = generarRectangulo(Color.DARKTURQUOISE, 125, 125);
                 ubicarObjeto(recTrampa, i, j);
-                ubicarTexto("Carta Trampa",i,j);
+                ubicarTexto("Carta Trampa",10, i,j);
             }
         }
 
@@ -133,25 +129,25 @@ public class ContenedorBase extends GridPane {
             for (int j = 3; j <= 7; j++) {
                 Rectangle recMonstruo = generarRectangulo(Color.DARKORANGE, 125, 125);
                 ubicarObjeto(recMonstruo, i, j);
-                ubicarTexto("Carta Monstruo", i, j);
+                ubicarTexto("Carta Monstruo", 10, i, j);
             }
         }
 
         //Setteo cartas campo
         Rectangle recCampo1 = generarRectangulo(Color.GREEN, 80, 125);
         ubicarObjeto(recCampo1, 2, 2);
-        ubicarTexto("Carta Campo", 2, 2);
+        ubicarTexto("Carta Campo", 10, 2, 2);
         Rectangle recCampo2 = generarRectangulo(Color.GREEN, 80, 125);
         ubicarObjeto(recCampo2, 1, 8);
-        ubicarTexto("Carta Campo", 1, 8);
+        ubicarTexto("Carta Campo", 10, 1, 8);
 
         //Setteo cartas cementerio
         Rectangle recCementerio1 = generarRectangulo(Color.GRAY, 80, 125);
         ubicarObjeto(recCementerio1, 1, 2);
-        ubicarTexto("Cementerio", 1, 2);
+        ubicarTexto("Cementerio", 10, 1, 2);
         Rectangle recCementerio2 = generarRectangulo(Color.GRAY, 80, 125);
         ubicarObjeto(recCementerio2, 2, 8);
-        ubicarTexto("Cementerio", 2, 8);
+        ubicarTexto("Cementerio", 10,  2, 8);
 
         //Setteo mazo
         Image imagen = new Image(getClass().getResourceAsStream("/vista/imagenes/cartaAtras.jpg"));

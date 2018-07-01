@@ -10,6 +10,7 @@ import jugador.Jugador;
 import jugador.YuGiOh;
 import tablero.LadoDelCampo;
 import vista.ContenedorBase;
+import vista.ContenedorTurno;
 import vista.VistaJugador;
 
 public class BotonIniciarJuego extends Button implements EventHandler<ActionEvent> {
@@ -31,7 +32,9 @@ public class BotonIniciarJuego extends Button implements EventHandler<ActionEven
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        ContenedorBase contenedorPrincipal = new ContenedorBase(yuGiOh.mostrarTablero());
+
+        ContenedorBase contenedorBase = new ContenedorBase(yuGiOh.mostrarTablero());
+        ContenedorTurno contenedorTurno = new ContenedorTurno(stage, yuGiOh, contenedorBase);
         Jugador jugador1 = yuGiOh.obtenerJugador1();
         Jugador jugador2 = yuGiOh.obtenerJugador2();
         LadoDelCampo ladoDelCampo1 = yuGiOh.mostrarTablero().mostrarLadoDelCampo(jugador1);
@@ -40,7 +43,7 @@ public class BotonIniciarJuego extends Button implements EventHandler<ActionEven
         //VistaJugador vista1 = new VistaJugador(jugador1, ladoDelCampo1);
         //VistaJugador vista2 = new VistaJugador(jugador2, ladoDelCampo2, nombre2);
 
-        Scene escenaJuego = new Scene(contenedorPrincipal, 640, 480);
+        Scene escenaJuego = new Scene(contenedorTurno, 640, 480);
         stage.setScene(escenaJuego);
         stage.setFullScreenExitHint("");
         stage.setFullScreen(true);
