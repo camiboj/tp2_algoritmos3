@@ -22,48 +22,39 @@ public class ContenedorTurno extends GridPane {
     private ArrayList<Jugador> jugadores;
     private YuGiOh juego;
     private Stage stage;
+    private VistaJugador vistaJugador1;
+    private VistaJugador vistaJugador2;
+    private VistaJugador vistaActual;
 
     public ContenedorTurno(Stage stage, YuGiOh juego, ContenedorBase contenedorBase){
         this.stage = stage;
         this.juego = juego;
-        this.contenedorBase = contenedorBase;
+        this.contenedorBase = contenedorBase; //Ni se si hace falta
         this.setearBase();
         this.generarTitulos();
         this.jugadores = juego.obtenerJugadores();
-        jugadorTurno = elegirPrimerJugador();
+        vistaJugador1 = new VistaJugador(juego.obtenerJugador1(),juego.obtenerJugador1().obtenerNombre(), contenedorBase);
+        vistaJugador2 = new VistaJugador(juego.obtenerJugador2(),juego.obtenerJugador2().obtenerNombre(), contenedorBase);
+        vistaActual = vistaJugador1;
+        jugadorTurno = juego.obtenerJugador1(); //Ya se que esta harcodeadisimo pero despues lo cambiamos
         contenedorBase.obtenerConsola().escribirInstruccion("Es el turno de " + jugadorTurno.obtenerNombre());
     }
 
     public void generarTitulos() {
-       /*contenedorBase.ubicarTexto("Jugador: " + jugadorTurno.obtenerNombre(),
-                15,0, 0);
-        contenedorBase.ubicarTexto("Puntos:" + String.valueOf(jugadorTurno.obtenerPuntos().obtenerNumero()),
-                15, 1, 1);*/
     }
 
 
     private void setearBase() {
+        //this.getChildren().addAll(vistaActual);
+        //Para que no rompa:
         this.getChildren().addAll(contenedorBase);
-
-
-
-
-        //contenedorBase.ubicarTexto("Jugador: " + jugadorTurno.obtenerNombre(),
-            //    15,0, 0);
-        //contenedorBase.ubicarTexto("Puntos:" + String.valueOf(jugadorTurno.obtenerPuntos().obtenerNumero()),
-          //      15, 1, 1);
     }
 
 
     private void generarBotonera() {
 
-
-
     }
-    private Jugador elegirPrimerJugador() {
 
-        return jugadores.get(new Random().nextInt(jugadores.size()));
-    }
 
     public Jugador obtenerJugadorActual(){
         return jugadorTurno;
@@ -84,6 +75,8 @@ public class ContenedorTurno extends GridPane {
 
     public void cambiarTurno(){
         jugadorTurno = obtenerSiguienteJugador(jugadorTurno);
+        if (jugadorTurno == juego.obtenerJugador1()) vistaActual = vistaJugador1;
+        else vistaActual = vistaJugador2;
         contenedorBase.obtenerConsola().escribirInstruccion("\nEs el turno de " + jugadorTurno.obtenerNombre());
         actualizar();
     }
@@ -96,7 +89,6 @@ public class ContenedorTurno extends GridPane {
     }
 
     public void terminarTurno(){
-
     }
 }
 
