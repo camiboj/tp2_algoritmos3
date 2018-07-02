@@ -1,8 +1,8 @@
-import excepciones.VictoriaException;
-import jugador.Jugador;
+import modelo.excepciones.VictoriaException;
+import modelo.jugador.Jugador;
 import org.junit.Test;
-import tablero.LadoDelCampo;
-import tablero.Tablero;
+import modelo.tablero.LadoDelCampo;
+import modelo.tablero.Tablero;
 import static junit.framework.TestCase.assertTrue;
 
 public class TableroTest {

@@ -1,14 +1,14 @@
-import cartas.*;
-import cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
-import cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
-import cartas.cartasTrampa.CilindroMagico;
-import cartas.invocacion.InvocacionCartaMonstruoGenerica;
-import cartas.invocacion.InvocacionDefault;
-import excepciones.VictoriaException;
-import jugador.Jugador;
+import modelo.cartas.*;
+import modelo.cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
+import modelo.cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
+import modelo.cartas.cartasTrampa.CilindroMagico;
+import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import modelo.cartas.invocacion.InvocacionDefault;
+import modelo.excepciones.VictoriaException;
+import modelo.jugador.Jugador;
 import org.junit.Test;
-import tablero.Cementerio;
-import tablero.Tablero;
+import modelo.tablero.Cementerio;
+import modelo.tablero.Tablero;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;

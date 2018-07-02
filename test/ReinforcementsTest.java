@@ -1,16 +1,16 @@
-import cartas.cartasMonstruo.cartasBasicas.AlcanzadorDeGarra;
-import cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
-import cartas.cartasTrampa.CartaTrampa;
-import cartas.cartasTrampa.Reinforcements;
-import cartas.invocacion.InvocacionCartaMonstruoGenerica;
-import cartas.invocacion.InvocacionDefault;
-import excepciones.VictoriaException;
-import jugador.Jugador;
+import modelo.cartas.cartasMonstruo.cartasBasicas.AlcanzadorDeGarra;
+import modelo.cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
+import modelo.cartas.cartasTrampa.CartaTrampa;
+import modelo.cartas.cartasTrampa.Reinforcements;
+import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import modelo.cartas.invocacion.InvocacionDefault;
+import modelo.excepciones.VictoriaException;
+import modelo.jugador.Jugador;
 import org.junit.Test;
-import tablero.Cementerio;
-import tablero.Tablero;
-import tablero.ZonaMonstruo;
-import tablero.ZonaTrampaMagica;
+import modelo.tablero.Cementerio;
+import modelo.tablero.Tablero;
+import modelo.tablero.ZonaMonstruo;
+import modelo.tablero.ZonaTrampaMagica;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
@@ -22,12 +22,12 @@ public class ReinforcementsTest {
         //assertTrue(true);
 
 
-        //Creación del tablero
+        //Creación del modelo.tablero
         Jugador jugadorDefensor = new Jugador();
         Jugador jugadorAtacante = new Jugador();
         Tablero tablero = new Tablero(jugadorDefensor, jugadorAtacante);
 
-        //Creo reinforcements y la carta defensora y lo pongo en el tablero
+        //Creo reinforcements y la carta defensora y lo pongo en el modelo.tablero
         CartaTrampa reinforcements = new Reinforcements();
         InvocacionDefault invocacionReinforcements = new InvocacionDefault(reinforcements);
         tablero.colocarZonaTrampaMagica(invocacionReinforcements, jugadorDefensor);
@@ -36,7 +36,7 @@ public class ReinforcementsTest {
         InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora); // No requiere sacrificios
         tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
 
-        //Creo alcanzador de garra y lo pongo en el tablero
+        //Creo alcanzador de garra y lo pongo en el modelo.tablero
         AlcanzadorDeGarra cartaAtacante = new AlcanzadorDeGarra(); //puntos ataque = 1000
         cartaAtacante.colocarEnModoDeAtaque();
 
@@ -59,7 +59,7 @@ public class ReinforcementsTest {
         assertTrue(cementerioReinforcements.existe(reinforcements));
         assertFalse(zonaTrampaMagica.existe(reinforcements));
 
-        //El jugador atacante perdio 100 puntos de vida y el otro esta intacto
+        //El modelo.jugador atacante perdio 100 puntos de vida y el otro esta intacto
         assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 8000);
         assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero()== 8000-100);
     }

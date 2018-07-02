@@ -1,12 +1,12 @@
-import cartas.cartasMonstruo.*;
-import cartas.cartasMonstruo.cartasBasicas.*;
-import cartas.invocacion.InvocacionCartaMonstruoGenerica;
-import excepciones.VictoriaException;
-import jugador.Jugador;
+import modelo.cartas.cartasMonstruo.*;
+import modelo.cartas.cartasMonstruo.cartasBasicas.*;
+import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import modelo.excepciones.VictoriaException;
+import modelo.jugador.Jugador;
 import org.junit.Test;
-import tablero.Cementerio;
-import tablero.Tablero;
-import tablero.ZonaMonstruo;
+import modelo.tablero.Cementerio;
+import modelo.tablero.Tablero;
+import modelo.tablero.ZonaMonstruo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -133,7 +133,7 @@ public class MonstruoSacrificioTest {
         tablero.colocarZonaMonstruo(invocacionHuevoMonstruoso, jugador1);
         tablero.colocarZonaMonstruo(invocacionCausanteSacrificios, jugador1);
 
-        //Las cartas sacrificadas esta en el cementerio y fueron retiradas del campo
+        //Las modelo.cartas sacrificadas esta en el cementerio y fueron retiradas del campo
         assertTrue(cementerio.existe(cartaSacrificada1));
         assertFalse(zonaMonstruo.existe(cartaSacrificada1));
         assertTrue(cementerio.existe(cartaSacrificada2));

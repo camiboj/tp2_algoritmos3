@@ -1,19 +1,12 @@
 package vista;
 
-import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import jugador.Jugador;
-import jugador.YuGiOh;
-import tablero.Tablero;
+import modelo.jugador.Jugador;
+import modelo.jugador.YuGiOh;
+import modelo.tablero.Tablero;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class ContenedorTurno extends GridPane {
     private ContenedorBase contenedorBase;

@@ -3,46 +3,46 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="783.0" y="940.0">tablero.Tablero</node>
-    <node x="1113.0" y="479.5">cartas.cartasMagicas.CartaMagica</node>
-    <node x="1643.0" y="1522.0">cartas.invocacion.Invocacion</node>
-    <node x="0.0" y="1522.0">tablero.ZonaTrampaMagica</node>
-    <node x="0.0" y="251.0">cartas.cartasMonstruo.CartaMonstruo</node>
-    <node x="864.0" y="0.0">cartas.Carta</node>
-    <node x="118.0" y="790.0">cartas.cartasMonstruo.CartaMonstruoConEfecto</node>
-    <node x="1269.0" y="443.0">cartas.cartasCampo.CartaCampo</node>
-    <node x="0.0" y="940.0">tablero.LadoDelCampo</node>
-    <node x="1434.0" y="940.0">tablero.ZonaMonstruo</node>
-    <node x="483.0" y="455.0">cartas.cartasTrampa.CartaTrampa</node>
-    <node x="906.0" y="1522.0">tablero.ZonaCampo</node>
-    <node x="597.0" y="1522.0">tablero.Cementerio</node>
-    <node x="0.0" y="1792.0">cartas.CreadoraDeCartas</node>
+    <node x="783.0" y="940.0">modelo.tablero.Tablero</node>
+    <node x="1113.0" y="479.5">modelo.cartas.cartasMagicas.CartaMagica</node>
+    <node x="1643.0" y="1522.0">modelo.cartas.invocacion.Invocacion</node>
+    <node x="0.0" y="1522.0">modelo.tablero.ZonaTrampaMagica</node>
+    <node x="0.0" y="251.0">modelo.cartas.cartasMonstruo.CartaMonstruo</node>
+    <node x="864.0" y="0.0">modelo.cartas.Carta</node>
+    <node x="118.0" y="790.0">modelo.cartas.cartasMonstruo.CartaMonstruoConEfecto</node>
+    <node x="1269.0" y="443.0">modelo.cartas.cartasCampo.CartaCampo</node>
+    <node x="0.0" y="940.0">modelo.tablero.LadoDelCampo</node>
+    <node x="1434.0" y="940.0">modelo.tablero.ZonaMonstruo</node>
+    <node x="483.0" y="455.0">modelo.cartas.cartasTrampa.CartaTrampa</node>
+    <node x="906.0" y="1522.0">modelo.tablero.ZonaCampo</node>
+    <node x="597.0" y="1522.0">modelo.tablero.Cementerio</node>
+    <node x="0.0" y="1792.0">modelo.cartas.CreadoraDeCartas</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="cartas.cartasTrampa.CartaTrampa" target="cartas.Carta">
+    <edge source="modelo.cartas.cartasTrampa.CartaTrampa" target="modelo.cartas.Carta">
       <point x="0.0" y="-40.5" />
       <point x="788.0" y="231.0" />
       <point x="954.375" y="231.0" />
       <point x="-30.125" y="100.5" />
     </edge>
-    <edge source="cartas.cartasMagicas.CartaMagica" target="cartas.Carta">
+    <edge source="modelo.cartas.cartasMagicas.CartaMagica" target="modelo.cartas.Carta">
       <point x="0.0" y="-16.0" />
       <point x="1181.0" y="231.0" />
       <point x="1014.625" y="231.0" />
       <point x="30.125" y="100.5" />
     </edge>
-    <edge source="cartas.cartasMonstruo.CartaMonstruoConEfecto" target="cartas.cartasMonstruo.CartaMonstruo">
+    <edge source="modelo.cartas.cartasMonstruo.CartaMonstruoConEfecto" target="modelo.cartas.cartasMonstruo.CartaMonstruo">
       <point x="0.0" y="-52.5" />
       <point x="0.0" y="244.5" />
     </edge>
-    <edge source="cartas.cartasMonstruo.CartaMonstruo" target="cartas.Carta">
+    <edge source="modelo.cartas.cartasMonstruo.CartaMonstruo" target="modelo.cartas.Carta">
       <point x="0.0" y="-244.5" />
       <point x="231.5" y="221.0" />
       <point x="894.125" y="221.0" />
       <point x="-90.375" y="100.5" />
     </edge>
-    <edge source="cartas.cartasCampo.CartaCampo" target="cartas.Carta">
+    <edge source="modelo.cartas.cartasCampo.CartaCampo" target="modelo.cartas.Carta">
       <point x="0.0" y="-52.5" />
       <point x="1521.5" y="221.0" />
       <point x="1074.875" y="221.0" />

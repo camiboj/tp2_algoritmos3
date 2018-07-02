@@ -1,9 +1,9 @@
 package vista;
-import excepciones.VictoriaException;
+import modelo.excepciones.VictoriaException;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import jugador.YuGiOh;
+import modelo.jugador.YuGiOh;
 
 public class Main extends Application {
 

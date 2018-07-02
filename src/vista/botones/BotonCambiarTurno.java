@@ -3,7 +3,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import jugador.YuGiOh;
+import modelo.jugador.YuGiOh;
 import vista.ContenedorBase;
 
 public class BotonCambiarTurno extends Button implements EventHandler<ActionEvent> {

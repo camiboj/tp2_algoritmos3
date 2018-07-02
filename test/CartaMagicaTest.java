@@ -1,11 +1,11 @@
-import cartas.Carta;
-import cartas.CreadoraDeCartas;
-import cartas.cartasMagicas.AgujeroNegro;
-import cartas.invocacion.InvocacionDefault;
-import estadosDeCartas.BocaAbajo;
-import excepciones.VictoriaException;
-import jugador.Jugador;
-import tablero.Tablero;
+import modelo.cartas.Carta;
+import modelo.cartas.CreadoraDeCartas;
+import modelo.cartas.cartasMagicas.AgujeroNegro;
+import modelo.cartas.invocacion.InvocacionDefault;
+import modelo.estadosDeCartas.BocaAbajo;
+import modelo.excepciones.VictoriaException;
+import modelo.jugador.Jugador;
+import modelo.tablero.Tablero;
 import org.junit.Test;
 import static junit.framework.TestCase.assertTrue;
 

@@ -1,11 +1,10 @@
-import cartas.Carta;
-import cartas.CreadoraDeCartas;
-import cartas.cartasTrampa.CilindroMagico;
-import cartas.invocacion.InvocacionDefault;
-import excepciones.VictoriaException;
-import jugador.Jugador;
+import modelo.cartas.CreadoraDeCartas;
+import modelo.cartas.cartasTrampa.CilindroMagico;
+import modelo.cartas.invocacion.InvocacionDefault;
+import modelo.excepciones.VictoriaException;
+import modelo.jugador.Jugador;
 import org.junit.Test;
-import tablero.Tablero;
+import modelo.tablero.Tablero;
 
 import static junit.framework.TestCase.assertTrue;
 

@@ -22,9 +22,10 @@ public class Consola {
         consola.setPrefHeight(70);
         consola.setPrefWidth(20000);
         contenedorConsola = consola;
-
+        
         scrollPane = new ScrollPane(contenedorConsola);
-        scrollPane.setStyle("-fx-background: grey;");
+        scrollPane.setStyle("-fx-background-color: black;");
+
         scrollPane.vvalueProperty().bind(contenedorConsola.widthProperty());
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         scrollPane.setStyle("");

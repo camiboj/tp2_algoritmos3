@@ -1,12 +1,12 @@
-import cartas.cartasMonstruo.cartasBasicas.IdoloDeLosMilOjos;
-import cartas.cartasMonstruo.Jinzo7;
-import cartas.invocacion.InvocacionCartaMonstruoGenerica;
-import excepciones.VictoriaException;
-import jugador.Jugador;
+import modelo.cartas.cartasMonstruo.cartasBasicas.IdoloDeLosMilOjos;
+import modelo.cartas.cartasMonstruo.Jinzo7;
+import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import modelo.excepciones.VictoriaException;
+import modelo.jugador.Jugador;
 import org.junit.Test;
-import tablero.Cementerio;
-import tablero.Tablero;
-import tablero.ZonaMonstruo;
+import modelo.tablero.Cementerio;
+import modelo.tablero.Tablero;
+import modelo.tablero.ZonaMonstruo;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;

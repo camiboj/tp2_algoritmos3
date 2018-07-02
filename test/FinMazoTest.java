@@ -1,8 +1,8 @@
-import cartas.Carta;
-import excepciones.FinDelJuegoException;
-import excepciones.VictoriaException;
-import jugador.Jugador;
-import jugador.YuGiOh;
+import modelo.cartas.Carta;
+import modelo.excepciones.FinDelJuegoException;
+import modelo.excepciones.VictoriaException;
+import modelo.jugador.Jugador;
+import modelo.jugador.YuGiOh;
 import org.junit.Test;
 
 import java.util.Stack;

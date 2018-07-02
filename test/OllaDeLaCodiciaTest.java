@@ -1,9 +1,9 @@
-import cartas.invocacion.InvocacionDefault;
-import cartas.cartasMagicas.OllaDeLaCodicia;
-import excepciones.VictoriaException;
-import jugador.Jugador;
+import modelo.cartas.invocacion.InvocacionDefault;
+import modelo.cartas.cartasMagicas.OllaDeLaCodicia;
+import modelo.excepciones.VictoriaException;
+import modelo.jugador.Jugador;
 import org.junit.Test;
-import tablero.Tablero;
+import modelo.tablero.Tablero;
 
 import static junit.framework.TestCase.assertTrue;
 

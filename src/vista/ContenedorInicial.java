@@ -12,7 +12,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import jugador.YuGiOh;
+import modelo.jugador.YuGiOh;
 import vista.botones.BotonIniciarJuego;
 
 public class ContenedorInicial extends VBox {
@@ -63,6 +63,8 @@ public class ContenedorInicial extends VBox {
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
                 position, size);
         this.setBackground(new Background(imagenDeFondo));
+        this.setBackground(new Background(imagenDeFondo));
+
     }
 
     private void ubicarTituloSubtitulo() {

@@ -7,12 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import jugador.Jugador;
-import jugador.YuGiOh;
-import tablero.LadoDelCampo;
+import modelo.jugador.Jugador;
+import modelo.jugador.YuGiOh;
+import modelo.tablero.LadoDelCampo;
 import vista.ContenedorBase;
-import vista.ContenedorTurno;
-import vista.VistaJugador;
 
 public class BotonIniciarJuego extends Button implements EventHandler<ActionEvent> {
 

@@ -1,9 +1,9 @@
-import cartas.Carta;
-import cartas.cartasMonstruo.exodia.*;
-import excepciones.FinDelJuegoException;
-import excepciones.VictoriaException;
-import jugador.Jugador;
-import jugador.YuGiOh;
+import modelo.cartas.Carta;
+import modelo.cartas.cartasMonstruo.exodia.*;
+import modelo.excepciones.FinDelJuegoException;
+import modelo.excepciones.VictoriaException;
+import modelo.jugador.Jugador;
+import modelo.jugador.YuGiOh;
 import org.junit.Test;
 import org.junit.internal.runners.statements.Fail;
 

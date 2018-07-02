@@ -1,16 +1,16 @@
-import cartas.cartasMagicas.AgujeroNegro;
-import cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
-import cartas.cartasMonstruo.cartasBasicas.AlcanzadorDeGarra;
-import cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
-import cartas.invocacion.InvocacionCartaMonstruoGenerica;
-import cartas.invocacion.InvocacionDefault;
-import efectos.EfectoAgujeroNegro;
-import excepciones.VictoriaException;
-import jugador.Jugador;
-import jugador.Punto;
+import modelo.cartas.cartasMagicas.AgujeroNegro;
+import modelo.cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
+import modelo.cartas.cartasMonstruo.cartasBasicas.AlcanzadorDeGarra;
+import modelo.cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
+import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import modelo.cartas.invocacion.InvocacionDefault;
+import modelo.efectos.EfectoAgujeroNegro;
+import modelo.excepciones.VictoriaException;
+import modelo.jugador.Jugador;
+import modelo.jugador.Punto;
 import org.junit.Test;
-import tablero.Cementerio;
-import tablero.Tablero;
+import modelo.tablero.Cementerio;
+import modelo.tablero.Tablero;
 
 import static junit.framework.TestCase.assertTrue;
 

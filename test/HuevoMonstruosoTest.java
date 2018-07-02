@@ -1,8 +1,8 @@
-import cartas.invocacion.InvocacionCartaMonstruoGenerica;
-import cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
-import estadosDeCartas.ModoDeAtaque;
-import estadosDeCartas.ModoDeDefensa;
-import jugador.Punto;
+import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import modelo.cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
+import modelo.estadosDeCartas.ModoDeAtaque;
+import modelo.estadosDeCartas.ModoDeDefensa;
+import modelo.jugador.Punto;
 import org.junit.Test;
 import static junit.framework.TestCase.assertTrue;
 

@@ -1,15 +1,15 @@
-import cartas.cartasMonstruo.CartaMonstruo;
-import cartas.cartasMonstruo.cartasBasicas.DragonBlancoDeOjosAzules;
-import cartas.cartasMonstruo.DragonDefinitivoDeOjosAzules;
-import cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
-import cartas.invocacion.InvocacionCartaDragonDefinitivoOjosAzules;
-import cartas.invocacion.InvocacionCartaMonstruoGenerica;
-import excepciones.VictoriaException;
-import jugador.Jugador;
+import modelo.cartas.cartasMonstruo.CartaMonstruo;
+import modelo.cartas.cartasMonstruo.cartasBasicas.DragonBlancoDeOjosAzules;
+import modelo.cartas.cartasMonstruo.DragonDefinitivoDeOjosAzules;
+import modelo.cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
+import modelo.cartas.invocacion.InvocacionCartaDragonDefinitivoOjosAzules;
+import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import modelo.excepciones.VictoriaException;
+import modelo.jugador.Jugador;
 import org.junit.Test;
-import tablero.Cementerio;
-import tablero.Tablero;
-import tablero.ZonaMonstruo;
+import modelo.tablero.Cementerio;
+import modelo.tablero.Tablero;
+import modelo.tablero.ZonaMonstruo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +57,7 @@ public class DragonDefinitivoDeOjosAzulesTest {
         InvocacionCartaDragonDefinitivoOjosAzules invocacion = new InvocacionCartaDragonDefinitivoOjosAzules(unDragonDefinitivo, dragonesSacrificados);
         tablero.colocarZonaMonstruo(invocacion,jugador1);
 
-        //Las cartas sacrificadas estan en el cementerio y fueron retiradas del campo
+        //Las modelo.cartas sacrificadas estan en el cementerio y fueron retiradas del campo
         assertTrue(cementerioJugador.existe(dragon1) && cementerioJugador.existe(dragon2) &&
                 cementerioJugador.existe(dragon3));
         assertFalse(zonaMonstruoJugador.existe(dragon1) && cementerioJugador.existe(dragon2) &&

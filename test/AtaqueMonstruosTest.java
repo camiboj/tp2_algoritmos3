@@ -1,17 +1,16 @@
-import cartas.*;
-import cartas.cartasMagicas.AgujeroNegro;
-import cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
-import cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
-import cartas.invocacion.InvocacionCartaMonstruoGenerica;
-import cartas.invocacion.InvocacionDefault;
-import excepciones.VictoriaException;
-import jugador.Jugador;
+import modelo.cartas.*;
+import modelo.cartas.cartasMagicas.AgujeroNegro;
+import modelo.cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
+import modelo.cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
+import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import modelo.cartas.invocacion.InvocacionDefault;
+import modelo.excepciones.VictoriaException;
+import modelo.jugador.Jugador;
 import org.junit.Test;
-import tablero.Cementerio;
-import tablero.Tablero;
-import tablero.ZonaMonstruo;
+import modelo.tablero.Cementerio;
+import modelo.tablero.Tablero;
+import modelo.tablero.ZonaMonstruo;
 
-import static javafx.scene.paint.Color.LIGHTGREEN;
 import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.assertFalse;
 
