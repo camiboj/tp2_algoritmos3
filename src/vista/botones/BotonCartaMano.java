@@ -1,13 +1,19 @@
 package vista.botones;
 
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import modelo.cartas.Carta;
+import javafx.stage.Stage;
 
+import java.awt.*;
 
 public class BotonCartaMano extends Button implements EventHandler<ActionEvent> {
 
@@ -25,6 +31,9 @@ public class BotonCartaMano extends Button implements EventHandler<ActionEvent> 
         this.carta = carta;
         this.setPrefSize(70, 120);
 
+
+        Tooltip tt = new Tooltip("Efecto: " + carta.obtenerEfecto());
+        this.setTooltip(tt);
     }
 
     @Override

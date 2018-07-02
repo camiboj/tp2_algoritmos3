@@ -34,4 +34,8 @@ public abstract class Carta {
     public String getNombre(){
         return nombre;
     }
+
+    public String obtenerEfecto(){
+        return descripcionEfecto;
+    }
 }
