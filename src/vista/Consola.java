@@ -22,7 +22,7 @@ public class Consola {
         consola.setPrefHeight(70);
         consola.setPrefWidth(20000);
         contenedorConsola = consola;
-        
+
         scrollPane = new ScrollPane(contenedorConsola);
         scrollPane.setStyle("-fx-background-color: black;");
 

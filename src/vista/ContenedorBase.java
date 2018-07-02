@@ -67,14 +67,6 @@ public class ContenedorBase extends GridPane {
         consola.escribirInstruccion("Es el turno de " + jugadorTurno.obtenerNombre());
     }
 
-    public Consola obtenerConsola() {
-        return consola;
-    }
-
-    public static void setJugadores() {
-
-    }
-
     public void cambiarTurno() {
         limpiarVista();
         jugadorTurno = obtenerSiguienteJugador(jugadorTurno);
@@ -103,7 +95,6 @@ public class ContenedorBase extends GridPane {
         fondo = new Canvas(1000, 1000);
         centro = new Pane(fondo);
 
-
         Image imagen = new Image("/vista/imagenes/fondoTablero.jpg");
         ImageView imagenFondo = new ImageView(imagen);
         this.add(imagenFondo, 3, 1, 6, 2);
@@ -117,7 +108,6 @@ public class ContenedorBase extends GridPane {
 
         this.setBackground(new Background(imagenDeFondo));
         */
-
     }
 
     private void setBotonera() { //Faltarían los botones de cambiar de fase
@@ -136,7 +126,7 @@ public class ContenedorBase extends GridPane {
     }
 
     private void setGrilla() {
-        this.setGridLinesVisible(true);
+        this.setGridLinesVisible(false);
         final int numColumnas = 11;
         final int numFilas = 4;
         for (int i = 0; i < 3; i++) {

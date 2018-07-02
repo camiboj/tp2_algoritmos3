@@ -26,15 +26,6 @@ public class BotonIniciarJuego extends Button implements EventHandler<ActionEven
         this.nombreJugador1 = nombreJugador1;
         this.nombreJugador2 = nombreJugador2;
     }
-    /*
-    public void guardarNombres(TextField nombre1, TextField nombre2) {
-
-
-        yuGiOh.obtenerJugador1().guardarNombre(nombre1.getText());
-        yuGiOh.obtenerJugador2().guardarNombre(nombre2.getText());
-
-    }
-    */
 
     @Override
     public void handle(ActionEvent actionEvent) {
