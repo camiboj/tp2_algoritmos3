@@ -17,6 +17,7 @@ import modelo.tablero.Tablero;
 import vista.botones.BotonCambiarTurno;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ContenedorBase extends GridPane {
@@ -34,61 +35,22 @@ public class ContenedorBase extends GridPane {
     private VistaJugador vistaActual;
     private VistaJugador vistaContrincante;
 
-
     public ContenedorBase(Stage stage, YuGiOh juego, Tablero tablero) {
         this.stage = stage;
         this.juego = juego;
         this.jugadores = juego.obtenerJugadores();
         this.setFondo();
-        this.jugadorTurno = juego.obtenerJugador1();
-        this.vistaJugador1 = new VistaJugador(juego.obtenerJugador1(), tablero.mostrarLadoDelCampo(juego.obtenerJugador1()),
-                juego.obtenerJugador1().obtenerNombre());
-        this.vistaJugador2 = new VistaJugador(juego.obtenerJugador2(), tablero.mostrarLadoDelCampo(juego.obtenerJugador2()),
-                juego.obtenerJugador2().obtenerNombre());
-
-        this.vistaActual = vistaJugador1;
-        this.vistaContrincante = vistaJugador2;
-
-        this.tablero = tablero;
         this.setGrilla();
-        this.setBotonera();
         this.setConsola();
-        this.setVista();
-    }
-
-    private void setVista() {
-        this.add(vistaActual, 0, 0, 2, 5);
-        this.add(vistaContrincante, 9, 0, 2, 5);
     }
 
     private void setConsola() {
         consola = new Consola();
         this.add(consola.getScrollPane(), 0, 4, 12, 1);
-        consola.escribirInstruccion("Es el turno de " + jugadorTurno.obtenerNombre());
     }
 
-    public void cambiarTurno() {
-        limpiarVista();
-        jugadorTurno = obtenerSiguienteJugador(jugadorTurno);
-        if (jugadorTurno == juego.obtenerJugador1()) {
-            vistaActual = vistaJugador1;
-            vistaContrincante = vistaJugador2;
-        } else {
-            vistaActual = vistaJugador2;
-            vistaContrincante = vistaJugador1;
-        }
-        consola.escribirInstruccion("Es el turno de " + jugadorTurno.obtenerNombre());
-        setVista();
-    }
-
-    private void limpiarVista() {
-        this.getChildren().remove(vistaActual);
-        this.getChildren().remove(vistaContrincante);
-    }
-
-    private Jugador obtenerSiguienteJugador(Jugador actual) {
-        if (actual == juego.obtenerJugador1()) return juego.obtenerJugador2();
-        return juego.obtenerJugador1();
+    public void escribirEnConsola(String mensaje) {
+        consola.escribirInstruccion(mensaje);
     }
 
     public void setFondo() {
@@ -99,30 +61,10 @@ public class ContenedorBase extends GridPane {
         ImageView imagenFondo = new ImageView(imagen);
         this.add(imagenFondo, 3, 1, 6, 2);
         this.setStyle("-fx-background-color: black;");
-
-
-       /* Image imagen = new Image("vista/imagenes/fondoTablero.jpg");
-
-        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-
-        this.setBackground(new Background(imagenDeFondo));
-        */
     }
 
-    private void setBotonera() { //Faltarían los botones de cambiar de fase
-
-        BotonCambiarTurno botonCambiarTurno = new BotonCambiarTurno(this);
-        botonCambiarTurno.setText("Fin del Turno");
-        botonCambiarTurno.setDefaultButton(true);
-        botonCambiarTurno.setStyle("-fx-base: red;");
-        botonCambiarTurno.setPrefSize(150, 30);
-
-        botonCambiarTurno.setDefaultButton(true);
-        botonCambiarTurno.setOnAction(botonCambiarTurno);
-
+    public void setBotonera(BotonCambiarTurno botonCambiarTurno) { //Faltarían los botones de cambiar de fase
         this.add(botonCambiarTurno, 9, 3, 3, 1);
-
     }
 
     private void setGrilla() {
@@ -165,7 +107,7 @@ public class ContenedorBase extends GridPane {
         return rec;
     }
 
-    private void ubicarObjeto(Node rectangle, int fila, int columna) {
+    public void ubicarObjeto(Node rectangle, int fila, int columna) {
         this.setRowIndex(rectangle, fila);
         this.setColumnIndex(rectangle, columna);
         this.getChildren().addAll(rectangle);

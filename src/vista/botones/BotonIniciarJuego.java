@@ -11,6 +11,7 @@ import modelo.jugador.Jugador;
 import modelo.jugador.YuGiOh;
 import modelo.tablero.LadoDelCampo;
 import vista.ContenedorBase;
+import vista.Controlador;
 
 public class BotonIniciarJuego extends Button implements EventHandler<ActionEvent> {
 
@@ -32,19 +33,13 @@ public class BotonIniciarJuego extends Button implements EventHandler<ActionEven
 
         yuGiOh.obtenerJugador1().guardarNombre(nombreJugador1.getText());
         yuGiOh.obtenerJugador2().guardarNombre(nombreJugador2.getText());
-        ContenedorBase contenedorBase = new ContenedorBase(stage, yuGiOh, yuGiOh.mostrarTablero());
-        //ContenedorTurno contenedorTurno = new ContenedorTurno(stage, yuGiOh, contenedorBase);
+
         Jugador jugador1 = yuGiOh.obtenerJugador1();
         Jugador jugador2 = yuGiOh.obtenerJugador2();
         LadoDelCampo ladoDelCampo1 = yuGiOh.mostrarTablero().mostrarLadoDelCampo(jugador1);
         LadoDelCampo ladoDelCampo2 = yuGiOh.mostrarTablero().mostrarLadoDelCampo(jugador2);
 
-        //VistaJugador vista1 = new VistaJugador(jugador1, ladoDelCampo1);
-        //VistaJugador vista2 = new VistaJugador(jugador2, ladoDelCampo2, nombre2);
-
-        Scene escenaJuego = new Scene(contenedorBase, 640, 480);
-        stage.setScene(escenaJuego);
-        stage.setFullScreenExitHint("");
-        stage.setFullScreen(true);
+        Controlador controlador = new Controlador(stage, yuGiOh, yuGiOh.mostrarTablero());
+        controlador.mostrar(stage);
     }
 }

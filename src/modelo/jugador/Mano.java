@@ -12,6 +12,10 @@ public class Mano {
         cartas = new ArrayList<>();
     }
 
+    public List<Carta> mostrarCartas() {
+        return cartas;
+    }
+
     public void agregarCarta(Carta carta) throws VictoriaException {
         cartas.add(carta);
         if(sonTodasExodia()){

@@ -5,18 +5,19 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import modelo.jugador.YuGiOh;
 import vista.ContenedorBase;
+import vista.Controlador;
 
 public class BotonCambiarTurno extends Button implements EventHandler<ActionEvent> {
 
-        private final ContenedorBase contenedorBase;
+        private Controlador controlador;
 
-        public BotonCambiarTurno(ContenedorBase contenedorBase) {
-            this.contenedorBase = contenedorBase;
+        public BotonCambiarTurno(Controlador controlador) {
+            this.controlador = controlador;
         }
 
         @Override
         public void handle(ActionEvent actionEvent) {
-            contenedorBase.cambiarTurno();
+            controlador.cambiarTurno();
         }
 }
 

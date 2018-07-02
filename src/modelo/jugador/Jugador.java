@@ -37,7 +37,7 @@ public class Jugador {
 
         }
         catch (EmptyStackException datosDelFinal){
-            throw new FinDelJuegoException("No hay mas modelo.cartas en el mazo", this);
+            throw new FinDelJuegoException("No hay mas cartas en el mazo", this);
         }
     }
 
