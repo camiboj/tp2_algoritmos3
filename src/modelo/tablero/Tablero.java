@@ -59,7 +59,7 @@ public class Tablero {
 		return resul != -1;
 	}
 
-	public boolean colocarZonaMonstruo(InvocacionCartaMonstruo unaInvocacion, Jugador jugador) {
+	public int colocarZonaMonstruo(InvocacionCartaMonstruo unaInvocacion, Jugador jugador) {
 
 		Cementerio cementerio = divisiones.get(jugador).mostrarCementerio();
 		ZonaMonstruo zonaMonstruo = divisiones.get(jugador).mostrarZonaMonstruo();
@@ -67,8 +67,7 @@ public class Tablero {
 		Carta carta = unaInvocacion.invocar();
 		jugador.sacarDeMano(carta);
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
-		int resul = ladoDelCampo.colocarZonaMonstruo(unaInvocacion);
-		return resul != -1;
+		return ladoDelCampo.colocarZonaMonstruo(unaInvocacion);
 	}
 
 	public void colocarCementerio(Carta unaCarta, Jugador jugador) {

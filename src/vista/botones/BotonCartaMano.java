@@ -6,8 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
-import javafx.scene.layout.*;
-import modelo.cartas.Carta;
+
 
 import modelo.cartas.cartasCampo.CartaCampo;
 import modelo.cartas.cartasMagicas.CartaMagica;
@@ -16,16 +15,14 @@ import modelo.cartas.cartasTrampa.CartaTrampa;
 import vista.VistaJugador;
 
 
-public class BotonCartaMano extends Button implements EventHandler<ActionEvent> {
+public class BotonCartaMano extends BotonCarta {
 
-    private Carta carta;
     private  BotonCartaMano boton;
 
 
-    public BotonCartaMano(String nombre, CartaMonstruo carta, VistaJugador vista) {
-        this.settear(nombre, carta, vista);
-
-
+    public BotonCartaMano(CartaMonstruo carta, VistaJugador vista){
+        super(carta);
+        this.boton = this;
         Tooltip tt = new Tooltip("Efecto: " + carta.obtenerEfecto());
         this.setTooltip(tt);
         final ContextMenu contextMenu = new ContextMenu();
@@ -55,38 +52,14 @@ public class BotonCartaMano extends Button implements EventHandler<ActionEvent> 
 
     }
 
-/*    public BotonCartaMano(String nombre, CartaMagica carta, VistaJugador vista) {
-        this.settear(nombre, carta, vista);
-    }
-    public BotonCartaMano(String nombre, CartaTrampa carta, VistaJugador vista) {
-        this.settear(nombre, carta, vista);
-    }
-    public BotonCartaMano(String nombre, CartaCampo carta, VistaJugador vista) {
-        this.settear(nombre, carta, vista);
-    }*/
+   public BotonCartaMano(CartaMagica carta, int fila, int columna){
+       super(carta, fila, columna); }
 
-    private void settear(String nombre, Carta carta, VistaJugador vista) {
-        String ruta = "/vista/imagenes/" + nombre + ".jpg";
-        Image image = new Image(getClass().getResourceAsStream(ruta));
-        this.boton = this;
-        BackgroundSize size = new BackgroundSize(70, 120, true, true, true, false);
-
-        BackgroundImage imagenBoton = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER, size);
-        this.setBackground(new Background(imagenBoton));
-        this.carta = carta;
-        this.setPrefSize(70, 120);
+    public BotonCartaMano(CartaTrampa carta, int fila, int columna){
+        super(carta, fila, columna);
     }
 
-    @Override
-    public void handle(ActionEvent event) {
-
-
-
-
-
-
-
-        //stage.show();
+    public BotonCartaMano(CartaCampo carta, int fila, int columna){
+        super(carta, fila, columna);
     }
 }

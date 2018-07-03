@@ -15,33 +15,36 @@ import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.jugador.Jugador;
 import modelo.jugador.Mano;
 import modelo.tablero.LadoDelCampo;
+import modelo.tablero.Tablero;
 import vista.botones.BotonCartaMano;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class VistaJugador extends VBox {
+    private final Tablero tablero;
+    private final VistaZonaMonstruo vistaZonaMonstruo;
     private Jugador jugador;
-    private LadoDelCampo ladoDelCampo;
     private ContenedorBase contenedorBase;
     private List<Node> elementos;
 
     public VistaJugador(ContenedorBase contenedorBase, Jugador jugador,
-                        LadoDelCampo ladoDelCampo) {
-        this.ladoDelCampo = ladoDelCampo;
+                        Tablero tablero) {
+        this.tablero = tablero;
         this.jugador = jugador;
         this.contenedorBase = contenedorBase;
         this.elementos = new ArrayList<>();
-
+        this.vistaZonaMonstruo = new VistaZonaMonstruo(tablero.mostrarZonaMonstruo(jugador), contenedorBase);
     }
 
     public void activar(boolean abajo){
-        int x = 0; int y = 8;
+        int x = 0; int y = 8; int fila = 1;
         if (abajo) {
-            x = 3; y = 2;
+            x = 3; y = 2; fila = 2;
             this.mostrarMano();
         }
         this.agregarTexto(x, y);
+        vistaZonaMonstruo.activar(fila);
     }
 
     private void agregarTexto(int x, int y) {
@@ -73,8 +76,8 @@ public class VistaJugador extends VBox {
         int i = 0;
         int j = 0;
         for(Carta carta : cartas) {
-            BotonCartaMano imagenCarta = new BotonCartaMano(carta.getNombre(), (CartaMonstruo) carta, this);
-            imagenCarta.setOnAction(imagenCarta);
+            BotonCartaMano imagenCarta = new BotonCartaMano((CartaMonstruo) carta, this);
+            elementos.add(imagenCarta);
             contenedorBase.ubicarObjeto(imagenCarta, i, j);
             i++;
             if (i == 4) {
@@ -84,27 +87,27 @@ public class VistaJugador extends VBox {
         }
     }
 
-    public void ColocarCartaMonstruoEnAtaque(CartaMonstruo carta, BotonCartaMano boton) {
+
+   public void ColocarCartaMonstruoEnAtaque(CartaMonstruo carta, BotonCartaMano boton) {
         InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta);
-        int indice = ladoDelCampo.obtenerZonaMonstruos().colocarCarta(invocacionCartaMonstruoGenerica);
+        int indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica,jugador);
         carta.colocarEnModoDeAtaque();
-        indice += 3;
+        int columna = indice + 3;
+        vistaZonaMonstruo.colocarCartaModoAtaque(carta, columna);
         contenedorBase.getChildren().remove(boton);
-        contenedorBase.ubicarObjeto(boton,2, indice);
-
-
-
+        //contenedorBase.ubicarObjeto(boton,2, indice);
     }
 
     public void ColocarCartaMonstruoEnDefensa(CartaMonstruo carta, BotonCartaMano boton) {
         InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta);
-        int indice = ladoDelCampo.colocarZonaMonstruo(invocacionCartaMonstruoGenerica);
+        int indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica,jugador);
         carta.colocarEnModoDeDefensa();
-
-        indice += 3;
+        int columna = indice + 3;
+        vistaZonaMonstruo.colocarCartaModoDefensa(carta, columna);
         contenedorBase.getChildren().remove(boton);
-        boton.setRotate(90);
-        contenedorBase.ubicarObjeto(boton,2,indice);
+
+        /*
+        contenedorBase.ubicarObjeto(boton,2,indice); */
 
 
     }

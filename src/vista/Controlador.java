@@ -23,9 +23,9 @@ public class Controlador {
         this.jugadorTurno = juego.obtenerJugador1();
         this.jugadorContrincante = juego.obtenerJugador2();
         this.vistaActual = new VistaJugador(contenedorBase, jugadorTurno,
-                tablero.mostrarLadoDelCampo(jugadorTurno));
+                tablero);
         this.vistaContrincante = new VistaJugador(contenedorBase, jugadorContrincante,
-                tablero.mostrarLadoDelCampo(jugadorContrincante));
+                tablero);
         this.contenedorBase = contenedorBase;
 
         this.jugadores = juego.obtenerJugadores();

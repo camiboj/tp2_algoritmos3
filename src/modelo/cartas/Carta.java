@@ -16,7 +16,7 @@ public abstract class Carta {
         this.estado = null;
     }
 
-    public void colocarBocaArriba() throws  VictoriaException {
+    public void colocarBocaArriba() throws VictoriaException {
         this.estado = new BocaArriba();
         this.activarEfecto();
     }
