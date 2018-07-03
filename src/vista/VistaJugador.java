@@ -72,6 +72,7 @@ public class VistaJugador extends VBox {
         int j = 0;
         for(Carta carta : cartas) {
             BotonCartaMano imagenCarta = new BotonCartaMano(carta.getNombre(), carta);
+            imagenCarta.setOnAction(imagenCarta);
             contenedorBase.ubicarObjeto(imagenCarta, i, j);
             i++;
             if (i == 4) {
