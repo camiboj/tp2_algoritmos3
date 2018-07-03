@@ -8,6 +8,7 @@ public class InsectoComeHombres extends CartaMonstruo implements Efecto {
     EfectoInsectoComeHombres efectoInsectoComeHombres;
     public InsectoComeHombres() {
         super("Insecto Come-Hombres", 450, 600, 2);
+        this.descripcionEfecto = "Selecciona un monstruo en el campo: destruye ese objetivo.";
         efectoInsectoComeHombres= new EfectoInsectoComeHombres();
     }
 

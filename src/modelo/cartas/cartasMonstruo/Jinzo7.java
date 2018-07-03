@@ -11,6 +11,7 @@ public class Jinzo7 extends CartaMonstruo implements Efecto {
     public Jinzo7 (Jugador unJugadorOponente)  {
         super("Jinzo7", 500, 400, 2);
         jugadorOponente = unJugadorOponente;
+        this.descripcionEfecto = "Puede atacar directamente los puntos de vida del jugador oponente.";
     }
 
     @Override

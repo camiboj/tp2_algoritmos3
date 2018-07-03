@@ -5,13 +5,13 @@ import modelo.estadosDeCartas.Estado;
 import modelo.excepciones.VictoriaException;
 
 public abstract class Carta {
+    protected String descripcionEfecto;
     protected String nombre;
     private Estado estado;
     
     
     public Carta(String unNombre) {
         this.nombre = unNombre;
-        this.estado = null;
     }
 
     public void colocarBocaArriba() throws  VictoriaException {

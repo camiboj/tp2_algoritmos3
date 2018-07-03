@@ -9,6 +9,7 @@ import modelo.jugador.Punto;
 import java.util.List;
 
 public abstract class CartaMonstruo extends Carta {
+
     protected Modo modo;
     protected Punto puntosAtaque;
     protected Punto puntosDefensa;
@@ -16,6 +17,7 @@ public abstract class CartaMonstruo extends Carta {
 
     public CartaMonstruo(String unNombredeCarta, int unosPuntosAtaque, int unosPuntosDefensa, int cantidadEstrellas) {
         super(unNombredeCarta);
+        descripcionEfecto = "no tiene";
         puntosAtaque = new Punto(unosPuntosAtaque);
         puntosDefensa = new Punto(unosPuntosDefensa);
         nivel = new Nivel(cantidadEstrellas);

@@ -13,6 +13,7 @@ import modelo.cartas.Carta;
 import modelo.jugador.Jugador;
 import modelo.jugador.Mano;
 import modelo.tablero.LadoDelCampo;
+import vista.botones.BotonCartaMano;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,7 @@ public class VistaJugador extends VBox {
         int x = 0; int y = 8;
         if (abajo) {
             x = 3; y = 2;
+            this.mostrarMano();
         }
         this.agregarTexto(x, y);
     }
@@ -62,15 +64,20 @@ public class VistaJugador extends VBox {
         }
     }
 
-    public List<ImagenCarta> obtenerImagenMano() {
+    public void mostrarMano() {
         Mano mano = jugador.mostrarMano();
         List<Carta> cartas = mano.mostrarCartas();
-        System.out.println(cartas.size());
-        List<ImagenCarta> vistaImagenes = new ArrayList<>();
+        //System.out.println(cartas.size());
+        int i = 0;
+        int j = 0;
         for(Carta carta : cartas) {
-            ImagenCarta imagenCarta = new ImagenCarta(carta.getNombre(), carta);
-            vistaImagenes.add(imagenCarta);
+            BotonCartaMano imagenCarta = new BotonCartaMano(carta.getNombre(), carta);
+            contenedorBase.ubicarObjeto(imagenCarta, i, j);
+            i++;
+            if (i == 4) {
+                j = 1;
+                i = 0;
+            }
         }
-        return vistaImagenes;
     }
 }

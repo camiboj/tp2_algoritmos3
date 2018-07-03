@@ -11,6 +11,7 @@ public class Fisura extends CartaMagica implements Efecto {
     public Fisura(LadoDelCampo unLadoDelCampoOponente) {
         super("Fisura");
         ladoDelCampoOponente = unLadoDelCampoOponente;
+        this.descripcionEfecto = "Destruye el monstruo boca arriba con ATK mas bajo que controle tu adversario";
     }
 
     public void activarEfecto(){

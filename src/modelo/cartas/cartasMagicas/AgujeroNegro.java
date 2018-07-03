@@ -7,6 +7,7 @@ public class AgujeroNegro extends CartaMagica {
     public AgujeroNegro(Tablero unTablero) {
 		super("Agujero Negro");
 		tablero = unTablero;
+        this.descripcionEfecto = "Destruye todos los monstruos del campo";
 	}
 
 

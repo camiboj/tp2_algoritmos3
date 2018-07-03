@@ -11,6 +11,7 @@ import modelo.tablero.Tablero;
     public OllaDeLaCodicia(Jugador unJugador) {
         super("Olla De La Codicia");
         jugador = unJugador;
+        this.descripcionEfecto = "Roba dos cartas";
     }
 
     public void activarEfecto() throws VictoriaException {
