@@ -11,12 +11,8 @@ public class FaseInicial implements Fase {
         jugador = unJugador;
     }
 
-    public void ejecutarFase() throws FinDelJuegoException {
-        try {
-            jugador.agarraCartas(1); //Jugador agarra 1 carta
-        } catch (VictoriaException datos) {
-            throw new FinDelJuegoException(datos.obtenerMotivo(),jugador);
-        }
+    public void ejecutarFase() throws VictoriaException {
+        jugador.agarraCartas(1); //Jugador agarra 1 carta
     }
 
     @Override

@@ -2,6 +2,7 @@ import modelo.cartas.cartasMonstruo.cartasBasicas.IdoloDeLosMilOjos;
 import modelo.cartas.cartasMonstruo.Jinzo7;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.excepciones.VictoriaException;
+import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
 import org.junit.Test;
 import modelo.tablero.Cementerio;
@@ -21,11 +22,17 @@ public class Jinzo7Test {
 
         IdoloDeLosMilOjos cartaSobreviviente = new IdoloDeLosMilOjos();
         InvocacionCartaMonstruoGenerica invocacionSobreviviente = new InvocacionCartaMonstruoGenerica(cartaSobreviviente);
-        tablero.colocarZonaMonstruo(invocacionSobreviviente, jugadorOponente);
+        try {
+            tablero.colocarZonaMonstruo(invocacionSobreviviente, jugadorOponente);
+        } catch (ZonaMonstruoLlenaException e) {
+        }
 
         Jinzo7 jinzo7 = new Jinzo7(jugadorOponente);
         InvocacionCartaMonstruoGenerica invocacionJinzo7 = new InvocacionCartaMonstruoGenerica(jinzo7);
-        tablero.colocarZonaMonstruo(invocacionJinzo7, jugador);
+        try {
+            tablero.colocarZonaMonstruo(invocacionJinzo7, jugador);
+        } catch (ZonaMonstruoLlenaException e) {
+        }
         try {
             jinzo7.colocarBocaArriba();
         } catch (VictoriaException e) {

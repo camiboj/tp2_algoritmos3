@@ -7,6 +7,7 @@ import modelo.Fase.FaseTrampa;
 import modelo.Fase.FaseMagia;
 import modelo.Fase.FasePreparacion;
 import modelo.excepciones.FinDelJuegoException;
+import modelo.excepciones.VictoriaException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +27,17 @@ public class Turno {
         fases.add(new FaseMagia(unJugador));
     }
 
-    public void cambiarDeFase() throws FinDelJuegoException {
-        /*    for(modelo.Fase fase : fases) {
-            fase.finFase();
+    public void cambiarDeFase() {
+        try {
+            for (Fase fase : fases) {
+                fase.ejecutarFase();
+            }
+        } catch (VictoriaException e) {
+            e.printStackTrace();
         }
-        */
+    }
+
+    public void ejecutarFaseInicial() throws VictoriaException {
+        fases.get(0).ejecutarFase();
     }
 }

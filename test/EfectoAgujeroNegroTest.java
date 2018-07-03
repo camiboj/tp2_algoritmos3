@@ -6,6 +6,7 @@ import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.cartas.invocacion.InvocacionDefault;
 import modelo.efectos.EfectoAgujeroNegro;
 import modelo.excepciones.VictoriaException;
+import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
 import modelo.jugador.Punto;
 import org.junit.Test;
@@ -25,18 +26,22 @@ public class EfectoAgujeroNegroTest {
         InvocacionCartaMonstruoGenerica cartaInvocada1 = new InvocacionCartaMonstruoGenerica(carta1, null); // No requiere sacrificios
         cartaInvocada1.invocar();
         carta1.colocarEnModoDeAtaque();
-        tablero.colocarZonaMonstruo(cartaInvocada1,jugador1);
+
         AlasDeLaLlamaPerversa carta2 = new AlasDeLaLlamaPerversa();
         InvocacionCartaMonstruoGenerica cartaInvocada2 = new InvocacionCartaMonstruoGenerica(carta2, null); // No requiere sacrificios
         cartaInvocada2.invocar();
         carta2.colocarEnModoDeAtaque();
-        tablero.colocarZonaMonstruo(cartaInvocada2,jugador1);
 
         AlcanzadorDeGarra carta3 = new AlcanzadorDeGarra();
         InvocacionCartaMonstruoGenerica cartaInvocada3 = new InvocacionCartaMonstruoGenerica(carta3, null); // No requiere sacrificios
         cartaInvocada3.invocar();
         carta3.colocarEnModoDeDefensa();
-        tablero.colocarZonaMonstruo(cartaInvocada3,jugador2);
+        try {
+            tablero.colocarZonaMonstruo(cartaInvocada1,jugador1);
+            tablero.colocarZonaMonstruo(cartaInvocada2,jugador1);
+            tablero.colocarZonaMonstruo(cartaInvocada3,jugador2);
+        } catch (ZonaMonstruoLlenaException e) {
+        }
         AgujeroNegro agujeroNegro = new AgujeroNegro(tablero);
         InvocacionDefault invocacionAgujeroNegro = new InvocacionDefault(agujeroNegro);
         tablero.colocarZonaTrampaMagica(invocacionAgujeroNegro, jugador1);

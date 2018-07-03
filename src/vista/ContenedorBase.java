@@ -161,12 +161,9 @@ public class ContenedorBase extends GridPane {
         ubicarTexto("Cementerio", 10, 2, 8);
 
         //Setteo mazo
-        Image imagen = new Image(getClass().getResourceAsStream("/vista/imagenes/cartaAtras.jpg"));
-        ImageView mazo1 = new ImageView(imagen);
-        ubicarObjeto(mazo1, 0, 2);
-        ImageView mazo2 = new ImageView(imagen);
-        ubicarObjeto(mazo2, 3, 8);
-
+         BotonCartaBocaAbajo mazoOponente = new BotonCartaBocaAbajo(0,2);
+        ubicarObjeto(mazoOponente, 0, 2);
+        mazoOponente.setDisable(true);
 
         //Setteo cartasContrincante
         Image cartaOponenteImagen = new Image(getClass().getResourceAsStream("/vista/imagenes/cartasOponente.jpg"));

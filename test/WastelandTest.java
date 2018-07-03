@@ -4,6 +4,7 @@ import modelo.cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.cartas.invocacion.InvocacionDefault;
 import modelo.excepciones.VictoriaException;
+import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
 import org.junit.Test;
 import modelo.tablero.Tablero;
@@ -22,8 +23,12 @@ public class WastelandTest {
         InvocacionCartaMonstruoGenerica invocacionMonstruo1 = new InvocacionCartaMonstruoGenerica(monstruo1);
         AlasDeLaLlamaPerversa monstruo2 = new AlasDeLaLlamaPerversa();
         InvocacionCartaMonstruoGenerica invocacionMonstruo2 = new InvocacionCartaMonstruoGenerica(monstruo2);
-        tablero.colocarZonaMonstruo(invocacionMonstruo1, jugador1);
-        tablero.colocarZonaMonstruo(invocacionMonstruo2, jugador2);
+        try {
+            tablero.colocarZonaMonstruo(invocacionMonstruo1, jugador1);
+            tablero.colocarZonaMonstruo(invocacionMonstruo2, jugador2);
+        } catch (ZonaMonstruoLlenaException e) {
+            e.printStackTrace();
+        }
         ZonaMonstruo zonaMonstruo1 = tablero.mostrarZonaMonstruo(jugador1);
         ZonaMonstruo zonaMonstruo2 = tablero.mostrarZonaMonstruo(jugador2);
         //Verifico que los dos monstruos están en el campo

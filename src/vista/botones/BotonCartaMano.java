@@ -12,6 +12,7 @@ import modelo.cartas.cartasCampo.CartaCampo;
 import modelo.cartas.cartasMagicas.CartaMagica;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.cartas.cartasTrampa.CartaTrampa;
+import modelo.excepciones.ZonaMonstruoLlenaException;
 import vista.VistaJugador;
 
 
@@ -41,7 +42,10 @@ public class BotonCartaMano extends BotonCarta {
 
             @Override
             public void handle(ActionEvent event) {
-                vista.ColocarCartaMonstruoEnDefensa(carta, boton);
+                try {
+                    vista.ColocarCartaMonstruoEnDefensa(carta, boton);
+                } catch (ZonaMonstruoLlenaException ignored) {
+                }
             }
         });
 

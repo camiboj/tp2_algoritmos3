@@ -2,6 +2,7 @@ package modelo.tablero;
 
 import modelo.cartas.Carta;
 import modelo.cartas.invocacion.Invocacion;
+import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Punto;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public abstract class ZonaMonstruo implements Zona {
         return resultado;
     }
 
-    public int colocarCarta(Invocacion invocacion) {
+    public int colocarCarta(Invocacion invocacion) throws ZonaMonstruoLlenaException {
         Carta carta = invocacion.invocar();
         for (int i = 0; i<CANT_CASILLEROS ; i++) {
             Casillero casillero = casilleros.get(i);
@@ -35,7 +36,7 @@ public abstract class ZonaMonstruo implements Zona {
                 return i;
             }
         }
-        return -1;
+        throw new ZonaMonstruoLlenaException("La zona monstruo está completa. No puede seguir colocando cartas en la misma");
     }
 
     public void eliminarCarta(Carta carta) {

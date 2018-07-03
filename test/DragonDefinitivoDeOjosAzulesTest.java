@@ -5,6 +5,7 @@ import modelo.cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import modelo.cartas.invocacion.InvocacionCartaDragonDefinitivoOjosAzules;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.excepciones.VictoriaException;
+import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
 import org.junit.Test;
 import modelo.tablero.Cementerio;
@@ -45,9 +46,18 @@ public class DragonDefinitivoDeOjosAzulesTest {
         InvocacionCartaMonstruoGenerica invocacion2 = new InvocacionCartaMonstruoGenerica(dragon2, lista2);
         InvocacionCartaMonstruoGenerica invocacion3 = new InvocacionCartaMonstruoGenerica(dragon3, lista3);
 
-        tablero.colocarZonaMonstruo(invocacion1,jugador1);
-        tablero.colocarZonaMonstruo(invocacion2,jugador1);
-        tablero.colocarZonaMonstruo(invocacion3,jugador1);
+        try {
+            tablero.colocarZonaMonstruo(invocacion1,jugador1);
+        } catch (ZonaMonstruoLlenaException e) {
+        }
+        try {
+            tablero.colocarZonaMonstruo(invocacion2,jugador1);
+        } catch (ZonaMonstruoLlenaException e) {
+        }
+        try {
+            tablero.colocarZonaMonstruo(invocacion3,jugador1);
+        } catch (ZonaMonstruoLlenaException e) {
+        }
 
         //Los 3 dragones blancos se colocan correctamente
         assertTrue(zonaMonstruoJugador.existe(dragon1) && zonaMonstruoJugador.existe(dragon2)
@@ -55,7 +65,10 @@ public class DragonDefinitivoDeOjosAzulesTest {
 
         DragonDefinitivoDeOjosAzules unDragonDefinitivo = new DragonDefinitivoDeOjosAzules();
         InvocacionCartaDragonDefinitivoOjosAzules invocacion = new InvocacionCartaDragonDefinitivoOjosAzules(unDragonDefinitivo, dragonesSacrificados);
-        tablero.colocarZonaMonstruo(invocacion,jugador1);
+        try {
+            tablero.colocarZonaMonstruo(invocacion,jugador1);
+        } catch (ZonaMonstruoLlenaException e) {
+        }
 
         //Las modelo.cartas sacrificadas estan en el cementerio y fueron retiradas del campo
         assertTrue(cementerioJugador.existe(dragon1) && cementerioJugador.existe(dragon2) &&
@@ -71,12 +84,18 @@ public class DragonDefinitivoDeOjosAzulesTest {
     private List<CartaMonstruo> creaListaHuevos(Tablero tablero, Jugador jugador1) {
         HuevoMonstruoso huevoMonstruoso1 = new HuevoMonstruoso();
         InvocacionCartaMonstruoGenerica invocacionHuevoMonstruoso1 = new InvocacionCartaMonstruoGenerica(huevoMonstruoso1, null);
-        tablero.colocarZonaMonstruo(invocacionHuevoMonstruoso1, jugador1);
+        try {
+            tablero.colocarZonaMonstruo(invocacionHuevoMonstruoso1, jugador1);
+        } catch (ZonaMonstruoLlenaException e) {
+        }
 
         HuevoMonstruoso huevoMonstruoso2 = new HuevoMonstruoso();
 
         InvocacionCartaMonstruoGenerica invocacionHuevoMonstruoso2 = new InvocacionCartaMonstruoGenerica(huevoMonstruoso1, null);
-        tablero.colocarZonaMonstruo(invocacionHuevoMonstruoso2, jugador1);
+        try {
+            tablero.colocarZonaMonstruo(invocacionHuevoMonstruoso2, jugador1);
+        } catch (ZonaMonstruoLlenaException e) {
+        }
 
         List<CartaMonstruo> huevos = new ArrayList<>();
         huevos.add(huevoMonstruoso1);

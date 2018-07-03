@@ -4,7 +4,9 @@ import javafx.stage.Stage;
 import modelo.jugador.Jugador;
 import modelo.jugador.YuGiOh;
 import modelo.tablero.Tablero;
+import vista.botones.BotonCartaBocaAbajo;
 import vista.botones.Botonera;
+import vista.botones.HandlerMazo;
 
 import java.util.ArrayList;
 
@@ -31,10 +33,17 @@ public class Controlador {
         this.jugadores = juego.obtenerJugadores();
         this.juego = juego;
         this.stage = stage;
-        contenedorBase.escribirEnConsola("Es el turno de " + jugadorTurno.obtenerNombre());
+        contenedorBase.escribirEnConsola("Es el turno de " + jugadorTurno.obtenerNombre() + "\n Inicio Fase Inicial: Haz click en el Mazo para obtener una carta");
         this.botonera();
         vistaActual.activar(true);
         vistaContrincante.activar(false);
+        this.setMazo();
+    }
+
+    private void setMazo() {
+        BotonCartaBocaAbajo boton = new BotonCartaBocaAbajo(3,8);
+        contenedorBase.ubicarObjeto(boton, 3, 8);
+        boton.setOnAction(new HandlerMazo(juego, this.vistaActual.getVistaMano(), jugadorTurno, boton));
     }
 
     public void botonera() {

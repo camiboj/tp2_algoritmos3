@@ -2,6 +2,7 @@ import modelo.cartas.cartasMonstruo.InsectoComeHombres;
 import modelo.cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.excepciones.VictoriaException;
+import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
 import org.junit.Test;
 import modelo.tablero.Cementerio;
@@ -24,11 +25,17 @@ public class InsectoComeHombresTest {
         insectoComeHombres.colocarEnModoDeDefensa();
 
         InvocacionCartaMonstruoGenerica invocacionInsectoComeHombres = new InvocacionCartaMonstruoGenerica(insectoComeHombres);
-        tablero.colocarZonaMonstruo(invocacionInsectoComeHombres, jugadorDefensor);
+        try {
+            tablero.colocarZonaMonstruo(invocacionInsectoComeHombres, jugadorDefensor);
+        } catch (ZonaMonstruoLlenaException e) {
+        }
 
         AlasDeLaLlamaPerversa cartaAtacante = new AlasDeLaLlamaPerversa();
         InvocacionCartaMonstruoGenerica invocacionCartaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante);
-        tablero.colocarZonaMonstruo(invocacionCartaAtacante, jugadorAtacante);
+        try {
+            tablero.colocarZonaMonstruo(invocacionCartaAtacante, jugadorAtacante);
+        } catch (ZonaMonstruoLlenaException e) {
+        }
 
         ZonaMonstruo zonaMonstruoAtacante = tablero.mostrarZonaMonstruo(jugadorAtacante);
 

@@ -4,6 +4,7 @@ import modelo.cartas.cartasTrampa.CartaTrampa;
 import modelo.cartas.invocacion.Invocacion;
 import modelo.cartas.invocacion.InvocacionCartaMonstruo;
 import modelo.excepciones.VictoriaException;
+import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
 import modelo.jugador.Mazo;
 
@@ -42,7 +43,7 @@ public class LadoDelCampo {
 		return miZonaDeTrampasYMagia.colocarCarta(unaInvocacion);
 	}
 
-	public int colocarZonaMonstruo(InvocacionCartaMonstruo unaInvocacion) {
+	public int colocarZonaMonstruo(InvocacionCartaMonstruo unaInvocacion) throws ZonaMonstruoLlenaException {
 		return miZonaMonstruo.colocarCarta(unaInvocacion);
 	}
 

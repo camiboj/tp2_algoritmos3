@@ -11,6 +11,7 @@ import modelo.cartas.invocacion.InvocacionCartaMonstruo;
 import modelo.efectos.Efecto;
 import modelo.estadosDeCartas.BocaAbajo;
 import modelo.excepciones.VictoriaException;
+import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
 import modelo.jugador.Punto;
 
@@ -59,7 +60,7 @@ public class Tablero {
 		return resul != -1;
 	}
 
-	public int colocarZonaMonstruo(InvocacionCartaMonstruo unaInvocacion, Jugador jugador) {
+	public int colocarZonaMonstruo(InvocacionCartaMonstruo unaInvocacion, Jugador jugador) throws ZonaMonstruoLlenaException {
 
 		Cementerio cementerio = divisiones.get(jugador).mostrarCementerio();
 		ZonaMonstruo zonaMonstruo = divisiones.get(jugador).mostrarZonaMonstruo();

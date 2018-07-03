@@ -12,6 +12,7 @@ import javafx.scene.text.TextAlignment;
 import modelo.cartas.Carta;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
 import modelo.jugador.Mano;
 import modelo.tablero.Tablero;
@@ -23,6 +24,7 @@ import java.util.List;
 public class VistaJugador extends VBox {
     private final Tablero tablero;
     private final VistaZonaMonstruo vistaZonaMonstruo;
+    private final VistaMano vistaMano;
     private Jugador jugador;
     private ContenedorBase contenedorBase;
     private List<Node> elementos;
@@ -34,13 +36,15 @@ public class VistaJugador extends VBox {
         this.contenedorBase = contenedorBase;
         this.elementos = new ArrayList<>();
         this.vistaZonaMonstruo = new VistaZonaMonstruo(tablero.mostrarZonaMonstruo(jugador), contenedorBase);
+        this.vistaMano = new VistaMano(jugador.mostrarMano(), contenedorBase, this);
     }
+
 
     public void activar(boolean abajo){
         int x = 0; int y = 8; int fila = 1;
         if (abajo) {
             x = 3; y = 2; fila = 2;
-            this.mostrarMano();
+            vistaMano.mostrar();
         }
         this.agregarTexto(x, y);
         vistaZonaMonstruo.activar(fila);
@@ -63,9 +67,7 @@ public class VistaJugador extends VBox {
     }
 
     public void reset() {
-        for (Node elemento : elementos) {
-            contenedorBase.getChildren().remove(elemento);
-        }
+        vistaMano.reset();
     }
 
     public void mostrarMano() {
@@ -89,14 +91,19 @@ public class VistaJugador extends VBox {
 
    public void ColocarCartaMonstruoEnAtaque(CartaMonstruo carta, BotonCartaMano boton) {
         InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta);
-        int indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica,jugador);
-        carta.colocarEnModoDeAtaque();
-        int columna = indice + 3;
-        vistaZonaMonstruo.colocarCartaModoAtaque(carta, columna);
-        contenedorBase.getChildren().remove(boton);
-    }
+       int indice = 0;
+       try {
+           indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica, jugador);
+           carta.colocarEnModoDeAtaque();
+           int columna = indice + 3;
+           vistaZonaMonstruo.colocarCartaModoAtaque(carta, columna);
+           contenedorBase.getChildren().remove(boton);
+       } catch (ZonaMonstruoLlenaException excepcion) {
+           contenedorBase.escribirEnConsola(excepcion.obtenerMotivo());
+       }
+   }
 
-    public void ColocarCartaMonstruoEnDefensa(CartaMonstruo carta, BotonCartaMano boton) {
+    public void ColocarCartaMonstruoEnDefensa(CartaMonstruo carta, BotonCartaMano boton) throws ZonaMonstruoLlenaException {
         InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta);
         int indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica,jugador);
         carta.colocarEnModoDeDefensa();
@@ -105,4 +112,7 @@ public class VistaJugador extends VBox {
         contenedorBase.getChildren().remove(boton);
     }
 
+    public VistaMano getVistaMano() {
+        return vistaMano;
+    }
 }

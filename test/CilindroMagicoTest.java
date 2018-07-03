@@ -5,6 +5,7 @@ import modelo.cartas.cartasTrampa.CilindroMagico;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.cartas.invocacion.InvocacionDefault;
 import modelo.excepciones.VictoriaException;
+import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
 import org.junit.Test;
 import modelo.tablero.Cementerio;
@@ -27,8 +28,14 @@ public class CilindroMagicoTest {
         InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora, null); // No requiere sacrificios
         cartaAtacante.colocarEnModoDeAtaque();
         cartaDefensora.colocarEnModoDeAtaque();
-        tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
-        tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
+        try {
+            tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
+        } catch (ZonaMonstruoLlenaException e) {
+        }
+        try {
+            tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
+        } catch (ZonaMonstruoLlenaException e) {
+        }
         tablero.colocarZonaTrampaMagica(InvocacionCilindroMagico,jugadorDefensor);
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
         Cementerio cementerio = tablero.mostrarCementerio(jugadorAtacante);

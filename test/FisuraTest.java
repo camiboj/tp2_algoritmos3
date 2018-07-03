@@ -4,6 +4,7 @@ import modelo.cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.cartas.invocacion.InvocacionDefault;
 import modelo.excepciones.VictoriaException;
+import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
 import org.junit.Test;
 import modelo.tablero.Cementerio;
@@ -25,8 +26,12 @@ public class FisuraTest {
         HuevoMonstruoso cartaAMorir = new HuevoMonstruoso();
         InvocacionCartaMonstruoGenerica invocacionSobreviviente = new InvocacionCartaMonstruoGenerica(cartaSobreviviente);
         InvocacionCartaMonstruoGenerica invocacionMuerto = new InvocacionCartaMonstruoGenerica(cartaAMorir);
-        tablero.colocarZonaMonstruo(invocacionSobreviviente, jugadorOponente);
-        tablero.colocarZonaMonstruo(invocacionMuerto, jugadorOponente);
+        try {
+            tablero.colocarZonaMonstruo(invocacionSobreviviente, jugadorOponente);
+            tablero.colocarZonaMonstruo(invocacionMuerto, jugadorOponente);
+
+        } catch (ZonaMonstruoLlenaException e) {
+        }
 
         Fisura fisura = new Fisura(tablero.mostrarLadoDelCampo(jugadorOponente));
         InvocacionDefault invocacionFisura = new InvocacionDefault(fisura);

@@ -2,6 +2,7 @@ import modelo.cartas.cartasMonstruo.*;
 import modelo.cartas.cartasMonstruo.cartasBasicas.*;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.excepciones.VictoriaException;
+import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
 import org.junit.Test;
 import modelo.tablero.Cementerio;
@@ -34,8 +35,14 @@ public class MonstruoSacrificioTest {
         Cementerio cementerio = tablero.mostrarCementerio(jugador1);
         ZonaMonstruo zonaMonstruo = tablero.mostrarZonaMonstruo(jugador1);
 
-        tablero.colocarZonaMonstruo(invocacionHuevoMonstruoso, jugador1);
-        tablero.colocarZonaMonstruo(invocacionCausanteSacrificios, jugador1);
+        try {
+            tablero.colocarZonaMonstruo(invocacionHuevoMonstruoso, jugador1);
+        } catch (ZonaMonstruoLlenaException e) {
+        }
+        try {
+            tablero.colocarZonaMonstruo(invocacionCausanteSacrificios, jugador1);
+        } catch (ZonaMonstruoLlenaException e) {
+        }
 
         //La carta sacrificada esta en el cementerio y fue retirada del campo
         assertTrue(cementerio.existe(cartaSacrificada));
@@ -64,9 +71,13 @@ public class MonstruoSacrificioTest {
         Cementerio cementerio = tablero.mostrarCementerio(jugador1);
         ZonaMonstruo zonaMonstruo = tablero.mostrarZonaMonstruo(jugador1);
 
-        tablero.colocarZonaMonstruo(invocacionHuevoMonstruoso, jugador1);
-        tablero.colocarZonaMonstruo(invocacionAlasDeLaLLamaPerversa, jugador1);
-        tablero.colocarZonaMonstruo(invocacionCausanteSacrificios, jugador1);
+        try {
+            tablero.colocarZonaMonstruo(invocacionHuevoMonstruoso, jugador1);
+            tablero.colocarZonaMonstruo(invocacionAlasDeLaLLamaPerversa, jugador1);
+            tablero.colocarZonaMonstruo(invocacionCausanteSacrificios, jugador1);
+
+        } catch (ZonaMonstruoLlenaException e) {
+        }
 
         //La carta sacrificada esta en el cementerio y fue retirada del campo
         assertTrue(cementerio.existe(cartaSacrificada));
@@ -97,8 +108,12 @@ public class MonstruoSacrificioTest {
         Cementerio cementerio = tablero.mostrarCementerio(jugador1);
         ZonaMonstruo zonaMonstruo = tablero.mostrarZonaMonstruo(jugador1);
 
-        tablero.colocarZonaMonstruo(invocacionHuevoMonstruoso, jugador1);
-        tablero.colocarZonaMonstruo(invocacionCausanteSacrificios, jugador1);
+        try {
+            tablero.colocarZonaMonstruo(invocacionHuevoMonstruoso, jugador1);
+            tablero.colocarZonaMonstruo(invocacionCausanteSacrificios, jugador1);
+
+        } catch (ZonaMonstruoLlenaException e) {
+        }
 
         //La carta sacrificada esta en el cementerio y fue retirada del campo
         assertTrue(cementerio.existe(cartaSacrificada));
@@ -129,9 +144,13 @@ public class MonstruoSacrificioTest {
         Cementerio cementerio = tablero.mostrarCementerio(jugador1);
         ZonaMonstruo zonaMonstruo = tablero.mostrarZonaMonstruo(jugador1);
 
-        tablero.colocarZonaMonstruo(invocacionAlasDeLaLlamaPerversa, jugador1);
-        tablero.colocarZonaMonstruo(invocacionHuevoMonstruoso, jugador1);
-        tablero.colocarZonaMonstruo(invocacionCausanteSacrificios, jugador1);
+        try {
+            tablero.colocarZonaMonstruo(invocacionAlasDeLaLlamaPerversa, jugador1);
+            tablero.colocarZonaMonstruo(invocacionHuevoMonstruoso, jugador1);
+            tablero.colocarZonaMonstruo(invocacionCausanteSacrificios, jugador1);
+        } catch (ZonaMonstruoLlenaException e) {
+            e.printStackTrace();
+        }
 
         //Las modelo.cartas sacrificadas esta en el cementerio y fueron retiradas del campo
         assertTrue(cementerio.existe(cartaSacrificada1));
