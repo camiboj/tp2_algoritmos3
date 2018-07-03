@@ -15,6 +15,7 @@ import modelo.jugador.Jugador;
 import modelo.jugador.YuGiOh;
 import modelo.tablero.Tablero;
 import vista.botones.BotonCambiarTurno;
+import vista.botones.BotonCartaMano;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -176,5 +177,9 @@ public class ContenedorBase extends GridPane {
         ubicarObjeto(carta1, 1, 9);
         ubicarObjeto(carta2, 1, 10);
         ubicarObjeto(carta3, 1, 11);
+    }
+
+    public void colocarCartaMonstruo(BotonCartaMano boton) {
+        this.ubicarObjeto(boton, 2,3);
     }
 }

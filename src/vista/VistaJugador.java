@@ -1,5 +1,7 @@
 package vista;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -10,6 +12,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import modelo.cartas.Carta;
+import modelo.cartas.cartasMonstruo.CartaMonstruo;
+import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.jugador.Jugador;
 import modelo.jugador.Mano;
 import modelo.tablero.LadoDelCampo;
@@ -71,7 +75,7 @@ public class VistaJugador extends VBox {
         int i = 0;
         int j = 0;
         for(Carta carta : cartas) {
-            BotonCartaMano imagenCarta = new BotonCartaMano(carta.getNombre(), carta);
+            BotonCartaMano imagenCarta = new BotonCartaMano(carta.getNombre(), carta, this);
             imagenCarta.setOnAction(imagenCarta);
             contenedorBase.ubicarObjeto(imagenCarta, i, j);
             i++;
@@ -80,5 +84,15 @@ public class VistaJugador extends VBox {
                 i = 0;
             }
         }
+    }
+
+    public void ColocarCartaMonstruo(Carta carta, BotonCartaMano boton) {
+        InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica((CartaMonstruo)carta);
+        ladoDelCampo.obtenerZonaMonstruos().colocarCarta(invocacionCartaMonstruoGenerica);
+        contenedorBase.getChildren().remove(boton);
+        contenedorBase.colocarCartaMonstruo(boton);
+
+
+
     }
 }
