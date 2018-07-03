@@ -36,9 +36,6 @@ public class BotonIniciarJuego extends Button implements EventHandler<ActionEven
 
         Jugador jugador1 = yuGiOh.obtenerJugador1();
         Jugador jugador2 = yuGiOh.obtenerJugador2();
-        LadoDelCampo ladoDelCampo1 = yuGiOh.mostrarTablero().mostrarLadoDelCampo(jugador1);
-        LadoDelCampo ladoDelCampo2 = yuGiOh.mostrarTablero().mostrarLadoDelCampo(jugador2);
-
         Controlador controlador = new Controlador(stage, yuGiOh, yuGiOh.mostrarTablero());
         controlador.mostrar(stage);
     }

@@ -15,8 +15,7 @@ import javafx.stage.Stage;
 import modelo.jugador.Jugador;
 import modelo.jugador.YuGiOh;
 import modelo.tablero.Tablero;
-import vista.botones.BotonCambiarTurno;
-import vista.botones.BotonCartaMano;
+import vista.botones.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,12 +64,13 @@ public class ContenedorBase extends GridPane {
         this.setStyle("-fx-background-color: black;");
     }
 
-    public void setBotonera(BotonCambiarTurno botonCambiarTurno) { //Faltarían los botones de cambiar de fase
-        this.add(botonCambiarTurno, 9, 3, 3, 1);
+    public void setBotonera(Botonera botonera) {
+
+        this.add(botonera, 9, 2, 3, 1);
     }
 
     private void setGrilla() {
-        this.setGridLinesVisible(false);
+        this.setGridLinesVisible(true);
         final int numColumnas = 11;
         final int numFilas = 4;
         for (int i = 0; i < 3; i++) {
@@ -96,7 +96,6 @@ public class ContenedorBase extends GridPane {
         RowConstraints ultimaFila = new RowConstraints();
         ultimaFila.setPercentHeight(10);
         this.getRowConstraints().add(ultimaFila);
-
         this.setTablero();
     }
 

@@ -14,7 +14,6 @@ import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.jugador.Jugador;
 import modelo.jugador.Mano;
-import modelo.tablero.LadoDelCampo;
 import modelo.tablero.Tablero;
 import vista.botones.BotonCartaMano;
 
@@ -95,7 +94,6 @@ public class VistaJugador extends VBox {
         int columna = indice + 3;
         vistaZonaMonstruo.colocarCartaModoAtaque(carta, columna);
         contenedorBase.getChildren().remove(boton);
-        //contenedorBase.ubicarObjeto(boton,2, indice);
     }
 
     public void ColocarCartaMonstruoEnDefensa(CartaMonstruo carta, BotonCartaMano boton) {
@@ -105,11 +103,6 @@ public class VistaJugador extends VBox {
         int columna = indice + 3;
         vistaZonaMonstruo.colocarCartaModoDefensa(carta, columna);
         contenedorBase.getChildren().remove(boton);
-
-        /*
-        contenedorBase.ubicarObjeto(boton,2,indice); */
-
-
     }
 
 }

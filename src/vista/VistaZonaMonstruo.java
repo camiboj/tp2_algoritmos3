@@ -1,10 +1,7 @@
 package vista;
-
 import javafx.scene.Node;
-import modelo.cartas.Carta;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.excepciones.VictoriaException;
-import modelo.tablero.Casillero;
 import modelo.tablero.ZonaMonstruo;
 import vista.botones.BotonCarta;
 import vista.botones.BotonCartaBocaAbajo;

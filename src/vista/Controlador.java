@@ -4,7 +4,7 @@ import javafx.stage.Stage;
 import modelo.jugador.Jugador;
 import modelo.jugador.YuGiOh;
 import modelo.tablero.Tablero;
-import vista.botones.BotonCambiarTurno;
+import vista.botones.Botonera;
 
 import java.util.ArrayList;
 
@@ -37,15 +37,9 @@ public class Controlador {
         vistaContrincante.activar(false);
     }
 
-    public void botonera(){
-        BotonCambiarTurno botonCambiarTurno = new BotonCambiarTurno(this);
-        botonCambiarTurno.setText("Fin del Turno");
-        botonCambiarTurno.setDefaultButton(true);
-        botonCambiarTurno.setStyle("-fx-base: red;");
-        botonCambiarTurno.setPrefSize(150, 30);
-        botonCambiarTurno.setDefaultButton(true);
-        botonCambiarTurno.setOnAction(botonCambiarTurno);
-        contenedorBase.setBotonera(botonCambiarTurno);
+    public void botonera() {
+        Botonera botonera = new Botonera(this);
+        contenedorBase.setBotonera(botonera);
     }
 
     public void cambiarTurno() {
