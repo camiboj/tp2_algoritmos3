@@ -1,13 +1,11 @@
 package modelo.tablero;
 
 import modelo.cartas.Carta;
-import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.cartas.invocacion.Invocacion;
 import modelo.jugador.Punto;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public abstract class ZonaMonstruo implements Zona {
     private static final int CANT_CASILLEROS = 5;
@@ -18,33 +16,26 @@ public abstract class ZonaMonstruo implements Zona {
         for (int i = 0; i < CANT_CASILLEROS; i++) casilleros.add(new Casillero());
     }
 
-    public List<CartaMonstruo> obtenerMonstruos() {
-        List<CartaMonstruo> resultado = new ArrayList<>();
+    public List<modelo.cartas.cartasMonstruo.CartaMonstruo> obtenerMonstruos() {
+        List<modelo.cartas.cartasMonstruo.CartaMonstruo> resultado = new ArrayList<>();
         for (int i = 0; i < CANT_CASILLEROS; i++) {
             Casillero casillero = casilleros.get(i);
-            if (! casillero.estaVacio()) resultado.add((CartaMonstruo) casillero.mostrarCarta());
+            if (! casillero.estaVacio()) resultado.add((modelo.cartas.cartasMonstruo.CartaMonstruo) casillero.mostrarCarta());
         }
         return resultado;
     }
 
-    public boolean estaLleno() {
-        for (int i = 0; i < CANT_CASILLEROS; i++) {
-            if (casilleros.get(i).estaVacio()) return false;
+    public int colocarCarta(Invocacion invocacion) {
+        Carta carta = invocacion.invocar();
+        for (int i = 0; i<CANT_CASILLEROS ; i++) {
+            Casillero casillero = casilleros.get(i);
+            if (casillero.estaVacio()) {
+                casillero.colocarCarta(carta);
+                carta.colocarBocaAbajo();
+                return i;
+            }
         }
-        return true;
-    }
-
-    public boolean colocarCarta(Invocacion invocacion) {
-        List<Casillero> vacios = casilleros.stream().filter(casillero -> casillero.estaVacio()).collect(Collectors.toList());
-        if (vacios.size() == 0) return false; //No hay espacio
-        try {
-            Carta carta = invocacion.invocar();
-            vacios.get(0).colocarCarta(carta);
-            carta.colocarBocaAbajo();
-        } catch (Exception e) {
-            return false;
-        }
-        return true;
+        return -1;
     }
 
     public void eliminarCarta(Carta carta) {
@@ -55,7 +46,7 @@ public abstract class ZonaMonstruo implements Zona {
         }
     }
 
-    public boolean existe(CartaMonstruo unaCarta) {
+    public boolean existe(modelo.cartas.cartasMonstruo.CartaMonstruo unaCarta) {
         for (int i = 0; i < 5; i += 1) {
             Casillero casillero = casilleros.get(i);
             if (casillero.comparar(unaCarta)) {
@@ -89,27 +80,27 @@ public abstract class ZonaMonstruo implements Zona {
         return casilleros;
     }
 
-    public CartaMonstruo obtenerMonstruoDebil(){
-        List<CartaMonstruo> monstruos = this.obtenerMonstruos();
+    public modelo.cartas.cartasMonstruo.CartaMonstruo obtenerMonstruoDebil(){
+        List<modelo.cartas.cartasMonstruo.CartaMonstruo> monstruos = this.obtenerMonstruos();
 
-        CartaMonstruo cartaDebil = monstruos.get(0);
+        modelo.cartas.cartasMonstruo.CartaMonstruo cartaDebil = monstruos.get(0);
         for (int i = 1; i < monstruos.size(); i+=1){
-            CartaMonstruo carta = (CartaMonstruo) casilleros.get(i).mostrarCarta();
+            modelo.cartas.cartasMonstruo.CartaMonstruo carta = (modelo.cartas.cartasMonstruo.CartaMonstruo) casilleros.get(i).mostrarCarta();
             cartaDebil = carta.obtenerAtaqueMinimo(cartaDebil);
         }
         return cartaDebil;
     }
 
     public void aumentarDefensa(Punto puntosAdicionalesDefensa) {
-        List<CartaMonstruo> monstruos = obtenerMonstruos();
-        for (CartaMonstruo monstruo : monstruos) {
+        List<modelo.cartas.cartasMonstruo.CartaMonstruo> monstruos = obtenerMonstruos();
+        for (modelo.cartas.cartasMonstruo.CartaMonstruo monstruo : monstruos) {
             monstruo.aumentarDefensa(puntosAdicionalesDefensa);
         }
     }
 
     public void aumentarAtaque(Punto puntosAdicionalesAtaque) {
-        List<CartaMonstruo> monstruos = obtenerMonstruos();
-        for (CartaMonstruo monstruo : monstruos) {
+        List<modelo.cartas.cartasMonstruo.CartaMonstruo> monstruos = obtenerMonstruos();
+        for (modelo.cartas.cartasMonstruo.CartaMonstruo monstruo : monstruos) {
             monstruo.aumentarAtaque(puntosAdicionalesAtaque);
         }
     }

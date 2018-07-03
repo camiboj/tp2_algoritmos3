@@ -1,7 +1,5 @@
 package vista;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -75,7 +73,7 @@ public class VistaJugador extends VBox {
         int i = 0;
         int j = 0;
         for(Carta carta : cartas) {
-            BotonCartaMano imagenCarta = new BotonCartaMano(carta.getNombre(), carta, this);
+            BotonCartaMano imagenCarta = new BotonCartaMano(carta.getNombre(), (CartaMonstruo) carta, this);
             imagenCarta.setOnAction(imagenCarta);
             contenedorBase.ubicarObjeto(imagenCarta, i, j);
             i++;
@@ -86,13 +84,29 @@ public class VistaJugador extends VBox {
         }
     }
 
-    public void ColocarCartaMonstruo(Carta carta, BotonCartaMano boton) {
-        InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica((CartaMonstruo)carta);
-        ladoDelCampo.obtenerZonaMonstruos().colocarCarta(invocacionCartaMonstruoGenerica);
+    public void ColocarCartaMonstruoEnAtaque(CartaMonstruo carta, BotonCartaMano boton) {
+        InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta);
+        int indice = ladoDelCampo.obtenerZonaMonstruos().colocarCarta(invocacionCartaMonstruoGenerica);
+        carta.colocarEnModoDeAtaque();
+        indice += 3;
         contenedorBase.getChildren().remove(boton);
-        contenedorBase.colocarCartaMonstruo(boton);
+        contenedorBase.ubicarObjeto(boton,2, indice);
 
 
 
     }
+
+    public void ColocarCartaMonstruoEnDefensa(CartaMonstruo carta, BotonCartaMano boton) {
+        InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta);
+        int indice = ladoDelCampo.colocarZonaMonstruo(invocacionCartaMonstruoGenerica);
+        carta.colocarEnModoDeDefensa();
+
+        indice += 3;
+        contenedorBase.getChildren().remove(boton);
+        boton.setRotate(90);
+        contenedorBase.ubicarObjeto(boton,2,indice);
+
+
+    }
+
 }

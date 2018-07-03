@@ -1,4 +1,5 @@
 package vista;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
@@ -126,7 +127,7 @@ public class ContenedorBase extends GridPane {
 
     private void setTablero() {
 
-        //Setteo modelo.cartas trampa
+        //Setteo cartas trampa
         for (int i = 0; i <= 3; i += 3) {
             for (int j = 3; j <= 7; j++) {
                 Rectangle recTrampa = generarRectangulo(Color.DARKTURQUOISE, 125, 125);
@@ -135,7 +136,7 @@ public class ContenedorBase extends GridPane {
             }
         }
 
-        //Setteo modelo.cartas monstruo
+        //Setteo cartas monstruo
         for (int i = 1; i <= 2; i++) {
             for (int j = 3; j <= 7; j++) {
                 Rectangle recMonstruo = generarRectangulo(Color.DARKORANGE, 125, 125);
@@ -144,7 +145,7 @@ public class ContenedorBase extends GridPane {
             }
         }
 
-        //Setteo modelo.cartas campo
+        //Setteo cartas campo
         Rectangle recCampo1 = generarRectangulo(Color.GREEN, 80, 125);
         ubicarObjeto(recCampo1, 2, 2);
         ubicarTexto("Carta Campo", 10, 2, 2);
@@ -167,19 +168,16 @@ public class ContenedorBase extends GridPane {
         ImageView mazo2 = new ImageView(imagen);
         ubicarObjeto(mazo2, 3, 8);
 
-        //Setteo cartasContrincante
-        ImageView carta1 = new ImageView(imagen);
-        carta1.setRotate(360-20);
-        ImageView carta2 = new ImageView(imagen);
-        ImageView carta3 = new ImageView(imagen);
-        carta3.setRotate(20);
 
-        ubicarObjeto(carta1, 1, 9);
-        ubicarObjeto(carta2, 1, 10);
-        ubicarObjeto(carta3, 1, 11);
+        //Setteo cartasContrincante
+        Image cartaOponenteImagen = new Image(getClass().getResourceAsStream("/vista/imagenes/cartasOponente.jpg"));
+        ImageView cartaOponente = new ImageView(cartaOponenteImagen);
+        ubicarObjeto(cartaOponente, 0, 9);
+
     }
 
     public void colocarCartaMonstruo(BotonCartaMano boton) {
+
         this.ubicarObjeto(boton, 2,3);
     }
 }

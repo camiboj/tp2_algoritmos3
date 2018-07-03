@@ -31,9 +31,6 @@ public class Tablero {
 		divisiones.put(jugador2, lado2);
 		lado1.guardarMazo(jugador1, jugador2, lado2.obtenerZonaMonstruos(), this);
 		lado2.guardarMazo(jugador2, jugador1, lado1.obtenerZonaMonstruos(), this);
-
-
-
 	}
 
 	public LadoDelCampo get(Jugador jugador1) {
@@ -45,7 +42,6 @@ public class Tablero {
 		//Si es Sogen: primero pasar JugadorOponente y después Jugador
 
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
-
 		return ladoDelCampo.colocarZonaCampo(unaInvocacion);
 	}
 
@@ -59,7 +55,8 @@ public class Tablero {
 		jugador.sacarDeMano(carta);
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
 		this.colocarCementerio(carta, jugador);
-		return ladoDelCampo.colocarZonaTrampaMagica(unaInvocacion);
+		int resul = ladoDelCampo.colocarZonaTrampaMagica(unaInvocacion);
+		return resul != -1;
 	}
 
 	public boolean colocarZonaMonstruo(InvocacionCartaMonstruo unaInvocacion, Jugador jugador) {
@@ -70,7 +67,8 @@ public class Tablero {
 		Carta carta = unaInvocacion.invocar();
 		jugador.sacarDeMano(carta);
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
-		return ladoDelCampo.colocarZonaMonstruo(unaInvocacion);
+		int resul = ladoDelCampo.colocarZonaMonstruo(unaInvocacion);
+		return resul != -1;
 	}
 
 	public void colocarCementerio(Carta unaCarta, Jugador jugador) {
@@ -99,15 +97,15 @@ public class Tablero {
 
 
 		}
-
+		if (cartaDefensora == null) { System.out.println("pelotudas"); }
 		//Ejecucion del ataque de dos monstruos
 		CartaMonstruo cartaGanadora = cartaAtacante.obtenerGanadoraContra(cartaDefensora);
 		Jugador jugadorPerdedor;
 		Jugador jugadorGanador;
 		CartaMonstruo cartaPerdedora;
-		if (cartaDefensora.getEstado().getClass().equals(new BocaAbajo().getClass()) && cartaDefensora instanceof Efecto){
+		if (cartaDefensora.getEstado().getClass().equals(BocaAbajo.class) && cartaDefensora instanceof Efecto){
 
-				Efecto monstruoConEfectoDeVolteo=(Efecto) cartaDefensora ;
+				Efecto monstruoConEfectoDeVolteo = (Efecto) cartaDefensora ;
 				monstruoConEfectoDeVolteo.activarEfectoDeVolteoAnteAtaque(jugadorDefensor,jugadorAtacante,this);
 				if (!divisiones.get(jugadorAtacante).obtenerMonstruos().contains(cartaAtacante)){
 					return;

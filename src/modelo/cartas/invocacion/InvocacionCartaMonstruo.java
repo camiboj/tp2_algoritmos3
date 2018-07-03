@@ -1,17 +1,16 @@
 package modelo.cartas.invocacion;
 
 import modelo.cartas.Carta;
-import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.tablero.Cementerio;
 import modelo.tablero.ZonaMonstruo;
 
 import java.util.List;
 
 public abstract class InvocacionCartaMonstruo extends Invocacion {
-    protected CartaMonstruo carta;
-    protected List<CartaMonstruo> sacrificios;
+    protected modelo.cartas.cartasMonstruo.CartaMonstruo carta;
+    protected List<modelo.cartas.cartasMonstruo.CartaMonstruo> sacrificios;
 
-    public InvocacionCartaMonstruo(CartaMonstruo unaCarta, List unosSacrificios){
+    public InvocacionCartaMonstruo(modelo.cartas.cartasMonstruo.CartaMonstruo unaCarta, List unosSacrificios){
         super(unaCarta);
         carta = unaCarta;
         this.sacrificios = unosSacrificios;

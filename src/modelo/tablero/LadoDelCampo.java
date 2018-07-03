@@ -1,6 +1,5 @@
 package modelo.tablero;
 import modelo.cartas.*;
-import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.cartas.cartasTrampa.CartaTrampa;
 import modelo.cartas.invocacion.Invocacion;
 import modelo.cartas.invocacion.InvocacionCartaMonstruo;
@@ -39,11 +38,11 @@ public class LadoDelCampo {
 		return miCementerio;
 	}
 
-	public boolean colocarZonaTrampaMagica(Invocacion unaInvocacion) {
+	public int colocarZonaTrampaMagica(Invocacion unaInvocacion) {
 		return miZonaDeTrampasYMagia.colocarCarta(unaInvocacion);
 	}
 
-	public boolean colocarZonaMonstruo(InvocacionCartaMonstruo unaInvocacion) {
+	public int colocarZonaMonstruo(InvocacionCartaMonstruo unaInvocacion) {
 		return miZonaMonstruo.colocarCarta(unaInvocacion);
 	}
 
@@ -52,7 +51,7 @@ public class LadoDelCampo {
 
 	}
 
-	public void eliminarDeZonaMonstruo(CartaMonstruo unaCarta) {
+	public void eliminarDeZonaMonstruo(modelo.cartas.cartasMonstruo.CartaMonstruo unaCarta) {
 		miZonaMonstruo.eliminarCarta(unaCarta);
 	}
 
@@ -73,7 +72,7 @@ public class LadoDelCampo {
 	}
 
 	public void eliminarMonstruoDebil() {
-		CartaMonstruo cartaDebil = miZonaMonstruo.obtenerMonstruoDebil();
+		modelo.cartas.cartasMonstruo.CartaMonstruo cartaDebil = miZonaMonstruo.obtenerMonstruoDebil();
 		eliminarDeZonaMonstruo(cartaDebil);
 		colocarCementerio(cartaDebil);
 	}
@@ -82,7 +81,7 @@ public class LadoDelCampo {
 		return miZonaDeTrampasYMagia.estaVacia();
 	}
 
-	public void activarTrampa(Carta trampa, CartaMonstruo cartaAtacante, Jugador jugadorAtacante, CartaMonstruo cartaDefensora,
+	public void activarTrampa(Carta trampa, modelo.cartas.cartasMonstruo.CartaMonstruo cartaAtacante, Jugador jugadorAtacante, modelo.cartas.cartasMonstruo.CartaMonstruo cartaDefensora,
 							  Jugador jugadorDefensor, Tablero tablero) {
 		miZonaDeTrampasYMagia.activar(trampa, cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor, tablero);
 	}
@@ -100,7 +99,7 @@ public class LadoDelCampo {
 		return miZonaDeTrampasYMagia;
 	}
 
-	public List <CartaMonstruo> obtenerMonstruos() {
+	public List <modelo.cartas.cartasMonstruo.CartaMonstruo> obtenerMonstruos() {
 		return miZonaMonstruo.obtenerMonstruos();
 	}
 

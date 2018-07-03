@@ -11,7 +11,9 @@ public abstract class Carta {
     
     
     public Carta(String unNombre) {
+
         this.nombre = unNombre;
+        this.estado = null;
     }
 
     public void colocarBocaArriba() throws  VictoriaException {

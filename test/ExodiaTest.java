@@ -1,11 +1,9 @@
 import modelo.cartas.Carta;
 import modelo.cartas.cartasMonstruo.exodia.*;
-import modelo.excepciones.FinDelJuegoException;
 import modelo.excepciones.VictoriaException;
 import modelo.jugador.Jugador;
 import modelo.jugador.YuGiOh;
 import org.junit.Test;
-import org.junit.internal.runners.statements.Fail;
 
 import java.util.ArrayList;
 import java.util.List;

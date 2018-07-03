@@ -1,6 +1,4 @@
 package modelo.tablero;
-//import modelo.estadosDeCartas.Estado;
-//import modelo.estadosDeCartas.Modo;
 import modelo.cartas.Carta;
 
 public class Casillero {

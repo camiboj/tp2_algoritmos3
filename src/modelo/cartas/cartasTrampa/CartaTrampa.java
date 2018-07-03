@@ -1,7 +1,6 @@
 package modelo.cartas.cartasTrampa;
 
 import modelo.cartas.Carta;
-import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.efectos.EfectoTrampa;
 import modelo.jugador.Jugador;
 import modelo.tablero.Tablero;
@@ -14,7 +13,7 @@ public abstract class CartaTrampa extends Carta {
         this.efectoTrampaDeLaTrampa = efectoTrampaDeLaTrampa;
     }
 
-    public void activarAnteUnAtaque(CartaMonstruo cartaAtacante, Jugador atacante, CartaMonstruo cartaDefensora,
+    public void activarAnteUnAtaque(modelo.cartas.cartasMonstruo.CartaMonstruo cartaAtacante, Jugador atacante, modelo.cartas.cartasMonstruo.CartaMonstruo cartaDefensora,
                                     Jugador jugadorDefensor, Tablero tablero) {
         efectoTrampaDeLaTrampa.activarAnteUnAtaque(cartaAtacante,atacante, cartaDefensora, jugadorDefensor, this, tablero);
     }

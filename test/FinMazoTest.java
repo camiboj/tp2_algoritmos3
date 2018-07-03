@@ -1,11 +1,8 @@
-import modelo.cartas.Carta;
 import modelo.excepciones.FinDelJuegoException;
 import modelo.excepciones.VictoriaException;
 import modelo.jugador.Jugador;
 import modelo.jugador.YuGiOh;
 import org.junit.Test;
-
-import java.util.Stack;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
