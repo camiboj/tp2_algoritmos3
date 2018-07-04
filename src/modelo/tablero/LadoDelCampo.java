@@ -35,7 +35,8 @@ public class LadoDelCampo {
 
 	public void guardarMazo(Jugador miJugador, Jugador jugadorContrario,
 							ZonaMonstruo zonaMonstruoContraria, Tablero tablero) throws VictoriaException {
-		miMazo = new Mazo("",miJugador, jugadorContrario, zonaMonstruoContraria, miZonaMonstruo, tablero);
+
+		miMazo = new Mazo("mazoJugador1",miJugador, jugadorContrario, zonaMonstruoContraria, miZonaMonstruo, tablero);
 		miJugador.guardarMazo(miMazo);
 	}
 	public Cementerio mostrarCementerio() {
