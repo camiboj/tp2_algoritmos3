@@ -31,7 +31,7 @@ public class ExodiaTest {
         assertTrue(false);
     }
      catch (VictoriaException e) {
-         assertTrue(e.obtenerMotivo().equals("Se Convoca a Exodia!!"));
+         assertTrue(e.obtenerMotivo().equals("Se Convoca a Exodia!"));
          assertTrue(jugador1.gana() && jugador2.pierde(jugador1.mostrarMano()));
          assertTrue(juego.finDelJuego());
     }
