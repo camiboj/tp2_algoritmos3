@@ -8,6 +8,7 @@ import javafx.scene.layout.*;
 import modelo.cartas.Carta;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.excepciones.VictoriaException;
+import vista.ContenedorBase;
 
 public abstract class BotonCarta extends Button {
 
@@ -26,7 +27,7 @@ public abstract class BotonCarta extends Button {
         this.setTooltip(tt);
     }
 
-    public BotonCarta(CartaMonstruo carta) {
+    public BotonCarta(Carta carta) {
         this.settear(carta);
     }
 
@@ -61,5 +62,9 @@ public abstract class BotonCarta extends Button {
 
     public int obtenerFila(){
         return  fila;
+    }
+
+    public Carta obtenerCarta() {
+        return carta;
     }
 }

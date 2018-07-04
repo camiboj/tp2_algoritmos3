@@ -41,8 +41,12 @@ public class VistaMano {
         List<Carta> cartas = mano.mostrarCartas();
         int i = 0;
         int j = 0;
+
         for(Carta carta : cartas) {
-            BotonCartaMano imagenCarta = new BotonCartaMano((CartaMonstruo) carta, vistaJugador, fasePreparacion);
+            BotonCartaMano imagenCarta = new BotonCartaMano(carta);
+            if (carta instanceof  CartaMonstruo) {
+                imagenCarta = new BotonCartaMano((CartaMonstruo) carta, vistaJugador, fasePreparacion);
+            }
             imagenCarta.setDisable(true);
             elementos.add(imagenCarta);
             contenedorBase.ubicarObjeto(imagenCarta, i, j);

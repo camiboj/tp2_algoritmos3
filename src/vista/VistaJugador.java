@@ -11,13 +11,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import modelo.Fase.FasePreparacion;
-import modelo.cartas.Carta;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
-import modelo.jugador.Mano;
 import modelo.tablero.Tablero;
 import vista.botones.BotonCartaMano;
 
@@ -74,9 +72,12 @@ public class VistaJugador extends VBox {
     }
 
    public void ColocarCartaMonstruoEnAtaque(CartaMonstruo carta, BotonCartaMano boton, FasePreparacion fase) {
-        InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta, fase);
-       int indice = 0;
        try {
+           List<CartaMonstruo> sacrificios = vistaZonaMonstruo.generarSacrificios(carta.obtenerSacrificios());
+
+            InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta, sacrificios,fase);
+            int indice = 0;
+
            indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica, jugador );
            carta.colocarEnModoDeAtaque();
            int columna = indice + 3;
@@ -90,8 +91,10 @@ public class VistaJugador extends VBox {
    }
 
     public void ColocarCartaMonstruoEnDefensa(CartaMonstruo carta, BotonCartaMano boton, FasePreparacion fase) {
-        InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta, fase);
         try {
+            List<CartaMonstruo> sacrificios = vistaZonaMonstruo.generarSacrificios(carta.obtenerSacrificios());
+            InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta, sacrificios, fase);
+
             int indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica,jugador);
             carta.colocarEnModoDeDefensa();
             int columna = indice + 3;
@@ -103,6 +106,8 @@ public class VistaJugador extends VBox {
             contenedorBase.escribirEnConsola(invocacionExcepcion.obtenerMotivo());
         }
     }
+
+
 
     public VistaMano getVistaMano() {
         return vistaMano;

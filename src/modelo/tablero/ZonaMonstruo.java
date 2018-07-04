@@ -83,10 +83,11 @@ public abstract class ZonaMonstruo implements Zona {
         return casilleros;
     }
 
-    public modelo.cartas.cartasMonstruo.CartaMonstruo obtenerMonstruoDebil(){
-        List<modelo.cartas.cartasMonstruo.CartaMonstruo> monstruos = this.obtenerMonstruos();
+    public CartaMonstruo obtenerMonstruoDebil(){
 
-        modelo.cartas.cartasMonstruo.CartaMonstruo cartaDebil = monstruos.get(0);
+        List<CartaMonstruo> monstruos = this.obtenerMonstruos();
+        if (monstruos.size() == 0) { return null; }
+        CartaMonstruo cartaDebil = monstruos.get(0);
         for (int i = 1; i < monstruos.size(); i+=1){
             modelo.cartas.cartasMonstruo.CartaMonstruo carta = (modelo.cartas.cartasMonstruo.CartaMonstruo) casilleros.get(i).mostrarCarta();
             cartaDebil = carta.obtenerAtaqueMinimo(cartaDebil);

@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 
 
 import modelo.Fase.FasePreparacion;
+import modelo.cartas.Carta;
 import modelo.cartas.cartasCampo.CartaCampo;
 import modelo.cartas.cartasMagicas.CartaMagica;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
@@ -55,18 +56,8 @@ public class BotonCartaMano extends BotonCarta {
         this.setContextMenu(contextMenu);
     }
 
-   public BotonCartaMano(CartaMagica carta, int fila, int columna){
-       super(carta, fila, columna);
+   public BotonCartaMano(Carta carta){
+       super(carta);
        this.settearTooltip("Efecto: " + carta.obtenerEfecto());
-    }
-
-    public BotonCartaMano(CartaTrampa carta, int fila, int columna){
-        super(carta, fila, columna);
-        this.settearTooltip("Efecto: " + carta.obtenerEfecto());
-    }
-
-    public BotonCartaMano(CartaCampo carta, int fila, int columna){
-        super(carta, fila, columna);
-        this.settearTooltip("Efecto: " + carta.obtenerEfecto());
     }
 }

@@ -90,4 +90,8 @@ public abstract class CartaMonstruo extends Carta {
         if (puntosDebil.esMenor(this.puntosAtaque)) { return cartaDebil; }
         return this;
     }
+
+    public int obtenerSacrificios() {
+        return nivel.devolverNumeroDeSacrificios();
+    }
 }

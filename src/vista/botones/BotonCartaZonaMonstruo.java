@@ -1,7 +1,9 @@
 package vista.botones;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
+import vista.ContenedorBase;
 
 public class BotonCartaZonaMonstruo extends BotonCarta {
 
@@ -11,4 +13,5 @@ public class BotonCartaZonaMonstruo extends BotonCarta {
                 "\n ATK: " + String.valueOf(carta.obtenerPuntosAtaque().obtenerNumero()) +
                 "\n DEF: " + String.valueOf(carta.obtenerPuntosDefensa().obtenerNumero()));
     }
+
 }

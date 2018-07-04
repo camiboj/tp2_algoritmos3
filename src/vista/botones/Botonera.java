@@ -38,7 +38,7 @@ public class Botonera extends VBox {
         botonCambioTurno.setDisable(true);
 
         botonFinFaseDePreparacion.setOnAction(new FinFasePreparacionHandler(botonFinFaseDePreparacion,botonFinFaseAtaque,
-                controlador.obtenerContenedorBase(), controlador.obtenerVistaMano(), controlador.obtenerVistaJugador()));
+                controlador.obtenerContenedorBase(), controlador.obtenerVistaMano(), controlador));
         this.getChildren().addAll(botonFinFaseDePreparacion, botonFinFaseAtaque, botonFinFaseTrampas,
                 botonCambioTurno);
     }

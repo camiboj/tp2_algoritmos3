@@ -1,7 +1,13 @@
 package vista;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import modelo.Fase.FasePreparacion;
+import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.jugador.Jugador;
 import modelo.jugador.YuGiOh;
 import modelo.tablero.Tablero;
@@ -10,6 +16,7 @@ import vista.botones.Botonera;
 import vista.handler.MazoHandler;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Controlador {
     private Stage stage;
@@ -91,5 +98,18 @@ public class Controlador {
 
     public VistaJugador obtenerVistaJugador() {
         return vistaActual;
+    }
+
+    public void setOpcionAtacar() {
+
+        ContextMenu contextMenu = new ContextMenu();
+        Menu opcionAtacar = new Menu("Atacar");
+        List<CartaMonstruo> monstruosContrario = juego.mostrarTablero().mostrarZonaMonstruo(jugadorContrincante).obtenerMonstruos();
+        for (CartaMonstruo carta: monstruosContrario) {
+            MenuItem opcion = new MenuItem(carta.getNombre());
+            opcionAtacar.getItems().addAll(opcion);
+        }
+        contextMenu.getItems().addAll(opcionAtacar);
+       vistaActual.setOpcionAtacar(contextMenu);
     }
 }
