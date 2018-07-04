@@ -16,15 +16,14 @@ import modelo.cartas.cartasTrampa.CartaTrampa;
 import modelo.excepciones.ZonaMonstruoLlenaException;
 import vista.VistaJugador;
 
-
 public class BotonCartaMano extends BotonCarta {
 
     private  BotonCartaMano boton;
     private FasePreparacion fase;
 
-
-    public BotonCartaMano(CartaMonstruo carta, VistaJugador vista){
+    public BotonCartaMano(CartaMonstruo carta, VistaJugador vista, FasePreparacion fase){
         super(carta);
+        this.fase = fase;
         this.boton = this;
         this.settearTooltip("Efecto: " + carta.obtenerEfecto() +
                             "\n ATK: " + String.valueOf(carta.obtenerPuntosAtaque().obtenerNumero()) +
@@ -47,7 +46,6 @@ public class BotonCartaMano extends BotonCarta {
             @Override
             public void handle(ActionEvent event) {
                 vista.ColocarCartaMonstruoEnDefensa(carta, boton, fase);
-
             }
         }
         );
@@ -55,9 +53,6 @@ public class BotonCartaMano extends BotonCarta {
         contextMenu.getItems().addAll(modoAtaque,modoDefensa);
 
         this.setContextMenu(contextMenu);
-
-
-
     }
 
    public BotonCartaMano(CartaMagica carta, int fila, int columna){

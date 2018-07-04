@@ -1,5 +1,6 @@
 package vista;
 import javafx.scene.Node;
+import javafx.scene.control.ContextMenu;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.excepciones.VictoriaException;
 import modelo.tablero.ZonaMonstruo;
@@ -65,6 +66,19 @@ public class VistaZonaMonstruo {
         try {
             botonCartaBocaArriba.actualizarEstado();
         } catch (VictoriaException e) {
+        }
+    }
+
+    public void setOpcionAtacar(ContextMenu contextMenu) {
+        for (Node botonCarta : elementos) {
+            if (botonCarta instanceof BotonCartaZonaMonstruo) {
+                BotonCartaZonaMonstruo boton = (BotonCartaZonaMonstruo) botonCarta;
+                boton.setContextMenu(contextMenu);
+            }
+            else {
+                BotonCartaBocaAbajo boton = (BotonCartaBocaAbajo) botonCarta;
+                boton.setDisable(true);
+            }
         }
     }
 }

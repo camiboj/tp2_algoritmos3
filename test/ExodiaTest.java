@@ -35,8 +35,5 @@ public class ExodiaTest {
          assertTrue(jugador1.gana() && jugador2.pierde(jugador1.mostrarMano()));
          assertTrue(juego.finDelJuego());
     }
-
-
     }
-
 }

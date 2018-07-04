@@ -3,6 +3,7 @@ import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
 import vista.Controlador;
 import vista.handler.CambiarTurnoHandler;
+import vista.handler.FinFasePreparacionHandler;
 
 public class Botonera extends VBox {
     private Controlador controlador;
@@ -36,6 +37,8 @@ public class Botonera extends VBox {
         botonCambioTurno.setOnAction(new CambiarTurnoHandler(controlador));
         botonCambioTurno.setDisable(true);
 
+        botonFinFaseDePreparacion.setOnAction(new FinFasePreparacionHandler(botonFinFaseDePreparacion,botonFinFaseAtaque,
+                controlador.obtenerContenedorBase(), controlador.obtenerVistaMano(), controlador.obtenerVistaJugador()));
         this.getChildren().addAll(botonFinFaseDePreparacion, botonFinFaseAtaque, botonFinFaseTrampas,
                 botonCambioTurno);
     }

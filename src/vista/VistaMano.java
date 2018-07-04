@@ -1,12 +1,12 @@
 package vista;
 
 import javafx.scene.Node;
+import modelo.Fase.FasePreparacion;
 import modelo.cartas.Carta;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.jugador.Mano;
 import vista.botones.BotonCartaMano;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,12 +30,19 @@ public class VistaMano {
         }
     }
 
-    public void mostrar() {
+    public void desactivarCartas() {
+        for (Node node : elementos) {
+            BotonCartaMano botonCartaMano = (BotonCartaMano) node;
+            botonCartaMano.setDisable(true);
+        }
+    }
+
+    public void mostrar(FasePreparacion fasePreparacion) {
         List<Carta> cartas = mano.mostrarCartas();
         int i = 0;
         int j = 0;
         for(Carta carta : cartas) {
-            BotonCartaMano imagenCarta = new BotonCartaMano((CartaMonstruo) carta, vistaJugador);
+            BotonCartaMano imagenCarta = new BotonCartaMano((CartaMonstruo) carta, vistaJugador, fasePreparacion);
             imagenCarta.setDisable(true);
             elementos.add(imagenCarta);
             contenedorBase.ubicarObjeto(imagenCarta, i, j);

@@ -11,6 +11,8 @@ public class CambiarTurnoHandler implements EventHandler {
     public CambiarTurnoHandler(Controlador controlador){
         this.controlador = controlador;
     }
+
+
     @Override
     public void handle(Event event) {
         controlador.cambiarTurno();

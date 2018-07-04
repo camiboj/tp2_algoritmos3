@@ -1,6 +1,7 @@
 package vista;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import modelo.Fase.FasePreparacion;
 import modelo.jugador.Jugador;
 import modelo.jugador.YuGiOh;
 import modelo.tablero.Tablero;
@@ -20,6 +21,7 @@ public class Controlador {
     private ContenedorBase contenedorBase;
     private VistaJugador vistaActual;
     private VistaJugador vistaContrincante;
+    private FasePreparacion fasePreparacion;
 
     public Controlador(Stage stage, YuGiOh juego, Tablero tablero){
         ContenedorBase contenedorBase = new ContenedorBase(stage, juego, tablero);
@@ -36,8 +38,10 @@ public class Controlador {
         this.stage = stage;
         contenedorBase.escribirEnConsola("Es el turno de " + jugadorTurno.obtenerNombre() + "\n Inicio Fase Inicial: Haz click en el Mazo para obtener una carta");
         this.botonera();
-        vistaActual.activar(true);
-        vistaContrincante.activar(false);
+
+        this.fasePreparacion = new FasePreparacion();
+        vistaActual.activar(true, fasePreparacion);
+        vistaContrincante.activar(false, fasePreparacion);
         this.setMazo();
     }
 
@@ -45,7 +49,7 @@ public class Controlador {
         BotonCartaBocaAbajo boton = new BotonCartaBocaAbajo(3,8);
         contenedorBase.ubicarObjeto(boton, 3, 8);
         boton.setOnAction(new MazoHandler(juego, this.vistaActual.getVistaMano(), jugadorTurno, boton,
-                botonera.obtenerBotonPreparacion()));
+                botonera.obtenerBotonPreparacion(), fasePreparacion, contenedorBase));
     }
 
     public void botonera() {
@@ -55,6 +59,7 @@ public class Controlador {
     public void cambiarTurno() {
         vistaActual.reset();
         vistaContrincante.reset();
+        this.fasePreparacion = new FasePreparacion();
 
         Jugador jugadorAux = jugadorTurno;
         jugadorTurno = jugadorContrincante;
@@ -65,8 +70,8 @@ public class Controlador {
         vistaContrincante = vistaAux;
 
         contenedorBase.escribirEnConsola("Es el turno de " + jugadorTurno.obtenerNombre());
-        vistaActual.activar(true);
-        vistaContrincante.activar(false);
+        vistaActual.activar(true, fasePreparacion);
+        vistaContrincante.activar(false, fasePreparacion);
     }
 
     public void mostrar(Stage stage) {
@@ -74,5 +79,17 @@ public class Controlador {
         stage.setScene(escenaJuego);
         stage.setFullScreenExitHint("");
         stage.setFullScreen(true);
+    }
+
+    public ContenedorBase obtenerContenedorBase() {
+        return contenedorBase;
+    }
+
+    public VistaMano obtenerVistaMano() {
+        return vistaActual.getVistaMano();
+    }
+
+    public VistaJugador obtenerVistaJugador() {
+        return vistaActual;
     }
 }

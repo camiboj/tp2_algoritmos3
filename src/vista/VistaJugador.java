@@ -3,6 +3,7 @@ package vista;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -42,11 +43,11 @@ public class VistaJugador extends VBox {
     }
 
 
-    public void activar(boolean abajo){
+    public void activar(boolean abajo, FasePreparacion fasePreparacion){
         int x = 0; int y = 8; int fila = 1;
         if (abajo) {
             x = 3; y = 2; fila = 2;
-            vistaMano.mostrar();
+            vistaMano.mostrar(fasePreparacion);
         }
         this.agregarTexto(x, y);
         vistaZonaMonstruo.activar(fila);
@@ -105,5 +106,9 @@ public class VistaJugador extends VBox {
 
     public VistaMano getVistaMano() {
         return vistaMano;
+    }
+
+    public void setOpcionAtacar(ContextMenu contextMenu) {
+        vistaZonaMonstruo.setOpcionAtacar(contextMenu);
     }
 }

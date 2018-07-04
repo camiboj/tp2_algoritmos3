@@ -35,7 +35,7 @@ public class InvocacionCartaDragonDefinitivoOjosAzules extends InvocacionCartaMo
         if (this.validarSacrificios() && fase.validarMonstruo()) {
             return this.carta;
         } else {
-            throw new InvocacionExcepcion("La carta no puede invocarse. Verifique que se puedan realizar los" +
+            throw new InvocacionExcepcion("La carta no puede invocarse. Verifique que se puedan realizar los " +
                     "sacrificios en caso de ser necesarios y no estar tirando más de un monstruo en la Fase de " +
                     "Preparación");
         }
