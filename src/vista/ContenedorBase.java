@@ -168,4 +168,5 @@ public class ContenedorBase extends GridPane {
 
         this.ubicarObjeto(boton, 2,3);
     }
+
 }

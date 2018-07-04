@@ -1,12 +1,6 @@
 package vista;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import modelo.Fase.FasePreparacion;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
@@ -138,7 +132,15 @@ public class Controlador {
                 (CartaMonstruo) botonCartaAtacada.obtenerCarta(), jugadorContrincante);
 
         for (CartaMonstruo cartaMuerta : cartasMuertas) {
-            contenedorBase.getChildren().remove(vistaActual.obtenerBoton(cartaMuerta));
+            if (vistaActual.obtenerBoton(cartaMuerta) != null) {
+                BotonCarta botonCarta = vistaActual.obtenerBoton(cartaMuerta);
+                vistaActual.eliminarElemento(botonCarta);
+                contenedorBase.getChildren().remove(botonCarta);
+                continue;
+            }
+            BotonCarta botonCarta = vistaContrincante.obtenerBoton(cartaMuerta);
+            vistaContrincante.eliminarElemento(botonCarta);
+            contenedorBase.getChildren().remove(botonCarta);
         }
     }
 }

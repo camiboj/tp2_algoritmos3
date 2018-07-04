@@ -125,4 +125,8 @@ public class VistaJugador extends VBox {
     public List<CheckBoxCarta> generarOpcionesAtaque() {
         return vistaZonaMonstruo.generarOpcionesAtaque();
     }
+
+    public void eliminarElemento(BotonCarta botonCarta) {
+        elementos.remove(botonCarta);
+    }
 }
