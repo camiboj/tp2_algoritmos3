@@ -1,15 +1,14 @@
-package vista.botones;
+package vista.handler;
 
-import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import vista.Controlador;
 
-public class HandlerCambiarTurno implements EventHandler {
+public class CambiarTurnoHandler implements EventHandler {
 
     private final Controlador controlador;
 
-    public HandlerCambiarTurno(Controlador controlador){
+    public CambiarTurnoHandler(Controlador controlador){
         this.controlador = controlador;
     }
     @Override

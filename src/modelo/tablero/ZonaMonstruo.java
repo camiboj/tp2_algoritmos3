@@ -1,7 +1,10 @@
 package modelo.tablero;
 
 import modelo.cartas.Carta;
+import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.cartas.invocacion.Invocacion;
+import modelo.cartas.invocacion.InvocacionCartaMonstruo;
+import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Punto;
 
@@ -17,8 +20,8 @@ public abstract class ZonaMonstruo implements Zona {
         for (int i = 0; i < CANT_CASILLEROS; i++) casilleros.add(new Casillero());
     }
 
-    public List<modelo.cartas.cartasMonstruo.CartaMonstruo> obtenerMonstruos() {
-        List<modelo.cartas.cartasMonstruo.CartaMonstruo> resultado = new ArrayList<>();
+    public List<CartaMonstruo> obtenerMonstruos() {
+        List<CartaMonstruo> resultado = new ArrayList<>();
         for (int i = 0; i < CANT_CASILLEROS; i++) {
             Casillero casillero = casilleros.get(i);
             if (! casillero.estaVacio()) resultado.add((modelo.cartas.cartasMonstruo.CartaMonstruo) casillero.mostrarCarta());
@@ -26,8 +29,7 @@ public abstract class ZonaMonstruo implements Zona {
         return resultado;
     }
 
-    public int colocarCarta(Invocacion invocacion) throws ZonaMonstruoLlenaException {
-        Carta carta = invocacion.invocar();
+    public int colocarCarta(Carta carta) throws ZonaMonstruoLlenaException, InvocacionExcepcion {
         for (int i = 0; i<CANT_CASILLEROS ; i++) {
             Casillero casillero = casilleros.get(i);
             if (casillero.estaVacio()) {

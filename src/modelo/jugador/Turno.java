@@ -21,7 +21,7 @@ public class Turno {
         jugador = unJugador;
         fases = new ArrayList();
         fases.add(new FaseInicial(unJugador));
-        fases.add(new FasePreparacion(unJugador));
+        fases.add(new FasePreparacion());
         FaseTrampa faseTrampa = new FaseTrampa(unJugador);
         fases.add(new FaseAtaque(unJugador));
         fases.add(new FaseMagia(unJugador));
@@ -39,5 +39,9 @@ public class Turno {
 
     public void ejecutarFaseInicial() throws VictoriaException {
         fases.get(0).ejecutarFase();
+    }
+
+    public void ejecutarFasePreparacion() throws VictoriaException {
+        fases.get(1).ejecutarFase();
     }
 }

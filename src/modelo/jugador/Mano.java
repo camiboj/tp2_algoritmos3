@@ -19,7 +19,7 @@ public class Mano {
     public void agregarCarta(Carta carta) throws VictoriaException {
         cartas.add(carta);
         if(sonTodasExodia()){
-            throw new VictoriaException(new String("Se Convoca a Exodia!!"));
+            throw new VictoriaException(new String("Se Convoca a Exodia!"));
 
         }
     }

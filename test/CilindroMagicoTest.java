@@ -1,9 +1,11 @@
+import modelo.Fase.FasePreparacion;
 import modelo.cartas.*;
 import modelo.cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
 import modelo.cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import modelo.cartas.cartasTrampa.CilindroMagico;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.cartas.invocacion.InvocacionDefault;
+import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.VictoriaException;
 import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
@@ -22,19 +24,28 @@ public class CilindroMagicoTest {
         Tablero tablero = new Tablero(jugadorDefensor, jugadorAtacante);
         Carta cilindro_magico = new CilindroMagico();
         InvocacionDefault InvocacionCilindroMagico = new InvocacionDefault(cilindro_magico);
+
         HuevoMonstruoso cartaAtacante = new HuevoMonstruoso();
-        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante, null); // No requiere sacrificios
+        FasePreparacion fasePreparacionAtacante = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante,
+                fasePreparacionAtacante); // No requiere sacrificios
+
         AlasDeLaLlamaPerversa cartaDefensora = new AlasDeLaLlamaPerversa();
-        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora, null); // No requiere sacrificios
+        FasePreparacion fasePreparacionDefensa = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora,
+                fasePreparacionDefensa); // No requiere sacrificios
+
         cartaAtacante.colocarEnModoDeAtaque();
         cartaDefensora.colocarEnModoDeAtaque();
         try {
             tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
         } catch (ZonaMonstruoLlenaException e) {
+        } catch (InvocacionExcepcion invocacionExcepcion) {
         }
         try {
             tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
         } catch (ZonaMonstruoLlenaException e) {
+        } catch (InvocacionExcepcion invocacionExcepcion) {
         }
         tablero.colocarZonaTrampaMagica(InvocacionCilindroMagico,jugadorDefensor);
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);

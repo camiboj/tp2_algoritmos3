@@ -1,6 +1,8 @@
+import modelo.Fase.FasePreparacion;
 import modelo.cartas.cartasMonstruo.InsectoComeHombres;
 import modelo.cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.VictoriaException;
 import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
@@ -23,18 +25,23 @@ public class InsectoComeHombresTest {
 
         InsectoComeHombres insectoComeHombres = new InsectoComeHombres();
         insectoComeHombres.colocarEnModoDeDefensa();
-
-        InvocacionCartaMonstruoGenerica invocacionInsectoComeHombres = new InvocacionCartaMonstruoGenerica(insectoComeHombres);
+        FasePreparacion fasePreparacionInsecto = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica invocacionInsectoComeHombres = new InvocacionCartaMonstruoGenerica(insectoComeHombres,
+                fasePreparacionInsecto);
         try {
             tablero.colocarZonaMonstruo(invocacionInsectoComeHombres, jugadorDefensor);
         } catch (ZonaMonstruoLlenaException e) {
+        } catch (InvocacionExcepcion invocacionExcepcion) {
         }
 
         AlasDeLaLlamaPerversa cartaAtacante = new AlasDeLaLlamaPerversa();
-        InvocacionCartaMonstruoGenerica invocacionCartaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante);
+        FasePreparacion fasePreparacionAtacante = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica invocacionCartaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante,
+                fasePreparacionAtacante);
         try {
             tablero.colocarZonaMonstruo(invocacionCartaAtacante, jugadorAtacante);
         } catch (ZonaMonstruoLlenaException e) {
+        } catch (InvocacionExcepcion invocacionExcepcion) {
         }
 
         ZonaMonstruo zonaMonstruoAtacante = tablero.mostrarZonaMonstruo(jugadorAtacante);

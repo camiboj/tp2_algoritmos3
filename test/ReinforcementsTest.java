@@ -1,9 +1,11 @@
+import modelo.Fase.FasePreparacion;
 import modelo.cartas.cartasMonstruo.cartasBasicas.AlcanzadorDeGarra;
 import modelo.cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import modelo.cartas.cartasTrampa.CartaTrampa;
 import modelo.cartas.cartasTrampa.Reinforcements;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.cartas.invocacion.InvocacionDefault;
+import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.VictoriaException;
 import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
@@ -20,8 +22,6 @@ public class ReinforcementsTest {
 
     @Test
     public void ReinforcementsTieneElEfectoEsperado() throws VictoriaException, ZonaMonstruoLlenaException {
-        //assertTrue(true);
-
 
         //Creación del modelo.tablero
         Jugador jugadorDefensor = new Jugador();
@@ -34,15 +34,26 @@ public class ReinforcementsTest {
         tablero.colocarZonaTrampaMagica(invocacionReinforcements, jugadorDefensor);
         HuevoMonstruoso cartaDefensora = new HuevoMonstruoso(); //puntosAtaque = 600
         cartaDefensora.colocarEnModoDeAtaque();
-        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora); // No requiere sacrificios
-        tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
+
+        FasePreparacion fasePreparacionCartaDefensora = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora,
+                fasePreparacionCartaDefensora); // No requiere sacrificios
+        try {
+            tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
+        } catch (InvocacionExcepcion invocacionExcepcion) {
+        }
 
         //Creo alcanzador de garra y lo pongo en el modelo.tablero
         AlcanzadorDeGarra cartaAtacante = new AlcanzadorDeGarra(); //puntos ataque = 1000
         cartaAtacante.colocarEnModoDeAtaque();
 
-        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante); // No requiere sacrificios
-        tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
+        FasePreparacion fasePreparacionCartaAtacante = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante,
+                fasePreparacionCartaAtacante); // No requiere sacrificios
+        try {
+            tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
+        } catch (InvocacionExcepcion invocacionExcepcion) {
+        }
 
         //Ataca el monstruo atacante al defensor
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);

@@ -1,6 +1,8 @@
 package vista.botones;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import modelo.cartas.Carta;
@@ -17,6 +19,11 @@ public abstract class BotonCarta extends Button {
         this.settear(carta);
         this.fila = fila;
         this.columna = columna;
+    }
+
+    public void settearTooltip(String info){
+        Tooltip tt = new Tooltip(info);
+        this.setTooltip(tt);
     }
 
     public BotonCarta(CartaMonstruo carta) {

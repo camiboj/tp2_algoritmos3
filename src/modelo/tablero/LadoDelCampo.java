@@ -1,8 +1,11 @@
 package modelo.tablero;
 import modelo.cartas.*;
+import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.cartas.cartasTrampa.CartaTrampa;
 import modelo.cartas.invocacion.Invocacion;
 import modelo.cartas.invocacion.InvocacionCartaMonstruo;
+import modelo.cartas.invocacion.InvocacionDefault;
+import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.VictoriaException;
 import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
@@ -39,12 +42,12 @@ public class LadoDelCampo {
 		return miCementerio;
 	}
 
-	public int colocarZonaTrampaMagica(Invocacion unaInvocacion) {
+	public int colocarZonaTrampaMagica(InvocacionDefault unaInvocacion) {
 		return miZonaDeTrampasYMagia.colocarCarta(unaInvocacion);
 	}
 
-	public int colocarZonaMonstruo(InvocacionCartaMonstruo unaInvocacion) throws ZonaMonstruoLlenaException {
-		return miZonaMonstruo.colocarCarta(unaInvocacion);
+	public int colocarZonaMonstruo(Carta carta) throws ZonaMonstruoLlenaException, InvocacionExcepcion {
+		return miZonaMonstruo.colocarCarta(carta);
 	}
 
 	public void colocarCementerio(Carta unaCarta) {
@@ -52,7 +55,7 @@ public class LadoDelCampo {
 
 	}
 
-	public void eliminarDeZonaMonstruo(modelo.cartas.cartasMonstruo.CartaMonstruo unaCarta) {
+	public void eliminarDeZonaMonstruo(CartaMonstruo unaCarta) {
 		miZonaMonstruo.eliminarCarta(unaCarta);
 	}
 
@@ -68,7 +71,7 @@ public class LadoDelCampo {
 		return miZonaMonstruo.estaVacia();
 	}
 
-	public boolean colocarZonaCampo(Invocacion unaInvocacion) throws VictoriaException {
+	public boolean colocarZonaCampo(InvocacionDefault unaInvocacion) throws VictoriaException {
 		return miZonaCampo.colocarCarta(unaInvocacion);
 	}
 

@@ -1,9 +1,11 @@
+import modelo.Fase.FasePreparacion;
 import modelo.cartas.*;
 import modelo.cartas.cartasMagicas.AgujeroNegro;
 import modelo.cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
 import modelo.cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.cartas.invocacion.InvocacionDefault;
+import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.VictoriaException;
 import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
@@ -14,6 +16,7 @@ import modelo.tablero.ZonaMonstruo;
 
 import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.fail;
 
 public class AtaqueMonstruosTest {
 
@@ -36,21 +39,28 @@ public class AtaqueMonstruosTest {
         Jugador jugadorDefensor = new Jugador();
         Jugador jugadorAtacante = new Jugador();
         Tablero tablero = new Tablero(jugadorDefensor, jugadorAtacante);
+
         HuevoMonstruoso cartaDefensora = new HuevoMonstruoso();
-        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora);// No requiere sacrificios
-        cartaInvocadaDefensora.invocar();
+        FasePreparacion fasePreparacionDefensa = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora,
+                fasePreparacionDefensa);// No requiere sacrificios
+
         AlasDeLaLlamaPerversa cartaAtacante = new AlasDeLaLlamaPerversa();
-        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante); // No requiere sacrificios
-        cartaInvocadaAtacante.invocar();
+        FasePreparacion fasePreparacionAtaque = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante,
+                fasePreparacionAtaque); // No requiere sacrificios
+
         cartaDefensora.colocarEnModoDeAtaque();
         cartaAtacante.colocarEnModoDeAtaque();
         try {
             tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
-        } catch (ZonaMonstruoLlenaException e) {
+        } catch (ZonaMonstruoLlenaException | InvocacionExcepcion e) {
+            fail();
         }
         try {
             tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
-        } catch (ZonaMonstruoLlenaException e) {
+        } catch (ZonaMonstruoLlenaException | InvocacionExcepcion e) {
+            fail();
         }
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
         Cementerio cementerio = tablero.mostrarCementerio(jugadorDefensor);
@@ -64,25 +74,29 @@ public class AtaqueMonstruosTest {
         Jugador jugadorDefensor = new Jugador();
         Jugador jugadorAtacante = new Jugador();
         Tablero tablero = new Tablero(jugadorDefensor, jugadorAtacante);
+
         HuevoMonstruoso cartaDefensora = new HuevoMonstruoso();
-        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora); // No requiere sacrificios
-        cartaInvocadaDefensora.invocar();
+        FasePreparacion fasePreparacionDefensora = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora,
+                fasePreparacionDefensora); // No requiere sacrificios
+
         AlasDeLaLlamaPerversa cartaAtacante = new AlasDeLaLlamaPerversa();
-        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante); // No requiere sacrificios
-        cartaInvocadaAtacante.invocar();
+        FasePreparacion fasePreparacionAtacante = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante,
+                fasePreparacionAtacante); // No requiere sacrificios
+
         cartaDefensora.colocarEnModoDeAtaque();
         cartaAtacante.colocarEnModoDeAtaque();
+
         try {
             tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
-        } catch (ZonaMonstruoLlenaException e) {
-        }
-        try {
             tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
-        } catch (ZonaMonstruoLlenaException e) {
+            tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+            assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 7900);
+            assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero() == 8000);
+        } catch (ZonaMonstruoLlenaException | InvocacionExcepcion e) {
+            fail();
         }
-        tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
-        assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 7900);
-        assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero() == 8000);
     }
 
     @Test
@@ -90,22 +104,27 @@ public class AtaqueMonstruosTest {
         Jugador jugadorAtacante = new Jugador();
         Jugador jugadorDefensor = new Jugador();
         Tablero tablero = new Tablero(jugadorAtacante, jugadorDefensor);
+
         HuevoMonstruoso cartaAtacante = new HuevoMonstruoso();
-        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante, null); // No requiere sacrificios
-        cartaInvocadaAtacante.invocar();
+        FasePreparacion fasePreparacionAtacante = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante,
+                fasePreparacionAtacante); // No requiere sacrificios
+
         AlasDeLaLlamaPerversa cartaDefensora = new AlasDeLaLlamaPerversa();
-        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora, null); // No requiere sacrificios
-        cartaInvocadaDefensora.invocar();
+        FasePreparacion fasePreparacionDefensa = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora,
+                fasePreparacionDefensa); // No requiere sacrificios
+
         cartaAtacante.colocarEnModoDeAtaque();
         cartaDefensora.colocarEnModoDeAtaque();
         try {
             tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
-        } catch (ZonaMonstruoLlenaException e) {
-        }
-        try {
             tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
-        } catch (ZonaMonstruoLlenaException e) {
+
+        } catch (ZonaMonstruoLlenaException | InvocacionExcepcion e) {
+            fail();
         }
+
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
         Cementerio cementerio = tablero.mostrarCementerio(jugadorAtacante);
         assertTrue(cementerio.existe(cartaAtacante));
@@ -118,25 +137,30 @@ public class AtaqueMonstruosTest {
         Jugador jugadorAtacante = new Jugador();
         Jugador jugadorDefensor = new Jugador();
         Tablero tablero = new Tablero(jugadorAtacante, jugadorDefensor);
+
         HuevoMonstruoso cartaAtacante = new HuevoMonstruoso();
-        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante); // No requiere sacrificios
-        cartaInvocadaAtacante.invocar();
+        FasePreparacion fasePreparacionAtaque = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante,
+                fasePreparacionAtaque); // No requiere sacrificios
+
         AlasDeLaLlamaPerversa cartaDefensora = new AlasDeLaLlamaPerversa();
-        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora); // No requiere sacrificios
-        cartaInvocadaDefensora.invocar();
+        FasePreparacion fasePreparacionDefensa = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora,
+                fasePreparacionDefensa); // No requiere sacrificios
+
         cartaAtacante.colocarEnModoDeAtaque();
         cartaDefensora.colocarEnModoDeAtaque();
+
         try {
             tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
-        } catch (ZonaMonstruoLlenaException e) {
-        }
-        try {
             tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
-        } catch (ZonaMonstruoLlenaException e) {
+            tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+            assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero() == 7900);
+            assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 8000);
+        } catch (ZonaMonstruoLlenaException | InvocacionExcepcion e) {
+            fail();
         }
-        tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
-        assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero() == 7900);
-        assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 8000);
+
     }
 
     @Test
@@ -144,22 +168,27 @@ public class AtaqueMonstruosTest {
         Jugador jugadorAtacante = new Jugador();
         Jugador jugadorDefensor = new Jugador();
         Tablero tablero = new Tablero(jugadorAtacante, jugadorDefensor);
+
         HuevoMonstruoso cartaAtacante = new HuevoMonstruoso();
-        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante); // No requiere sacrificios
-        cartaInvocadaAtacante.invocar();
+        FasePreparacion fasePreparacionAtaque = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante,
+                fasePreparacionAtaque); // No requiere sacrificios
+
+
         HuevoMonstruoso cartaDefensora = new HuevoMonstruoso();
-        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora); // No requiere sacrificios
-        cartaInvocadaDefensora.invocar();
+        FasePreparacion fasePreparacionDefensa = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora,
+                fasePreparacionDefensa); // No requiere sacrificios
+
         cartaAtacante.colocarEnModoDeAtaque();
         cartaDefensora.colocarEnModoDeAtaque();
         try {
             tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
-        } catch (ZonaMonstruoLlenaException e) {
-        }
-        try {
             tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
-        } catch (ZonaMonstruoLlenaException e) {
+        } catch (ZonaMonstruoLlenaException | InvocacionExcepcion e) {
+            fail();
         }
+
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
         Cementerio cementerioDefensor = tablero.mostrarCementerio(jugadorDefensor);
         Cementerio cementerioAtacante = tablero.mostrarCementerio(jugadorAtacante);
@@ -174,24 +203,29 @@ public class AtaqueMonstruosTest {
         Jugador jugadorAtacante = new Jugador();
         Jugador jugadorDefensor = new Jugador();
         Tablero tablero = new Tablero(jugadorAtacante, jugadorDefensor);
+
         HuevoMonstruoso cartaAtacante = new HuevoMonstruoso();
-        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante);// No requiere sacrificios
-        cartaInvocadaAtacante.invocar();
+        FasePreparacion fasePreparacionAtaque = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica cartaInvocadaAtacante = new InvocacionCartaMonstruoGenerica(cartaAtacante,
+                fasePreparacionAtaque);// No requiere sacrificios
+
         HuevoMonstruoso cartaDefensora = new HuevoMonstruoso();
-        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora); // No requiere sacrificios
-        cartaInvocadaDefensora.invocar();
+        FasePreparacion fasePreparacionDefensa = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica cartaInvocadaDefensora = new InvocacionCartaMonstruoGenerica(cartaDefensora,
+                fasePreparacionDefensa); // No requiere sacrificios
+
         cartaAtacante.colocarEnModoDeAtaque();
         cartaDefensora.colocarEnModoDeAtaque();
         try {
             tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
-        } catch (ZonaMonstruoLlenaException e) {
-        }
-        try {
             tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
+            tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+            assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero() == 8000);
+            assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 8000);
         } catch (ZonaMonstruoLlenaException e) {
+            fail();
+        } catch (InvocacionExcepcion invocacionExcepcion) {
+            fail();
         }
-        tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
-        assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero() == 8000);
-        assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 8000);
     }
 }

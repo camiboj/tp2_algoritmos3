@@ -67,4 +67,8 @@ public class YuGiOh {
     public void ejecutarFaseInicial(Jugador jugador) throws VictoriaException {
         turnos.get(jugador).ejecutarFaseInicial();
     }
+
+    public void ejecutarFasePreparacion(Jugador jugadorTurno) throws VictoriaException {
+        turnos.get(jugadorTurno).ejecutarFasePreparacion();
+    }
 }

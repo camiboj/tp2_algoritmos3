@@ -2,6 +2,7 @@ package modelo.tablero;
 import modelo.cartas.Carta;
 import modelo.cartas.invocacion.Invocacion;
 import modelo.cartas.cartasTrampa.CartaTrampa;
+import modelo.cartas.invocacion.InvocacionDefault;
 import modelo.jugador.Jugador;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class ZonaTrampaMagica implements Zona {
         }
     }
 
-    public int colocarCarta(Invocacion invocacion) {
+    public int colocarCarta(InvocacionDefault invocacion) {
         Carta carta = invocacion.invocar();
         for (int i= 0; i<CANT_CASILLEROS ; i++) {
             Casillero casillero = casilleros.get(i);

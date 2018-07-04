@@ -1,8 +1,10 @@
+import modelo.Fase.FasePreparacion;
 import modelo.cartas.cartasMagicas.Fisura;
 import modelo.cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
 import modelo.cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.cartas.invocacion.InvocacionDefault;
+import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.VictoriaException;
 import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
@@ -23,14 +25,20 @@ public class FisuraTest {
         Tablero tablero = new Tablero(jugador, jugadorOponente);
 
         AlasDeLaLlamaPerversa cartaSobreviviente = new AlasDeLaLlamaPerversa();
+        FasePreparacion fasePreparacionSobreviviente = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica invocacionSobreviviente = new InvocacionCartaMonstruoGenerica(cartaSobreviviente,
+                fasePreparacionSobreviviente);
+
         HuevoMonstruoso cartaAMorir = new HuevoMonstruoso();
-        InvocacionCartaMonstruoGenerica invocacionSobreviviente = new InvocacionCartaMonstruoGenerica(cartaSobreviviente);
-        InvocacionCartaMonstruoGenerica invocacionMuerto = new InvocacionCartaMonstruoGenerica(cartaAMorir);
+        FasePreparacion fasePreparacionMuerto = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica invocacionMuerto = new InvocacionCartaMonstruoGenerica(cartaAMorir,
+                fasePreparacionMuerto);
         try {
             tablero.colocarZonaMonstruo(invocacionSobreviviente, jugadorOponente);
             tablero.colocarZonaMonstruo(invocacionMuerto, jugadorOponente);
 
         } catch (ZonaMonstruoLlenaException e) {
+        } catch (InvocacionExcepcion invocacionExcepcion) {
         }
 
         Fisura fisura = new Fisura(tablero.mostrarLadoDelCampo(jugadorOponente));
@@ -38,18 +46,19 @@ public class FisuraTest {
         tablero.colocarZonaTrampaMagica(invocacionFisura, jugador);
         try {
             fisura.colocarBocaArriba();
+            Cementerio cementerio = tablero.mostrarCementerio(jugadorOponente);
+            ZonaMonstruo zonaMonstruo = tablero.mostrarZonaMonstruo(jugadorOponente);
+
+            assertTrue(cementerio.existe(cartaAMorir));
+            assertFalse(zonaMonstruo.existe(cartaAMorir));
+
+            assertFalse(cementerio.existe(cartaSobreviviente));
+            assertTrue(zonaMonstruo.existe(cartaSobreviviente));
         } catch (VictoriaException e) {
 
             assertTrue(false);
         }
 
-        Cementerio cementerio = tablero.mostrarCementerio(jugadorOponente);
-        ZonaMonstruo zonaMonstruo = tablero.mostrarZonaMonstruo(jugadorOponente);
 
-        assertTrue(cementerio.existe(cartaAMorir));
-        assertFalse(zonaMonstruo.existe(cartaAMorir));
-
-        assertFalse(cementerio.existe(cartaSobreviviente));
-        assertTrue(zonaMonstruo.existe(cartaSobreviviente));
     }
 }

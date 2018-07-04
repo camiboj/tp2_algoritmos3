@@ -23,12 +23,20 @@ public class VistaMano {
         this.vistaJugador = vistaJugador;
     }
 
+    public void activarCartas() {
+        for (Node node : elementos) {
+            BotonCartaMano botonCartaMano = (BotonCartaMano) node;
+            botonCartaMano.setDisable(false);
+        }
+    }
+
     public void mostrar() {
         List<Carta> cartas = mano.mostrarCartas();
         int i = 0;
         int j = 0;
         for(Carta carta : cartas) {
             BotonCartaMano imagenCarta = new BotonCartaMano((CartaMonstruo) carta, vistaJugador);
+            imagenCarta.setDisable(true);
             elementos.add(imagenCarta);
             contenedorBase.ubicarObjeto(imagenCarta, i, j);
             i++;

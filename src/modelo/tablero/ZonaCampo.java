@@ -1,6 +1,7 @@
 package modelo.tablero;
 import modelo.cartas.*;
 import modelo.cartas.invocacion.Invocacion;
+import modelo.cartas.invocacion.InvocacionDefault;
 import modelo.excepciones.VictoriaException;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class ZonaCampo implements Zona{ //Le saque la interfaz porque no coloca 
         casillero = new Casillero();
     }
 
-        public boolean colocarCarta(Invocacion invocacion) throws VictoriaException {
+        public boolean colocarCarta(InvocacionDefault invocacion) throws VictoriaException {
         //Devuelve true si pudo colocarla y false si la zona estaba completa
         if (casillero.estaVacio()) {
             Carta carta = invocacion.invocar();

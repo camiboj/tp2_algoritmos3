@@ -6,7 +6,7 @@ import modelo.tablero.ZonaMonstruo;
 import vista.botones.BotonCarta;
 import vista.botones.BotonCartaBocaAbajo;
 import vista.botones.BotonCartaZonaMonstruo;
-import vista.botones.VoltearHandle;
+import vista.handler.VoltearHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,25 +37,24 @@ public class VistaZonaMonstruo {
         }
     }
 
-
     public void colocarCartaModoDefensa(CartaMonstruo carta, int columna) {
         BotonCartaZonaMonstruo botonCartaBocaArriba = new BotonCartaZonaMonstruo(carta, fila, columna);
         botonCartaBocaArriba.setRotate(90);
         BotonCartaBocaAbajo botonCartaBocaAbajo = new BotonCartaBocaAbajo(fila, columna);
-        VoltearHandle handle = new VoltearHandle(botonCartaBocaArriba, botonCartaBocaAbajo, this);
+        VoltearHandler handle = new VoltearHandler(botonCartaBocaArriba, botonCartaBocaAbajo, this);
         botonCartaBocaAbajo.setOnAction(handle);
         botonCartaBocaAbajo.setRotate(90);
         elementos.add(botonCartaBocaAbajo);
         contenedorBase.ubicarObjeto(botonCartaBocaAbajo, fila, columna);
     }
 
-public void colocarCartaModoAtaque(CartaMonstruo carta, int columna) {
-    BotonCartaZonaMonstruo botonCartaBocaArriba = new BotonCartaZonaMonstruo(carta, fila, columna);
-    BotonCartaBocaAbajo botonCartaBocaAbajo = new BotonCartaBocaAbajo(fila, columna);
-    VoltearHandle handle = new VoltearHandle(botonCartaBocaArriba, botonCartaBocaAbajo, this);
-    botonCartaBocaAbajo.setOnAction(handle);
-    elementos.add(botonCartaBocaAbajo);
-    contenedorBase.ubicarObjeto(botonCartaBocaAbajo, fila, columna);
+    public void colocarCartaModoAtaque(CartaMonstruo carta, int columna) {
+        BotonCartaZonaMonstruo botonCartaBocaArriba = new BotonCartaZonaMonstruo(carta, fila, columna);
+        BotonCartaBocaAbajo botonCartaBocaAbajo = new BotonCartaBocaAbajo(fila, columna);
+        VoltearHandler handle = new VoltearHandler(botonCartaBocaArriba, botonCartaBocaAbajo, this);
+        botonCartaBocaAbajo.setOnAction(handle);
+        elementos.add(botonCartaBocaAbajo);
+        contenedorBase.ubicarObjeto(botonCartaBocaAbajo, fila, columna);
     }
 
     public void voltear(BotonCartaBocaAbajo botonCartaBocaAbajo, BotonCarta botonCartaBocaArriba, int fila, int columna) {

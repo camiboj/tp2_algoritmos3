@@ -1,17 +1,18 @@
-package vista.botones;
+package vista.handler;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import modelo.excepciones.VictoriaException;
 import vista.VistaZonaMonstruo;
+import vista.botones.BotonCartaBocaAbajo;
+import vista.botones.BotonCartaZonaMonstruo;
 
-public class VoltearHandle implements EventHandler<ActionEvent> {
+public class VoltearHandler implements EventHandler<ActionEvent> {
 
     private final BotonCartaZonaMonstruo botonCartaBocaArriba;
     private final BotonCartaBocaAbajo botonCartaBocaAbajo;
     private final VistaZonaMonstruo vistaZonaMonstruo;
 
-    public VoltearHandle(BotonCartaZonaMonstruo botonCartaBocaArriba, BotonCartaBocaAbajo botonCartaBocaAbajo, VistaZonaMonstruo vistaZonaMonstruo) {
+    public VoltearHandler(BotonCartaZonaMonstruo botonCartaBocaArriba, BotonCartaBocaAbajo botonCartaBocaAbajo, VistaZonaMonstruo vistaZonaMonstruo) {
         this.botonCartaBocaArriba = botonCartaBocaArriba;
         this.botonCartaBocaAbajo = botonCartaBocaAbajo;
         this.vistaZonaMonstruo = vistaZonaMonstruo;

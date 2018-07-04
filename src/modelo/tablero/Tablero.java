@@ -8,8 +8,10 @@ import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.cartas.cartasTrampa.CartaTrampa;
 import modelo.cartas.invocacion.Invocacion;
 import modelo.cartas.invocacion.InvocacionCartaMonstruo;
+import modelo.cartas.invocacion.InvocacionDefault;
 import modelo.efectos.Efecto;
 import modelo.estadosDeCartas.BocaAbajo;
+import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.VictoriaException;
 import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
@@ -38,7 +40,7 @@ public class Tablero {
 		return divisiones.get(jugador1);
 	}
 
-	public boolean colocarZonaCampo(Invocacion unaInvocacion, Jugador jugador) throws VictoriaException {
+	public boolean colocarZonaCampo(InvocacionDefault unaInvocacion, Jugador jugador) throws VictoriaException {
 		//Si es Wasteland: primero pasar Jugador y después JugadorOponente
 		//Si es Sogen: primero pasar JugadorOponente y después Jugador
 
@@ -51,7 +53,7 @@ public class Tablero {
 		return ladoDelCampo.mostrarCementerio();
 	}
 
-	public boolean colocarZonaTrampaMagica(Invocacion unaInvocacion, Jugador jugador) {
+	public boolean colocarZonaTrampaMagica(InvocacionDefault unaInvocacion, Jugador jugador) {
 		Carta carta = unaInvocacion.invocar();
 		jugador.sacarDeMano(carta);
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
@@ -60,7 +62,8 @@ public class Tablero {
 		return resul != -1;
 	}
 
-	public int colocarZonaMonstruo(InvocacionCartaMonstruo unaInvocacion, Jugador jugador) throws ZonaMonstruoLlenaException {
+	public int colocarZonaMonstruo(InvocacionCartaMonstruo unaInvocacion, Jugador jugador)
+			throws ZonaMonstruoLlenaException, InvocacionExcepcion {
 
 		Cementerio cementerio = divisiones.get(jugador).mostrarCementerio();
 		ZonaMonstruo zonaMonstruo = divisiones.get(jugador).mostrarZonaMonstruo();
@@ -68,7 +71,7 @@ public class Tablero {
 		Carta carta = unaInvocacion.invocar();
 		jugador.sacarDeMano(carta);
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
-		return ladoDelCampo.colocarZonaMonstruo(unaInvocacion);
+		return ladoDelCampo.colocarZonaMonstruo(carta);
 	}
 
 	public void colocarCementerio(Carta unaCarta, Jugador jugador) {
@@ -97,7 +100,6 @@ public class Tablero {
 
 
 		}
-		if (cartaDefensora == null) { System.out.println("pelotudas"); }
 		//Ejecucion del ataque de dos monstruos
 		CartaMonstruo cartaGanadora = cartaAtacante.obtenerGanadoraContra(cartaDefensora);
 		Jugador jugadorPerdedor;

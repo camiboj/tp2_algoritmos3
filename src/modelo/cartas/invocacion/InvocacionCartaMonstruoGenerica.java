@@ -1,5 +1,7 @@
 package modelo.cartas.invocacion;
 
+import modelo.Fase.Fase;
+import modelo.Fase.FasePreparacion;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.tablero.Cementerio;
 import modelo.tablero.ZonaMonstruo;
@@ -9,24 +11,15 @@ import java.util.List;
 
 public class InvocacionCartaMonstruoGenerica extends InvocacionCartaMonstruo {
 
-    public InvocacionCartaMonstruoGenerica(CartaMonstruo unaCarta, List<CartaMonstruo> sacrificios) {
-        super(unaCarta, sacrificios);
+    public InvocacionCartaMonstruoGenerica(CartaMonstruo unaCarta, List<CartaMonstruo> sacrificios, FasePreparacion fase) {
+        super(unaCarta, sacrificios, fase);
         carta = unaCarta;
         this.sacrificios = sacrificios;
     }
 
-    public InvocacionCartaMonstruoGenerica(CartaMonstruo unaCarta) {
-        super(unaCarta, new ArrayList<>());
+    public InvocacionCartaMonstruoGenerica(CartaMonstruo unaCarta, FasePreparacion fase) {
+        super(unaCarta, new ArrayList<>(), fase);
         carta = unaCarta;
-    }
-    //Le podemos pasar el cementerio y la zona monstruo para que esta opere
-    public List<CartaMonstruo> mostrarCartasASacrificar() {
-        return sacrificios;
-    }
-
-    public boolean debeSacrificar() {
-        if (sacrificios== null) return false;
-        return sacrificios.size()>0;
     }
 
     public void sacrificar(Cementerio cementerio, ZonaMonstruo zonaMonstruo) {

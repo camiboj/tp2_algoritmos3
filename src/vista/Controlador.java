@@ -6,17 +6,18 @@ import modelo.jugador.YuGiOh;
 import modelo.tablero.Tablero;
 import vista.botones.BotonCartaBocaAbajo;
 import vista.botones.Botonera;
-import vista.botones.HandlerMazo;
+import vista.handler.MazoHandler;
 
 import java.util.ArrayList;
 
 public class Controlador {
-    private final Stage stage;
+    private Stage stage;
+    private Botonera botonera;
     private Jugador jugadorContrincante;
     private Jugador jugadorTurno;
-    private final ArrayList<Jugador> jugadores;
-    private final YuGiOh juego;
-    private final ContenedorBase contenedorBase;
+    private ArrayList<Jugador> jugadores;
+    private YuGiOh juego;
+    private ContenedorBase contenedorBase;
     private VistaJugador vistaActual;
     private VistaJugador vistaContrincante;
 
@@ -29,7 +30,7 @@ public class Controlador {
         this.vistaContrincante = new VistaJugador(contenedorBase, jugadorContrincante,
                 tablero);
         this.contenedorBase = contenedorBase;
-
+        this.botonera = new Botonera(this);
         this.jugadores = juego.obtenerJugadores();
         this.juego = juego;
         this.stage = stage;
@@ -43,11 +44,11 @@ public class Controlador {
     private void setMazo() {
         BotonCartaBocaAbajo boton = new BotonCartaBocaAbajo(3,8);
         contenedorBase.ubicarObjeto(boton, 3, 8);
-        boton.setOnAction(new HandlerMazo(juego, this.vistaActual.getVistaMano(), jugadorTurno, boton));
+        boton.setOnAction(new MazoHandler(juego, this.vistaActual.getVistaMano(), jugadorTurno, boton,
+                botonera.obtenerBotonPreparacion()));
     }
 
     public void botonera() {
-        Botonera botonera = new Botonera(this);
         contenedorBase.setBotonera(botonera);
     }
 

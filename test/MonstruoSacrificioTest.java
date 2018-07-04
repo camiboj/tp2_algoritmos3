@@ -1,6 +1,8 @@
+import modelo.Fase.FasePreparacion;
 import modelo.cartas.cartasMonstruo.*;
 import modelo.cartas.cartasMonstruo.cartasBasicas.*;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.VictoriaException;
 import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
@@ -24,10 +26,14 @@ public class MonstruoSacrificioTest {
         List<CartaMonstruo> cartasASacrificar = new ArrayList<>();
         cartasASacrificar.add(cartaSacrificada);
 
-
+        FasePreparacion fasePreparacionCausanteSacrificios = new FasePreparacion();
         InvocacionCartaMonstruoGenerica invocacionCausanteSacrificios =
-                new InvocacionCartaMonstruoGenerica(cartaCausanteSacrificios, cartasASacrificar);
-        InvocacionCartaMonstruoGenerica invocacionHuevoMonstruoso = new InvocacionCartaMonstruoGenerica(cartaSacrificada);
+                new InvocacionCartaMonstruoGenerica(cartaCausanteSacrificios, cartasASacrificar,
+                        fasePreparacionCausanteSacrificios);
+
+        FasePreparacion fasePreparacionHuevoMonstruoso = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica invocacionHuevoMonstruoso = new InvocacionCartaMonstruoGenerica(cartaSacrificada,
+                fasePreparacionHuevoMonstruoso);
 
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
@@ -38,10 +44,12 @@ public class MonstruoSacrificioTest {
         try {
             tablero.colocarZonaMonstruo(invocacionHuevoMonstruoso, jugador1);
         } catch (ZonaMonstruoLlenaException e) {
+        } catch (InvocacionExcepcion invocacionExcepcion) {
         }
         try {
             tablero.colocarZonaMonstruo(invocacionCausanteSacrificios, jugador1);
         } catch (ZonaMonstruoLlenaException e) {
+        } catch (InvocacionExcepcion invocacionExcepcion) {
         }
 
         //La carta sacrificada esta en el cementerio y fue retirada del campo
@@ -54,16 +62,23 @@ public class MonstruoSacrificioTest {
 
     @Test
     public void invocarMonstruo5EstrellasRequiere1SacrificioYElige () throws VictoriaException {
-        Aitsu cartaCausanteSacrificios = new Aitsu();
+
         HuevoMonstruoso cartaSacrificada = new HuevoMonstruoso();
+        FasePreparacion fasePreparacionSacrificada = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica invocacionHuevoMonstruoso = new InvocacionCartaMonstruoGenerica(cartaSacrificada,
+                fasePreparacionSacrificada);
         List<CartaMonstruo> cartasASacrificar = new ArrayList<>();
         cartasASacrificar.add(cartaSacrificada);
-        AlasDeLaLlamaPerversa cartaNoSacrificada = new AlasDeLaLlamaPerversa();
 
+        Aitsu cartaCausanteSacrificios = new Aitsu();
+        FasePreparacion fasePreparacionSacrificios = new FasePreparacion();
         InvocacionCartaMonstruoGenerica invocacionCausanteSacrificios =
-                new InvocacionCartaMonstruoGenerica(cartaCausanteSacrificios, cartasASacrificar);
-        InvocacionCartaMonstruoGenerica invocacionHuevoMonstruoso = new InvocacionCartaMonstruoGenerica(cartaSacrificada);
-        InvocacionCartaMonstruoGenerica invocacionAlasDeLaLLamaPerversa = new InvocacionCartaMonstruoGenerica(cartaNoSacrificada, null);
+                new InvocacionCartaMonstruoGenerica(cartaCausanteSacrificios, cartasASacrificar, fasePreparacionSacrificios);
+
+        AlasDeLaLlamaPerversa cartaNoSacrificada = new AlasDeLaLlamaPerversa();
+        FasePreparacion fasePreparacionNoSacrificada = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica invocacionAlasDeLaLLamaPerversa = new InvocacionCartaMonstruoGenerica
+                (cartaNoSacrificada, fasePreparacionNoSacrificada);
 
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
@@ -77,6 +92,7 @@ public class MonstruoSacrificioTest {
             tablero.colocarZonaMonstruo(invocacionCausanteSacrificios, jugador1);
 
         } catch (ZonaMonstruoLlenaException e) {
+        } catch (InvocacionExcepcion invocacionExcepcion) {
         }
 
         //La carta sacrificada esta en el cementerio y fue retirada del campo
@@ -93,14 +109,18 @@ public class MonstruoSacrificioTest {
 
     @Test
     public void invocarMonstruo6EstrellasRequiere1Sacrificio () throws VictoriaException {
-        BestiaDeTalwar cartaCausanteSacrificios = new BestiaDeTalwar();
+
         HuevoMonstruoso cartaSacrificada = new HuevoMonstruoso();
         List <CartaMonstruo> cartasASacrificar = new ArrayList <>();
         cartasASacrificar.add(cartaSacrificada);
+        FasePreparacion fasePreparacionSacrificada = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica invocacionHuevoMonstruoso = new InvocacionCartaMonstruoGenerica(cartaSacrificada,
+                fasePreparacionSacrificada);
 
+        BestiaDeTalwar cartaCausanteSacrificios = new BestiaDeTalwar();
+        FasePreparacion fasePreparacionCausanteSacrificios = new FasePreparacion();
         InvocacionCartaMonstruoGenerica invocacionCausanteSacrificios =
-                new InvocacionCartaMonstruoGenerica(cartaCausanteSacrificios, cartasASacrificar);
-        InvocacionCartaMonstruoGenerica invocacionHuevoMonstruoso = new InvocacionCartaMonstruoGenerica(cartaSacrificada);
+                new InvocacionCartaMonstruoGenerica(cartaCausanteSacrificios, cartasASacrificar, fasePreparacionCausanteSacrificios);
 
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
@@ -113,6 +133,7 @@ public class MonstruoSacrificioTest {
             tablero.colocarZonaMonstruo(invocacionCausanteSacrificios, jugador1);
 
         } catch (ZonaMonstruoLlenaException e) {
+        } catch (InvocacionExcepcion invocacionExcepcion) {
         }
 
         //La carta sacrificada esta en el cementerio y fue retirada del campo
@@ -132,11 +153,17 @@ public class MonstruoSacrificioTest {
         cartasASacrificar.add(cartaSacrificada1);
         cartasASacrificar.add(cartaSacrificada2);
 
+        FasePreparacion fasePreparacionCausanteSacrificios = new FasePreparacion();
         InvocacionCartaMonstruoGenerica invocacionCausanteSacrificios =
-                new InvocacionCartaMonstruoGenerica(cartaCausanteSacrificios, cartasASacrificar);
-        InvocacionCartaMonstruoGenerica invocacionHuevoMonstruoso = new InvocacionCartaMonstruoGenerica(cartaSacrificada1);
-        InvocacionCartaMonstruoGenerica invocacionAlasDeLaLlamaPerversa = new InvocacionCartaMonstruoGenerica(cartaSacrificada2);
+                new InvocacionCartaMonstruoGenerica(cartaCausanteSacrificios, cartasASacrificar, fasePreparacionCausanteSacrificios);
 
+        FasePreparacion fasePreparacionHuevoMonstruoso = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica invocacionHuevoMonstruoso = new InvocacionCartaMonstruoGenerica(cartaSacrificada1,
+                fasePreparacionHuevoMonstruoso);
+
+        FasePreparacion fasePreparacionAlas = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica invocacionAlasDeLaLlamaPerversa = new InvocacionCartaMonstruoGenerica(cartaSacrificada2,
+                fasePreparacionAlas);
 
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
@@ -150,9 +177,10 @@ public class MonstruoSacrificioTest {
             tablero.colocarZonaMonstruo(invocacionCausanteSacrificios, jugador1);
         } catch (ZonaMonstruoLlenaException e) {
             e.printStackTrace();
+        } catch (InvocacionExcepcion invocacionExcepcion) {
         }
 
-        //Las modelo.cartas sacrificadas esta en el cementerio y fueron retiradas del campo
+        //Las cartas sacrificadas esta en el cementerio y fueron retiradas del campo
         assertTrue(cementerio.existe(cartaSacrificada1));
         assertFalse(zonaMonstruo.existe(cartaSacrificada1));
         assertTrue(cementerio.existe(cartaSacrificada2));

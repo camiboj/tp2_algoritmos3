@@ -1,8 +1,10 @@
+import modelo.Fase.FasePreparacion;
 import modelo.cartas.cartasCampo.Wasteland;
 import modelo.cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
 import modelo.cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.cartas.invocacion.InvocacionDefault;
+import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.VictoriaException;
 import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
@@ -19,16 +21,23 @@ public class WastelandTest {
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
         Tablero tablero = new Tablero(jugador1, jugador2);
+
         HuevoMonstruoso monstruo1 = new HuevoMonstruoso();
-        InvocacionCartaMonstruoGenerica invocacionMonstruo1 = new InvocacionCartaMonstruoGenerica(monstruo1);
+        FasePreparacion fasePreparacion1 = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica invocacionMonstruo1 = new InvocacionCartaMonstruoGenerica(monstruo1,
+                fasePreparacion1);
+
         AlasDeLaLlamaPerversa monstruo2 = new AlasDeLaLlamaPerversa();
-        InvocacionCartaMonstruoGenerica invocacionMonstruo2 = new InvocacionCartaMonstruoGenerica(monstruo2);
+        FasePreparacion fasePreparacion2 = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica invocacionMonstruo2 = new InvocacionCartaMonstruoGenerica(monstruo2,
+                fasePreparacion2);
         try {
             tablero.colocarZonaMonstruo(invocacionMonstruo1, jugador1);
             tablero.colocarZonaMonstruo(invocacionMonstruo2, jugador2);
         } catch (ZonaMonstruoLlenaException e) {
-            e.printStackTrace();
+        } catch (InvocacionExcepcion invocacionExcepcion) {
         }
+
         ZonaMonstruo zonaMonstruo1 = tablero.mostrarZonaMonstruo(jugador1);
         ZonaMonstruo zonaMonstruo2 = tablero.mostrarZonaMonstruo(jugador2);
         //Verifico que los dos monstruos están en el campo

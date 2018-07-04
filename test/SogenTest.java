@@ -1,8 +1,10 @@
+import modelo.Fase.FasePreparacion;
 import modelo.cartas.cartasCampo.Sogen;
 import modelo.cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
 import modelo.cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.cartas.invocacion.InvocacionDefault;
+import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.VictoriaException;
 import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
@@ -22,17 +24,23 @@ public class SogenTest {
         Tablero tablero = new Tablero(jugadorSogen, otroJugador);
 
         HuevoMonstruoso monstruoLadoSogen = new HuevoMonstruoso();
-        InvocacionCartaMonstruoGenerica invocacionMonstuoLadoSogen = new InvocacionCartaMonstruoGenerica(monstruoLadoSogen);
+        FasePreparacion fasePreparacionMonstruoLadoSogen = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica invocacionMonstuoLadoSogen = new InvocacionCartaMonstruoGenerica(monstruoLadoSogen,
+                fasePreparacionMonstruoLadoSogen);
         try {
             tablero.colocarZonaMonstruo(invocacionMonstuoLadoSogen, jugadorSogen);
         } catch (ZonaMonstruoLlenaException e) {
+        } catch (InvocacionExcepcion invocacionExcepcion) {
         }
 
+        FasePreparacion fasePreparacionOtro = new FasePreparacion();
         AlasDeLaLlamaPerversa otroMonstruo = new AlasDeLaLlamaPerversa();
-        InvocacionCartaMonstruoGenerica invocacionOtroMonstruo = new InvocacionCartaMonstruoGenerica(otroMonstruo);
+        InvocacionCartaMonstruoGenerica invocacionOtroMonstruo = new InvocacionCartaMonstruoGenerica(otroMonstruo,
+                fasePreparacionOtro);
         try {
             tablero.colocarZonaMonstruo(invocacionOtroMonstruo, otroJugador);
         } catch (ZonaMonstruoLlenaException e) {
+        } catch (InvocacionExcepcion invocacionExcepcion) {
         }
 
         ZonaMonstruo zonaMonstruoSogen = tablero.mostrarZonaMonstruo(jugadorSogen);

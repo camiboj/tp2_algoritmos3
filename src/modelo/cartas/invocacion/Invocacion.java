@@ -1,6 +1,7 @@
 package modelo.cartas.invocacion;
 
 import modelo.cartas.Carta;
+import modelo.excepciones.InvocacionExcepcion;
 
 public abstract class Invocacion {
     protected Carta carta;
@@ -8,6 +9,4 @@ public abstract class Invocacion {
     public Invocacion(Carta unaCarta) {
         carta = unaCarta;
     }
-
-    public Carta invocar () { return carta; }
 }

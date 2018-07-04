@@ -1,5 +1,7 @@
 package modelo.cartas.cartasMonstruo;
 
+import modelo.Fase.Fase;
+import modelo.Fase.FasePreparacion;
 import modelo.cartas.Carta;
 import modelo.estadosDeCartas.Modo;
 import modelo.estadosDeCartas.ModoDeAtaque;
@@ -46,8 +48,8 @@ public abstract class CartaMonstruo extends Carta {
 
     public Punto obtenerPuntosDefensa() { return puntosDefensa;} //Para test de Wasteland
 
-    public boolean puedeInvocarse(List<CartaMonstruo> cartasASacrificar) {
-        return nivel.validarSacrificios(cartasASacrificar);
+    public boolean puedeInvocarse(List<CartaMonstruo> cartasASacrificar, FasePreparacion fase) {
+        return nivel.validarSacrificios(cartasASacrificar) & fase.validarMonstruo();
     }
 
     public boolean igualPuntos(CartaMonstruo unaCartaOponente) {

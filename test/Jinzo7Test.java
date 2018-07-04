@@ -1,6 +1,9 @@
+import modelo.Fase.Fase;
+import modelo.Fase.FasePreparacion;
 import modelo.cartas.cartasMonstruo.cartasBasicas.IdoloDeLosMilOjos;
 import modelo.cartas.cartasMonstruo.Jinzo7;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.VictoriaException;
 import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
@@ -21,17 +24,22 @@ public class Jinzo7Test {
         Tablero tablero = new Tablero(jugador, jugadorOponente);
 
         IdoloDeLosMilOjos cartaSobreviviente = new IdoloDeLosMilOjos();
-        InvocacionCartaMonstruoGenerica invocacionSobreviviente = new InvocacionCartaMonstruoGenerica(cartaSobreviviente);
+        FasePreparacion fasePreparacionSobreviviente = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica invocacionSobreviviente = new InvocacionCartaMonstruoGenerica(cartaSobreviviente,
+                fasePreparacionSobreviviente);
         try {
             tablero.colocarZonaMonstruo(invocacionSobreviviente, jugadorOponente);
         } catch (ZonaMonstruoLlenaException e) {
+        } catch (InvocacionExcepcion invocacionExcepcion) {
         }
 
         Jinzo7 jinzo7 = new Jinzo7(jugadorOponente);
-        InvocacionCartaMonstruoGenerica invocacionJinzo7 = new InvocacionCartaMonstruoGenerica(jinzo7);
+        FasePreparacion fasePreparacionJinzo7 = new FasePreparacion();
+        InvocacionCartaMonstruoGenerica invocacionJinzo7 = new InvocacionCartaMonstruoGenerica(jinzo7, fasePreparacionJinzo7);
         try {
             tablero.colocarZonaMonstruo(invocacionJinzo7, jugador);
         } catch (ZonaMonstruoLlenaException e) {
+        } catch (InvocacionExcepcion invocacionExcepcion) {
         }
         try {
             jinzo7.colocarBocaArriba();

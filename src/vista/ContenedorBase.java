@@ -28,17 +28,9 @@ public class ContenedorBase extends GridPane {
     private ArrayList <Jugador> jugadores;
     private Canvas fondo;
     private Consola consola;
-    private Jugador jugadorTurno;
-    private YuGiOh juego;
-    private Stage stage;
-    private VistaJugador vistaJugador1;
-    private VistaJugador vistaJugador2;
-    private VistaJugador vistaActual;
-    private VistaJugador vistaContrincante;
 
     public ContenedorBase(Stage stage, YuGiOh juego, Tablero tablero) {
-        this.stage = stage;
-        this.juego = juego;
+
         this.jugadores = juego.obtenerJugadores();
         this.setFondo();
         this.setGrilla();

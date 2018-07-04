@@ -9,9 +9,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
+import modelo.Fase.FasePreparacion;
 import modelo.cartas.Carta;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
+import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
 import modelo.jugador.Mano;
@@ -70,46 +72,35 @@ public class VistaJugador extends VBox {
         vistaMano.reset();
     }
 
-    public void mostrarMano() {
-        Mano mano = jugador.mostrarMano();
-        List<Carta> cartas = mano.mostrarCartas();
-        //System.out.println(cartas.size());
-        int i = 0;
-        int j = 0;
-        for(Carta carta : cartas) {
-            BotonCartaMano imagenCarta = new BotonCartaMano((CartaMonstruo) carta, this);
-            elementos.add(imagenCarta);
-            contenedorBase.ubicarObjeto(imagenCarta, i, j);
-            i++;
-            if (i == 4) {
-                j = 1;
-                i = 0;
-            }
-        }
-    }
-
-
-   public void ColocarCartaMonstruoEnAtaque(CartaMonstruo carta, BotonCartaMano boton) {
-        InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta);
+   public void ColocarCartaMonstruoEnAtaque(CartaMonstruo carta, BotonCartaMano boton, FasePreparacion fase) {
+        InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta, fase);
        int indice = 0;
        try {
-           indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica, jugador);
+           indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica, jugador );
            carta.colocarEnModoDeAtaque();
            int columna = indice + 3;
            vistaZonaMonstruo.colocarCartaModoAtaque(carta, columna);
            contenedorBase.getChildren().remove(boton);
        } catch (ZonaMonstruoLlenaException excepcion) {
            contenedorBase.escribirEnConsola(excepcion.obtenerMotivo());
+       } catch (InvocacionExcepcion invocacionExcepcion) {
+           contenedorBase.escribirEnConsola(invocacionExcepcion.obtenerMotivo());
        }
    }
 
-    public void ColocarCartaMonstruoEnDefensa(CartaMonstruo carta, BotonCartaMano boton) throws ZonaMonstruoLlenaException {
-        InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta);
-        int indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica,jugador);
-        carta.colocarEnModoDeDefensa();
-        int columna = indice + 3;
-        vistaZonaMonstruo.colocarCartaModoDefensa(carta, columna);
-        contenedorBase.getChildren().remove(boton);
+    public void ColocarCartaMonstruoEnDefensa(CartaMonstruo carta, BotonCartaMano boton, FasePreparacion fase) {
+        InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta, fase);
+        try {
+            int indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica,jugador);
+            carta.colocarEnModoDeDefensa();
+            int columna = indice + 3;
+            vistaZonaMonstruo.colocarCartaModoDefensa(carta, columna);
+            contenedorBase.getChildren().remove(boton);
+        } catch (ZonaMonstruoLlenaException excepcion) {
+            contenedorBase.escribirEnConsola(excepcion.obtenerMotivo());
+        } catch (InvocacionExcepcion invocacionExcepcion) {
+            contenedorBase.escribirEnConsola(invocacionExcepcion.obtenerMotivo());
+        }
     }
 
     public VistaMano getVistaMano() {

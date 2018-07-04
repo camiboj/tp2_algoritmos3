@@ -8,6 +8,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 
 
+import modelo.Fase.FasePreparacion;
 import modelo.cartas.cartasCampo.CartaCampo;
 import modelo.cartas.cartasMagicas.CartaMagica;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
@@ -19,13 +20,16 @@ import vista.VistaJugador;
 public class BotonCartaMano extends BotonCarta {
 
     private  BotonCartaMano boton;
+    private FasePreparacion fase;
 
 
     public BotonCartaMano(CartaMonstruo carta, VistaJugador vista){
         super(carta);
         this.boton = this;
-        Tooltip tt = new Tooltip("Efecto: " + carta.obtenerEfecto());
-        this.setTooltip(tt);
+        this.settearTooltip("Efecto: " + carta.obtenerEfecto() +
+                            "\n ATK: " + String.valueOf(carta.obtenerPuntosAtaque().obtenerNumero()) +
+                            "\n DEF: " + String.valueOf(carta.obtenerPuntosDefensa().obtenerNumero()));
+
         final ContextMenu contextMenu = new ContextMenu();
 
         MenuItem modoAtaque = new MenuItem("Colocar modo ataque");
@@ -33,7 +37,7 @@ public class BotonCartaMano extends BotonCarta {
 
             @Override
             public void handle(ActionEvent event) {
-                vista.ColocarCartaMonstruoEnAtaque(carta, boton);
+                vista.ColocarCartaMonstruoEnAtaque(carta, boton, fase);
             }
         });
 
@@ -42,28 +46,32 @@ public class BotonCartaMano extends BotonCarta {
 
             @Override
             public void handle(ActionEvent event) {
-                try {
-                    vista.ColocarCartaMonstruoEnDefensa(carta, boton);
-                } catch (ZonaMonstruoLlenaException ignored) {
-                }
+                vista.ColocarCartaMonstruoEnDefensa(carta, boton, fase);
+
             }
-        });
+        }
+        );
 
         contextMenu.getItems().addAll(modoAtaque,modoDefensa);
 
         this.setContextMenu(contextMenu);
 
 
+
     }
 
    public BotonCartaMano(CartaMagica carta, int fila, int columna){
-       super(carta, fila, columna); }
+       super(carta, fila, columna);
+       this.settearTooltip("Efecto: " + carta.obtenerEfecto());
+    }
 
     public BotonCartaMano(CartaTrampa carta, int fila, int columna){
         super(carta, fila, columna);
+        this.settearTooltip("Efecto: " + carta.obtenerEfecto());
     }
 
     public BotonCartaMano(CartaCampo carta, int fila, int columna){
         super(carta, fila, columna);
+        this.settearTooltip("Efecto: " + carta.obtenerEfecto());
     }
 }
