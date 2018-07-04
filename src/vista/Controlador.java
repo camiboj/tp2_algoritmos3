@@ -2,18 +2,24 @@ package vista;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import modelo.Fase.FasePreparacion;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.jugador.Jugador;
 import modelo.jugador.YuGiOh;
 import modelo.tablero.Tablero;
+import vista.botones.BotonCarta;
 import vista.botones.BotonCartaBocaAbajo;
+import vista.botones.BotonCartaZonaMonstruo;
 import vista.botones.Botonera;
+import vista.handler.BotonAtacarHandler;
 import vista.handler.MazoHandler;
+import vista.handler.OpcionesAtacarHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +35,9 @@ public class Controlador {
     private VistaJugador vistaActual;
     private VistaJugador vistaContrincante;
     private FasePreparacion fasePreparacion;
+    private ArrayList<CheckBoxCarta> checks;
 
-    public Controlador(Stage stage, YuGiOh juego, Tablero tablero){
+    public Controlador(Stage stage, YuGiOh juego, Tablero tablero) {
         ContenedorBase contenedorBase = new ContenedorBase(stage, juego, tablero);
         this.jugadorTurno = juego.obtenerJugador1();
         this.jugadorContrincante = juego.obtenerJugador2();
@@ -53,7 +60,7 @@ public class Controlador {
     }
 
     private void setMazo() {
-        BotonCartaBocaAbajo boton = new BotonCartaBocaAbajo(3,8);
+        BotonCartaBocaAbajo boton = new BotonCartaBocaAbajo(3, 8);
         contenedorBase.ubicarObjeto(boton, 3, 8);
         boton.setOnAction(new MazoHandler(juego, this.vistaActual.getVistaMano(), jugadorTurno, boton,
                 botonera.obtenerBotonPreparacion(), fasePreparacion, contenedorBase));
@@ -102,14 +109,36 @@ public class Controlador {
 
     public void setOpcionAtacar() {
 
-        ContextMenu contextMenu = new ContextMenu();
-        Menu opcionAtacar = new Menu("Atacar");
-        List<CartaMonstruo> monstruosContrario = juego.mostrarTablero().mostrarZonaMonstruo(jugadorContrincante).obtenerMonstruos();
-        for (CartaMonstruo carta: monstruosContrario) {
-            MenuItem opcion = new MenuItem(carta.getNombre());
-            opcionAtacar.getItems().addAll(opcion);
-        }
+        ContextMenuAtacante contextMenu = new ContextMenuAtacante();
+        MenuItem opcionAtacar = new MenuItem("Atacar");
+
+        opcionAtacar.setOnAction(new OpcionesAtacarHandler(this, contextMenu));
+
         contextMenu.getItems().addAll(opcionAtacar);
-       vistaActual.setOpcionAtacar(contextMenu);
+        vistaActual.setOpcionAtacar(contextMenu);
+    }
+
+    public void generarOpcionesAtaque(ContextMenuAtacante contextMenuAtacante) {
+        List<CheckBoxCarta> opciones = vistaContrincante.generarOpcionesAtaque();
+        this.checks = new ArrayList<>();
+        int columna = 3;
+        for (CheckBoxCarta carta : opciones) {
+            if (carta != null) {
+                this.checks.add(carta);
+            }
+            contenedorBase.ubicarObjeto(carta, 1, columna);
+            columna++;
+        }
+        botonera.activarBotonAtacar(new BotonAtacarHandler(checks, contenedorBase, this, contextMenuAtacante));
+    }
+
+    public void atacarMonstruos(BotonCartaZonaMonstruo botonMonstruoAtacante, BotonCarta botonCartaAtacada) {
+
+        List<CartaMonstruo> cartasMuertas = juego.mostrarTablero().atacarDosMonstruos((CartaMonstruo) botonMonstruoAtacante.obtenerCarta(), jugadorTurno,
+                (CartaMonstruo) botonCartaAtacada.obtenerCarta(), jugadorContrincante);
+
+        for (CartaMonstruo cartaMuerta : cartasMuertas) {
+            contenedorBase.getChildren().remove(vistaActual.obtenerBoton(cartaMuerta));
+        }
     }
 }

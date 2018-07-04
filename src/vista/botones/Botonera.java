@@ -2,10 +2,12 @@ package vista.botones;
 import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
 import vista.Controlador;
+import vista.handler.BotonAtacarHandler;
 import vista.handler.CambiarTurnoHandler;
 import vista.handler.FinFasePreparacionHandler;
 
 public class Botonera extends VBox {
+    private BotonBotonera botonAtaque;
     private Controlador controlador;
     private BotonBotonera botonFinFaseAtaque;
     private BotonBotonera botonFinFaseDePreparacion;
@@ -13,6 +15,7 @@ public class Botonera extends VBox {
     private BotonBotonera botonCambioTurno;
 
     public Botonera(Controlador controlador) {
+        this.botonAtaque = new BotonBotonera("Atacar");
         this.botonFinFaseDePreparacion = new BotonBotonera("Fin Fase De Preparacion");
         this.botonFinFaseAtaque = new BotonBotonera("Fin Fase de Ataque");
         this.botonFinFaseTrampas = new BotonBotonera("Fin Fase de Trampas");
@@ -29,6 +32,7 @@ public class Botonera extends VBox {
 
     private void fijarBotones() {
 
+        botonAtaque.setDisable(true);
         botonFinFaseDePreparacion.setDisable(true);
         botonFinFaseAtaque.setDisable(true);
         botonFinFaseTrampas.setDisable(true);
@@ -39,11 +43,16 @@ public class Botonera extends VBox {
 
         botonFinFaseDePreparacion.setOnAction(new FinFasePreparacionHandler(botonFinFaseDePreparacion,botonFinFaseAtaque,
                 controlador.obtenerContenedorBase(), controlador.obtenerVistaMano(), controlador));
-        this.getChildren().addAll(botonFinFaseDePreparacion, botonFinFaseAtaque, botonFinFaseTrampas,
+        this.getChildren().addAll(botonAtaque, botonFinFaseDePreparacion, botonFinFaseAtaque, botonFinFaseTrampas,
                 botonCambioTurno);
     }
 
     public BotonBotonera obtenerBotonPreparacion() {
         return botonFinFaseDePreparacion;
+    }
+
+    public void activarBotonAtacar(BotonAtacarHandler botonAtacarHandler) {
+        botonAtaque.setDisable(false);
+        botonAtaque.setOnAction(botonAtacarHandler);
     }
 }

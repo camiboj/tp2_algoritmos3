@@ -83,8 +83,10 @@ public class Tablero {
 		ladoDelCampo.colocarCementerio(unaCarta);
 	}
 
-	public void atacarDosMonstruos(CartaMonstruo cartaAtacante, Jugador jugadorAtacante, CartaMonstruo cartaDefensora,
+	//Devuelve los monstruos a morir
+	public List<CartaMonstruo> atacarDosMonstruos(CartaMonstruo cartaAtacante, Jugador jugadorAtacante, CartaMonstruo cartaDefensora,
 								   Jugador jugadorDefensor) {
+		List<CartaMonstruo> monstruosMuertos = new ArrayList<>();
 
 		//Activacion de la carta trampa
 		if (!divisiones.get(jugadorDefensor).zonaTrampaMagicaEstaVacia()){
@@ -96,14 +98,11 @@ public class Tablero {
 					divisiones.get(jugadorDefensor).activarTrampa(trampa, cartaAtacante, jugadorAtacante, cartaDefensora,jugadorDefensor,this);
 				    eliminarDeZonaTrampaMagica(trampa, jugadorDefensor);
 				    if (!divisiones.get(jugadorAtacante).obtenerMonstruos().contains(cartaAtacante) || trampa.interrumpeAtaque()){
-						return;
+						return monstruosMuertos;
 					}
-
 				}
-
-
-
 		}
+
 		//Ejecucion del ataque de dos monstruos
 		CartaMonstruo cartaGanadora = cartaAtacante.obtenerGanadoraContra(cartaDefensora);
 		Jugador jugadorPerdedor;
@@ -114,14 +113,11 @@ public class Tablero {
 				Efecto monstruoConEfectoDeVolteo = (Efecto) cartaDefensora ;
 				monstruoConEfectoDeVolteo.activarEfectoDeVolteoAnteAtaque(jugadorDefensor,jugadorAtacante,this);
 				if (!divisiones.get(jugadorAtacante).obtenerMonstruos().contains(cartaAtacante)){
-					return;
+					return monstruosMuertos;
 				}
-
-
-
 		}
 		if (cartaDefensora == cartaGanadora && cartaDefensora.enModoDefensa()) {
-			return;
+			return monstruosMuertos;
 		}
 		if (cartaGanadora == cartaDefensora) {
 			jugadorPerdedor = jugadorAtacante;
@@ -136,18 +132,21 @@ public class Tablero {
 		colocarCementerio(cartaPerdedora, jugadorPerdedor);
 		eliminarDeZonaMonstruo(cartaPerdedora, jugadorPerdedor);
 		if (cartaDefensora.enModoDefensa()) {
-			return;
+			return monstruosMuertos;
 		}
 		Punto puntosGanadores = cartaGanadora.obtenerPuntos();
 		Punto puntosPerdedores = cartaPerdedora.obtenerPuntos();
 		Punto diferenciaPuntos = puntosGanadores.restar(puntosPerdedores);
 		jugadorPerdedor.restarPuntos(diferenciaPuntos);
+		monstruosMuertos.add(cartaPerdedora);
 
 		//Caso especial de que ambas modelo.cartas tengan la misma cantidad de puntos de ataque
 		if (cartaGanadora.igualPuntos(cartaDefensora)) {
 			colocarCementerio(cartaGanadora, jugadorGanador);
 			eliminarDeZonaMonstruo(cartaGanadora, jugadorGanador);
+			monstruosMuertos.add(cartaGanadora);
 		}
+		return monstruosMuertos;
 	}
 
     private void eliminarDeZonaTrampaMagica(CartaTrampa unaCarta, Jugador unJugador) {

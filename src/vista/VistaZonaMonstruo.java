@@ -5,6 +5,7 @@ import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.VictoriaException;
 import modelo.excepciones.ZonaMonstruoLlenaException;
+import modelo.tablero.Casillero;
 import modelo.tablero.ZonaMonstruo;
 import vista.botones.BotonCarta;
 import vista.botones.BotonCartaBocaAbajo;
@@ -121,6 +122,17 @@ public class VistaZonaMonstruo {
             elementos.remove(this.obtenerBoton(carta));
             this.actualizar();
         }
+    }
+
+    public List<CheckBoxCarta> generarOpcionesAtaque() {
+        List<CheckBoxCarta> resultado = new ArrayList<>();
+        List<Casillero> casilleros = zonaMonstruo.obtenerCasilleros();
+        for (Casillero casillero : casilleros) {
+            if (casillero.estaVacio()){continue;}
+            CheckBoxCarta check = new CheckBoxCarta(this.obtenerBoton((CartaMonstruo) casillero.mostrarCarta()));
+            resultado.add(check);
+        }
+        return resultado;
     }
 }
 

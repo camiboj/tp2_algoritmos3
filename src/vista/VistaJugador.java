@@ -17,6 +17,7 @@ import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.jugador.Jugador;
 import modelo.tablero.Tablero;
+import vista.botones.BotonCarta;
 import vista.botones.BotonCartaMano;
 
 import java.util.ArrayList;
@@ -115,5 +116,13 @@ public class VistaJugador extends VBox {
 
     public void setOpcionAtacar(ContextMenu contextMenu) {
         vistaZonaMonstruo.setOpcionAtacar(contextMenu);
+    }
+
+    public BotonCarta obtenerBoton(CartaMonstruo carta) {
+        return vistaZonaMonstruo.obtenerBoton(carta);
+    }
+
+    public List<CheckBoxCarta> generarOpcionesAtaque() {
+        return vistaZonaMonstruo.generarOpcionesAtaque();
     }
 }
