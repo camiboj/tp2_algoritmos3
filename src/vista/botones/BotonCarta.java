@@ -37,6 +37,7 @@ public abstract class BotonCarta extends Button {
     }
 
     public void settear(Carta carta) {
+        System.out.println(carta.getNombre());
         String ruta = "/vista/imagenes/" + carta.getNombre() + ".jpg";
         Image image = new Image(getClass().getResourceAsStream(ruta));
         BackgroundSize size = new BackgroundSize(70, 120, true, true, true, false);

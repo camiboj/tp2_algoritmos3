@@ -118,9 +118,7 @@ public class Mazo {
                              ZonaMonstruo zonaMonstruoAtacante, ZonaMonstruo zonaMonstruoPropia, Tablero tablero) {
 
         if (cartas.size()<40) {
-            if (CreadoraDeCartas.crearCarta(nombreDeCarta) != null) { //Pequeño arreglo
-                cartas.push(CreadoraDeCartas.crearCarta(nombreDeCarta));
+            cartas.push(CreadoraDeCartas.crearCarta(nombreDeCarta));
             }
         }
     }
-}
