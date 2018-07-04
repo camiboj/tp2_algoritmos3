@@ -30,49 +30,51 @@ public class Mazo {
                 Scanner cartasMagicasTrampa = new Scanner(new File("resources/Nombres Cartas Magicas Trampas.txt"));
                 Scanner cartasEspeciales = new Scanner(new File("resources/Nombres Cartas Especiales.txt"));
                 Random r = new Random();
+
+                int numeroMonstruos = 0;
+
                 int mazoNumero = r.nextInt(4-1) +1;
                 Random numeroRandomCarta = new Random();
                 int numeroElegido;
-                switch (mazoNumero){
+                switch (mazoNumero) {
                     case 1:
+                        if(numeroMonstruos < 15){
                         numeroElegido = numeroRandomCarta.nextInt(TOTAL_CARTAS_MONSTRUO);
                         int numero = 0;
-                        while (numero <= numeroElegido){
+                        while (numero <= numeroElegido) {
                             nombreDeCarta = cartasMonstruo.nextLine();
                             numero++;
                         }
                         agregarCarta(nombreDeCarta, jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
                         cartasMonstruo.reset();
-                        break;
+                }break;
 
                     case 2:
-                        if (contadorDeCartasMagicasTrampa<TOTAL_CARTAS_MAGICAS_TRAMPA){
-                            numeroElegido = numeroRandomCarta.nextInt(TOTAL_CARTAS_MAGICAS_TRAMPA);
-                            int numeroMagico = 0;
-                            while (numeroMagico <= numeroElegido){
-                                nombreDeCarta = cartasMagicasTrampa.nextLine();
-                                numeroMagico++;
-                            }
-                            agregarCarta(nombreDeCarta, jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-                            cartasMagicasTrampa.reset();
-                            contadorDeCartasMagicasTrampa++;
-                         break;
-                }
+                        //if (contadorDeCartasMagicasTrampa<TOTAL_CARTAS_MAGICAS_TRAMPA){
+                        numeroElegido = numeroRandomCarta.nextInt(TOTAL_CARTAS_MAGICAS_TRAMPA);
+                        int numeroMagico = 0;
+                        while (numeroMagico <= numeroElegido){
+                            nombreDeCarta = cartasMagicasTrampa.nextLine();
+                            numeroMagico++; }
+                        agregarCarta(nombreDeCarta, jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+                        cartasMagicasTrampa.reset();
+                        contadorDeCartasMagicasTrampa++;
+                    break;
+                //}
                     case 3:
-                        if(contadorDeCartasEspeciales < TOTAL_CARTAS_ESPECIALES) {
-                            numeroElegido = numeroRandomCarta.nextInt(TOTAL_CARTAS_ESPECIALES);
-                            int numeroEspecial = 0;
-                            while (numeroEspecial <= numeroElegido) {
-                                nombreDeCarta = cartasEspeciales.nextLine();
-                                numeroEspecial++;
-                            }
-                            if (!registroCartasEspeciales.contains(nombreDeCarta)){
-                                agregarCarta(nombreDeCarta, jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-                                contadorDeCartasEspeciales++;
-                                registroCartasEspeciales.add(nombreDeCarta);
-                            }
-                            cartasEspeciales.reset();
-                        }
+                        //if(contadorDeCartasEspeciales < TOTAL_CARTAS_ESPECIALES) {
+                        numeroElegido = numeroRandomCarta.nextInt(TOTAL_CARTAS_ESPECIALES);
+                        int numeroEspecial = 0;
+                        while (numeroEspecial <= numeroElegido) {
+                            nombreDeCarta = cartasEspeciales.nextLine();
+                            numeroEspecial++; }
+                        //if (!registroCartasEspeciales.contains(nombreDeCarta)){
+                        agregarCarta(nombreDeCarta, jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+                        contadorDeCartasEspeciales++;
+                        registroCartasEspeciales.add(nombreDeCarta);
+                         //}
+                         cartasEspeciales.reset();
+                    //}
                         break;
                      default:
                          break;
