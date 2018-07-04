@@ -133,13 +133,13 @@ public class CreadoraDeCartas {
 				return  new Trent();
 			case "Uraby":
 				return  new Uraby();
-			case "Watt Cola Dragon":
+			case "Wattcoladragon":
 				return  new Wattcoladragon();
 			case "Yamadron":
 				return  new Yamadron();
 			case "Zombi De Dragon":
 				return  new ZombiDeDragon();
-			case "Jinzo 7":
+			case "Jinzo7":
 				return  new Jinzo7();
 			case "Insecto Come Hombres":
 				return  new InsectoComeHombres();

@@ -5,6 +5,6 @@ import modelo.cartas.cartasMonstruo.CartaMonstruo;
 public class BestiaDeTalwar extends CartaMonstruo {
 
     public BestiaDeTalwar() {
-        super("Bestia de Talwar", 2400, 2150, 6);
+        super("Bestia De Talwar", 2400, 2150, 6);
     }
 }

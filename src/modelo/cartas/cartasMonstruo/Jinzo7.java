@@ -1,6 +1,6 @@
 package modelo.cartas.cartasMonstruo;
 
-import com.intellij.vcs.log.Hash;
+//import com.intellij.vcs.log.Hash;
 import modelo.efectos.Efecto;
 import modelo.jugador.Jugador;
 import modelo.tablero.Tablero;
