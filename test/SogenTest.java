@@ -51,13 +51,7 @@ public class SogenTest {
 
         Sogen sogen = new Sogen();
         InvocacionDefault invocacionSogen = new InvocacionDefault(sogen);
-        try {
-            tablero.colocarZonaCampo(invocacionSogen, jugadorSogen);
-        } catch (VictoriaException e) {
-            //no deberia dispararse esta excepcion
-            assertTrue(false);
-        }
-
+        tablero.colocarZonaCampo(invocacionSogen, jugadorSogen);
 
         assertTrue(monstruoLadoSogen.obtenerPuntosAtaque().obtenerNumero() == 600);
         assertTrue(monstruoLadoSogen.obtenerPuntosDefensa().obtenerNumero() == 1400);

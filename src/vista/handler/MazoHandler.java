@@ -7,7 +7,7 @@ import modelo.excepciones.VictoriaException;
 import modelo.jugador.Jugador;
 import modelo.jugador.YuGiOh;
 import vista.ContenedorBase;
-import vista.VistaMano;
+import vista.vistaZonas.VistaMano;
 import vista.botones.BotonBotonera;
 import vista.botones.BotonCartaBocaAbajo;
 

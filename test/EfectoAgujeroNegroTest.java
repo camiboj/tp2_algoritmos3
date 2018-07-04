@@ -9,6 +9,7 @@ import modelo.efectos.EfectoAgujeroNegro;
 import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.VictoriaException;
 import modelo.excepciones.ZonaMonstruoLlenaException;
+import modelo.excepciones.ZonaTrampaMagicaLlenaException;
 import modelo.jugador.Jugador;
 import modelo.jugador.Punto;
 import org.junit.Test;
@@ -61,7 +62,7 @@ public class EfectoAgujeroNegroTest {
             assertTrue(cementerio2.existe(carta3));
             assertTrue(jugador1.obtenerPuntos().equals(new Punto(8000)) &&
                     jugador2.obtenerPuntos().equals(new Punto(8000)));
-        } catch (ZonaMonstruoLlenaException | InvocacionExcepcion e) {
+        } catch (ZonaMonstruoLlenaException | InvocacionExcepcion | ZonaTrampaMagicaLlenaException e) {
             fail();
         }
 

@@ -1,11 +1,13 @@
 import modelo.cartas.invocacion.InvocacionDefault;
 import modelo.cartas.cartasMagicas.OllaDeLaCodicia;
 import modelo.excepciones.VictoriaException;
+import modelo.excepciones.ZonaTrampaMagicaLlenaException;
 import modelo.jugador.Jugador;
 import org.junit.Test;
 import modelo.tablero.Tablero;
 
 import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.fail;
 
 
 public class OllaDeLaCodiciaTest {
@@ -20,12 +22,13 @@ public class OllaDeLaCodiciaTest {
         Tablero tablero = new Tablero(jugador1, jugador2);
         OllaDeLaCodicia ollaDeLaCodicia = new OllaDeLaCodicia();
         InvocacionDefault invocacionOllaDeLaCodicia = new InvocacionDefault(ollaDeLaCodicia);
-        tablero.colocarZonaTrampaMagica(invocacionOllaDeLaCodicia, jugador1);
+
         try {
+            tablero.colocarZonaTrampaMagica(invocacionOllaDeLaCodicia, jugador1);
             ollaDeLaCodicia.colocarBocaArriba();
-        } catch (VictoriaException e) {
+        } catch (VictoriaException | ZonaTrampaMagicaLlenaException e) {
             //no deberia dispararse esta excepcion
-            assertTrue(false);
+            fail();
         }
 
         assertTrue((jugador1.cantidadDeCartasEnMazo() == 33));

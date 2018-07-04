@@ -1,10 +1,15 @@
-package vista;
+package vista.vistaZonas;
 
 import javafx.scene.Node;
 import modelo.Fase.FasePreparacion;
 import modelo.cartas.Carta;
+import modelo.cartas.cartasCampo.CartaCampo;
+import modelo.cartas.cartasMagicas.CartaMagica;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
+import modelo.cartas.cartasTrampa.CartaTrampa;
 import modelo.jugador.Mano;
+import vista.ContenedorBase;
+import vista.VistaJugador;
 import vista.botones.BotonCartaMano;
 
 import java.util.ArrayList;
@@ -43,10 +48,20 @@ public class VistaMano {
         int j = 0;
 
         for(Carta carta : cartas) {
-            BotonCartaMano imagenCarta = new BotonCartaMano(carta);
+            BotonCartaMano imagenCarta = null;
             if (carta instanceof  CartaMonstruo) {
                 imagenCarta = new BotonCartaMano((CartaMonstruo) carta, vistaJugador, fasePreparacion);
             }
+            if (carta instanceof  CartaTrampa) {
+                imagenCarta = new BotonCartaMano((CartaTrampa) carta);
+            }
+            if (carta instanceof CartaMagica) {
+                imagenCarta = new BotonCartaMano((CartaMagica) carta);
+            }
+            if (carta instanceof  CartaCampo) {
+                imagenCarta = new BotonCartaMano((CartaCampo)carta);
+            }
+
             imagenCarta.setDisable(true);
             elementos.add(imagenCarta);
             contenedorBase.ubicarObjeto(imagenCarta, i, j);

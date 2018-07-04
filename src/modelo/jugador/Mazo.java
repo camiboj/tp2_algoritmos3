@@ -15,7 +15,6 @@ public class Mazo {
     int TOTAL_CARTAS_MAGICAS_TRAMPA = 5;
     int TOTAL_CARTAS_ESPECIALES = 7;
 
-
     public Mazo(String nombreDelMazo, Jugador jugador, Jugador jugadorContrario,
                 ZonaMonstruo zonaMonstruoAtacante, ZonaMonstruo zonaMonstruoPropia, Tablero tablero){
         //Constructor creado para tests y debug

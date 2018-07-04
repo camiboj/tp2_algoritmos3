@@ -45,13 +45,7 @@ public class WastelandTest {
 
         Wasteland wasteland = new Wasteland();
         InvocacionDefault invocacionWasteland = new InvocacionDefault(wasteland);
-        try {
-            tablero.colocarZonaCampo(invocacionWasteland, jugador1);
-        } catch (VictoriaException e) {
-            //no deberia dispararse esta excepcion
-            assertTrue(false);
-        }
-
+        tablero.colocarZonaCampo(invocacionWasteland, jugador1);
 
         assertTrue(monstruo1.obtenerPuntosAtaque().obtenerNumero() == 800);
         assertTrue(monstruo1.obtenerPuntosDefensa().obtenerNumero() == 900);

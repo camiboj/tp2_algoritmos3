@@ -4,10 +4,12 @@ import modelo.cartas.cartasMagicas.AgujeroNegro;
 import modelo.cartas.invocacion.InvocacionDefault;
 import modelo.estadosDeCartas.BocaAbajo;
 import modelo.excepciones.VictoriaException;
+import modelo.excepciones.ZonaTrampaMagicaLlenaException;
 import modelo.jugador.Jugador;
 import modelo.tablero.Tablero;
 import org.junit.Test;
 import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.fail;
 
 public class CartaMagicaTest {
 
@@ -30,6 +32,10 @@ public class CartaMagicaTest {
         Carta unaCarta = new AgujeroNegro();
         InvocacionDefault invocacion = new InvocacionDefault(unaCarta);
         unaCarta.colocarBocaAbajo();
-        assertTrue(tablero.colocarZonaTrampaMagica(invocacion, jugador1));
+        try {
+            assertTrue(tablero.colocarZonaTrampaMagica(invocacion, jugador1) >= 0);
+        } catch (ZonaTrampaMagicaLlenaException e) {
+            fail();
+        }
     }
 }

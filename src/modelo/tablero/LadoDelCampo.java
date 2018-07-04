@@ -8,6 +8,7 @@ import modelo.cartas.invocacion.InvocacionDefault;
 import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.VictoriaException;
 import modelo.excepciones.ZonaMonstruoLlenaException;
+import modelo.excepciones.ZonaTrampaMagicaLlenaException;
 import modelo.jugador.Jugador;
 import modelo.jugador.Mazo;
 
@@ -43,7 +44,7 @@ public class LadoDelCampo {
 		return miCementerio;
 	}
 
-	public int colocarZonaTrampaMagica(InvocacionDefault unaInvocacion) {
+	public int colocarZonaTrampaMagica(InvocacionDefault unaInvocacion) throws ZonaTrampaMagicaLlenaException {
 		return miZonaDeTrampasYMagia.colocarCarta(unaInvocacion);
 	}
 
@@ -72,7 +73,7 @@ public class LadoDelCampo {
 		return miZonaMonstruo.estaVacia();
 	}
 
-	public boolean colocarZonaCampo(InvocacionDefault unaInvocacion) throws VictoriaException {
+	public boolean colocarZonaCampo(InvocacionDefault unaInvocacion)  {
 		return miZonaCampo.colocarCarta(unaInvocacion);
 	}
 
@@ -125,4 +126,7 @@ public class LadoDelCampo {
 	}
 
 
+	public ZonaCampo mostrarZonaCampo() {
+		return miZonaCampo;
+	}
 }

@@ -1,24 +1,26 @@
 package vista.handler;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import vista.VistaZonaMonstruo;
+import vista.vistaZonas.VistaZonas;
+import vista.botones.BotonCarta;
 import vista.botones.BotonCartaBocaAbajo;
-import vista.botones.BotonCartaZonaMonstruo;
 
 public class VoltearHandler implements EventHandler<ActionEvent> {
 
-    private final BotonCartaZonaMonstruo botonCartaBocaArriba;
+    private final BotonCarta botonCartaBocaArriba;
     private final BotonCartaBocaAbajo botonCartaBocaAbajo;
-    private final VistaZonaMonstruo vistaZonaMonstruo;
+    private final VistaZonas vista;
 
-    public VoltearHandler(BotonCartaZonaMonstruo botonCartaBocaArriba, BotonCartaBocaAbajo botonCartaBocaAbajo, VistaZonaMonstruo vistaZonaMonstruo) {
+    public VoltearHandler(BotonCarta botonCartaBocaArriba, BotonCartaBocaAbajo botonCartaBocaAbajo,
+                          VistaZonas vista) {
         this.botonCartaBocaArriba = botonCartaBocaArriba;
         this.botonCartaBocaAbajo = botonCartaBocaAbajo;
-        this.vistaZonaMonstruo = vistaZonaMonstruo;
+        this.vista = vista;
     }
-        @Override
+
+    @Override
     public void handle(ActionEvent event) {
-        vistaZonaMonstruo.voltear(botonCartaBocaAbajo, botonCartaBocaArriba, botonCartaBocaAbajo.obtenerFila(), botonCartaBocaAbajo.obtenerColumna());
+        vista.voltear(botonCartaBocaAbajo, botonCartaBocaArriba, botonCartaBocaAbajo.obtenerFila(),
+                botonCartaBocaAbajo.obtenerColumna());
     }
 }

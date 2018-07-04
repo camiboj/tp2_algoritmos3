@@ -3,9 +3,7 @@ package vista.botones;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
-import javafx.scene.image.Image;
 
 
 import modelo.Fase.FasePreparacion;
@@ -14,7 +12,6 @@ import modelo.cartas.cartasCampo.CartaCampo;
 import modelo.cartas.cartasMagicas.CartaMagica;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.cartas.cartasTrampa.CartaTrampa;
-import modelo.excepciones.ZonaMonstruoLlenaException;
 import vista.VistaJugador;
 
 public class BotonCartaMano extends BotonCarta {
@@ -37,7 +34,7 @@ public class BotonCartaMano extends BotonCarta {
 
             @Override
             public void handle(ActionEvent event) {
-                vista.ColocarCartaMonstruoEnAtaque(carta, boton, fase);
+                vista.colocarCartaMonstruoEnAtaque(carta, boton, fase);
             }
         });
 
@@ -46,7 +43,7 @@ public class BotonCartaMano extends BotonCarta {
 
             @Override
             public void handle(ActionEvent event) {
-                vista.ColocarCartaMonstruoEnDefensa(carta, boton, fase);
+                vista.colocarCartaMonstruoEnDefensa(carta, boton, fase);
             }
         }
         );
@@ -60,4 +57,49 @@ public class BotonCartaMano extends BotonCarta {
        super(carta);
        this.settearTooltip("Efecto: " + carta.obtenerEfecto());
     }
+
+    public BotonCartaMano(CartaTrampa carta, VistaJugador vista){
+        super(carta);this.settearTooltip("Efecto: " + carta.obtenerEfecto());
+        final ContextMenu contextMenu = new ContextMenu();
+
+        MenuItem colocarCarta= new MenuItem("Colocar carta trampa boca abajo");
+        colocarCarta.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                vista.colocarCartaTrampaMagica(carta, boton);
+            }
+        });
+    }
+
+    public BotonCartaMano(CartaMagica carta, VistaJugador vista){
+        super(carta);
+        this.settearTooltip("Efecto: " + carta.obtenerEfecto());
+        final ContextMenu contextMenu = new ContextMenu();
+
+        MenuItem colocarCarta= new MenuItem("Colocar carta mágica boca abajo");
+        colocarCarta.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                vista.colocarCartaTrampaMagica(carta, boton);
+            }
+        });
+    }
+
+    public BotonCartaMano(CartaCampo carta, VistaJugador vista){
+        super(carta);
+        this.settearTooltip("Efecto: " + carta.obtenerEfecto());
+        final ContextMenu contextMenu = new ContextMenu();
+
+        MenuItem colocarCarta= new MenuItem("Colocar carta campo boca abajo");
+        colocarCarta.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                vista.colocarCartaCampo(carta, boton);
+            }
+        });
+    }
+
 }

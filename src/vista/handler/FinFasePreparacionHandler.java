@@ -1,14 +1,10 @@
 package vista.handler;
 
-import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.control.MenuItem;
 import vista.ContenedorBase;
 import vista.Controlador;
-import vista.VistaJugador;
-import vista.VistaMano;
+import vista.vistaZonas.VistaMano;
 import vista.botones.BotonBotonera;
 
 public class FinFasePreparacionHandler implements EventHandler {

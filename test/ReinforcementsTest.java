@@ -8,6 +8,7 @@ import modelo.cartas.invocacion.InvocacionDefault;
 import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.VictoriaException;
 import modelo.excepciones.ZonaMonstruoLlenaException;
+import modelo.excepciones.ZonaTrampaMagicaLlenaException;
 import modelo.jugador.Jugador;
 import org.junit.Test;
 import modelo.tablero.Cementerio;
@@ -16,12 +17,13 @@ import modelo.tablero.ZonaMonstruo;
 import modelo.tablero.ZonaTrampaMagica;
 
 import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.fail;
 import static org.junit.Assert.assertFalse;
 
 public class ReinforcementsTest {
 
     @Test
-    public void ReinforcementsTieneElEfectoEsperado() throws VictoriaException, ZonaMonstruoLlenaException {
+    public void ReinforcementsTieneElEfectoEsperado() throws VictoriaException, ZonaMonstruoLlenaException, ZonaTrampaMagicaLlenaException {
 
         //Creación del modelo.tablero
         Jugador jugadorDefensor = new Jugador();
@@ -41,6 +43,7 @@ public class ReinforcementsTest {
         try {
             tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
         } catch (InvocacionExcepcion invocacionExcepcion) {
+            fail();
         }
 
         //Creo alcanzador de garra y lo pongo en el modelo.tablero

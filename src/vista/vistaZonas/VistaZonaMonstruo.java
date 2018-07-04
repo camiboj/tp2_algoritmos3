@@ -1,12 +1,12 @@
-package vista;
-import javafx.scene.Node;
+package vista.vistaZonas;
 import javafx.scene.control.ContextMenu;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.excepciones.InvocacionExcepcion;
-import modelo.excepciones.VictoriaException;
 import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.tablero.Casillero;
 import modelo.tablero.ZonaMonstruo;
+import vista.CheckBoxCarta;
+import vista.ContenedorBase;
 import vista.botones.BotonCarta;
 import vista.botones.BotonCartaBocaAbajo;
 import vista.botones.BotonCartaZonaMonstruo;
@@ -15,30 +15,13 @@ import vista.handler.VoltearHandler;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VistaZonaMonstruo {
+public class VistaZonaMonstruo extends VistaZonas {
     protected ZonaMonstruo zonaMonstruo;
-    protected ContenedorBase contenedorBase;
-    protected int fila;
-    protected List<BotonCarta> elementos;
 
     public VistaZonaMonstruo (ZonaMonstruo zonaMonstruo, ContenedorBase contenedorBase) {
+        super(contenedorBase);
         this.zonaMonstruo = zonaMonstruo;
         this.contenedorBase = contenedorBase;
-        this.elementos = new ArrayList<>();
-    }
-
-    public void activar(int fila) {
-        this.fila = fila;
-        actualizar();
-    }
-
-    private void actualizar() {
-        for(Node node : elementos) {
-            BotonCarta boton = (BotonCarta) node;
-            boton.cambiarFila(fila);
-            contenedorBase.getChildren().remove(boton);
-            contenedorBase.ubicarObjeto(boton, fila, boton.obtenerColumna());
-        }
     }
 
     public void colocarCartaModoDefensa(CartaMonstruo carta, int columna) {
@@ -59,17 +42,6 @@ public class VistaZonaMonstruo {
         botonCartaBocaAbajo.setOnAction(handle);
         elementos.add(botonCartaBocaAbajo);
         contenedorBase.ubicarObjeto(botonCartaBocaAbajo, fila, columna);
-    }
-
-    public void voltear(BotonCartaBocaAbajo botonCartaBocaAbajo, BotonCarta botonCartaBocaArriba, int fila, int columna) {
-        elementos.add(botonCartaBocaArriba);
-        elementos.remove(botonCartaBocaAbajo);
-        contenedorBase.getChildren().remove(botonCartaBocaAbajo);
-        contenedorBase.ubicarObjeto(botonCartaBocaArriba, fila, columna);
-        try {
-            botonCartaBocaArriba.actualizarEstado();
-        } catch (VictoriaException e) {
-        }
     }
 
     public void setOpcionAtacar(ContextMenu contextMenu) {
@@ -116,14 +88,6 @@ public class VistaZonaMonstruo {
         return sacrificios;
     }
 
-    public void sacrificar(List<CartaMonstruo> sacrificios) {
-        for (CartaMonstruo carta: sacrificios) {
-            zonaMonstruo.eliminarCarta(carta);
-            elementos.remove(this.obtenerBoton(carta));
-            this.actualizar();
-        }
-    }
-
     public List<CheckBoxCarta> generarOpcionesAtaque() {
         List<CheckBoxCarta> resultado = new ArrayList<>();
         List<Casillero> casilleros = zonaMonstruo.obtenerCasilleros();
@@ -135,10 +99,3 @@ public class VistaZonaMonstruo {
         return resultado;
     }
 }
-
-/*
-* zonaMonstruo.eliminarCarta(carta);
-            elementos.remove(this.obtenerBoton(carta));
-            this.actualizar();
-*
-* */

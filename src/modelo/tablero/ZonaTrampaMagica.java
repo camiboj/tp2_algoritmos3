@@ -3,6 +3,7 @@ import modelo.cartas.Carta;
 import modelo.cartas.invocacion.Invocacion;
 import modelo.cartas.cartasTrampa.CartaTrampa;
 import modelo.cartas.invocacion.InvocacionDefault;
+import modelo.excepciones.ZonaTrampaMagicaLlenaException;
 import modelo.jugador.Jugador;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class ZonaTrampaMagica implements Zona {
         }
     }
 
-    public int colocarCarta(InvocacionDefault invocacion) {
+    public int colocarCarta(InvocacionDefault invocacion) throws ZonaTrampaMagicaLlenaException {
         Carta carta = invocacion.invocar();
         for (int i= 0; i<CANT_CASILLEROS ; i++) {
             Casillero casillero = casilleros.get(i);
@@ -35,7 +36,8 @@ public class ZonaTrampaMagica implements Zona {
                 return i;
             }
         }
-        return -1;
+        throw new ZonaTrampaMagicaLlenaException("La zona de trampa y magia está completa." +
+                " No puede seguir colocando cartas en la misma");
     }
 
     public boolean estaVacia() {

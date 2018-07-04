@@ -14,6 +14,7 @@ import modelo.estadosDeCartas.BocaAbajo;
 import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.VictoriaException;
 import modelo.excepciones.ZonaMonstruoLlenaException;
+import modelo.excepciones.ZonaTrampaMagicaLlenaException;
 import modelo.jugador.Jugador;
 import modelo.jugador.Punto;
 
@@ -40,7 +41,7 @@ public class Tablero {
 		return divisiones.get(jugador1);
 	}
 
-	public boolean colocarZonaCampo(InvocacionDefault unaInvocacion, Jugador jugador) throws VictoriaException {
+	public boolean colocarZonaCampo(InvocacionDefault unaInvocacion, Jugador jugador) {
 		//Si es Wasteland: primero pasar Jugador y después JugadorOponente
 		//Si es Sogen: primero pasar JugadorOponente y después Jugador
 		unaInvocacion.asignarJugadorACarta(jugador);
@@ -54,15 +55,14 @@ public class Tablero {
 		return ladoDelCampo.mostrarCementerio();
 	}
 
-	public boolean colocarZonaTrampaMagica(InvocacionDefault unaInvocacion, Jugador jugador) {
+	public int colocarZonaTrampaMagica(InvocacionDefault unaInvocacion, Jugador jugador) throws ZonaTrampaMagicaLlenaException {
 		Carta carta = unaInvocacion.invocar();
 		unaInvocacion.asignarTablero(this);
 		unaInvocacion.asignarJugadorACarta(jugador);
 		jugador.sacarDeMano(carta);
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
 		this.colocarCementerio(carta, jugador);
-		int resul = ladoDelCampo.colocarZonaTrampaMagica(unaInvocacion);
-		return resul != -1;
+		return ladoDelCampo.colocarZonaTrampaMagica(unaInvocacion);
 	}
 
 	public int colocarZonaMonstruo(InvocacionCartaMonstruo unaInvocacion, Jugador jugador)
@@ -172,6 +172,10 @@ public class Tablero {
 		LadoDelCampo ladoDelCampo = divisiones.get(unJugador);
 		return ladoDelCampo.mostrarZonaMonstruo();
 	}
+	public ZonaCampo mostrarZonaCampo(Jugador jugador) {
+		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
+		return ladoDelCampo.mostrarZonaCampo();
+	}
 
 	public void borrarMonstruos() {
 		for (LadoDelCampo unLadoDelCampo : divisiones.values()) {
@@ -252,4 +256,6 @@ public class Tablero {
 		}
 		return null;
 	}
+
+
 }

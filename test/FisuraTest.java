@@ -7,6 +7,7 @@ import modelo.cartas.invocacion.InvocacionDefault;
 import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.VictoriaException;
 import modelo.excepciones.ZonaMonstruoLlenaException;
+import modelo.excepciones.ZonaTrampaMagicaLlenaException;
 import modelo.jugador.Jugador;
 import org.junit.Test;
 import modelo.tablero.Cementerio;
@@ -15,6 +16,7 @@ import modelo.tablero.ZonaMonstruo;
 
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.fail;
 
 public class FisuraTest {
 
@@ -37,13 +39,17 @@ public class FisuraTest {
             tablero.colocarZonaMonstruo(invocacionSobreviviente, jugadorOponente);
             tablero.colocarZonaMonstruo(invocacionMuerto, jugadorOponente);
 
-        } catch (ZonaMonstruoLlenaException e) {
-        } catch (InvocacionExcepcion invocacionExcepcion) {
+        } catch (ZonaMonstruoLlenaException | InvocacionExcepcion e) {
+            fail();
         }
 
         Fisura fisura = new Fisura();
         InvocacionDefault invocacionFisura = new InvocacionDefault(fisura);
-        tablero.colocarZonaTrampaMagica(invocacionFisura, jugador);
+        try {
+            tablero.colocarZonaTrampaMagica(invocacionFisura, jugador);
+        } catch (ZonaTrampaMagicaLlenaException e) {
+            fail();
+        }
         try {
             fisura.colocarBocaArriba();
             Cementerio cementerio = tablero.mostrarCementerio(jugadorOponente);

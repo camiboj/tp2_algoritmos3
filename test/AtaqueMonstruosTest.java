@@ -8,6 +8,7 @@ import modelo.cartas.invocacion.InvocacionDefault;
 import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.VictoriaException;
 import modelo.excepciones.ZonaMonstruoLlenaException;
+import modelo.excepciones.ZonaTrampaMagicaLlenaException;
 import modelo.jugador.Jugador;
 import org.junit.Test;
 import modelo.tablero.Cementerio;
@@ -21,7 +22,7 @@ import static junit.framework.TestCase.fail;
 public class AtaqueMonstruosTest {
 
     @Test
-     public void DosJugadoresTiranSusCartas () throws VictoriaException {
+     public void DosJugadoresTiranSusCartas () throws VictoriaException, ZonaTrampaMagicaLlenaException {
 
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
@@ -31,7 +32,12 @@ public class AtaqueMonstruosTest {
         InvocacionDefault invocacion1 = new InvocacionDefault(carta1);
         Carta carta2 = new AgujeroNegro();
         InvocacionDefault invocacion2 = new InvocacionDefault(carta2);
-        assertTrue(tablero.colocarZonaTrampaMagica(invocacion1, jugador1) && tablero.colocarZonaTrampaMagica(invocacion2, jugador2));
+        try {
+            assertTrue(tablero.colocarZonaTrampaMagica(invocacion1, jugador1) >= 0
+                    && tablero.colocarZonaTrampaMagica(invocacion2, jugador2) >= 0);
+        } catch (ZonaTrampaMagicaLlenaException e) {
+            fail();
+        }
     }
 
     @Test

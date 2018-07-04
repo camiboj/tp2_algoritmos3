@@ -8,12 +8,14 @@ import modelo.cartas.invocacion.InvocacionDefault;
 import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.VictoriaException;
 import modelo.excepciones.ZonaMonstruoLlenaException;
+import modelo.excepciones.ZonaTrampaMagicaLlenaException;
 import modelo.jugador.Jugador;
 import org.junit.Test;
 import modelo.tablero.Cementerio;
 import modelo.tablero.Tablero;
 
 import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.fail;
 import static org.junit.Assert.assertFalse;
 
 public class CilindroMagicoTest {
@@ -44,10 +46,15 @@ public class CilindroMagicoTest {
         }
         try {
             tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
-        } catch (ZonaMonstruoLlenaException e) {
-        } catch (InvocacionExcepcion invocacionExcepcion) {
+
+        } catch (ZonaMonstruoLlenaException | InvocacionExcepcion e) {
+        fail();
         }
-        tablero.colocarZonaTrampaMagica(InvocacionCilindroMagico,jugadorDefensor);
+        try {
+            tablero.colocarZonaTrampaMagica(InvocacionCilindroMagico,jugadorDefensor);
+        } catch (ZonaTrampaMagicaLlenaException e) {
+            fail();
+        }
         tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
         Cementerio cementerio = tablero.mostrarCementerio(jugadorAtacante);
         assertFalse(cementerio.existe(cartaAtacante));
