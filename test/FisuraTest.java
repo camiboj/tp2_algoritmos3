@@ -41,7 +41,7 @@ public class FisuraTest {
         } catch (InvocacionExcepcion invocacionExcepcion) {
         }
 
-        Fisura fisura = new Fisura(tablero.mostrarLadoDelCampo(jugadorOponente));
+        Fisura fisura = new Fisura();
         InvocacionDefault invocacionFisura = new InvocacionDefault(fisura);
         tablero.colocarZonaTrampaMagica(invocacionFisura, jugador);
         try {

@@ -43,7 +43,7 @@ public class WastelandTest {
         //Verifico que los dos monstruos están en el campo
         assertTrue(zonaMonstruo1.existe(monstruo1) && zonaMonstruo2.existe(monstruo2));
 
-        Wasteland wasteland = new Wasteland(zonaMonstruo1, zonaMonstruo2);
+        Wasteland wasteland = new Wasteland();
         InvocacionDefault invocacionWasteland = new InvocacionDefault(wasteland);
         try {
             tablero.colocarZonaCampo(invocacionWasteland, jugador1);

@@ -33,7 +33,7 @@ public class Jinzo7Test {
         } catch (InvocacionExcepcion invocacionExcepcion) {
         }
 
-        Jinzo7 jinzo7 = new Jinzo7(jugadorOponente);
+        Jinzo7 jinzo7 = new Jinzo7();
         FasePreparacion fasePreparacionJinzo7 = new FasePreparacion();
         InvocacionCartaMonstruoGenerica invocacionJinzo7 = new InvocacionCartaMonstruoGenerica(jinzo7, fasePreparacionJinzo7);
         try {

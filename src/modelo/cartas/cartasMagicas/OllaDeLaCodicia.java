@@ -8,12 +8,14 @@ import modelo.tablero.Tablero;
  public class OllaDeLaCodicia extends CartaMagica implements Efecto {
      Jugador jugador;
 
-    public OllaDeLaCodicia(Jugador unJugador) {
+    public OllaDeLaCodicia() {
         super("Olla De La Codicia");
-        jugador = unJugador;
-        this.descripcionEfecto = "Roba dos cartas";
-    }
 
+    }
+    @Override
+    public void asignarJugador(Jugador jugador) {
+        this.jugador = jugador;
+    }
     public void activarEfecto() throws VictoriaException {
         jugador.agarraCartas(2);
     }

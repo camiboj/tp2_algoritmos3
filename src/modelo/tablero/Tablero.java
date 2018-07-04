@@ -43,7 +43,8 @@ public class Tablero {
 	public boolean colocarZonaCampo(InvocacionDefault unaInvocacion, Jugador jugador) throws VictoriaException {
 		//Si es Wasteland: primero pasar Jugador y después JugadorOponente
 		//Si es Sogen: primero pasar JugadorOponente y después Jugador
-
+		unaInvocacion.asignarJugadorACarta(jugador);
+		unaInvocacion.asignarTablero(this);
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
 		return ladoDelCampo.colocarZonaCampo(unaInvocacion);
 	}
@@ -55,6 +56,8 @@ public class Tablero {
 
 	public boolean colocarZonaTrampaMagica(InvocacionDefault unaInvocacion, Jugador jugador) {
 		Carta carta = unaInvocacion.invocar();
+		unaInvocacion.asignarTablero(this);
+		unaInvocacion.asignarJugadorACarta(jugador);
 		jugador.sacarDeMano(carta);
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
 		this.colocarCementerio(carta, jugador);
@@ -64,7 +67,8 @@ public class Tablero {
 
 	public int colocarZonaMonstruo(InvocacionCartaMonstruo unaInvocacion, Jugador jugador)
 			throws ZonaMonstruoLlenaException, InvocacionExcepcion {
-
+		unaInvocacion.asignarTablero(this);
+		unaInvocacion.asignarJugadorACarta(jugador);
 		Cementerio cementerio = divisiones.get(jugador).mostrarCementerio();
 		ZonaMonstruo zonaMonstruo = divisiones.get(jugador).mostrarZonaMonstruo();
 		unaInvocacion.sacrificar(cementerio, zonaMonstruo);
@@ -236,5 +240,17 @@ public class Tablero {
 		lista.add(lista1);
 		lista.add(lista2);
 		return lista;
+	}
+
+	public Jugador obtenerJugadorOponente(Jugador jugadorDeTurno) {
+		for (Object jugador: divisiones.keySet()
+			 ) {
+			if (jugador instanceof Jugador){
+				if (jugador.hashCode()!=jugadorDeTurno.hashCode()){
+					return (Jugador) jugador;
+				}
+			}
+		}
+		return null;
 	}
 }

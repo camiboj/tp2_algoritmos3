@@ -49,7 +49,7 @@ public class SogenTest {
         //Verifico que los dos monstruos están en el campo
         assertTrue(zonaMonstruoSogen.existe(monstruoLadoSogen) && zonaMonstruoOtro.existe(otroMonstruo));
 
-        Sogen sogen = new Sogen(zonaMonstruoSogen, zonaMonstruoOtro);
+        Sogen sogen = new Sogen();
         InvocacionDefault invocacionSogen = new InvocacionDefault(sogen);
         try {
             tablero.colocarZonaCampo(invocacionSogen, jugadorSogen);

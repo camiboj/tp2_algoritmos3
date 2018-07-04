@@ -1,10 +1,12 @@
 package modelo.cartas;
 
+import modelo.cartas.cartasCampo.Sogen;
 import modelo.cartas.cartasCampo.Wasteland;
 import modelo.cartas.cartasMagicas.AgujeroNegro;
 import modelo.cartas.cartasMagicas.Fisura;
 import modelo.cartas.cartasMagicas.OllaDeLaCodicia;
 import modelo.cartas.cartasMonstruo.DragonDefinitivoDeOjosAzules;
+import modelo.cartas.cartasMonstruo.InsectoComeHombres;
 import modelo.cartas.cartasMonstruo.Jinzo7;
 import modelo.cartas.cartasMonstruo.cartasBasicas.*;
 import modelo.cartas.cartasMonstruo.exodia.*;
@@ -15,8 +17,7 @@ import modelo.tablero.Tablero;
 import modelo.tablero.ZonaMonstruo;
 
 public class CreadoraDeCartas {
-	public static final Carta crearCarta(String nombre, Jugador jugador, Jugador jugadorContrario,
-										 ZonaMonstruo zonaMonstruoAtacante, ZonaMonstruo zonaMonstruoPropia, Tablero tablero) {
+	public static final Carta crearCarta(String nombre) {
 		switch (nombre) {
 			case "Huevo Monstruoso":
 				return new HuevoMonstruoso();
@@ -25,7 +26,7 @@ public class CreadoraDeCartas {
 			case "Cilindro Magico":
 				return new CilindroMagico();
 			case "Agujero Negro":
-				return new AgujeroNegro(tablero);
+				return new AgujeroNegro();
 			case "Alcanzador de Garra":
 				return new AlcanzadorDeGarra();
 			case "Araña Lanzadora":
@@ -35,9 +36,9 @@ public class CreadoraDeCartas {
 			case "Aitsu":
 				return new Aitsu();
 			case "Wasteland":
-				return new Wasteland(zonaMonstruoAtacante, zonaMonstruoPropia);
+				return new Wasteland();
 			case "Olla De La Codicia":
-				return new OllaDeLaCodicia(jugador);
+				return new OllaDeLaCodicia();
 			case "Brazo Derecho Del Prohibido":
 				return new BrazoDerechoDelProhibido();
 			case "Brazo Izquierdo Del Prohibido":
@@ -139,15 +140,15 @@ public class CreadoraDeCartas {
 			case "Zombi De Dragon":
 				return  new ZombiDeDragon();
 			case "Jinzo 7":
-				return  new Bitron();
+				return  new Jinzo7();
 			case "Insecto Come Hombres":
-				return  new Bitron();
+				return  new InsectoComeHombres();
 			case "Dragon Definitivo De Ojos Azules":
 				return  new DragonDefinitivoDeOjosAzules();
 			case "Reinforcements":
 				return  new Reinforcements();
 			case "Fisura":
-				return  new Protron();
+				return  new Fisura();
 			case "Sogen":
 				return  new Bitron();
 

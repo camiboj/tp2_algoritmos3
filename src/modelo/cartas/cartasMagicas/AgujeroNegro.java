@@ -4,12 +4,14 @@ import modelo.tablero.Tablero;
 public class AgujeroNegro extends CartaMagica {
     private Tablero tablero;
 
-    public AgujeroNegro(Tablero unTablero) {
+    public AgujeroNegro() {
 		super("Agujero Negro");
-		tablero = unTablero;
         this.descripcionEfecto = "Destruye todos los monstruos del campo";
 	}
-
+    @Override
+    public void asignarTablero(Tablero tablero){
+            this.tablero=tablero;
+    }
 
     public void activarEfecto() {
         tablero.borrarMonstruos();

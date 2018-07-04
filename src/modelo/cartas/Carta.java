@@ -3,6 +3,8 @@ import modelo.estadosDeCartas.BocaAbajo;
 import modelo.estadosDeCartas.BocaArriba;
 import modelo.estadosDeCartas.Estado;
 import modelo.excepciones.VictoriaException;
+import modelo.jugador.Jugador;
+import modelo.tablero.Tablero;
 
 public abstract class Carta {
     protected String descripcionEfecto;
@@ -39,5 +41,13 @@ public abstract class Carta {
 
     public String obtenerEfecto(){
         return descripcionEfecto;
+    }
+
+    public void asignarJugador(Jugador jugador) {
+        //normalmente una carta no necesita saberlo pero puede que necesiten hacerle un overload en caso de que sea necesario
+    }
+
+    public void asignarTablero(Tablero tablero) {
+        //normalmente una carta no necesita saberlo pero puede que necesiten hacerle un overload en caso de que sea necesario
     }
 }

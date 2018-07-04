@@ -16,7 +16,7 @@ public class CartaMagicaTest {
         Jugador jug1 = new Jugador();
         Jugador jug2 = new Jugador();
         Tablero tablero = new Tablero(jug1, jug2);
-        AgujeroNegro cualquierCarta = new AgujeroNegro(tablero);
+        AgujeroNegro cualquierCarta = new AgujeroNegro();
         cualquierCarta.colocarBocaAbajo();
         assertTrue(cualquierCarta.getEstado().equals(new BocaAbajo()) );
     }
@@ -27,7 +27,7 @@ public class CartaMagicaTest {
         Jugador jugador2 = new Jugador();
         Tablero tablero = new Tablero(jugador1, jugador2);
         CreadoraDeCartas manager = new CreadoraDeCartas();
-        Carta unaCarta = new AgujeroNegro(tablero);
+        Carta unaCarta = new AgujeroNegro();
         InvocacionDefault invocacion = new InvocacionDefault(unaCarta);
         unaCarta.colocarBocaAbajo();
         assertTrue(tablero.colocarZonaTrampaMagica(invocacion, jugador1));

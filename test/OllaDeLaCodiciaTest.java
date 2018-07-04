@@ -18,7 +18,7 @@ public class OllaDeLaCodiciaTest {
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
         Tablero tablero = new Tablero(jugador1, jugador2);
-        OllaDeLaCodicia ollaDeLaCodicia = new OllaDeLaCodicia(jugador1);
+        OllaDeLaCodicia ollaDeLaCodicia = new OllaDeLaCodicia();
         InvocacionDefault invocacionOllaDeLaCodicia = new InvocacionDefault(ollaDeLaCodicia);
         tablero.colocarZonaTrampaMagica(invocacionOllaDeLaCodicia, jugador1);
         try {
