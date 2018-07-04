@@ -21,7 +21,7 @@ import static junit.framework.TestCase.fail;
 public class FisuraTest {
 
     @Test
-    public void FisuraTest() throws  VictoriaException {
+    public void FisuraTest() throws VictoriaException {
         Jugador jugador = new Jugador();
         Jugador jugadorOponente = new Jugador();
         Tablero tablero = new Tablero(jugador, jugadorOponente);
@@ -44,27 +44,30 @@ public class FisuraTest {
         }
 
         Fisura fisura = new Fisura();
-        InvocacionDefault invocacionFisura = new InvocacionDefault(fisura);
-        try {
-            tablero.colocarZonaTrampaMagica(invocacionFisura, jugador);
-        } catch (ZonaTrampaMagicaLlenaException e) {
-            fail();
+        if (fisura == null) {
+            System.out.println("CACAA");
+            InvocacionDefault invocacionFisura = new InvocacionDefault(fisura);
+            try {
+                tablero.colocarZonaTrampaMagica(invocacionFisura, jugador);
+            } catch (ZonaTrampaMagicaLlenaException e) {
+                fail();
+            }
+            try {
+                fisura.colocarBocaArriba();
+                Cementerio cementerio = tablero.mostrarCementerio(jugadorOponente);
+                ZonaMonstruo zonaMonstruo = tablero.mostrarZonaMonstruo(jugadorOponente);
+
+                assertTrue(cementerio.existe(cartaAMorir));
+                assertFalse(zonaMonstruo.existe(cartaAMorir));
+
+                assertFalse(cementerio.existe(cartaSobreviviente));
+                assertTrue(zonaMonstruo.existe(cartaSobreviviente));
+            } catch (VictoriaException e) {
+
+                assertTrue(false);
+            }
+
+
         }
-        try {
-            fisura.colocarBocaArriba();
-            Cementerio cementerio = tablero.mostrarCementerio(jugadorOponente);
-            ZonaMonstruo zonaMonstruo = tablero.mostrarZonaMonstruo(jugadorOponente);
-
-            assertTrue(cementerio.existe(cartaAMorir));
-            assertFalse(zonaMonstruo.existe(cartaAMorir));
-
-            assertFalse(cementerio.existe(cartaSobreviviente));
-            assertTrue(zonaMonstruo.existe(cartaSobreviviente));
-        } catch (VictoriaException e) {
-
-            assertTrue(false);
-        }
-
-
     }
 }

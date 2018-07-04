@@ -17,6 +17,7 @@ import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.cartas.invocacion.InvocacionDefault;
 import modelo.excepciones.InvocacionExcepcion;
+import modelo.excepciones.NoHayTrampasExcepcion;
 import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.excepciones.ZonaTrampaMagicaLlenaException;
 import modelo.jugador.Jugador;
@@ -170,7 +171,7 @@ public class VistaJugador extends VBox {
         vistaMano.esconder();
     }
 
-    public void voltearTrampas() {
-        vistaTrampaMagica.voltearTrampas();
+    public void voltearPrimeraTrampa() throws NoHayTrampasExcepcion {
+        vistaTrampaMagica.voltearPrimeraTrampa();
     }
 }

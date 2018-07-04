@@ -33,8 +33,6 @@ public abstract class Carta {
 		return estado;
 	}
 
-    public boolean equals(Object object){return this.getClass().equals(object.getClass());}
-
     public String getNombre(){
         return nombre;
     }

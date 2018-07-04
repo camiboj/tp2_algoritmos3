@@ -4,6 +4,7 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import modelo.Fase.FasePreparacion;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
+import modelo.excepciones.NoHayTrampasExcepcion;
 import modelo.jugador.Jugador;
 import modelo.jugador.YuGiOh;
 import modelo.tablero.Tablero;
@@ -146,8 +147,18 @@ public class Controlador {
     }
 
     public void iniciarFaseTrampa() {
-        botonera.desactivarAtaque();
-        contenedorBase.escribirEnConsola("Se activo la fase trampa");
-        vistaContrincante.voltearTrampas();
+        botonera.activarFinDeTrampas();
+        contenedorBase.escribirEnConsola("Has podido atacar correctamente. Se activó la fase trampa " +
+                "automáticamente como resultado de la misma. \n" +
+                " Para pasar a la fase final haz click en 'Fin Fase de Ataque' y para volver a atacar haz click " +
+                "en 'Atacar'");
+        try {
+            vistaContrincante.voltearPrimeraTrampa();
+        } catch (NoHayTrampasExcepcion noHayTrampasExcepcion) {
+            contenedorBase.escribirEnConsola("Has podido atacar correctamente y no se activaron trampas. " +
+                    "Para pasar a la fase final haz click en 'Fin Fase de Ataque' y para volver a atacar haz click " +
+                    "en 'Atacar'");
+        }
+
     }
 }

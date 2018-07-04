@@ -13,5 +13,4 @@ public class HuevoMonstruoso extends CartaMonstruo {
 	public Object getUbicacion() {
         return new Cementerio();
     }
-	public boolean equals(Object object){return this.getClass().equals(object.getClass());}
 }

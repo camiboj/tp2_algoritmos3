@@ -56,4 +56,7 @@ public class Botonera extends VBox {
     public void desactivarAtaque() {
         botonAtaque.setDisable(true);
     }
+
+    public void activarFinDeTrampas() { botonFinFaseAtaque.setDisable(false);
+    }
 }

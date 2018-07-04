@@ -2,6 +2,7 @@ package vista.vistaZonas;
 
 import modelo.cartas.Carta;
 import modelo.cartas.cartasTrampa.CartaTrampa;
+import modelo.excepciones.NoHayTrampasExcepcion;
 import modelo.tablero.ZonaTrampaMagica;
 import vista.ContenedorBase;
 import vista.botones.BotonCarta;
@@ -30,7 +31,7 @@ public class VistaTrampaMagica extends VistaZonas {
         contenedorBase.ubicarObjeto(botonCartaBocaAbajo, fila, columna);
     }
 
-    public void voltearTrampas() {
+    public void voltearPrimeraTrampa() throws NoHayTrampasExcepcion {
         for (BotonCarta botonCarta: elementos) {
             if(botonCarta instanceof BotonCartaBocaAbajo && botonCarta.obtenerCarta() instanceof CartaTrampa) {
                 BotonCartaBocaAbajo botonCartaBocaAbajo = (BotonCartaBocaAbajo) botonCarta;
@@ -39,8 +40,9 @@ public class VistaTrampaMagica extends VistaZonas {
                 BotonCartaZonaTrampaMagica botonCartaBocaArriba = botonCartaBocaAbajo.obtenerBotonBocaArriba();
                 elementos.add(botonCartaBocaArriba);
                 contenedorBase.ubicarObjeto(botonCartaBocaArriba, botonCartaBocaAbajo.obtenerFila(), botonCartaBocaAbajo.obtenerColumna());
-
+                return;
             }
         }
+        throw new NoHayTrampasExcepcion("No hay trampas");
     }
 }

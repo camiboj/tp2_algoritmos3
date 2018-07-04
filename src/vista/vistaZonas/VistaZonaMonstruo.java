@@ -48,7 +48,12 @@ public class VistaZonaMonstruo extends VistaZonas {
         for (BotonCarta botonCarta : elementos) {
             if (botonCarta instanceof BotonCartaZonaMonstruo) {
                 BotonCartaZonaMonstruo boton = (BotonCartaZonaMonstruo) botonCarta;
-                boton.setContextMenu(contextMenu);
+                if (boton.obtenerCarta().enModoDefensa()) {
+                    boton.setDisable(true);
+                }
+                else {
+                    boton.setContextMenu(contextMenu);
+                }
             }
             else {
                 BotonCartaBocaAbajo boton = (BotonCartaBocaAbajo) botonCarta;
