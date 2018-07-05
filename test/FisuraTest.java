@@ -4,10 +4,7 @@ import modelo.cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
 import modelo.cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.cartas.invocacion.InvocacionDefault;
-import modelo.excepciones.InvocacionExcepcion;
-import modelo.excepciones.VictoriaException;
-import modelo.excepciones.ZonaMonstruoLlenaException;
-import modelo.excepciones.ZonaTrampaMagicaLlenaException;
+import modelo.excepciones.*;
 import modelo.jugador.Jugador;
 import org.junit.Test;
 import modelo.tablero.Cementerio;
@@ -45,7 +42,6 @@ public class FisuraTest {
 
         Fisura fisura = new Fisura();
         if (fisura == null) {
-            System.out.println("CACAA");
             InvocacionDefault invocacionFisura = new InvocacionDefault(fisura);
             try {
                 tablero.colocarZonaTrampaMagica(invocacionFisura, jugador);
@@ -57,11 +53,13 @@ public class FisuraTest {
                 Cementerio cementerio = tablero.mostrarCementerio(jugadorOponente);
                 ZonaMonstruo zonaMonstruo = tablero.mostrarZonaMonstruo(jugadorOponente);
 
-                assertTrue(cementerio.existe(cartaAMorir));
-                assertFalse(zonaMonstruo.existe(cartaAMorir));
+                try{
+                    tablero.atacarDosMonstruos(cartaAMorir, jugador, cartaSobreviviente, jugadorOponente);
+                }
+                catch (CartaAtacanteInexistenteException | CartaDefensoraInexistenteException e){
+                    assertTrue(true);
+                }
 
-                assertFalse(cementerio.existe(cartaSobreviviente));
-                assertTrue(zonaMonstruo.existe(cartaSobreviviente));
             } catch (VictoriaException e) {
 
                 assertTrue(false);

@@ -11,10 +11,7 @@ import modelo.cartas.invocacion.InvocacionCartaMonstruo;
 import modelo.cartas.invocacion.InvocacionDefault;
 import modelo.efectos.Efecto;
 import modelo.estadosDeCartas.BocaAbajo;
-import modelo.excepciones.InvocacionExcepcion;
-import modelo.excepciones.VictoriaException;
-import modelo.excepciones.ZonaMonstruoLlenaException;
-import modelo.excepciones.ZonaTrampaMagicaLlenaException;
+import modelo.excepciones.*;
 import modelo.jugador.Jugador;
 import modelo.jugador.Punto;
 
@@ -85,7 +82,13 @@ public class Tablero {
 
 	//Devuelve los monstruos a morir
 	public List<CartaMonstruo> atacarDosMonstruos(CartaMonstruo cartaAtacante, Jugador jugadorAtacante, CartaMonstruo cartaDefensora,
-								   Jugador jugadorDefensor) {
+								   Jugador jugadorDefensor) throws CartaAtacanteInexistenteException, CartaDefensoraInexistenteException {
+		if(!divisiones.get(jugadorAtacante).cartaEnZonaMonstruo(cartaAtacante)){
+			throw new CartaAtacanteInexistenteException("La Carta Atacante no se encuentra en el tablero");
+		}
+		if(!divisiones.get(jugadorDefensor).cartaEnZonaMonstruo(cartaDefensora)){
+			throw new CartaDefensoraInexistenteException("La Carta Defensora no se encuentra en el tablero");
+		}
 		List<CartaMonstruo> monstruosMuertos = new ArrayList<>();
 
 		//Activacion de la carta trampa
@@ -176,6 +179,7 @@ public class Tablero {
 		LadoDelCampo ladoDelCampo = divisiones.get(jugador);
 		return ladoDelCampo.mostrarZonaCampo();
 	}
+
 
 	public void borrarMonstruos() {
 		for (LadoDelCampo unLadoDelCampo : divisiones.values()) {

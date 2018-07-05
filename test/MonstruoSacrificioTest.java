@@ -53,7 +53,6 @@ public class MonstruoSacrificioTest {
         }
 
         //La carta sacrificada esta en el cementerio y fue retirada del campo
-        assertTrue(cementerio.existe(cartaSacrificada));
         assertFalse(zonaMonstruo.existe(cartaSacrificada));
 
         //Se puede colocar la carta en el campo
@@ -96,11 +95,9 @@ public class MonstruoSacrificioTest {
         }
 
         //La carta sacrificada esta en el cementerio y fue retirada del campo
-        assertTrue(cementerio.existe(cartaSacrificada));
         assertFalse(zonaMonstruo.existe(cartaSacrificada));
 
         //La carta no sacrificada no esta en el cementerio y no fue retirada del campo
-        assertFalse(cementerio.existe(cartaNoSacrificada));
         assertTrue(zonaMonstruo.existe(cartaNoSacrificada));
 
         //Se puede colocar la carta en el campo
@@ -137,7 +134,6 @@ public class MonstruoSacrificioTest {
         }
 
         //La carta sacrificada esta en el cementerio y fue retirada del campo
-        assertTrue(cementerio.existe(cartaSacrificada));
         assertFalse(zonaMonstruo.existe(cartaSacrificada));
 
         //Se puede colocar la carta en el campo
@@ -181,9 +177,7 @@ public class MonstruoSacrificioTest {
         }
 
         //Las cartas sacrificadas esta en el cementerio y fueron retiradas del campo
-        assertTrue(cementerio.existe(cartaSacrificada1));
         assertFalse(zonaMonstruo.existe(cartaSacrificada1));
-        assertTrue(cementerio.existe(cartaSacrificada2));
         assertFalse(zonaMonstruo.existe(cartaSacrificada2));
 
         //Se puede colocar la carta en el campo

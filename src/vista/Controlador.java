@@ -4,6 +4,8 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import modelo.Fase.FasePreparacion;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
+import modelo.excepciones.CartaAtacanteInexistenteException;
+import modelo.excepciones.CartaDefensoraInexistenteException;
 import modelo.excepciones.NoHayTrampasExcepcion;
 import modelo.jugador.Jugador;
 import modelo.jugador.YuGiOh;
@@ -128,7 +130,7 @@ public class Controlador {
         botonera.activarBotonAtacar(new BotonAtacarHandler(checks, contenedorBase, this, contextMenuAtacante));
     }
 
-    public void atacarMonstruos(BotonCartaZonaMonstruo botonMonstruoAtacante, BotonCarta botonCartaAtacada) {
+    public void atacarMonstruos(BotonCartaZonaMonstruo botonMonstruoAtacante, BotonCarta botonCartaAtacada) throws CartaAtacanteInexistenteException, CartaDefensoraInexistenteException {
 
         List<CartaMonstruo> cartasMuertas = juego.mostrarTablero().atacarDosMonstruos((CartaMonstruo) botonMonstruoAtacante.obtenerCarta(), jugadorTurno,
                 (CartaMonstruo) botonCartaAtacada.obtenerCarta(), jugadorContrincante);

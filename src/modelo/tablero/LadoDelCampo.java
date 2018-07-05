@@ -129,4 +129,8 @@ public class LadoDelCampo {
 	public ZonaCampo mostrarZonaCampo() {
 		return miZonaCampo;
 	}
+
+    public boolean cartaEnZonaMonstruo(CartaMonstruo carta) {
+		return miZonaMonstruo.existe(carta);
+    }
 }

@@ -3,6 +3,8 @@ package vista.handler;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import modelo.excepciones.AtacarMasDeUnoExcepcion;
+import modelo.excepciones.CartaAtacanteInexistenteException;
+import modelo.excepciones.CartaDefensoraInexistenteException;
 import vista.CheckBoxCarta;
 import vista.ContenedorBase;
 import vista.ContextMenuAtacante;
@@ -36,7 +38,14 @@ public class BotonAtacarHandler implements EventHandler {
                 contador ++;}
         }
         if (contador == 1) {
-            controlador.atacarMonstruos(botonMonstruoAtacante, seleccionado.obtenerBotonCarta());
+            try {
+                controlador.atacarMonstruos(botonMonstruoAtacante, seleccionado.obtenerBotonCarta());
+            }
+            catch (CartaAtacanteInexistenteException | CartaDefensoraInexistenteException e){
+                contenedorBase.escribirEnConsola(e.obtenerMotivo());
+                }
+
+
             botonMonstruoAtacante.setDisable(true);
             controlador.iniciarFaseTrampa();
         }
