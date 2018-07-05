@@ -46,6 +46,7 @@ public class VistaJugador extends VBox {
 
     public VistaJugador(ContenedorBase contenedorBase, Jugador jugador,
                         Tablero tablero) {
+
         this.tablero = tablero;
         this.jugador = jugador;
         this.contenedorBase = contenedorBase;
@@ -205,12 +206,7 @@ public class VistaJugador extends VBox {
     }
 
 
-    public void actualizarZonaMonstruo(List <CartaMonstruo> monstruos) {
-        vistaZonaMonstruo.eliminarTodoVisualmente();
-
-        for (CartaMonstruo monstruo : monstruos) {
-            BotonCarta boton = vistaZonaMonstruo.obtenerBoton(monstruo);
-            vistaZonaMonstruo.agregarBoton(boton);
-        }
+    public void actualizarMonstruos(List<CartaMonstruo> monstruos) {
+        vistaZonaMonstruo.actualizarMonstruos(monstruos);
     }
 }

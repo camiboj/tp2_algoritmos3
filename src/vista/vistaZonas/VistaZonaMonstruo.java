@@ -1,5 +1,7 @@
 package vista.vistaZonas;
+import javafx.scene.Node;
 import javafx.scene.control.ContextMenu;
+import modelo.cartas.Carta;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.excepciones.InvocacionExcepcion;
 import modelo.excepciones.ZonaMonstruoLlenaException;
@@ -19,7 +21,7 @@ import java.util.List;
 public class VistaZonaMonstruo extends VistaZonas {
     protected ZonaMonstruo zonaMonstruo;
 
-    public VistaZonaMonstruo (ZonaMonstruo zonaMonstruo, ContenedorBase contenedorBase) {
+    public VistaZonaMonstruo(ZonaMonstruo zonaMonstruo, ContenedorBase contenedorBase) {
         super(contenedorBase);
         this.zonaMonstruo = zonaMonstruo;
         this.contenedorBase = contenedorBase;
@@ -32,7 +34,7 @@ public class VistaZonaMonstruo extends VistaZonas {
         VoltearHandler handle = new VoltearHandler(botonCartaBocaArriba, botonCartaBocaAbajo, this);
         botonCartaBocaAbajo.setOnAction(handle);
         botonCartaBocaAbajo.setRotate(90);
-        elementos.add(botonCartaBocaAbajo);
+        this.elementos.add(botonCartaBocaAbajo);
         contenedorBase.ubicarObjeto(botonCartaBocaAbajo, fila, columna);
     }
 
@@ -41,23 +43,21 @@ public class VistaZonaMonstruo extends VistaZonas {
         BotonCartaBocaAbajo botonCartaBocaAbajo = new BotonCartaBocaAbajo(fila, columna);
         VoltearHandler handle = new VoltearHandler(botonCartaBocaArriba, botonCartaBocaAbajo, this);
         botonCartaBocaAbajo.setOnAction(handle);
-        elementos.add(botonCartaBocaAbajo);
+        this.elementos.add(botonCartaBocaAbajo);
         contenedorBase.ubicarObjeto(botonCartaBocaAbajo, fila, columna);
     }
 
     public void setOpcionAtacar(ContextMenuAtacante contextMenu) {
-        for (BotonCarta botonCarta : elementos) {
+        for (BotonCarta botonCarta : this.elementos) {
             if (botonCarta instanceof BotonCartaZonaMonstruo) {
                 BotonCartaZonaMonstruo boton = (BotonCartaZonaMonstruo) botonCarta;
                 if (boton.obtenerCarta().enModoDefensa()) {
                     boton.setDisable(true);
-                }
-                else {
+                } else {
                     contextMenu.agregarCarta((BotonCartaZonaMonstruo) botonCarta);
                     boton.setContextMenu(contextMenu);
                 }
-            }
-            else {
+            } else {
                 BotonCartaBocaAbajo boton = (BotonCartaBocaAbajo) botonCarta;
                 boton.setDisable(true);
             }
@@ -66,7 +66,7 @@ public class VistaZonaMonstruo extends VistaZonas {
 
     public BotonCarta obtenerBoton(CartaMonstruo carta) {
 
-        for (BotonCarta boton : elementos) {
+        for (BotonCarta boton : this.elementos) {
             if (boton.obtenerCarta() == carta) {
                 return boton;
             }
@@ -74,8 +74,8 @@ public class VistaZonaMonstruo extends VistaZonas {
         return null;
     }
 
-    public List<CartaMonstruo> generarSacrificios(int cantidad) throws InvocacionExcepcion {
-        List<CartaMonstruo> sacrificios = new ArrayList<>();
+    public List <CartaMonstruo> generarSacrificios(int cantidad) throws InvocacionExcepcion {
+        List <CartaMonstruo> sacrificios = new ArrayList <>();
         if (zonaMonstruo.obtenerMonstruos().size() < cantidad) {
             throw new InvocacionExcepcion("No contás con las cartas necesarias para realizar el sacrificio correspondiente");
         }
@@ -85,7 +85,7 @@ public class VistaZonaMonstruo extends VistaZonas {
             this.elementos.remove(this.obtenerBoton(carta));
             sacrificios.add(carta);
         }
-        for (CartaMonstruo carta: sacrificios)  {
+        for (CartaMonstruo carta : sacrificios) {
             try {
                 zonaMonstruo.colocarCarta(carta);
             } catch (ZonaMonstruoLlenaException ignored) {
@@ -95,28 +95,53 @@ public class VistaZonaMonstruo extends VistaZonas {
         return sacrificios;
     }
 
-    public List<CheckBoxCarta> generarOpcionesAtaque() {
-        List<CheckBoxCarta> resultado = new ArrayList<>();
-        List<Casillero> casilleros = zonaMonstruo.obtenerCasilleros();
+    public List <CheckBoxCarta> generarOpcionesAtaque() {
+        List <CheckBoxCarta> resultado = new ArrayList <>();
+        List <Casillero> casilleros = zonaMonstruo.obtenerCasilleros();
         for (Casillero casillero : casilleros) {
-            if (casillero.estaVacio()){continue;}
+            if (casillero.estaVacio()) {
+                continue;
+            }
             CheckBoxCarta check = new CheckBoxCarta(this.obtenerBoton((CartaMonstruo) casillero.mostrarCarta()));
             resultado.add(check);
         }
         return resultado;
     }
 
-    public void eliminar(List<CartaMonstruo> sacrificios) {
+    public void eliminar(List <CartaMonstruo> sacrificios) {
         for (CartaMonstruo carta : sacrificios) {
             BotonCarta boton = this.obtenerBoton(carta);
             contenedorBase.getChildren().remove(boton);
         }
     }
 
-    public void eliminarTodoVisualmente() {
-        for (BotonCarta elemento : elementos) {
-            //elementos.remove(elemento);
-            contenedorBase.getChildren().remove(elemento);
+
+    public void eliminarBoton(BotonCarta botonCarta) {
+        this.elementos.remove(botonCarta);
+    }
+
+
+    public void actualizar() {
+        for (BotonCarta boton : elementos) {
+            boton.setDisable(false);
+            boton.cambiarFila(fila);
+            contenedorBase.getChildren().remove(boton);
+            contenedorBase.ubicarObjeto(boton, fila, boton.obtenerColumna());
         }
     }
+
+    public void actualizarMonstruos(List <CartaMonstruo> monstruos) {
+        List<BotonCarta> botones = this.elementos;
+
+        if (elementos.size() == 0) { return; }
+        for (BotonCarta botonCarta : botones) {
+            CartaMonstruo carta = (CartaMonstruo) botonCarta.obtenerCarta();
+            if (monstruos.contains(carta)) {
+                continue;
+            }
+            contenedorBase.getChildren().remove(botonCarta);
+            eliminarBoton(botonCarta);
+        }
+    }
+
 }

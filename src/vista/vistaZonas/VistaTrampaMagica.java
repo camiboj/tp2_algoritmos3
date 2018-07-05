@@ -98,4 +98,7 @@ public class VistaTrampaMagica extends VistaZonas {
         }
     }
 
+    public void eliminarBoton(BotonCarta botonCarta) {
+        this.elementos.remove(botonCarta);
+    }
 }

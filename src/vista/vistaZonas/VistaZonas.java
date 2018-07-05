@@ -26,8 +26,7 @@ public abstract class VistaZonas {
     }
 
     public void actualizar() {
-        for (Node node : elementos) {
-            BotonCarta boton = (BotonCarta) node;
+        for (BotonCarta boton : elementos) {
             boton.setDisable(false);
             boton.cambiarFila(fila);
             contenedorBase.getChildren().remove(boton);
@@ -42,9 +41,6 @@ public abstract class VistaZonas {
             botonADesactivar.setDisable(true);        }
     }
 
-    public void eliminarBoton(BotonCarta botonCarta) {
-        elementos.remove(botonCarta);
-    }
 
     public void voltear(BotonCartaBocaAbajo botonCartaBocaAbajo, BotonCarta botonCartaBocaArriba, int i, int columna) {
          elementos.add(botonCartaBocaArriba);

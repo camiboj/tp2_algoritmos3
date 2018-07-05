@@ -198,10 +198,8 @@ public class Controlador {
         List<CartaMonstruo> monstruosPropios = tablero.mostrarZonaMonstruo(jugadorTurno).obtenerMonstruos();
         List<CartaMonstruo> monstruosAjenos = tablero.mostrarZonaMonstruo(jugadorContrincante).obtenerMonstruos();
 
-        if(monstruosAjenos.size() > 0) { System.out.println("me mato"); }
-        if(monstruosAjenos.size() > 0) { System.out.println("me matox2"); }
-
-        vistaActual.actualizarZonaMonstruo(monstruosPropios);
-        vistaContrincante.actualizarZonaMonstruo(monstruosAjenos);
+        vistaActual.actualizarMonstruos(monstruosPropios);
+        vistaContrincante.actualizarMonstruos(monstruosAjenos);
     }
+
 }

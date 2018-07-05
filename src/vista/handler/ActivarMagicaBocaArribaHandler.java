@@ -28,7 +28,7 @@ public class ActivarMagicaBocaArribaHandler implements EventHandler<ActionEvent>
             contenedorBase.escribirEnConsola("Has activado una Carta Mágica. Recuerda que en el siguiente turno" +
                     " va a desaparecer.");
             controlador.agregarCartaTrampaMagicaABorrar(boton);
-            cartaMagica.activarEfecto();
+            cartaMagica.colocarBocaArriba();
             controlador.actualizarZonaMonstruo();
         } catch (VictoriaException e) {
 

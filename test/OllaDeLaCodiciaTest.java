@@ -26,7 +26,8 @@ public class OllaDeLaCodiciaTest {
         try {
             tablero.colocarZonaTrampaMagica(invocacionOllaDeLaCodicia, jugador1);
             ollaDeLaCodicia.colocarBocaArriba();
-        } catch (VictoriaException | ZonaTrampaMagicaLlenaException e) {
+        }
+        catch (ZonaTrampaMagicaLlenaException e) {
             //no deberia dispararse esta excepcion
             fail();
         }
