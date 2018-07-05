@@ -113,13 +113,10 @@ public class VistaJugador extends VBox {
                         "sacrificar " + sacrificios.size() + " monstruo/os, elegido/os por tener los menores puntos de ataque");
             }
             InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta, sacrificios, fase);
-            int indice = 0;
-            indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica, jugador);
+            int indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica, jugador);
             carta.colocarEnModoDeAtaque();
             List<CartaMonstruo> monstruosActuales = tablero.mostrarZonaMonstruo(jugador).obtenerMonstruos();
             vistaZonaMonstruo.actualizarMonstruos(monstruosActuales);
-
-            //indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica, jugador);
 
             int columna = indice + 3;
             vistaZonaMonstruo.colocarCartaModoAtaque(carta, columna);
@@ -139,9 +136,11 @@ public class VistaJugador extends VBox {
                         "sacrificar los" + sacrificios.size() + " monstruos de menor puntos de ataque");
             }
             InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta, sacrificios, fase);
-            vistaZonaMonstruo.eliminar(sacrificios);
             int indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica, jugador);
             carta.colocarEnModoDeDefensa();
+            List<CartaMonstruo> monstruosActuales = tablero.mostrarZonaMonstruo(jugador).obtenerMonstruos();
+            vistaZonaMonstruo.actualizarMonstruos(monstruosActuales);
+
             int columna = indice + 3;
             vistaZonaMonstruo.colocarCartaModoDefensa(carta, columna);
             contenedorBase.getChildren().remove(boton);
@@ -212,5 +211,9 @@ public class VistaJugador extends VBox {
 
     public void actualizarMonstruos(List<CartaMonstruo> monstruos) {
         vistaZonaMonstruo.actualizarMonstruos(monstruos);
+    }
+
+    public void actualizarMano() {
+        vistaMano.mostrar(new FasePreparacion());
     }
 }

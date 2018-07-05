@@ -203,4 +203,7 @@ public class Controlador {
         vistaContrincante.actualizarMonstruos(monstruosAjenos);
     }
 
+    public void actualizarMano() {
+        vistaActual.actualizarMano();
+    }
 }
