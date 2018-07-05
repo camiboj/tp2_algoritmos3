@@ -73,7 +73,7 @@ public class VistaMano {
         }
     }
 
-    public void reset() {
+    public void esconder() {
         for (Node elemento : elementos) {
             contenedorBase.getChildren().remove(elemento);
         }

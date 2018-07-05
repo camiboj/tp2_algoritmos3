@@ -37,7 +37,7 @@ public class MazoHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
         try {
             juego.ejecutarFaseInicial(jugadorTurno);
-            vistaMano.reset();
+            vistaMano.esconder();
             vistaMano.mostrar(fasePreparacion);
             vistaMano.activarCartas();
             botonMazo.setDisable(true);

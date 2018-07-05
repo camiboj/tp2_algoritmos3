@@ -11,14 +11,12 @@ public class Botonera extends VBox {
     private Controlador controlador;
     private BotonBotonera botonFinFaseAtaque;
     private BotonBotonera botonFinFaseDePreparacion;
-    private BotonBotonera botonFinFaseTrampas;
     private BotonBotonera botonCambioTurno;
 
     public Botonera(Controlador controlador) {
         this.botonAtaque = new BotonBotonera("Atacar");
         this.botonFinFaseDePreparacion = new BotonBotonera("Fin Fase De Preparacion");
         this.botonFinFaseAtaque = new BotonBotonera("Fin Fase de Ataque");
-        this.botonFinFaseTrampas = new BotonBotonera("Fin Fase de Trampas");
         this.botonCambioTurno = new BotonBotonera("Fin De Turno");
         this.controlador = controlador;
         this.setEspacio();
@@ -35,7 +33,6 @@ public class Botonera extends VBox {
         botonAtaque.setDisable(true);
         botonFinFaseDePreparacion.setDisable(true);
         botonFinFaseAtaque.setDisable(true);
-        botonFinFaseTrampas.setDisable(true);
         botonCambioTurno.setDisable(true);
 
         botonCambioTurno.setOnAction(new CambiarTurnoHandler(controlador));
@@ -43,7 +40,7 @@ public class Botonera extends VBox {
 
         botonFinFaseDePreparacion.setOnAction(new FinFasePreparacionHandler(botonFinFaseDePreparacion,botonFinFaseAtaque,
                 controlador.obtenerContenedorBase(), controlador.obtenerVistaMano(), controlador));
-        this.getChildren().addAll(botonAtaque, botonFinFaseDePreparacion, botonFinFaseAtaque, botonFinFaseTrampas,
+        this.getChildren().addAll(botonAtaque, botonFinFaseDePreparacion, botonFinFaseAtaque,
                 botonCambioTurno);
     }
 
@@ -54,5 +51,9 @@ public class Botonera extends VBox {
     public void activarBotonAtacar(BotonAtacarHandler botonAtacarHandler) {
         botonAtaque.setDisable(false);
         botonAtaque.setOnAction(botonAtacarHandler);
+    }
+
+    public void desactivarAtaque() {
+        botonAtaque.setDisable(true);
     }
 }

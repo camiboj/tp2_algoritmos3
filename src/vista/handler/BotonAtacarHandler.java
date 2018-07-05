@@ -38,6 +38,7 @@ public class BotonAtacarHandler implements EventHandler {
         if (contador == 1) {
             controlador.atacarMonstruos(botonMonstruoAtacante, seleccionado.obtenerBotonCarta());
             botonMonstruoAtacante.setDisable(true);
+            controlador.iniciarFaseTrampa();
         }
         if (contador != 1) {
             try {

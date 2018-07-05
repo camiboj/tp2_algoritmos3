@@ -144,4 +144,10 @@ public class Controlador {
             contenedorBase.getChildren().remove(botonCarta);
         }
     }
+
+    public void iniciarFaseTrampa() {
+        botonera.desactivarAtaque();
+        contenedorBase.escribirEnConsola("Se activo la fase trampa");
+        vistaContrincante.voltearTrampas();
+    }
 }

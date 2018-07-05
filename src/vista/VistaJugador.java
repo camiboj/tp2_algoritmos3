@@ -83,7 +83,7 @@ public class VistaJugador extends VBox {
     }
 
     public void reset() {
-        vistaMano.reset();
+        vistaMano.esconder();
     }
 
    public void colocarCartaMonstruoEnAtaque(CartaMonstruo carta, BotonCartaMano boton, FasePreparacion fase) {
@@ -164,5 +164,13 @@ public class VistaJugador extends VBox {
         tablero.colocarZonaCampo(invocacionDefault, jugador);
         vistaCampo.colocarCarta(carta);
         contenedorBase.getChildren().remove(boton);
+    }
+
+    public void esconderMano() {
+        vistaMano.esconder();
+    }
+
+    public void voltearTrampas() {
+        vistaTrampaMagica.voltearTrampas();
     }
 }
