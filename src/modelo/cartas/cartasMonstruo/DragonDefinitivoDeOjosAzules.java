@@ -7,7 +7,7 @@ import java.util.List;
 public class DragonDefinitivoDeOjosAzules extends CartaMonstruo {
 
     public DragonDefinitivoDeOjosAzules() {
-        super("Dragon Definitivo de Ojos Azules", 4500, 3800, 12);
+        super("Dragon Definitivo De Ojos Azules", 4500, 3800, 12);
     }
 
     public boolean puedeInvocarse(List<CartaMonstruo> cartasASacrificar) {
