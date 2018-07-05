@@ -97,7 +97,8 @@ public class VistaJugador extends VBox {
    public void colocarCartaMonstruoEnAtaque(CartaMonstruo carta, BotonCartaMano boton, FasePreparacion fase) {
        try {
            List<CartaMonstruo> sacrificios = vistaZonaMonstruo.generarSacrificios(carta.obtenerSacrificios());
-
+           if (sacrificios.size() > 0) { contenedorBase.escribirEnConsola("Para tirar esta carta fue necesario " +
+                   "sacrificar " + sacrificios.size() + " monstruo/os, elegido/os por tener los menores puntos de ataque"); }
             InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta, sacrificios,fase);
             int indice = 0;
 
@@ -116,6 +117,8 @@ public class VistaJugador extends VBox {
     public void colocarCartaMonstruoEnDefensa(CartaMonstruo carta, BotonCartaMano boton, FasePreparacion fase) {
         try {
             List<CartaMonstruo> sacrificios = vistaZonaMonstruo.generarSacrificios(carta.obtenerSacrificios());
+            if (sacrificios.size() > 0) { contenedorBase.escribirEnConsola("Para tirar esta carta fue necesario " +
+                    "sacrificar los" + sacrificios.size() + " monstruos de menor puntos de ataque"); }
             InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta, sacrificios, fase);
             vistaZonaMonstruo.eliminar(sacrificios);
             int indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica,jugador);
@@ -129,8 +132,6 @@ public class VistaJugador extends VBox {
             contenedorBase.escribirEnConsola(invocacionExcepcion.obtenerMotivo());
         }
     }
-
-
 
     public VistaMano getVistaMano() {
         return vistaMano;
