@@ -138,6 +138,8 @@ public class VistaJugador extends VBox {
 
     public void setOpcionAtacar(ContextMenu contextMenu) {
         vistaZonaMonstruo.setOpcionAtacar(contextMenu);
+        vistaCampo.desactivarCartas();
+        vistaTrampaMagica.desactivarCartas();
     }
 
     public BotonCarta obtenerBoton(CartaMonstruo carta) {
@@ -178,8 +180,8 @@ public class VistaJugador extends VBox {
         vistaMano.esconder();
     }
 
-    public void voltearPrimeraTrampa() throws NoHayTrampasExcepcion {
-        vistaTrampaMagica.voltearPrimeraTrampa();
+    public void voltearPrimeraTrampa(Controlador controlador) throws NoHayTrampasExcepcion {
+        vistaTrampaMagica.voltearPrimeraTrampa(controlador);
     }
 
     public void activarCartasMagicas(Controlador controlador) {

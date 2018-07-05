@@ -34,7 +34,6 @@ public class FinFasePreparacionHandler implements EventHandler {
                 "Se pueden realizar tantos ataques como quiera, pero cada monstruo puede atacar una vez. " +
                 "Para terminar la fase haz click en 'Fin Fase De Ataque'");
         vistaMano.desactivarCartas();
-
         controlador.setOpcionAtacar();
     }
 }

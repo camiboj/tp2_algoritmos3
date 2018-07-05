@@ -36,7 +36,7 @@ public class ActivarMagicaBocaAbajoHandler implements EventHandler<ActionEvent> 
         contenedorBase.getChildren().remove(botonCartaBocaAbajo);
         vistaJugador.agregarElemento(botonCartaBocaArriba);
         contenedorBase.ubicarObjeto(botonCartaBocaArriba, botonCartaBocaAbajo.obtenerFila(), botonCartaBocaAbajo.obtenerColumna());
-        controlador.agregarCartaMagicaABorrar(botonCartaBocaArriba);
+        controlador.agregarCartaTrampaMagicaABorrar(botonCartaBocaArriba);
         try {
             cartaMagica.activarEfecto();
         } catch (VictoriaException ignored) {

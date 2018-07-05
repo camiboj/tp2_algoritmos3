@@ -33,13 +33,18 @@ public class VistaTrampaMagica extends VistaZonas {
         BotonCartaBocaAbajo botonCartaBocaAbajo = new BotonCartaBocaAbajo(fila, columna, botonCartaBocaArriba);
         VoltearHandler handle = new VoltearHandler(botonCartaBocaArriba, botonCartaBocaAbajo, this);
         botonCartaBocaAbajo.setOnAction(handle);
-        botonCartaBocaAbajo.setRotate(90);
         elementos.add(botonCartaBocaAbajo);
         contenedorBase.ubicarObjeto(botonCartaBocaAbajo, fila, columna);
     }
 
-    public void voltearPrimeraTrampa() throws NoHayTrampasExcepcion {
+    public void voltearPrimeraTrampa(Controlador controlador) throws NoHayTrampasExcepcion {
         for (BotonCarta botonCarta: elementos) {
+            if(botonCarta.obtenerCarta() instanceof CartaTrampa) {
+                botonCarta.setDisable(false);
+                controlador.agregarCartaTrampaMagicaABorrar(botonCarta);
+                return;
+            }
+
             if(botonCarta instanceof BotonCartaBocaAbajo && botonCarta.obtenerCarta() instanceof CartaTrampa) {
                 BotonCartaBocaAbajo botonCartaBocaAbajo = (BotonCartaBocaAbajo) botonCarta;
                 elementos.remove(botonCartaBocaAbajo);
@@ -47,6 +52,7 @@ public class VistaTrampaMagica extends VistaZonas {
                 BotonCartaZonaTrampaMagica botonCartaBocaArriba = botonCartaBocaAbajo.obtenerBotonBocaArriba();
                 elementos.add(botonCartaBocaArriba);
                 contenedorBase.ubicarObjeto(botonCartaBocaArriba, botonCartaBocaAbajo.obtenerFila(), botonCartaBocaAbajo.obtenerColumna());
+                controlador.agregarCartaTrampaMagicaABorrar(botonCarta);
                 return;
             }
         }
@@ -88,4 +94,5 @@ public class VistaTrampaMagica extends VistaZonas {
             }
         }
     }
+
 }

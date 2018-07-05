@@ -18,8 +18,9 @@ public class BotonFinFaseAtaqueHandler implements EventHandler {
     @Override
     public void handle(Event event) {
         contenedorBase.escribirEnConsola("Inicio de la Fase Final. Haz click para voltear las Cartas Mágicas " +
-                "que desees del tablero" +
+                "que desees del tablero " +
                 "así activan su efecto. Cuando desees cambiar de turno haz click en 'Fin de Turno'");
         controlador.activarFaseFinal(); //Desactivar cartas que no sean mágicas
+        controlador.activarFinTurno();
     }
 }

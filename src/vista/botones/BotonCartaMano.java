@@ -53,10 +53,12 @@ public class BotonCartaMano extends BotonCarta {
         this.setContextMenu(contextMenu);
     }
 
-   public BotonCartaMano(Carta carta){
+   /*public BotonCartaMano(Carta carta){
        super(carta);
        this.settearTooltip("Efecto: " + carta.obtenerEfecto());
     }
+    */
+
 
     public BotonCartaMano(CartaTrampa carta, VistaJugador vista){
         super(carta);this.settearTooltip("Efecto: " + carta.obtenerEfecto());
@@ -70,6 +72,9 @@ public class BotonCartaMano extends BotonCarta {
                 vista.colocarCartaTrampaMagica(carta, boton);
             }
         });
+
+        contextMenu.getItems().addAll(colocarCarta);
+        this.setContextMenu(contextMenu);
     }
 
     public BotonCartaMano(CartaMagica carta, VistaJugador vista){
@@ -85,6 +90,9 @@ public class BotonCartaMano extends BotonCarta {
                 vista.colocarCartaTrampaMagica(carta, boton);
             }
         });
+
+        contextMenu.getItems().addAll(colocarCarta);
+        this.setContextMenu(contextMenu);
     }
 
     public BotonCartaMano(CartaCampo carta, VistaJugador vista){
@@ -100,6 +108,9 @@ public class BotonCartaMano extends BotonCarta {
                 vista.colocarCartaCampo(carta, boton);
             }
         });
+
+        contextMenu.getItems().addAll(colocarCarta);
+        this.setContextMenu(contextMenu);
     }
 
 }

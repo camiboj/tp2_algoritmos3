@@ -22,7 +22,7 @@ public class ActivarMagicaBocaArribaHandler implements EventHandler<ActionEvent>
     @Override
     public void handle(ActionEvent actionEvent) {
         try {
-            controlador.agregarCartaMagicaABorrar(boton);
+            controlador.agregarCartaTrampaMagicaABorrar(boton);
             cartaMagica.activarEfecto();
         } catch (VictoriaException e) {
 

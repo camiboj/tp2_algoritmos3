@@ -41,6 +41,15 @@ public class VistaCampo {
          BotonCartaZonaCampo botonCartaZonaCampo = new BotonCartaZonaCampo(carta, fila, columna);
          elementos.add(botonCartaZonaCampo);
          contenedorBase.ubicarObjeto(botonCartaZonaCampo, fila, columna);
-     }
+    }
+
+
+    public void desactivarCartas() {
+        for (Node elemento : elementos) {
+            BotonCartaZonaCampo botonADesactivar;
+            botonADesactivar = (BotonCartaZonaCampo) elemento;
+            botonADesactivar.setDisable(true);
+        }
+    }
 
 }

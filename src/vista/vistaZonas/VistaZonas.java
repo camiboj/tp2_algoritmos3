@@ -5,6 +5,7 @@ import modelo.excepciones.VictoriaException;
 import vista.ContenedorBase;
 import vista.botones.BotonCarta;
 import vista.botones.BotonCartaBocaAbajo;
+import vista.botones.BotonCartaZonaCampo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,13 @@ public abstract class VistaZonas {
             contenedorBase.getChildren().remove(boton);
             contenedorBase.ubicarObjeto(boton, fila, boton.obtenerColumna());
         }
+    }
+
+    public void desactivarCartas() {
+        for (Node elemento : elementos) {
+            BotonCarta botonADesactivar;
+            botonADesactivar = (BotonCarta) elemento;
+            botonADesactivar.setDisable(true);        }
     }
 
     public void voltear(BotonCartaBocaAbajo botonCartaBocaAbajo, BotonCarta botonCartaBocaArriba, int i, int columna) {
