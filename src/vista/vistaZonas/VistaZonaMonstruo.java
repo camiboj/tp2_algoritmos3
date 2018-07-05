@@ -132,16 +132,23 @@ public class VistaZonaMonstruo extends VistaZonas {
 
     public void actualizarMonstruos(List <CartaMonstruo> monstruos) {
         List<BotonCarta> botones = this.elementos;
+        List<BotonCarta> botonesAEliminar = new ArrayList <>();
 
-        if (elementos.size() == 0) { return; }
-        for (BotonCarta botonCarta : botones) {
-            CartaMonstruo carta = (CartaMonstruo) botonCarta.obtenerCarta();
+        for(int i = 0; i < botones.size(); i++) {
+            CartaMonstruo carta = (CartaMonstruo) botones.get(i).obtenerCarta();
             if (monstruos.contains(carta)) {
                 continue;
             }
-            contenedorBase.getChildren().remove(botonCarta);
-            eliminarBoton(botonCarta);
+            botonesAEliminar.add(botones.get(i));
+            //contenedorBase.getChildren().remove(botones.get(i-1));
+            //this.elementos.remove(botones.get(i-1));
         }
+
+        for(BotonCarta boton : botonesAEliminar) {
+            botones.remove(boton);
+            contenedorBase.getChildren().remove(boton);
+        }
+
     }
 
 }
