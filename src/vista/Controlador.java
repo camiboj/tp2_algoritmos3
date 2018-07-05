@@ -151,6 +151,7 @@ public class Controlador {
                 contenedorBase.getChildren().remove(botonCarta);
                 continue;
             }
+
             BotonCarta botonCarta = vistaContrincante.obtenerBoton(cartaMuerta);
             vistaContrincante.eliminarElemento(botonCarta);
             contenedorBase.getChildren().remove(botonCarta);

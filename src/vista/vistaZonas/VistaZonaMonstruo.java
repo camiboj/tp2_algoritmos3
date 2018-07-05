@@ -82,15 +82,18 @@ public class VistaZonaMonstruo extends VistaZonas {
         for (int i = 0; i < cantidad; i++) {
             CartaMonstruo carta = zonaMonstruo.obtenerMonstruoDebil();
             zonaMonstruo.eliminarCarta(carta);
+            contenedorBase.getChildren().remove(this.obtenerBoton(carta));
             this.elementos.remove(this.obtenerBoton(carta));
             sacrificios.add(carta);
         }
+
         for (CartaMonstruo carta : sacrificios) {
             try {
                 zonaMonstruo.colocarCarta(carta);
             } catch (ZonaMonstruoLlenaException ignored) {
             }
         }
+
         this.actualizar();
         return sacrificios;
     }
@@ -111,6 +114,7 @@ public class VistaZonaMonstruo extends VistaZonas {
     public void eliminar(List <CartaMonstruo> sacrificios) {
         for (CartaMonstruo carta : sacrificios) {
             BotonCarta boton = this.obtenerBoton(carta);
+            elementos.remove(boton);
             contenedorBase.getChildren().remove(boton);
         }
     }
@@ -118,6 +122,7 @@ public class VistaZonaMonstruo extends VistaZonas {
 
     public void eliminarBoton(BotonCarta botonCarta) {
         this.elementos.remove(botonCarta);
+        contenedorBase.getChildren().remove(botonCarta);
     }
 
 
@@ -140,15 +145,11 @@ public class VistaZonaMonstruo extends VistaZonas {
                 continue;
             }
             botonesAEliminar.add(botones.get(i));
-            //contenedorBase.getChildren().remove(botones.get(i-1));
-            //this.elementos.remove(botones.get(i-1));
         }
 
         for(BotonCarta boton : botonesAEliminar) {
             botones.remove(boton);
             contenedorBase.getChildren().remove(boton);
         }
-
     }
-
 }

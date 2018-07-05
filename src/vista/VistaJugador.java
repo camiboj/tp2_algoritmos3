@@ -114,9 +114,13 @@ public class VistaJugador extends VBox {
             }
             InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta, sacrificios, fase);
             int indice = 0;
-
             indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica, jugador);
             carta.colocarEnModoDeAtaque();
+            List<CartaMonstruo> monstruosActuales = tablero.mostrarZonaMonstruo(jugador).obtenerMonstruos();
+            vistaZonaMonstruo.actualizarMonstruos(monstruosActuales);
+
+            //indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica, jugador);
+
             int columna = indice + 3;
             vistaZonaMonstruo.colocarCartaModoAtaque(carta, columna);
             contenedorBase.getChildren().remove(boton);
