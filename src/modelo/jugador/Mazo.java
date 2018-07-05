@@ -100,11 +100,11 @@ public class Mazo {
             agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
             agregarCarta("Wasteland", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
 
-            agregarCarta("Cilindro Magico", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-            agregarCarta("Cilindro Magico", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Reinforcements", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Reinforcements", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
 
-            agregarCarta("Huevo Monstruoso", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-            agregarCarta("Huevo Monstruoso", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Alas De La Llama Perversa", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Alas De La Llama Perversa", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
             agregarCarta("Huevo Monstruoso", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
 
         }

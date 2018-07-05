@@ -52,7 +52,7 @@ public class VistaTrampaMagica extends VistaZonas {
                 controlador.agregarCartaTrampaMagicaABorrar(botonCartaBocaArriba);
                 CartaTrampa carta = (CartaTrampa) botonCarta.obtenerCarta();
                 try {
-                    carta.colocarBocaArriba(); //REVISAR
+                    carta.colocarBocaArriba();
                 } catch (VictoriaException e) {
                 }
 
@@ -63,7 +63,7 @@ public class VistaTrampaMagica extends VistaZonas {
                     botonCarta.setDisable(false);
                     controlador.agregarCartaTrampaMagicaABorrar(botonCarta);
                     try {
-                        carta.colocarBocaArriba(); //REVISAR
+                        carta.colocarBocaArriba();
                     } catch (VictoriaException e) {
                     }
                     return botonCarta;

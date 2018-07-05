@@ -5,6 +5,8 @@ import java.util.List;
 
 import modelo.cartas.*;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
+import modelo.cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
+import modelo.cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import modelo.cartas.cartasTrampa.CartaTrampa;
 import modelo.cartas.invocacion.Invocacion;
 import modelo.cartas.invocacion.InvocacionCartaMonstruo;
@@ -144,8 +146,8 @@ public class Tablero {
 		jugadorPerdedor.restarPuntos(diferenciaPuntos);
 		monstruosMuertos.add(cartaPerdedora);
 
-		//Caso especial de que ambas modelo.cartas tengan la misma cantidad de puntos de ataque
-		if (cartaGanadora.igualPuntos(cartaDefensora)) {
+		//Caso especial de que ambas cartas tengan la misma cantidad de puntos de ataque
+		if (cartaGanadora.igualPuntos(cartaPerdedora)) {
 			colocarCementerio(cartaGanadora, jugadorGanador);
 			eliminarDeZonaMonstruo(cartaGanadora, jugadorGanador);
 			monstruosMuertos.add(cartaGanadora);

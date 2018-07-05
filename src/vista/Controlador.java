@@ -145,6 +145,7 @@ public class Controlador {
         List<CartaMonstruo> cartasMuertas = tablero.atacarDosMonstruos(cartaAtacante, jugadorTurno,
                 cartaDefensora, jugadorContrincante);
 
+
         for (CartaMonstruo cartaMuerta : cartasMuertas) {
             if (vistaActual.obtenerBoton(cartaMuerta) != null) {
                 BotonCarta botonCarta = vistaActual.obtenerBoton(cartaMuerta);
@@ -168,6 +169,8 @@ public class Controlador {
                 "en 'Atacar'");
         try {
             BotonCarta trampaActivada = vistaContrincante.voltearPrimeraTrampa(this);
+            vistaActual.actualizarDatosCartas();
+            vistaContrincante.actualizarDatosCartas();
             botonesTrampaMagicaActivados.add(trampaActivada);
         } catch (NoHayTrampasExcepcion noHayTrampasExcepcion) {
             contenedorBase.escribirEnConsola("Has podido atacar correctamente y no se activaron trampas. " +

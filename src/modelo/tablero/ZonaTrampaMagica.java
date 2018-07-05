@@ -1,6 +1,7 @@
 package modelo.tablero;
 import modelo.cartas.Carta;
 import modelo.cartas.cartasMagicas.CartaMagica;
+import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.cartas.invocacion.Invocacion;
 import modelo.cartas.cartasTrampa.CartaTrampa;
 import modelo.cartas.invocacion.InvocacionDefault;
@@ -63,7 +64,7 @@ public class ZonaTrampaMagica implements Zona {
         return casilleros;
     }
 
-    public void activar(Carta trampa, modelo.cartas.cartasMonstruo.CartaMonstruo cartaAtacante, Jugador jugadorAtacante, modelo.cartas.cartasMonstruo.CartaMonstruo cartaDefensora, Jugador jugadorDefensor, Tablero tablero) {
+    public void activar(Carta trampa, CartaMonstruo cartaAtacante, Jugador jugadorAtacante, CartaMonstruo cartaDefensora, Jugador jugadorDefensor, Tablero tablero) {
         if(existe(trampa)) {
             CartaTrampa trampaAActivar=(CartaTrampa) trampa;
             trampaAActivar.activarAnteUnAtaque(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor,tablero);
