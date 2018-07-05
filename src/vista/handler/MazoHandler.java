@@ -24,6 +24,7 @@ public class MazoHandler implements EventHandler<ActionEvent> {
     public MazoHandler(YuGiOh juego, VistaMano vistaMano, Jugador jugadorTurno, BotonCartaBocaAbajo boton,
                        BotonBotonera botonFinFaseDePreparacion, FasePreparacion fasePreparacion,
                        ContenedorBase contenedorBase) {
+
         this.fasePreparacion = fasePreparacion;
         this.juego = juego;
         this.contenedorBase = contenedorBase;

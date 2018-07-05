@@ -3,6 +3,7 @@ import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
 import vista.Controlador;
 import vista.handler.BotonAtacarHandler;
+import vista.handler.BotonFinFaseAtaqueHandler;
 import vista.handler.CambiarTurnoHandler;
 import vista.handler.FinFasePreparacionHandler;
 
@@ -14,6 +15,7 @@ public class Botonera extends VBox {
     private BotonBotonera botonCambioTurno;
 
     public Botonera(Controlador controlador) {
+
         this.botonAtaque = new BotonBotonera("Atacar");
         this.botonFinFaseDePreparacion = new BotonBotonera("Fin Fase De Preparacion");
         this.botonFinFaseAtaque = new BotonBotonera("Fin Fase de Ataque");
@@ -31,17 +33,22 @@ public class Botonera extends VBox {
     private void fijarBotones() {
 
         botonAtaque.setDisable(true);
-        botonFinFaseDePreparacion.setDisable(true);
         botonFinFaseAtaque.setDisable(true);
         botonCambioTurno.setDisable(true);
-
-        botonCambioTurno.setOnAction(new CambiarTurnoHandler(controlador));
         botonCambioTurno.setDisable(true);
+        botonFinFaseDePreparacion.setDisable(true);
 
         botonFinFaseDePreparacion.setOnAction(new FinFasePreparacionHandler(botonFinFaseDePreparacion,botonFinFaseAtaque,
                 controlador.obtenerContenedorBase(), controlador.obtenerVistaMano(), controlador));
+        botonFinFaseAtaque.setOnAction(new BotonFinFaseAtaqueHandler(controlador.obtenerContenedorBase(), controlador));
+        botonCambioTurno.setOnAction(new CambiarTurnoHandler(controlador));
+
         this.getChildren().addAll(botonAtaque, botonFinFaseDePreparacion, botonFinFaseAtaque,
                 botonCambioTurno);
+    }
+
+    public void desactivarCambiarTurno() {
+        botonCambioTurno.setDisable(true);
     }
 
     public BotonBotonera obtenerBotonPreparacion() {
@@ -57,6 +64,14 @@ public class Botonera extends VBox {
         botonAtaque.setDisable(true);
     }
 
-    public void activarFinDeTrampas() { botonFinFaseAtaque.setDisable(false);
+    public void activarFinDeTrampas(BotonFinFaseAtaqueHandler handler) {
+        botonFinFaseAtaque.setDisable(false);
+        botonFinFaseAtaque.setOnAction(handler);
+    }
+
+    public void activarFinDeTurno() {
+        botonFinFaseAtaque.setDisable(true);
+        botonAtaque.setDisable(true);
+        botonCambioTurno.setDisable(false);
     }
 }

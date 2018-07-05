@@ -1,5 +1,6 @@
 package modelo.tablero;
 import modelo.cartas.Carta;
+import modelo.cartas.cartasMagicas.CartaMagica;
 import modelo.cartas.invocacion.Invocacion;
 import modelo.cartas.cartasTrampa.CartaTrampa;
 import modelo.cartas.invocacion.InvocacionDefault;
@@ -76,5 +77,13 @@ public class ZonaTrampaMagica implements Zona {
             if (! casillero.estaVacio() &&( casillero.mostrarCarta() instanceof CartaTrampa) ) resultado.add((CartaTrampa) casillero.mostrarCarta());
         }
         return resultado;
+    }
+
+    public boolean hayMagicas() {
+        for (int i = 0; i < CANT_CASILLEROS; i++) {
+            Casillero casillero = casilleros.get(i);
+            if (! casillero.estaVacio() && (casillero.mostrarCarta() instanceof CartaMagica)) return true;
+        }
+        return false;
     }
 }

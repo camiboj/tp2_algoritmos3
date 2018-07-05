@@ -23,7 +23,9 @@ import modelo.excepciones.ZonaTrampaMagicaLlenaException;
 import modelo.jugador.Jugador;
 import modelo.tablero.Tablero;
 import vista.botones.BotonCarta;
+import vista.botones.BotonCartaBocaAbajo;
 import vista.botones.BotonCartaMano;
+import vista.botones.BotonCartaZonaTrampaMagica;
 import vista.vistaZonas.VistaCampo;
 import vista.vistaZonas.VistaMano;
 import vista.vistaZonas.VistaTrampaMagica;
@@ -84,13 +86,19 @@ public class VistaJugador extends VBox {
     }
 
     public void reset() {
+        for (Node elemento : elementos) {
+            if (elemento instanceof Label) {
+                contenedorBase.getChildren().remove(elemento);
+            }
+        }
         vistaMano.esconder();
     }
 
    public void colocarCartaMonstruoEnAtaque(CartaMonstruo carta, BotonCartaMano boton, FasePreparacion fase) {
        try {
            List<CartaMonstruo> sacrificios = vistaZonaMonstruo.generarSacrificios(carta.obtenerSacrificios());
-
+           if (sacrificios.size() > 0) { contenedorBase.escribirEnConsola("Para tirar esta carta fue necesario " +
+                   "sacrificar " + sacrificios.size() + " monstruo/os, elegido/os por tener los menores puntos de ataque"); }
             InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta, sacrificios,fase);
             int indice = 0;
 
@@ -109,8 +117,10 @@ public class VistaJugador extends VBox {
     public void colocarCartaMonstruoEnDefensa(CartaMonstruo carta, BotonCartaMano boton, FasePreparacion fase) {
         try {
             List<CartaMonstruo> sacrificios = vistaZonaMonstruo.generarSacrificios(carta.obtenerSacrificios());
+            if (sacrificios.size() > 0) { contenedorBase.escribirEnConsola("Para tirar esta carta fue necesario " +
+                    "sacrificar los" + sacrificios.size() + " monstruos de menor puntos de ataque"); }
             InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta, sacrificios, fase);
-
+            vistaZonaMonstruo.eliminar(sacrificios);
             int indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica,jugador);
             carta.colocarEnModoDeDefensa();
             int columna = indice + 3;
@@ -123,14 +133,14 @@ public class VistaJugador extends VBox {
         }
     }
 
-
-
     public VistaMano getVistaMano() {
         return vistaMano;
     }
 
-    public void setOpcionAtacar(ContextMenu contextMenu) {
+    public void setOpcionAtacar(ContextMenuAtacante contextMenu) {
         vistaZonaMonstruo.setOpcionAtacar(contextMenu);
+        vistaCampo.desactivarCartas();
+        vistaTrampaMagica.desactivarCartas();
     }
 
     public BotonCarta obtenerBoton(CartaMonstruo carta) {
@@ -143,6 +153,7 @@ public class VistaJugador extends VBox {
 
     public void eliminarElemento(BotonCarta botonCarta) {
         elementos.remove(botonCarta);
+        vistaZonaMonstruo.eliminarBoton(botonCarta);
     }
 
     public void colocarCartaTrampaMagica(Carta carta, BotonCartaMano boton) {
@@ -171,7 +182,15 @@ public class VistaJugador extends VBox {
         vistaMano.esconder();
     }
 
-    public void voltearPrimeraTrampa() throws NoHayTrampasExcepcion {
-        vistaTrampaMagica.voltearPrimeraTrampa();
+    public void voltearPrimeraTrampa(Controlador controlador) throws NoHayTrampasExcepcion {
+        vistaTrampaMagica.voltearPrimeraTrampa(controlador);
+    }
+
+    public void activarCartasMagicas(Controlador controlador) {
+        vistaTrampaMagica.activarCartasMagicas(this, controlador);
+    }
+
+    public void agregarElemento(BotonCarta botonCarta) {
+        elementos.add(botonCarta);
     }
 }

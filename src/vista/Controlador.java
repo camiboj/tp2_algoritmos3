@@ -10,11 +10,9 @@ import modelo.excepciones.NoHayTrampasExcepcion;
 import modelo.jugador.Jugador;
 import modelo.jugador.YuGiOh;
 import modelo.tablero.Tablero;
-import vista.botones.BotonCarta;
-import vista.botones.BotonCartaBocaAbajo;
-import vista.botones.BotonCartaZonaMonstruo;
-import vista.botones.Botonera;
+import vista.botones.*;
 import vista.handler.BotonAtacarHandler;
+import vista.handler.BotonFinFaseAtaqueHandler;
 import vista.handler.MazoHandler;
 import vista.handler.OpcionesAtacarHandler;
 import vista.vistaZonas.VistaMano;
@@ -34,9 +32,11 @@ public class Controlador {
     private VistaJugador vistaContrincante;
     private FasePreparacion fasePreparacion;
     private ArrayList<CheckBoxCarta> checks;
+    private List<BotonCarta> cartasTrampaMagicaActivadas;
 
     public Controlador(Stage stage, YuGiOh juego, Tablero tablero) {
         ContenedorBase contenedorBase = new ContenedorBase(stage, juego, tablero);
+        this.cartasTrampaMagicaActivadas = new ArrayList <>();
         this.jugadorTurno = juego.obtenerJugador1();
         this.jugadorContrincante = juego.obtenerJugador2();
         this.vistaActual = new VistaJugador(contenedorBase, jugadorTurno,
@@ -57,7 +57,7 @@ public class Controlador {
         this.setMazo();
     }
 
-    private void setMazo() {
+    public void setMazo() {
         BotonCartaBocaAbajo boton = new BotonCartaBocaAbajo(3, 8);
         contenedorBase.ubicarObjeto(boton, 3, 8);
         boton.setOnAction(new MazoHandler(juego, this.vistaActual.getVistaMano(), jugadorTurno, boton,
@@ -69,6 +69,7 @@ public class Controlador {
     }
 
     public void cambiarTurno() {
+        botonera.desactivarCambiarTurno();
         vistaActual.reset();
         vistaContrincante.reset();
         this.fasePreparacion = new FasePreparacion();
@@ -81,7 +82,10 @@ public class Controlador {
         vistaActual = vistaContrincante;
         vistaContrincante = vistaAux;
 
-        contenedorBase.escribirEnConsola("Es el turno de " + jugadorTurno.obtenerNombre());
+        contenedorBase.escribirEnConsola("Es el turno de " + jugadorTurno.obtenerNombre() + "\n" +
+                "Inicio Fase Inicial: Haz click en el Mazo para obtener una carta"
+        );
+        this.setMazo();
         vistaActual.activar(true, fasePreparacion);
         vistaContrincante.activar(false, fasePreparacion);
     }
@@ -132,8 +136,13 @@ public class Controlador {
 
     public void atacarMonstruos(BotonCartaZonaMonstruo botonMonstruoAtacante, BotonCarta botonCartaAtacada) throws CartaAtacanteInexistenteException, CartaDefensoraInexistenteException {
 
-        List<CartaMonstruo> cartasMuertas = juego.mostrarTablero().atacarDosMonstruos((CartaMonstruo) botonMonstruoAtacante.obtenerCarta(), jugadorTurno,
-                (CartaMonstruo) botonCartaAtacada.obtenerCarta(), jugadorContrincante);
+        Tablero tablero = juego.mostrarTablero();
+        CartaMonstruo cartaAtacante = (CartaMonstruo) botonMonstruoAtacante.obtenerCarta();
+        CartaMonstruo cartaDefensora = (CartaMonstruo) botonCartaAtacada.obtenerCarta();
+
+
+        List<CartaMonstruo> cartasMuertas = tablero.atacarDosMonstruos(cartaAtacante, jugadorTurno,
+                cartaDefensora, jugadorContrincante);
 
         for (CartaMonstruo cartaMuerta : cartasMuertas) {
             if (vistaActual.obtenerBoton(cartaMuerta) != null) {
@@ -149,18 +158,38 @@ public class Controlador {
     }
 
     public void iniciarFaseTrampa() {
-        botonera.activarFinDeTrampas();
+        botonera.activarFinDeTrampas(new BotonFinFaseAtaqueHandler(contenedorBase, this));
         contenedorBase.escribirEnConsola("Has podido atacar correctamente. Se activó la fase trampa " +
                 "automáticamente como resultado de la misma. \n" +
                 " Para pasar a la fase final haz click en 'Fin Fase de Ataque' y para volver a atacar haz click " +
                 "en 'Atacar'");
         try {
-            vistaContrincante.voltearPrimeraTrampa();
+            vistaContrincante.voltearPrimeraTrampa(this);
         } catch (NoHayTrampasExcepcion noHayTrampasExcepcion) {
             contenedorBase.escribirEnConsola("Has podido atacar correctamente y no se activaron trampas. " +
                     "Para pasar a la fase final haz click en 'Fin Fase de Ataque' y para volver a atacar haz click " +
                     "en 'Atacar'");
         }
 
+    }
+
+    public void activarFaseFinal() {
+        vistaActual.activarCartasMagicas(this);
+    }
+
+    public void eliminarMagicasActivadas() {
+        for (BotonCarta botonCarta : cartasTrampaMagicaActivadas) {
+            contenedorBase.getChildren().remove(botonCarta);
+            vistaActual.eliminarElemento(botonCarta);
+        }
+    }
+
+    public void agregarCartaTrampaMagicaABorrar(BotonCarta botonCarta) {
+        cartasTrampaMagicaActivadas.add(botonCarta);
+    }
+
+
+    public void activarFinTurno() {
+        botonera.activarFinDeTurno();
     }
 }

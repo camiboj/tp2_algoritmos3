@@ -53,13 +53,13 @@ public class VistaMano {
                 imagenCarta = new BotonCartaMano((CartaMonstruo) carta, vistaJugador, fasePreparacion);
             }
             if (carta instanceof  CartaTrampa) {
-                imagenCarta = new BotonCartaMano((CartaTrampa) carta);
+                imagenCarta = new BotonCartaMano((CartaTrampa) carta, vistaJugador);
             }
             if (carta instanceof CartaMagica) {
-                imagenCarta = new BotonCartaMano((CartaMagica) carta);
+                imagenCarta = new BotonCartaMano((CartaMagica) carta, vistaJugador);
             }
             if (carta instanceof  CartaCampo) {
-                imagenCarta = new BotonCartaMano((CartaCampo)carta);
+                imagenCarta = new BotonCartaMano((CartaCampo)carta, vistaJugador);
             }
 
             imagenCarta.setDisable(true);
