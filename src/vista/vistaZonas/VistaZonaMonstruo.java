@@ -103,4 +103,11 @@ public class VistaZonaMonstruo extends VistaZonas {
         }
         return resultado;
     }
+
+    public void eliminar(List<CartaMonstruo> sacrificios) {
+        for (CartaMonstruo carta : sacrificios) {
+            BotonCarta boton = this.obtenerBoton(carta);
+            contenedorBase.getChildren().remove(boton);
+        }
+    }
 }

@@ -117,7 +117,7 @@ public class VistaJugador extends VBox {
         try {
             List<CartaMonstruo> sacrificios = vistaZonaMonstruo.generarSacrificios(carta.obtenerSacrificios());
             InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta, sacrificios, fase);
-
+            vistaZonaMonstruo.eliminar(sacrificios);
             int indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica,jugador);
             carta.colocarEnModoDeDefensa();
             int columna = indice + 3;
