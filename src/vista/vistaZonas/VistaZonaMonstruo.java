@@ -113,7 +113,4 @@ public class VistaZonaMonstruo extends VistaZonas {
         }
     }
 
-    public void eliminarBoton(BotonCarta botonCarta) {
-        elementos.remove(botonCarta);
-    }
 }

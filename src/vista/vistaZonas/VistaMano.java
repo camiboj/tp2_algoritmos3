@@ -78,4 +78,5 @@ public class VistaMano {
             contenedorBase.getChildren().remove(elemento);
         }
     }
+
 }

@@ -53,15 +53,10 @@ public class BotonCartaMano extends BotonCarta {
         this.setContextMenu(contextMenu);
     }
 
-   /*public BotonCartaMano(Carta carta){
-       super(carta);
-       this.settearTooltip("Efecto: " + carta.obtenerEfecto());
-    }
-    */
-
-
     public BotonCartaMano(CartaTrampa carta, VistaJugador vista){
-        super(carta);this.settearTooltip("Efecto: " + carta.obtenerEfecto());
+        super(carta);
+        this.boton=this;
+        this.settearTooltip("Efecto: " + carta.obtenerEfecto());
         final ContextMenu contextMenu = new ContextMenu();
 
         MenuItem colocarCarta= new MenuItem("Colocar carta trampa boca abajo");
@@ -79,6 +74,7 @@ public class BotonCartaMano extends BotonCarta {
 
     public BotonCartaMano(CartaMagica carta, VistaJugador vista){
         super(carta);
+        this.boton=this;
         this.settearTooltip("Efecto: " + carta.obtenerEfecto());
         final ContextMenu contextMenu = new ContextMenu();
 
@@ -97,6 +93,7 @@ public class BotonCartaMano extends BotonCarta {
 
     public BotonCartaMano(CartaCampo carta, VistaJugador vista){
         super(carta);
+        this.boton=this;
         this.settearTooltip("Efecto: " + carta.obtenerEfecto());
         final ContextMenu contextMenu = new ContextMenu();
 

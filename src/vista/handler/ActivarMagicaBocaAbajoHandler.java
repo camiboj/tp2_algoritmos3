@@ -32,6 +32,8 @@ public class ActivarMagicaBocaAbajoHandler implements EventHandler<ActionEvent> 
 
     @Override
     public void handle(ActionEvent actionEvent) {
+        contenedorBase.escribirEnConsola("Has activado una Carta Mágica. Recuerda que en el siguiente turno" +
+                " va a desaparecer.");
         vistaJugador.eliminarElemento(botonCartaBocaAbajo);
         contenedorBase.getChildren().remove(botonCartaBocaAbajo);
         vistaJugador.agregarElemento(botonCartaBocaArriba);

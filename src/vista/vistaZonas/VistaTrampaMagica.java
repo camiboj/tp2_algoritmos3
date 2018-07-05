@@ -70,6 +70,7 @@ public class VistaTrampaMagica extends VistaZonas {
         for (BotonCarta botonCarta: elementos) {
             if(botonCarta instanceof BotonCartaBocaAbajo && botonCarta.obtenerCarta() instanceof CartaMagica) {
 
+                botonCarta.setDisable(false);
                 CartaMagica cartaMagica = (CartaMagica) botonCarta.obtenerCarta();
                 ContextMenu contextMenu = new ContextMenu();
                 MenuItem opcionActivar = new MenuItem("Activar carta");
@@ -84,10 +85,12 @@ public class VistaTrampaMagica extends VistaZonas {
             }
             else if (botonCarta.obtenerCarta() instanceof CartaMagica) {
 
+                botonCarta.setDisable(false);
                 ContextMenu contextMenu = new ContextMenu();
                 MenuItem opcionActivar = new MenuItem("Activar carta");
 
-                opcionActivar.setOnAction(new ActivarMagicaBocaArribaHandler((BotonCartaZonaTrampaMagica) botonCarta, controlador)); //Activar efecto de la magica
+                opcionActivar.setOnAction(new ActivarMagicaBocaArribaHandler((BotonCartaZonaTrampaMagica) botonCarta,
+                        controlador, contenedorBase)); //Activar efecto de la magica
 
                 contextMenu.getItems().addAll(opcionActivar);
                 botonCarta.setContextMenu(contextMenu);
