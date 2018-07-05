@@ -218,38 +218,6 @@ public class Tablero {
         return ladoDelCampo.mostrarZonaTrampaMagica();
 	}
 
-	public LadoDelCampo mostrarLadoDelCampo(Jugador jugadorOponente) {
-		return divisiones.get(jugadorOponente);
-	}
-
-	public List<List<Casillero>> mostrarCasillerosZonaMonstruo() {
-		List<List<Casillero>> lista = new ArrayList();
-		List<Casillero> lista1 = divisiones.get(jugador1).mostrarCasillerosZonaMonstruo();
-		List<Casillero> lista2 = divisiones.get(jugador2).mostrarCasillerosZonaMonstruo();
-		lista.add(lista1);
-		lista.add(lista2);
-		return lista;
-	}
-
-	public List<List<Casillero>> mostrarCasillerosZonaCampo() {
-		List<List<Casillero>> lista = new ArrayList();
-		List<Casillero> lista1 = divisiones.get(jugador1).mostrarCasillerosZonaCampo();
-		List<Casillero> lista2 = divisiones.get(jugador2).mostrarCasillerosZonaCampo();
-		lista.add(lista1);
-		lista.add(lista2);
-		return lista;
-	}
-
-
-	public List<List<Casillero>> mostrarCasillerosZonaTrampaMagica() {
-		List<List<Casillero>> lista = new ArrayList();
-		List<Casillero> lista1 = divisiones.get(jugador1).mostrarCasillerosZonaTrampaMagica();
-		List<Casillero> lista2 = divisiones.get(jugador2).mostrarCasillerosZonaTrampaMagica();
-		lista.add(lista1);
-		lista.add(lista2);
-		return lista;
-	}
-
 	public Jugador obtenerJugadorOponente(Jugador jugadorDeTurno) {
 		for (Object jugador: divisiones.keySet()
 			 ) {

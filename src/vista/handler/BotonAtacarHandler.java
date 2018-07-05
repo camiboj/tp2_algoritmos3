@@ -39,15 +39,15 @@ public class BotonAtacarHandler implements EventHandler {
         }
         if (contador == 1) {
             try {
+                controlador.iniciarFaseTrampa();
                 controlador.atacarMonstruos(botonMonstruoAtacante, seleccionado.obtenerBotonCarta());
             }
             catch (CartaAtacanteInexistenteException | CartaDefensoraInexistenteException e){
                 contenedorBase.escribirEnConsola(e.obtenerMotivo());
                 }
 
-
             botonMonstruoAtacante.setDisable(true);
-            controlador.iniciarFaseTrampa();
+            //controlador.iniciarFaseTrampa();
         }
         if (contador != 1) {
             try {

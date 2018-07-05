@@ -42,9 +42,10 @@ public class ActivarMagicaBocaAbajoHandler implements EventHandler<ActionEvent> 
         controlador.agregarCartaTrampaMagicaABorrar(botonCartaBocaArriba);
         try {
             cartaMagica.colocarBocaArriba();
-            controlador.actualizarZonaMonstruo();
-            controlador.actualizarMano();
-        } catch (VictoriaException ignored) {
+        } catch (VictoriaException e) {
+            e.printStackTrace();
         }
+        controlador.actualizarZonaMonstruo();
+        controlador.actualizarMano();
     }
 }

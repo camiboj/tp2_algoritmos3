@@ -50,7 +50,7 @@ public abstract class BotonCarta extends Button {
     }
 
     public void actualizarEstado() throws VictoriaException {
-        carta.colocarBocaArriba();
+        //carta.colocarBocaArriba();
     }
 
     public void cambiarFila(int fila) {

@@ -6,6 +6,7 @@ import modelo.cartas.Carta;
 import modelo.cartas.cartasMagicas.CartaMagica;
 import modelo.cartas.cartasTrampa.CartaTrampa;
 import modelo.excepciones.NoHayTrampasExcepcion;
+import modelo.excepciones.VictoriaException;
 import modelo.tablero.ZonaTrampaMagica;
 import vista.ContenedorBase;
 import vista.Controlador;
@@ -40,8 +41,13 @@ public class VistaTrampaMagica extends VistaZonas {
     public void voltearPrimeraTrampa(Controlador controlador) throws NoHayTrampasExcepcion {
         for (BotonCarta botonCarta: elementos) {
             if(botonCarta.obtenerCarta() instanceof CartaTrampa) {
+                CartaTrampa carta = (CartaTrampa) botonCarta.obtenerCarta();
                 botonCarta.setDisable(false);
                 controlador.agregarCartaTrampaMagicaABorrar(botonCarta);
+                try {
+                    carta.colocarBocaArriba(); //REVISAR
+                } catch (VictoriaException e) {
+                }
                 return;
             }
 
@@ -53,6 +59,11 @@ public class VistaTrampaMagica extends VistaZonas {
                 elementos.add(botonCartaBocaArriba);
                 contenedorBase.ubicarObjeto(botonCartaBocaArriba, botonCartaBocaAbajo.obtenerFila(), botonCartaBocaAbajo.obtenerColumna());
                 controlador.agregarCartaTrampaMagicaABorrar(botonCarta);
+                CartaTrampa carta = (CartaTrampa) botonCarta.obtenerCarta();
+                try {
+                    carta.colocarBocaArriba(); //REVISAR
+                } catch (VictoriaException e) {
+                }
                 return;
             }
         }
