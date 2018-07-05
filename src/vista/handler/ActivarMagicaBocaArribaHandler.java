@@ -12,16 +12,21 @@ public class ActivarMagicaBocaArribaHandler implements EventHandler<ActionEvent>
     private Controlador controlador;
     private BotonCartaZonaTrampaMagica boton;
     CartaMagica cartaMagica;
+    private ContenedorBase contenedorBase;
 
-    public ActivarMagicaBocaArribaHandler(BotonCartaZonaTrampaMagica boton, Controlador controlador) {
+    public ActivarMagicaBocaArribaHandler(BotonCartaZonaTrampaMagica boton, Controlador controlador,
+                                          ContenedorBase contenedorBase) {
         this.cartaMagica = (CartaMagica) boton.obtenerCarta();
         this.boton = boton;
         this.controlador = controlador;
+        this.contenedorBase = contenedorBase;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
         try {
+            contenedorBase.escribirEnConsola("Has activado una Carta Mágica. Recuerda que en el siguiente turno" +
+                    " va a desaparecer.");
             controlador.agregarCartaTrampaMagicaABorrar(boton);
             cartaMagica.activarEfecto();
         } catch (VictoriaException e) {

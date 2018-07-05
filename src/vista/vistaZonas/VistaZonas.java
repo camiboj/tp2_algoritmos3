@@ -42,6 +42,10 @@ public abstract class VistaZonas {
             botonADesactivar.setDisable(true);        }
     }
 
+    public void eliminarBoton(BotonCarta botonCarta) {
+        elementos.remove(botonCarta);
+    }
+
     public void voltear(BotonCartaBocaAbajo botonCartaBocaAbajo, BotonCarta botonCartaBocaArriba, int i, int columna) {
          elementos.add(botonCartaBocaArriba);
          elementos.remove(botonCartaBocaAbajo);

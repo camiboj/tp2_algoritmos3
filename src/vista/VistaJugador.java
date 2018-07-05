@@ -154,6 +154,7 @@ public class VistaJugador extends VBox {
     public void eliminarElemento(BotonCarta botonCarta) {
         elementos.remove(botonCarta);
         vistaZonaMonstruo.eliminarBoton(botonCarta);
+        vistaTrampaMagica.eliminarBoton(botonCarta);
     }
 
     public void colocarCartaTrampaMagica(Carta carta, BotonCartaMano boton) {
