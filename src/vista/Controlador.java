@@ -134,8 +134,13 @@ public class Controlador {
 
     public void atacarMonstruos(BotonCartaZonaMonstruo botonMonstruoAtacante, BotonCarta botonCartaAtacada) {
 
-        List<CartaMonstruo> cartasMuertas = juego.mostrarTablero().atacarDosMonstruos((CartaMonstruo) botonMonstruoAtacante.obtenerCarta(), jugadorTurno,
-                (CartaMonstruo) botonCartaAtacada.obtenerCarta(), jugadorContrincante);
+        Tablero tablero = juego.mostrarTablero();
+        CartaMonstruo cartaAtacante = (CartaMonstruo) botonMonstruoAtacante.obtenerCarta();
+        CartaMonstruo cartaDefensora = (CartaMonstruo) botonCartaAtacada.obtenerCarta();
+
+
+        List<CartaMonstruo> cartasMuertas = tablero.atacarDosMonstruos(cartaAtacante, jugadorTurno,
+                cartaDefensora, jugadorContrincante);
 
         for (CartaMonstruo cartaMuerta : cartasMuertas) {
             if (vistaActual.obtenerBoton(cartaMuerta) != null) {

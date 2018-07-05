@@ -137,7 +137,7 @@ public class VistaJugador extends VBox {
         return vistaMano;
     }
 
-    public void setOpcionAtacar(ContextMenu contextMenu) {
+    public void setOpcionAtacar(ContextMenuAtacante contextMenu) {
         vistaZonaMonstruo.setOpcionAtacar(contextMenu);
         vistaCampo.desactivarCartas();
         vistaTrampaMagica.desactivarCartas();
@@ -153,6 +153,7 @@ public class VistaJugador extends VBox {
 
     public void eliminarElemento(BotonCarta botonCarta) {
         elementos.remove(botonCarta);
+        vistaZonaMonstruo.eliminarBoton(botonCarta);
     }
 
     public void colocarCartaTrampaMagica(Carta carta, BotonCartaMano boton) {

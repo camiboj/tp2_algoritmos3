@@ -28,6 +28,7 @@ public abstract class VistaZonas {
     public void actualizar() {
         for (Node node : elementos) {
             BotonCarta boton = (BotonCarta) node;
+            boton.setDisable(false);
             boton.cambiarFila(fila);
             contenedorBase.getChildren().remove(boton);
             contenedorBase.ubicarObjeto(boton, fila, boton.obtenerColumna());

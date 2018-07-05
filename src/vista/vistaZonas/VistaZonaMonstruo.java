@@ -7,6 +7,7 @@ import modelo.tablero.Casillero;
 import modelo.tablero.ZonaMonstruo;
 import vista.CheckBoxCarta;
 import vista.ContenedorBase;
+import vista.ContextMenuAtacante;
 import vista.botones.BotonCarta;
 import vista.botones.BotonCartaBocaAbajo;
 import vista.botones.BotonCartaZonaMonstruo;
@@ -44,7 +45,7 @@ public class VistaZonaMonstruo extends VistaZonas {
         contenedorBase.ubicarObjeto(botonCartaBocaAbajo, fila, columna);
     }
 
-    public void setOpcionAtacar(ContextMenu contextMenu) {
+    public void setOpcionAtacar(ContextMenuAtacante contextMenu) {
         for (BotonCarta botonCarta : elementos) {
             if (botonCarta instanceof BotonCartaZonaMonstruo) {
                 BotonCartaZonaMonstruo boton = (BotonCartaZonaMonstruo) botonCarta;
@@ -52,6 +53,7 @@ public class VistaZonaMonstruo extends VistaZonas {
                     boton.setDisable(true);
                 }
                 else {
+                    contextMenu.agregarCarta((BotonCartaZonaMonstruo) botonCarta);
                     boton.setContextMenu(contextMenu);
                 }
             }
@@ -109,5 +111,9 @@ public class VistaZonaMonstruo extends VistaZonas {
             BotonCarta boton = this.obtenerBoton(carta);
             contenedorBase.getChildren().remove(boton);
         }
+    }
+
+    public void eliminarBoton(BotonCarta botonCarta) {
+        elementos.remove(botonCarta);
     }
 }
