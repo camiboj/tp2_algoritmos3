@@ -30,7 +30,6 @@ public class ContenedorBase extends GridPane {
     private ArrayList <Jugador> jugadores;
     private Canvas fondo;
     private Consola consola;
-    private List<CartaMagica> cartasMagicasABorrar;
 
     public ContenedorBase(Stage stage, YuGiOh juego, Tablero tablero) {
 
@@ -53,10 +52,11 @@ public class ContenedorBase extends GridPane {
         fondo = new Canvas(1000, 1000);
         centro = new Pane(fondo);
 
+
         Image imagen = new Image("/vista/imagenes/fondoTablero.jpg");
-        ImageView imagenFondo = new ImageView(imagen);
-        this.add(imagenFondo, 3, 1, 6, 2);
-        this.setStyle("-fx-background-color: black;");
+        BackgroundImage imagenFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,
+                BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        this.setBackground(new Background(imagenFondo));
     }
 
     public void setBotonera(Botonera botonera) {
@@ -65,7 +65,7 @@ public class ContenedorBase extends GridPane {
     }
 
     private void setGrilla() {
-        this.setGridLinesVisible(true);
+        this.setGridLinesVisible(false);
         final int numColumnas = 11;
         final int numFilas = 4;
         for (int i = 0; i < 3; i++) {
@@ -161,15 +161,10 @@ public class ContenedorBase extends GridPane {
         mazoOponente.setDisable(true);
 
         //Setteo cartasContrincante
-        Image cartaOponenteImagen = new Image(getClass().getResourceAsStream("/vista/imagenes/cartasOponente.jpg"));
-        ImageView cartaOponente = new ImageView(cartaOponenteImagen);
-        ubicarObjeto(cartaOponente, 0, 9);
+        //Image cartaOponenteImagen = new Image(getClass().getResourceAsStream("/vista/imagenes/cartasOponente.jpg"));
+        //ImageView cartaOponente = new ImageView(cartaOponenteImagen);
+        //ubicarObjeto(cartaOponente, 0, 9);
 
-    }
-
-    public void colocarCartaMonstruo(BotonCartaMano boton) {
-
-        this.ubicarObjeto(boton, 2,3);
     }
 
 }
