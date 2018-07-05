@@ -70,8 +70,8 @@ public class Controlador {
 
     public void cambiarTurno() {
         botonera.desactivarCambiarTurno();
-        vistaActual.reset();
-        vistaContrincante.reset();
+        vistaActual.resetNombre();
+        vistaContrincante.resetNombre();
         this.fasePreparacion = new FasePreparacion();
 
         Jugador jugadorAux = jugadorTurno;
@@ -191,5 +191,17 @@ public class Controlador {
 
     public void activarFinTurno() {
         botonera.activarFinDeTurno();
+    }
+
+    public void actualizarZonaMonstruo() {
+        Tablero tablero = juego.mostrarTablero();
+        List<CartaMonstruo> monstruosPropios = tablero.mostrarZonaMonstruo(jugadorTurno).obtenerMonstruos();
+        List<CartaMonstruo> monstruosAjenos = tablero.mostrarZonaMonstruo(jugadorContrincante).obtenerMonstruos();
+
+        if(monstruosAjenos.size() > 0) { System.out.println("me mato"); }
+        if(monstruosAjenos.size() > 0) { System.out.println("me matox2"); }
+
+        vistaActual.actualizarZonaMonstruo(monstruosPropios);
+        vistaContrincante.actualizarZonaMonstruo(monstruosAjenos);
     }
 }

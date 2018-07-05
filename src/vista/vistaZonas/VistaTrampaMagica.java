@@ -75,7 +75,7 @@ public class VistaTrampaMagica extends VistaZonas {
                 ContextMenu contextMenu = new ContextMenu();
                 MenuItem opcionActivar = new MenuItem("Activar carta");
 
-                opcionActivar.setOnAction(new ActivarMagicaBocaAbajoHandler(controlador,vistaActual, (BotonCartaBocaAbajo) botonCarta,
+                opcionActivar.setOnAction(new ActivarMagicaBocaAbajoHandler(controlador, this, (BotonCartaBocaAbajo) botonCarta,
                         new BotonCartaZonaTrampaMagica(cartaMagica, botonCarta.obtenerFila(), botonCarta.obtenerColumna()),
                         contenedorBase));//Voltear y luego activar efecto
 

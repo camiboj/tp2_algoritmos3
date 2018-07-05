@@ -41,7 +41,7 @@ public class VistaJugador extends VBox {
     private final VistaCampo vistaCampo;
     private Jugador jugador;
     private ContenedorBase contenedorBase;
-    private List<Node> elementos;
+    private List <Node> elementos;
     private VistaTrampaMagica vistaTrampaMagica;
 
     public VistaJugador(ContenedorBase contenedorBase, Jugador jugador,
@@ -49,18 +49,28 @@ public class VistaJugador extends VBox {
         this.tablero = tablero;
         this.jugador = jugador;
         this.contenedorBase = contenedorBase;
-        this.elementos = new ArrayList<>();
-        this.vistaCampo = new VistaCampo(tablero.mostrarZonaCampo(jugador), contenedorBase );
+        this.elementos = new ArrayList <>();
+        this.vistaCampo = new VistaCampo(tablero.mostrarZonaCampo(jugador), contenedorBase);
         this.vistaZonaMonstruo = new VistaZonaMonstruo(tablero.mostrarZonaMonstruo(jugador), contenedorBase);
         this.vistaTrampaMagica = new VistaTrampaMagica(tablero.mostrarZonaTrampaMagica(jugador), contenedorBase);
         this.vistaMano = new VistaMano(jugador.mostrarMano(), contenedorBase, this);
     }
 
 
-    public void activar(boolean abajo, FasePreparacion fasePreparacion){
-        int x = 0; int y = 8; int filaMonstruo = 1; int filaTrampa = 0; int filaCampo = 1 ; int columnaCampo = 8;
+    public void activar(boolean abajo, FasePreparacion fasePreparacion) {
+        int x = 0;
+        int y = 8;
+        int filaMonstruo = 1;
+        int filaTrampa = 0;
+        int filaCampo = 1;
+        int columnaCampo = 8;
         if (abajo) {
-            x = 3; y = 2; filaMonstruo = 2; filaTrampa = 3; filaCampo = 2; columnaCampo = 2;
+            x = 3;
+            y = 2;
+            filaMonstruo = 2;
+            filaTrampa = 3;
+            filaCampo = 2;
+            columnaCampo = 2;
             vistaMano.mostrar(fasePreparacion);
         }
         this.agregarTexto(x, y);
@@ -85,7 +95,7 @@ public class VistaJugador extends VBox {
         contenedorBase.ubicarObjeto(datosJugador, x, y);
     }
 
-    public void reset() {
+    public void resetNombre() {
         for (Node elemento : elementos) {
             if (elemento instanceof Label) {
                 contenedorBase.getChildren().remove(elemento);
@@ -94,34 +104,38 @@ public class VistaJugador extends VBox {
         vistaMano.esconder();
     }
 
-   public void colocarCartaMonstruoEnAtaque(CartaMonstruo carta, BotonCartaMano boton, FasePreparacion fase) {
-       try {
-           List<CartaMonstruo> sacrificios = vistaZonaMonstruo.generarSacrificios(carta.obtenerSacrificios());
-           if (sacrificios.size() > 0) { contenedorBase.escribirEnConsola("Para tirar esta carta fue necesario " +
-                   "sacrificar " + sacrificios.size() + " monstruo/os, elegido/os por tener los menores puntos de ataque"); }
-            InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta, sacrificios,fase);
+    public void colocarCartaMonstruoEnAtaque(CartaMonstruo carta, BotonCartaMano boton, FasePreparacion fase) {
+        try {
+            List <CartaMonstruo> sacrificios = vistaZonaMonstruo.generarSacrificios(carta.obtenerSacrificios());
+            if (sacrificios.size() > 0) {
+                contenedorBase.escribirEnConsola("Para tirar esta carta fue necesario " +
+                        "sacrificar " + sacrificios.size() + " monstruo/os, elegido/os por tener los menores puntos de ataque");
+            }
+            InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta, sacrificios, fase);
             int indice = 0;
 
-           indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica, jugador );
-           carta.colocarEnModoDeAtaque();
-           int columna = indice + 3;
-           vistaZonaMonstruo.colocarCartaModoAtaque(carta, columna);
-           contenedorBase.getChildren().remove(boton);
-       } catch (ZonaMonstruoLlenaException excepcion) {
-           contenedorBase.escribirEnConsola(excepcion.obtenerMotivo());
-       } catch (InvocacionExcepcion invocacionExcepcion) {
-           contenedorBase.escribirEnConsola(invocacionExcepcion.obtenerMotivo());
-       }
-   }
+            indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica, jugador);
+            carta.colocarEnModoDeAtaque();
+            int columna = indice + 3;
+            vistaZonaMonstruo.colocarCartaModoAtaque(carta, columna);
+            contenedorBase.getChildren().remove(boton);
+        } catch (ZonaMonstruoLlenaException excepcion) {
+            contenedorBase.escribirEnConsola(excepcion.obtenerMotivo());
+        } catch (InvocacionExcepcion invocacionExcepcion) {
+            contenedorBase.escribirEnConsola(invocacionExcepcion.obtenerMotivo());
+        }
+    }
 
     public void colocarCartaMonstruoEnDefensa(CartaMonstruo carta, BotonCartaMano boton, FasePreparacion fase) {
         try {
-            List<CartaMonstruo> sacrificios = vistaZonaMonstruo.generarSacrificios(carta.obtenerSacrificios());
-            if (sacrificios.size() > 0) { contenedorBase.escribirEnConsola("Para tirar esta carta fue necesario " +
-                    "sacrificar los" + sacrificios.size() + " monstruos de menor puntos de ataque"); }
+            List <CartaMonstruo> sacrificios = vistaZonaMonstruo.generarSacrificios(carta.obtenerSacrificios());
+            if (sacrificios.size() > 0) {
+                contenedorBase.escribirEnConsola("Para tirar esta carta fue necesario " +
+                        "sacrificar los" + sacrificios.size() + " monstruos de menor puntos de ataque");
+            }
             InvocacionCartaMonstruoGenerica invocacionCartaMonstruoGenerica = new InvocacionCartaMonstruoGenerica(carta, sacrificios, fase);
             vistaZonaMonstruo.eliminar(sacrificios);
-            int indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica,jugador);
+            int indice = tablero.colocarZonaMonstruo(invocacionCartaMonstruoGenerica, jugador);
             carta.colocarEnModoDeDefensa();
             int columna = indice + 3;
             vistaZonaMonstruo.colocarCartaModoDefensa(carta, columna);
@@ -147,7 +161,7 @@ public class VistaJugador extends VBox {
         return vistaZonaMonstruo.obtenerBoton(carta);
     }
 
-    public List<CheckBoxCarta> generarOpcionesAtaque() {
+    public List <CheckBoxCarta> generarOpcionesAtaque() {
         return vistaZonaMonstruo.generarOpcionesAtaque();
     }
 
@@ -166,8 +180,7 @@ public class VistaJugador extends VBox {
             int columna = indice + 3;
             contenedorBase.getChildren().remove(boton);
             vistaTrampaMagica.colocarCarta(carta, columna);
-        }
-        catch(ZonaTrampaMagicaLlenaException excepcion) {
+        } catch (ZonaTrampaMagicaLlenaException excepcion) {
             contenedorBase.escribirEnConsola(excepcion.obtenerMotivo());
         }
     }
@@ -191,7 +204,13 @@ public class VistaJugador extends VBox {
         vistaTrampaMagica.activarCartasMagicas(this, controlador);
     }
 
-    public void agregarElemento(BotonCarta botonCarta) {
-        elementos.add(botonCarta);
+
+    public void actualizarZonaMonstruo(List <CartaMonstruo> monstruos) {
+        vistaZonaMonstruo.eliminarTodoVisualmente();
+
+        for (CartaMonstruo monstruo : monstruos) {
+            BotonCarta boton = vistaZonaMonstruo.obtenerBoton(monstruo);
+            vistaZonaMonstruo.agregarBoton(boton);
+        }
     }
 }

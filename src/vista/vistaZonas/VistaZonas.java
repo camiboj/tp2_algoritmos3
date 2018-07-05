@@ -56,5 +56,9 @@ public abstract class VistaZonas {
          }
          catch (VictoriaException e) { }
     }
+
+    public void agregarBoton(BotonCarta boton) {
+        elementos.add(boton);
+    }
 }
 

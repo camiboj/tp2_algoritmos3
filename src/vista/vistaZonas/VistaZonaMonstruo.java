@@ -113,4 +113,10 @@ public class VistaZonaMonstruo extends VistaZonas {
         }
     }
 
+    public void eliminarTodoVisualmente() {
+        for (BotonCarta elemento : elementos) {
+            //elementos.remove(elemento);
+            contenedorBase.getChildren().remove(elemento);
+        }
+    }
 }
