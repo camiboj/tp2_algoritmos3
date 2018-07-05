@@ -163,8 +163,8 @@ public class VistaJugador extends VBox {
             int indice = 0;
             indice = tablero.colocarZonaTrampaMagica(invocacionDefault, jugador);
             int columna = indice + 3;
-            vistaTrampaMagica.colocarCarta(carta, columna);
             contenedorBase.getChildren().remove(boton);
+            vistaTrampaMagica.colocarCarta(carta, columna);
         }
         catch(ZonaTrampaMagicaLlenaException excepcion) {
             contenedorBase.escribirEnConsola(excepcion.obtenerMotivo());

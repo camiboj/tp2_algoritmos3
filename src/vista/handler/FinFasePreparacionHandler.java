@@ -31,7 +31,9 @@ public class FinFasePreparacionHandler implements EventHandler {
         this.botonFinPreparacion.setDisable(true);
         this.botonFinAtaque.setDisable(false);
         contenedorBase.escribirEnConsola("Inicio Fase de Ataque: \n" +
-                "Se pueden realizar tantos ataques como quiera, pero cada monstruo puede atacar una vez. " +
+                "Se pueden realizar tantos ataques como quiera, pero cada monstruo puede atacar una vez. \n" +
+                "Para atacar haz click derecho en el monstruo y luego en el botón Atacar de la derecha. " +
+                        "La carta a atacar se elige haciendo click en el cuadrado. \n" +
                 "Para terminar la fase haz click en 'Fin Fase De Ataque'");
         vistaMano.desactivarCartas();
         controlador.setOpcionAtacar();
