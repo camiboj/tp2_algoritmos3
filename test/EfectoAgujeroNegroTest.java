@@ -12,12 +12,14 @@ import modelo.excepciones.ZonaMonstruoLlenaException;
 import modelo.excepciones.ZonaTrampaMagicaLlenaException;
 import modelo.jugador.Jugador;
 import modelo.jugador.Punto;
+import modelo.tablero.ZonaMonstruo;
 import org.junit.Test;
 import modelo.tablero.Cementerio;
 import modelo.tablero.Tablero;
 
 import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.fail;
+import static org.junit.Assert.assertFalse;
 
 public class EfectoAgujeroNegroTest {
 
@@ -57,9 +59,11 @@ public class EfectoAgujeroNegroTest {
             Cementerio cementerio1 = tablero.mostrarCementerio(jugador1);
             Cementerio cementerio2 = tablero.mostrarCementerio(jugador2);
 
-            assertTrue(true);
-            assertTrue(cementerio1.existe(carta1) && cementerio1.existe(carta2));
-            assertTrue(cementerio2.existe(carta3));
+            ZonaMonstruo jugador1ZonaMonstruo = tablero.mostrarZonaMonstruo(jugador1);
+            ZonaMonstruo jugador2ZonaMonstruo = tablero.mostrarZonaMonstruo(jugador2);
+
+            assertFalse(jugador1ZonaMonstruo.existe(carta1) && jugador1ZonaMonstruo.existe(carta2));
+            assertFalse(jugador2ZonaMonstruo.existe(carta3));
             assertTrue(jugador1.obtenerPuntos().equals(new Punto(8000)) &&
                     jugador2.obtenerPuntos().equals(new Punto(8000)));
         } catch (ZonaMonstruoLlenaException | InvocacionExcepcion | ZonaTrampaMagicaLlenaException e) {

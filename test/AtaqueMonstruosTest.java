@@ -5,19 +5,14 @@ import modelo.cartas.cartasMonstruo.cartasBasicas.AlasDeLaLlamaPerversa;
 import modelo.cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.cartas.invocacion.InvocacionDefault;
-import modelo.excepciones.InvocacionExcepcion;
-import modelo.excepciones.VictoriaException;
-import modelo.excepciones.ZonaMonstruoLlenaException;
-import modelo.excepciones.ZonaTrampaMagicaLlenaException;
+import modelo.excepciones.*;
 import modelo.jugador.Jugador;
 import org.junit.Test;
 import modelo.tablero.Cementerio;
 import modelo.tablero.Tablero;
 import modelo.tablero.ZonaMonstruo;
 
-import static junit.framework.TestCase.assertTrue;
-import static junit.framework.TestCase.assertFalse;
-import static junit.framework.TestCase.fail;
+import static junit.framework.TestCase.*;
 
 public class AtaqueMonstruosTest {
 
@@ -68,11 +63,18 @@ public class AtaqueMonstruosTest {
         } catch (ZonaMonstruoLlenaException | InvocacionExcepcion e) {
             fail();
         }
-        tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
-        Cementerio cementerio = tablero.mostrarCementerio(jugadorDefensor);
-        assertTrue(cementerio.existe(cartaDefensora));
-        ZonaMonstruo zonaMonstruo = tablero.mostrarZonaMonstruo(jugadorDefensor);
-        assertFalse(zonaMonstruo.existe(cartaDefensora));
+        try{
+            tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+        }
+        catch (CartaAtacanteInexistenteException | CartaDefensoraInexistenteException e){
+            fail();
+        }
+        try{
+            tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+        }
+        catch (CartaAtacanteInexistenteException | CartaDefensoraInexistenteException e){
+            assertTrue(true);
+        }
     }
 
     @Test
@@ -97,7 +99,12 @@ public class AtaqueMonstruosTest {
         try {
             tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
             tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
-            tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+            try{
+                tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+            }
+            catch (CartaAtacanteInexistenteException | CartaDefensoraInexistenteException e){
+                fail();
+            }
             assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 7900);
             assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero() == 8000);
         } catch (ZonaMonstruoLlenaException | InvocacionExcepcion e) {
@@ -131,11 +138,13 @@ public class AtaqueMonstruosTest {
             fail();
         }
 
-        tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
-        Cementerio cementerio = tablero.mostrarCementerio(jugadorAtacante);
-        assertTrue(cementerio.existe(cartaAtacante));
-        ZonaMonstruo zonaMonstruo = tablero.mostrarZonaMonstruo(jugadorAtacante);
-        assertFalse(zonaMonstruo.existe(cartaAtacante));
+        try{
+            tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+        }
+        catch (CartaAtacanteInexistenteException | CartaDefensoraInexistenteException e){
+            assertTrue(true);
+        }
+
     }
 
     @Test
@@ -160,7 +169,12 @@ public class AtaqueMonstruosTest {
         try {
             tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
             tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
-            tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+            try{
+                tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+            }
+            catch (CartaAtacanteInexistenteException | CartaDefensoraInexistenteException e){
+                fail();
+            }
             assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero() == 7900);
             assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 8000);
         } catch (ZonaMonstruoLlenaException | InvocacionExcepcion e) {
@@ -195,13 +209,18 @@ public class AtaqueMonstruosTest {
             fail();
         }
 
-        tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
-        Cementerio cementerioDefensor = tablero.mostrarCementerio(jugadorDefensor);
-        Cementerio cementerioAtacante = tablero.mostrarCementerio(jugadorAtacante);
-        assertTrue(cementerioDefensor.existe(cartaDefensora) && cementerioAtacante.existe(cartaAtacante));        ZonaMonstruo zonaMonstruo = tablero.mostrarZonaMonstruo(jugadorAtacante);
-        ZonaMonstruo zonaMonstruoAtacante = tablero.mostrarZonaMonstruo(jugadorAtacante);
-        ZonaMonstruo zonaMonstruoDefensor = tablero.mostrarZonaMonstruo(jugadorDefensor);
-        assertFalse(zonaMonstruoAtacante.existe(cartaAtacante) && zonaMonstruoDefensor.existe(cartaDefensora));
+        try{
+            tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+        }
+        catch (CartaAtacanteInexistenteException | CartaDefensoraInexistenteException e){
+            fail();
+        }
+        try{
+            tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+        }
+        catch (CartaAtacanteInexistenteException | CartaDefensoraInexistenteException e){
+            assertTrue(true);
+        }
     }
 
     @Test
@@ -225,7 +244,12 @@ public class AtaqueMonstruosTest {
         try {
             tablero.colocarZonaMonstruo(cartaInvocadaAtacante, jugadorAtacante);
             tablero.colocarZonaMonstruo(cartaInvocadaDefensora, jugadorDefensor);
-            tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+            try{
+                tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+            }
+            catch (CartaAtacanteInexistenteException | CartaDefensoraInexistenteException e){
+                fail();
+            }
             assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero() == 8000);
             assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 8000);
         } catch (ZonaMonstruoLlenaException e) {

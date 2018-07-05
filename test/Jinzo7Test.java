@@ -13,6 +13,7 @@ import modelo.tablero.Tablero;
 import modelo.tablero.ZonaMonstruo;
 
 import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.fail;
 import static org.junit.Assert.assertFalse;
 
 public class Jinzo7Test {
@@ -44,7 +45,7 @@ public class Jinzo7Test {
         try {
             jinzo7.colocarBocaArriba();
         } catch (VictoriaException e) {
-            assertTrue(false);
+           fail();
         }
 
         Cementerio cementerioJugador = tablero.mostrarCementerio(jugador);
@@ -55,9 +56,7 @@ public class Jinzo7Test {
         assertTrue(jugadorOponente.obtenerPuntos().obtenerNumero() == 8000-500);
         assertTrue(jugador.obtenerPuntos().obtenerNumero() == 8000);
 
-        assertFalse(cementerioOponente.existe(cartaSobreviviente));
         assertTrue(zonaMonstruoOponente.existe(cartaSobreviviente));
-        assertFalse(cementerioJugador.existe(jinzo7));
         assertTrue(zonaMonstruoJugador.existe(jinzo7));
     }
 }

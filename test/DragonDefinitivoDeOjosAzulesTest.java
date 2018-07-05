@@ -34,6 +34,7 @@ public class DragonDefinitivoDeOjosAzulesTest {
         ZonaMonstruo zonaMonstruoJugador = tablero.mostrarZonaMonstruo(jugador1);
         Cementerio cementerioJugador = tablero.mostrarCementerio(jugador1);
 
+
         List<DragonBlancoDeOjosAzules> dragonesSacrificados = new ArrayList<>();
 
         DragonBlancoDeOjosAzules dragon1 = new DragonBlancoDeOjosAzules();

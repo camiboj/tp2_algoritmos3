@@ -5,11 +5,9 @@ import modelo.cartas.cartasMonstruo.cartasBasicas.HuevoMonstruoso;
 import modelo.cartas.cartasTrampa.CilindroMagico;
 import modelo.cartas.invocacion.InvocacionCartaMonstruoGenerica;
 import modelo.cartas.invocacion.InvocacionDefault;
-import modelo.excepciones.InvocacionExcepcion;
-import modelo.excepciones.VictoriaException;
-import modelo.excepciones.ZonaMonstruoLlenaException;
-import modelo.excepciones.ZonaTrampaMagicaLlenaException;
+import modelo.excepciones.*;
 import modelo.jugador.Jugador;
+import modelo.tablero.ZonaTrampaMagica;
 import org.junit.Test;
 import modelo.tablero.Cementerio;
 import modelo.tablero.Tablero;
@@ -55,11 +53,16 @@ public class CilindroMagicoTest {
         } catch (ZonaTrampaMagicaLlenaException e) {
             fail();
         }
-        tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
-        Cementerio cementerio = tablero.mostrarCementerio(jugadorAtacante);
-        assertFalse(cementerio.existe(cartaAtacante));
-        Cementerio cementerio2= tablero.mostrarCementerio(jugadorDefensor);
-        assertTrue(cementerio2.existe(cilindro_magico));
+        try{
+            tablero.atacarDosMonstruos(cartaAtacante, jugadorAtacante, cartaDefensora, jugadorDefensor);
+        }
+        catch (CartaAtacanteInexistenteException | CartaDefensoraInexistenteException e){
+            fail();
+        }
+
+
+        ZonaTrampaMagica zonaTrampaMagicaDefensor = tablero.mostrarZonaTrampaMagica(jugadorDefensor);
+        assertFalse(zonaTrampaMagicaDefensor.existe(cilindro_magico));
         int numeroAtaque = cartaAtacante.obtenerPuntosAtaque().obtenerNumero();
         assertTrue(jugadorAtacante.obtenerPuntos().obtenerNumero() == 8000 - numeroAtaque);
         assertTrue(jugadorDefensor.obtenerPuntos().obtenerNumero() == 8000);
