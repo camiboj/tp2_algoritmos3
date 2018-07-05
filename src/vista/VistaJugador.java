@@ -23,7 +23,9 @@ import modelo.excepciones.ZonaTrampaMagicaLlenaException;
 import modelo.jugador.Jugador;
 import modelo.tablero.Tablero;
 import vista.botones.BotonCarta;
+import vista.botones.BotonCartaBocaAbajo;
 import vista.botones.BotonCartaMano;
+import vista.botones.BotonCartaZonaTrampaMagica;
 import vista.vistaZonas.VistaCampo;
 import vista.vistaZonas.VistaMano;
 import vista.vistaZonas.VistaTrampaMagica;
@@ -84,6 +86,11 @@ public class VistaJugador extends VBox {
     }
 
     public void reset() {
+        for (Node elemento : elementos) {
+            if (elemento instanceof Label) {
+                contenedorBase.getChildren().remove(elemento);
+            }
+        }
         vistaMano.esconder();
     }
 
@@ -173,5 +180,13 @@ public class VistaJugador extends VBox {
 
     public void voltearPrimeraTrampa() throws NoHayTrampasExcepcion {
         vistaTrampaMagica.voltearPrimeraTrampa();
+    }
+
+    public void activarCartasMagicas(Controlador controlador) {
+        vistaTrampaMagica.activarCartasMagicas(this, controlador);
+    }
+
+    public void agregarElemento(BotonCarta botonCarta) {
+        elementos.add(botonCarta);
     }
 }

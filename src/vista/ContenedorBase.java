@@ -12,11 +12,13 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import modelo.cartas.cartasMagicas.CartaMagica;
 import modelo.jugador.Jugador;
 import modelo.jugador.YuGiOh;
 import modelo.tablero.Tablero;
 import vista.botones.*;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +30,7 @@ public class ContenedorBase extends GridPane {
     private ArrayList <Jugador> jugadores;
     private Canvas fondo;
     private Consola consola;
+    private List<CartaMagica> cartasMagicasABorrar;
 
     public ContenedorBase(Stage stage, YuGiOh juego, Tablero tablero) {
 
