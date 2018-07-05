@@ -24,10 +24,26 @@ public class Mazo {
         List registroCartasEspeciales = new ArrayList();
         List registroCartasTrampaMonstruo = new ArrayList();
         String nombreDeCarta = null;
+
         agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
         agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
         agregarCarta("Wasteland", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+        agregarCarta("Wasteland", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+        agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
         agregarCarta("Wasteland", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+        agregarCarta("Wasteland", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+        agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+        agregarCarta("Wasteland", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+        agregarCarta("Wasteland", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+        agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+        agregarCarta("Wasteland", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+        agregarCarta("Wasteland", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+        agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+        agregarCarta("Wasteland", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+        agregarCarta("Wasteland", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+        agregarCarta("Insecto Come Hombres", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+        agregarCarta("Insecto Come Hombres", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+
         try{
 
             while(cartas.size()<40){
