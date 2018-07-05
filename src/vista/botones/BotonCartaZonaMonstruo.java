@@ -21,4 +21,9 @@ public class BotonCartaZonaMonstruo extends BotonCarta {
         return carta;
     }
 
+    public void actualizarDatos() {
+        this.settearTooltip("Efecto: " + carta.obtenerEfecto() +
+                "\n ATK: " + String.valueOf(carta.obtenerPuntosAtaque().obtenerNumero()) +
+                "\n DEF: " + String.valueOf(carta.obtenerPuntosDefensa().obtenerNumero()));
+    }
 }

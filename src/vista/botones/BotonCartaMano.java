@@ -12,12 +12,14 @@ import modelo.cartas.cartasCampo.CartaCampo;
 import modelo.cartas.cartasMagicas.CartaMagica;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.cartas.cartasTrampa.CartaTrampa;
+import vista.Controlador;
 import vista.VistaJugador;
 
 public class BotonCartaMano extends BotonCarta {
 
     private  BotonCartaMano boton;
     private FasePreparacion fase;
+    private Controlador controlador;
 
     public BotonCartaMano(CartaMonstruo carta, VistaJugador vista, FasePreparacion fase){
         super(carta);
@@ -91,9 +93,10 @@ public class BotonCartaMano extends BotonCarta {
         this.setContextMenu(contextMenu);
     }
 
-    public BotonCartaMano(CartaCampo carta, VistaJugador vista){
+    public BotonCartaMano(CartaCampo carta, VistaJugador vista, Controlador controlador){
         super(carta);
         this.boton=this;
+        this.controlador=controlador;
         this.settearTooltip("Efecto: " + carta.obtenerEfecto());
         final ContextMenu contextMenu = new ContextMenu();
 
@@ -103,6 +106,7 @@ public class BotonCartaMano extends BotonCarta {
             @Override
             public void handle(ActionEvent event) {
                 vista.colocarCartaCampo(carta, boton);
+                controlador.actualizarDatosZonaMonstruo();
             }
         });
 

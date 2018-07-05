@@ -58,7 +58,7 @@ public class VistaJugador extends VBox {
     }
 
 
-    public void activar(boolean abajo, FasePreparacion fasePreparacion) {
+    public void activar(boolean abajo, FasePreparacion fasePreparacion, Controlador controlador) {
         int x = 0;
         int y = 8;
         int filaMonstruo = 1;
@@ -72,7 +72,7 @@ public class VistaJugador extends VBox {
             filaTrampa = 3;
             filaCampo = 2;
             columnaCampo = 2;
-            vistaMano.mostrar(fasePreparacion);
+            vistaMano.mostrar(fasePreparacion, controlador);
         }
         this.agregarTexto(x, y);
         vistaZonaMonstruo.activar(filaMonstruo);
@@ -213,7 +213,11 @@ public class VistaJugador extends VBox {
         vistaZonaMonstruo.actualizarMonstruos(monstruos);
     }
 
-    public void actualizarMano() {
-        vistaMano.mostrar(new FasePreparacion());
+    public void actualizarMano(Controlador controlador) {
+        vistaMano.mostrar(new FasePreparacion(), controlador);
+    }
+
+    public void actualizarDatosCartas() {
+        vistaZonaMonstruo.actualizarDatosCartas();
     }
 }

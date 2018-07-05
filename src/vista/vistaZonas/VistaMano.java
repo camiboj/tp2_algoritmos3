@@ -9,6 +9,7 @@ import modelo.cartas.cartasMonstruo.CartaMonstruo;
 import modelo.cartas.cartasTrampa.CartaTrampa;
 import modelo.jugador.Mano;
 import vista.ContenedorBase;
+import vista.Controlador;
 import vista.VistaJugador;
 import vista.botones.BotonCartaMano;
 
@@ -42,7 +43,7 @@ public class VistaMano {
         }
     }
 
-    public void mostrar(FasePreparacion fasePreparacion) {
+    public void mostrar(FasePreparacion fasePreparacion, Controlador controlador) {
         List<Carta> cartas = mano.mostrarCartas();
         int i = 0;
         int j = 0;
@@ -59,7 +60,7 @@ public class VistaMano {
                 imagenCarta = new BotonCartaMano((CartaMagica) carta, vistaJugador);
             }
             if (carta instanceof  CartaCampo) {
-                imagenCarta = new BotonCartaMano((CartaCampo)carta, vistaJugador);
+                imagenCarta = new BotonCartaMano((CartaCampo)carta, vistaJugador, controlador);
             }
 
             imagenCarta.setDisable(true);

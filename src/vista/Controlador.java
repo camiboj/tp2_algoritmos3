@@ -52,8 +52,8 @@ public class Controlador {
         this.botonera();
 
         this.fasePreparacion = new FasePreparacion();
-        vistaActual.activar(true, fasePreparacion);
-        vistaContrincante.activar(false, fasePreparacion);
+        vistaActual.activar(true, fasePreparacion, this);
+        vistaContrincante.activar(false, fasePreparacion, this);
         this.setMazo();
     }
 
@@ -61,7 +61,7 @@ public class Controlador {
         BotonCartaBocaAbajo boton = new BotonCartaBocaAbajo(3, 8);
         contenedorBase.ubicarObjeto(boton, 3, 8);
         boton.setOnAction(new MazoHandler(juego, this.vistaActual.getVistaMano(), jugadorTurno, boton,
-                botonera.obtenerBotonPreparacion(), fasePreparacion, contenedorBase));
+                botonera.obtenerBotonPreparacion(), fasePreparacion, contenedorBase, this));
     }
 
     public void botonera() {
@@ -86,8 +86,8 @@ public class Controlador {
                 "Inicio Fase Inicial: Haz click en el Mazo para obtener una carta"
         );
         this.setMazo();
-        vistaActual.activar(true, fasePreparacion);
-        vistaContrincante.activar(false, fasePreparacion);
+        vistaActual.activar(true, fasePreparacion, this);
+        vistaContrincante.activar(false, fasePreparacion, this);
     }
 
     public void mostrar(Stage stage) {
@@ -156,6 +156,7 @@ public class Controlador {
             vistaContrincante.eliminarElemento(botonCarta);
             contenedorBase.getChildren().remove(botonCarta);
         }
+        this.actualizarZonaMonstruo();
     }
 
     public void iniciarFaseTrampa() {
@@ -203,7 +204,13 @@ public class Controlador {
         vistaContrincante.actualizarMonstruos(monstruosAjenos);
     }
 
+    public void actualizarDatosZonaMonstruo() {
+        vistaContrincante.actualizarDatosCartas();
+        vistaActual.actualizarDatosCartas();
+        
+    }
+
     public void actualizarMano() {
-        vistaActual.actualizarMano();
+        vistaActual.actualizarMano(this);
     }
 }

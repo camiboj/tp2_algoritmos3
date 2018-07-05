@@ -7,13 +7,15 @@ import modelo.excepciones.VictoriaException;
 import modelo.jugador.Jugador;
 import modelo.jugador.YuGiOh;
 import vista.ContenedorBase;
+import vista.Controlador;
 import vista.vistaZonas.VistaMano;
 import vista.botones.BotonBotonera;
 import vista.botones.BotonCartaBocaAbajo;
 
 public class MazoHandler implements EventHandler<ActionEvent> {
+    private Controlador controlador;
     private ContenedorBase contenedorBase;
-    private final FasePreparacion fasePreparacion;
+    private FasePreparacion fasePreparacion;
     private BotonBotonera botonFinPreparacion;
     private YuGiOh juego;
     private VistaMano vistaMano;
@@ -23,10 +25,11 @@ public class MazoHandler implements EventHandler<ActionEvent> {
 
     public MazoHandler(YuGiOh juego, VistaMano vistaMano, Jugador jugadorTurno, BotonCartaBocaAbajo boton,
                        BotonBotonera botonFinFaseDePreparacion, FasePreparacion fasePreparacion,
-                       ContenedorBase contenedorBase) {
+                       ContenedorBase contenedorBase, Controlador controlador) {
 
         this.fasePreparacion = fasePreparacion;
         this.juego = juego;
+        this.controlador = controlador;
         this.contenedorBase = contenedorBase;
         this.vistaMano = vistaMano;
         this.jugadorTurno = jugadorTurno;
@@ -39,7 +42,7 @@ public class MazoHandler implements EventHandler<ActionEvent> {
         try {
             juego.ejecutarFaseInicial(jugadorTurno);
             vistaMano.esconder();
-            vistaMano.mostrar(fasePreparacion);
+            vistaMano.mostrar(fasePreparacion, controlador);
             vistaMano.activarCartas();
             botonMazo.setDisable(true);
             botonFinPreparacion.setDisable(false);

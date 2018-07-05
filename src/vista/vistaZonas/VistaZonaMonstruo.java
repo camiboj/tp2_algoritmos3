@@ -111,13 +111,7 @@ public class VistaZonaMonstruo extends VistaZonas {
         return resultado;
     }
 
-    public void eliminar(List <CartaMonstruo> sacrificios) {
-        for (CartaMonstruo carta : sacrificios) {
-            BotonCarta boton = this.obtenerBoton(carta);
-            elementos.remove(boton);
-            contenedorBase.getChildren().remove(boton);
-        }
-    }
+
 
 
     public void eliminarBoton(BotonCarta botonCarta) {
@@ -150,6 +144,15 @@ public class VistaZonaMonstruo extends VistaZonas {
         for(BotonCarta boton : botonesAEliminar) {
             botones.remove(boton);
             contenedorBase.getChildren().remove(boton);
+        }
+    }
+
+
+    public void actualizarDatosCartas() {
+        for (BotonCarta boton: elementos) {
+            BotonCartaZonaMonstruo botonMonstruo = (BotonCartaZonaMonstruo) boton;
+            botonMonstruo.actualizarDatos();
+
         }
     }
 }
