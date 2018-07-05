@@ -3,7 +3,6 @@ package vista;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -23,9 +22,7 @@ import modelo.excepciones.ZonaTrampaMagicaLlenaException;
 import modelo.jugador.Jugador;
 import modelo.tablero.Tablero;
 import vista.botones.BotonCarta;
-import vista.botones.BotonCartaBocaAbajo;
 import vista.botones.BotonCartaMano;
-import vista.botones.BotonCartaZonaTrampaMagica;
 import vista.vistaZonas.VistaCampo;
 import vista.vistaZonas.VistaMano;
 import vista.vistaZonas.VistaTrampaMagica;
@@ -200,8 +197,9 @@ public class VistaJugador extends VBox {
         vistaMano.esconder();
     }
 
-    public void voltearPrimeraTrampa(Controlador controlador) throws NoHayTrampasExcepcion {
-        vistaTrampaMagica.voltearPrimeraTrampa(controlador);
+    public BotonCarta voltearPrimeraTrampa(Controlador controlador) throws NoHayTrampasExcepcion {
+
+        return vistaTrampaMagica.voltearPrimeraTrampa(controlador);
     }
 
     public void activarCartasMagicas(Controlador controlador) {

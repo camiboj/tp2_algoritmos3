@@ -32,11 +32,11 @@ public class Controlador {
     private VistaJugador vistaContrincante;
     private FasePreparacion fasePreparacion;
     private ArrayList<CheckBoxCarta> checks;
-    private List<BotonCarta> cartasTrampaMagicaActivadas;
+    private List<BotonCarta> botonesTrampaMagicaActivados;
 
     public Controlador(Stage stage, YuGiOh juego, Tablero tablero) {
         ContenedorBase contenedorBase = new ContenedorBase(stage, juego, tablero);
-        this.cartasTrampaMagicaActivadas = new ArrayList <>();
+        this.botonesTrampaMagicaActivados = new ArrayList <>();
         this.jugadorTurno = juego.obtenerJugador1();
         this.jugadorContrincante = juego.obtenerJugador2();
         this.vistaActual = new VistaJugador(contenedorBase, jugadorTurno,
@@ -69,6 +69,7 @@ public class Controlador {
     }
 
     public void cambiarTurno() {
+        eliminarMagicasActivadas();
         botonera.desactivarCambiarTurno();
         vistaActual.resetNombre();
         vistaContrincante.resetNombre();
@@ -166,7 +167,8 @@ public class Controlador {
                 " Para pasar a la fase final haz click en 'Fin Fase de Ataque' y para volver a atacar haz click " +
                 "en 'Atacar'");
         try {
-            vistaContrincante.voltearPrimeraTrampa(this);
+            BotonCarta trampaActivada = vistaContrincante.voltearPrimeraTrampa(this);
+            botonesTrampaMagicaActivados.add(trampaActivada);
         } catch (NoHayTrampasExcepcion noHayTrampasExcepcion) {
             contenedorBase.escribirEnConsola("Has podido atacar correctamente y no se activaron trampas. " +
                     "Para pasar a la fase final haz click en 'Fin Fase de Ataque' y para volver a atacar haz click " +
@@ -180,14 +182,17 @@ public class Controlador {
     }
 
     public void eliminarMagicasActivadas() {
-        for (BotonCarta botonCarta : cartasTrampaMagicaActivadas) {
+        for (BotonCarta botonCarta : botonesTrampaMagicaActivados) {
+
+            vistaContrincante.eliminarElemento(botonCarta);
             contenedorBase.getChildren().remove(botonCarta);
-            vistaActual.eliminarElemento(botonCarta);
+
         }
+        botonesTrampaMagicaActivados = new ArrayList<>();
     }
 
     public void agregarCartaTrampaMagicaABorrar(BotonCarta botonCarta) {
-        cartasTrampaMagicaActivadas.add(botonCarta);
+        botonesTrampaMagicaActivados.add(botonCarta);
     }
 
 
@@ -207,7 +212,7 @@ public class Controlador {
     public void actualizarDatosZonaMonstruo() {
         vistaContrincante.actualizarDatosCartas();
         vistaActual.actualizarDatosCartas();
-        
+
     }
 
     public void actualizarMano() {

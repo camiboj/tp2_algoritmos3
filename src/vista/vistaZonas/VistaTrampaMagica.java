@@ -38,35 +38,37 @@ public class VistaTrampaMagica extends VistaZonas {
         contenedorBase.ubicarObjeto(botonCartaBocaAbajo, fila, columna);
     }
 
-    public void voltearPrimeraTrampa(Controlador controlador) throws NoHayTrampasExcepcion {
+    public BotonCarta voltearPrimeraTrampa(Controlador controlador) throws NoHayTrampasExcepcion {
         for (BotonCarta botonCarta: elementos) {
-            if(botonCarta.obtenerCarta() instanceof CartaTrampa) {
-                CartaTrampa carta = (CartaTrampa) botonCarta.obtenerCarta();
-                botonCarta.setDisable(false);
-                controlador.agregarCartaTrampaMagicaABorrar(botonCarta);
-                try {
-                    carta.colocarBocaArriba(); //REVISAR
-                } catch (VictoriaException e) {
-                }
-                return;
-            }
 
             if(botonCarta instanceof BotonCartaBocaAbajo && botonCarta.obtenerCarta() instanceof CartaTrampa) {
+
                 BotonCartaBocaAbajo botonCartaBocaAbajo = (BotonCartaBocaAbajo) botonCarta;
                 elementos.remove(botonCartaBocaAbajo);
                 contenedorBase.getChildren().remove(botonCartaBocaAbajo);
                 BotonCartaZonaTrampaMagica botonCartaBocaArriba = botonCartaBocaAbajo.obtenerBotonBocaArriba();
                 elementos.add(botonCartaBocaArriba);
                 contenedorBase.ubicarObjeto(botonCartaBocaArriba, botonCartaBocaAbajo.obtenerFila(), botonCartaBocaAbajo.obtenerColumna());
-                controlador.agregarCartaTrampaMagicaABorrar(botonCarta);
+                controlador.agregarCartaTrampaMagicaABorrar(botonCartaBocaArriba);
                 CartaTrampa carta = (CartaTrampa) botonCarta.obtenerCarta();
                 try {
                     carta.colocarBocaArriba(); //REVISAR
                 } catch (VictoriaException e) {
                 }
-                return;
+
+                return botonCarta;
             }
-        }
+                if(botonCarta.obtenerCarta() instanceof CartaTrampa) {
+                    CartaTrampa carta = (CartaTrampa) botonCarta.obtenerCarta();
+                    botonCarta.setDisable(false);
+                    controlador.agregarCartaTrampaMagicaABorrar(botonCarta);
+                    try {
+                        carta.colocarBocaArriba(); //REVISAR
+                    } catch (VictoriaException e) {
+                    }
+                    return botonCarta;
+                }
+            }
         throw new NoHayTrampasExcepcion("No hay trampas");
     }
 

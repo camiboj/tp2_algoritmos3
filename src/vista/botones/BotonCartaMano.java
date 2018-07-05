@@ -100,7 +100,7 @@ public class BotonCartaMano extends BotonCarta {
         this.settearTooltip("Efecto: " + carta.obtenerEfecto());
         final ContextMenu contextMenu = new ContextMenu();
 
-        MenuItem colocarCarta= new MenuItem("Colocar carta campo boca abajo");
+        MenuItem colocarCarta= new MenuItem("Colocar carta campo boca arriba");
         colocarCarta.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
