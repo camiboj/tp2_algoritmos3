@@ -150,7 +150,7 @@ public class CreadoraDeCartas {
 			case "Fisura":
 				return  new Fisura();
 			case "Sogen":
-				return  new Bitron();
+				return  new Sogen();
 
 
 
