@@ -132,6 +132,7 @@ public class Tablero {
 		colocarCementerio(cartaPerdedora, jugadorPerdedor);
 		eliminarDeZonaMonstruo(cartaPerdedora, jugadorPerdedor);
 		if (cartaDefensora.enModoDefensa()) {
+			monstruosMuertos.add(cartaDefensora);
 			return monstruosMuertos;
 		}
 		Punto puntosGanadores = cartaGanadora.obtenerPuntos();
