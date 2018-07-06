@@ -1,14 +1,9 @@
 package vista.botones;
-
 import javafx.scene.control.Button;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import modelo.cartas.Carta;
-import modelo.cartas.cartasMonstruo.CartaMonstruo;
-import modelo.excepciones.VictoriaException;
-import vista.ContenedorBase;
 
 public abstract class BotonCarta extends Button {
 
@@ -47,10 +42,6 @@ public abstract class BotonCarta extends Button {
         this.setBackground(new Background(imagenBoton));
         this.carta = carta;
         this.setPrefSize(70, 120);
-    }
-
-    public void actualizarEstado() throws VictoriaException {
-        //carta.colocarBocaArriba();
     }
 
     public void cambiarFila(int fila) {

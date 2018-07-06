@@ -43,14 +43,10 @@ public abstract class VistaZonas {
 
 
     public void voltear(BotonCartaBocaAbajo botonCartaBocaAbajo, BotonCarta botonCartaBocaArriba, int i, int columna) {
-         elementos.add(botonCartaBocaArriba);
-         elementos.remove(botonCartaBocaAbajo);
-         contenedorBase.getChildren().remove(botonCartaBocaAbajo);
-         contenedorBase.ubicarObjeto(botonCartaBocaArriba, fila, columna);
-         try {
-             botonCartaBocaArriba.actualizarEstado();
-         }
-         catch (VictoriaException e) { }
+        elementos.add(botonCartaBocaArriba);
+        elementos.remove(botonCartaBocaAbajo);
+        contenedorBase.getChildren().remove(botonCartaBocaAbajo);
+        contenedorBase.ubicarObjeto(botonCartaBocaArriba, fila, columna);
     }
 
     public void agregarBoton(BotonCarta boton) {

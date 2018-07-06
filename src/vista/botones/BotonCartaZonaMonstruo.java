@@ -1,9 +1,5 @@
 package vista.botones;
-
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
-import vista.ContenedorBase;
 
 public class BotonCartaZonaMonstruo extends BotonCarta {
     private CartaMonstruo carta;

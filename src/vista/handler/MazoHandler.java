@@ -50,6 +50,7 @@ public class MazoHandler implements EventHandler<ActionEvent> {
             contenedorBase.escribirEnConsola("Inicio Fase de preparación: \n" +
                     "Se pueden colocar tantas cartas de magia y trampa como se quiera, pero solo una invocación de monstruo ");
         } catch (VictoriaException e) {
+            contenedorBase.escribirEnConsola("Ha terminado el juego. Felictaciones al ganador!");
         }
     }
 }

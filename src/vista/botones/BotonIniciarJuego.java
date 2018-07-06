@@ -1,17 +1,11 @@
 package vista.botones;
-
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import modelo.jugador.Jugador;
 import modelo.jugador.YuGiOh;
-import modelo.tablero.LadoDelCampo;
-import vista.ContenedorBase;
 import vista.Controlador;
 
 public class BotonIniciarJuego extends Button implements EventHandler<ActionEvent> {

@@ -32,7 +32,7 @@ public class ActivarMagicaBocaArribaHandler implements EventHandler<ActionEvent>
             controlador.actualizarZonaMonstruo();
             controlador.actualizarMano();
         } catch (VictoriaException e) {
-
+            contenedorBase.escribirEnConsola("Ha terminado el juego. Felictaciones al ganador!");
         }
     }
 }
