@@ -27,7 +27,7 @@ public class Mazo {
 
         try{
 
-            while(cartas.size()<10){
+            while(cartas.size()<40){
                 Scanner cartasMonstruo = new Scanner(new File("resources/Nombres Monstruos.txt"));
                 Scanner cartasMagicasTrampa = new Scanner(new File("resources/Nombres Cartas Magicas Trampas.txt"));
                 Scanner cartasEspeciales = new Scanner(new File("resources/Nombres Cartas Especiales.txt"));
@@ -86,27 +86,6 @@ public class Mazo {
                 cartasMagicasTrampa.close();
                 cartasMonstruo.close();
             }
-
-            agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-            agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-            agregarCarta("Wasteland", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-            agregarCarta("Wasteland", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-            agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-            agregarCarta("Wasteland", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-            agregarCarta("Wasteland", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-            agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-            agregarCarta("Wasteland", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-            agregarCarta("Wasteland", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-            agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-            agregarCarta("Wasteland", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-
-            agregarCarta("Reinforcements", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-            agregarCarta("Reinforcements", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-
-            agregarCarta("Alas De La Llama Perversa", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-            agregarCarta("Alas De La Llama Perversa", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-            agregarCarta("Huevo Monstruoso", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
-
         }
 
        /* try {
