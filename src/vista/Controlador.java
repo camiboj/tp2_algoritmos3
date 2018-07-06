@@ -6,9 +6,11 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import modelo.Fase.FasePreparacion;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
+import modelo.cartas.cartasMonstruo.Jinzo7;
 import modelo.excepciones.CartaAtacanteInexistenteException;
 import modelo.excepciones.CartaDefensoraInexistenteException;
 import modelo.excepciones.NoHayTrampasExcepcion;
+import modelo.excepciones.VictoriaException;
 import modelo.jugador.Jugador;
 import modelo.jugador.YuGiOh;
 import modelo.tablero.Tablero;
@@ -162,8 +164,12 @@ public class Controlador {
 
         Tablero tablero = juego.mostrarTablero();
         CartaMonstruo cartaAtacante = (CartaMonstruo) botonMonstruoAtacante.obtenerCarta();
-        CartaMonstruo cartaDefensora = (CartaMonstruo) botonCartaAtacada.obtenerCarta();
+        try {
+            cartaAtacante.colocarBocaArriba();
+        } catch (VictoriaException e) {
+        }
 
+        CartaMonstruo cartaDefensora = (CartaMonstruo) botonCartaAtacada.obtenerCarta();
 
         List<CartaMonstruo> cartasMuertas = tablero.atacarDosMonstruos(cartaAtacante, jugadorTurno,
                 cartaDefensora, jugadorContrincante);
@@ -211,6 +217,7 @@ public class Controlador {
         for (BotonCarta botonCarta : botonesTrampaMagicaActivados) {
 
             vistaContrincante.eliminarElemento(botonCarta);
+            vistaActual.eliminarElemento(botonCarta);
             contenedorBase.getChildren().remove(botonCarta);
 
         }

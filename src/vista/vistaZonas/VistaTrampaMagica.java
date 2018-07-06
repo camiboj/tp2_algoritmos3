@@ -58,7 +58,8 @@ public class VistaTrampaMagica extends VistaZonas {
 
                 return botonCarta;
             }
-                if(botonCarta.obtenerCarta() instanceof CartaTrampa) {
+
+            if(botonCarta.obtenerCarta() instanceof CartaTrampa) {
                     CartaTrampa carta = (CartaTrampa) botonCarta.obtenerCarta();
                     botonCarta.setDisable(false);
                     controlador.agregarCartaTrampaMagicaABorrar(botonCarta);

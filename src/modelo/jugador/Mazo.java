@@ -27,7 +27,7 @@ public class Mazo {
 
         try{
 
-            while(cartas.size()<40){
+            while(cartas.size()<40 - 18){
                 Scanner cartasMonstruo = new Scanner(new File("resources/Nombres Monstruos.txt"));
                 Scanner cartasMagicasTrampa = new Scanner(new File("resources/Nombres Cartas Magicas Trampas.txt"));
                 Scanner cartasEspeciales = new Scanner(new File("resources/Nombres Cartas Especiales.txt"));
@@ -86,6 +86,30 @@ public class Mazo {
                 cartasMagicasTrampa.close();
                 cartasMonstruo.close();
             }
+            agregarCarta("Wasteland", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Sogen", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Agujero Negro", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Huevo Monstruoso", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Alas De La Llama Perversa", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Reinforcements", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Cilindro Magico", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Gente Oprimida", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Fisura", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Huevo Monstruoso", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Aitsu", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Juez", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Gran Koala", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Insecto Come Hombres", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+
+            agregarCarta("Jinzo7", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Jinzo7", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+
+            agregarCarta("Huevo Monstruoso", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Huevo Monstruoso", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Olla De La Codicia", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Jinzo7", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Alas De La Llama Perversa", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
+            agregarCarta("Araña Lanzadora", jugador, jugadorContrario, zonaMonstruoAtacante, zonaMonstruoPropia, tablero);
         }
 
        /* try {
