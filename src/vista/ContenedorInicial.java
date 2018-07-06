@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -17,8 +19,19 @@ import vista.botones.BotonIniciarJuego;
 
 public class ContenedorInicial extends VBox {
 
+    private final MediaPlayer mediaplayer;
+
     public ContenedorInicial(Stage stage, YuGiOh yuGiOh) {
         super();
+
+        String path = Main.class.getResource("sonidos/cancionInicial.mp3").toString();
+
+        Media file = new Media(path);
+        this.mediaplayer = new MediaPlayer(file);
+        mediaplayer.setAutoPlay(true);
+        mediaplayer.setVolume(0.3);
+        mediaplayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaplayer.play();
 
         this.ubicarTituloSubtitulo();
 
@@ -42,7 +55,7 @@ public class ContenedorInicial extends VBox {
         jugador2.setMaxWidth(250);
         jugador2.setText("Jugador 2");
 
-        BotonIniciarJuego botonJugar = new BotonIniciarJuego(stage, yuGiOh, jugador1, jugador2);
+        BotonIniciarJuego botonJugar = new BotonIniciarJuego(stage, yuGiOh, jugador1, jugador2, mediaplayer);
         botonJugar.setText("Iniciar partida");
         botonJugar.setDefaultButton(true);
         botonJugar.setStyle("-fx-base: red;");

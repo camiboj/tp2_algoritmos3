@@ -1,6 +1,8 @@
 package vista;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import modelo.Fase.FasePreparacion;
 import modelo.cartas.cartasMonstruo.CartaMonstruo;
@@ -33,6 +35,7 @@ public class Controlador {
     private FasePreparacion fasePreparacion;
     private ArrayList<CheckBoxCarta> checks;
     private List<BotonCarta> botonesTrampaMagicaActivados;
+    private MediaPlayer mediaplayer;
 
     public Controlador(Stage stage, YuGiOh juego, Tablero tablero) {
         ContenedorBase contenedorBase = new ContenedorBase(stage, juego, tablero);
@@ -50,11 +53,22 @@ public class Controlador {
         this.stage = stage;
         contenedorBase.escribirEnConsola("Es el turno de " + jugadorTurno.obtenerNombre() + "\n Inicio Fase Inicial: Haz click en el Mazo para obtener una carta");
         this.botonera();
-
+        this.settearSonido("sonidos/youAreWinning.mp3");
         this.fasePreparacion = new FasePreparacion();
         vistaActual.activar(true, fasePreparacion, this);
         vistaContrincante.activar(false, fasePreparacion, this);
         this.setMazo();
+    }
+
+    private void settearSonido(String cancion) {
+        String path = Main.class.getResource(cancion).toString();
+
+        Media file = new Media(path);
+        this.mediaplayer = new MediaPlayer(file);
+        mediaplayer.setAutoPlay(true);
+        mediaplayer.setVolume(0.3);
+        mediaplayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaplayer.play();
     }
 
     public void setMazo() {
@@ -69,6 +83,7 @@ public class Controlador {
     }
 
     public void cambiarTurno() {
+
         eliminarMagicasActivadas();
         botonera.desactivarCambiarTurno();
         vistaActual.resetNombre();
@@ -82,6 +97,14 @@ public class Controlador {
         VistaJugador vistaAux = vistaActual;
         vistaActual = vistaContrincante;
         vistaContrincante = vistaAux;
+
+        mediaplayer.stop();
+        if (jugadorTurno.obtenerPuntos().obtenerNumero() >= jugadorContrincante.obtenerPuntos().obtenerNumero()) {
+            this.settearSonido("sonidos/youAreWinning.mp3");
+        }
+        else {
+            this.settearSonido("sonidos/youAreLosing.mp3");
+        }
 
         contenedorBase.escribirEnConsola("Es el turno de " + jugadorTurno.obtenerNombre() + "\n" +
                 "Inicio Fase Inicial: Haz click en el Mazo para obtener una carta"
